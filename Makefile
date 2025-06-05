@@ -31,7 +31,7 @@ endif
 ifeq (debug,$(MAKECMDGOALS))
   DEBUG := 1
 endif
-ifneq (,$(filter live live-update live-prep,$(MAKECMDGOALS)))
+ifneq (,$(filter live live-update live-prep clean-live tidylive,$(MAKECMDGOALS)))
   PORYLIVE := 1
 endif
 
@@ -196,6 +196,9 @@ MAKEFLAGS += --no-print-directory
 RULES_NO_SCAN += libagbsyscall clean clean-assets tidy tidymodern tidycheck generated clean-generated $(TESTELF)
 .PHONY: all rom agbcc modern compare check debug
 .PHONY: $(RULES_NO_SCAN)
+
+# PoryLive no scan rules
+RULES_NO_SCAN += live-update live-prep clean-live tidylive
 
 infoshell = $(foreach line, $(shell $1 | sed "s/ /__SPACE__/g"), $(info $(subst __SPACE__, ,$(line))))
 

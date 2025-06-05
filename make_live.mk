@@ -47,7 +47,10 @@ live: tidylive all live-prep
 	tail -n 0 -F .porylive/porylive_on_change.log
 
 tidylive:
-	rm -rf $(OBJ_DIR_NAME_PORYLIVE)/data
+	find $(OBJ_DIR_NAME_PORYLIVE)/data -name "*.lst" -type f -delete 2>/dev/null || true
+	rm -rf $(OBJ_DIR_NAME_PORYLIVE)/bin
+	rm -f $(OBJ_DIR_NAME_PORYLIVE)/porylive_generated_files.json
+	rm -f $(OBJ_DIR_NAME_PORYLIVE)/porylive_generated_files.lua
 	mkdir -p $(OBJ_DIR_NAME_PORYLIVE)/data
 
 live-update:
