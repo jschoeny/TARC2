@@ -8,6 +8,8 @@ TOOLS_DIR := tools
 TOOL_NAMES := aif2pcm bin2c gbafix gbagfx jsonproc mapjson mid2agb preproc ramscrgen rsfont scaninc trainerproc compresSmol
 CHECK_TOOL_NAMES = patchelf mgba-rom-test-hydra
 
+TOOL_NAMES += poryscript
+
 TOOLDIRS := $(TOOL_NAMES:%=$(TOOLS_DIR)/%)
 CHECKTOOLDIRS := $(CHECK_TOOL_NAMES:%=$(TOOLS_DIR)/%)
 
