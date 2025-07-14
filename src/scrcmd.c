@@ -61,6 +61,10 @@
 #include "constants/event_objects.h"
 #include "constants/map_types.h"
 
+#if PORYLIVE
+#include "porylive.h"
+#endif
+
 typedef u16 (*SpecialFunc)(void);
 typedef void (*NativeFunc)(struct ScriptContext *ctx);
 
@@ -1286,7 +1290,11 @@ struct ObjectEvent *ScriptHideFollower(void)
 bool8 ScrCmd_applymovement(struct ScriptContext *ctx)
 {
     u16 localId = VarGet(ScriptReadHalfword(ctx));
-    const u8 *movementScript = (const u8 *)ScriptReadWord(ctx);
+    #if PORYLIVE
+        const u8 *movementScript = PoryLive_GetScriptPointer((const u8 *)ScriptReadWord(ctx));
+    #else
+        const u8 *movementScript = (const u8 *)ScriptReadWord(ctx);
+    #endif // PORYLIVE
     struct ObjectEvent *objEvent;
 
     Script_RequestEffects(SCREFF_V1 | SCREFF_HARDWARE);
@@ -1314,7 +1322,11 @@ bool8 ScrCmd_applymovement(struct ScriptContext *ctx)
 bool8 ScrCmd_applymovementat(struct ScriptContext *ctx)
 {
     u16 localId = VarGet(ScriptReadHalfword(ctx));
-    const void *movementScript = (const void *)ScriptReadWord(ctx);
+    #if PORYLIVE
+        const void *movementScript = PoryLive_GetScriptPointer((const void *)ScriptReadWord(ctx));
+    #else
+        const void *movementScript = (const void *)ScriptReadWord(ctx);
+    #endif // PORYLIVE
     u8 mapGroup = ScriptReadByte(ctx);
     u8 mapNum = ScriptReadByte(ctx);
 
@@ -1677,12 +1689,22 @@ bool8 ScrCmd_release(struct ScriptContext *ctx)
 
 bool8 ScrCmd_message(struct ScriptContext *ctx)
 {
-    const u8 *msg = (const u8 *)ScriptReadWord(ctx);
+    #if PORYLIVE
+        const u8 *msg = PoryLive_GetScriptPointer((const u8 *)ScriptReadWord(ctx));
+    #else
+        const u8 *msg = (const u8 *)ScriptReadWord(ctx);
+    #endif // PORYLIVE
 
     Script_RequestEffects(SCREFF_V1 | SCREFF_HARDWARE);
 
     if (msg == NULL)
-        msg = (const u8 *)ctx->data[0];
+    {
+        #if PORYLIVE
+            msg = PoryLive_GetScriptPointer((const u8 *)ctx->data[0]);
+        #else
+            msg = (const u8 *)ctx->data[0];
+        #endif // PORYLIVE
+    }
     ShowFieldMessage(msg);
     return FALSE;
 }

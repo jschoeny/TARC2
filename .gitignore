@@ -58,3 +58,6 @@ tools/compresSmol/compresSmolTilemap
 __pycache__
 *.ase
 *.aseprite
+
+# Porylive
+.porylive/
