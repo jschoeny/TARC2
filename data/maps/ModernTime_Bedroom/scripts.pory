@@ -1,0 +1,73 @@
+mapscripts ModernTime_Bedroom_MapScripts {
+  MAP_SCRIPT_ON_FRAME_TABLE [
+    VAR_TEMP_0, 0 {
+      applymovement(LOCALID_PLAYER, moves(walk_slow_down*2))
+      waitmovement(LOCALID_PLAYER)
+      delay(16)
+      msgbox(format("Off to bed now little one."))
+      closemessage
+      applymovement(LOCALID_CHILD, moves(disable_jump_landing_ground_effect, jump_in_place_right*2))
+      waitmovement(LOCALID_CHILD)
+      msgbox(format("Just one more story Grammy! Pleeeease!"))
+      closemessage
+      applymovement(LOCALID_GRAMMY, moves(face_up, delay_16*4, face_left, delay_16*2))
+      waitmovement(LOCALID_GRAMMY)
+      msgbox(format(
+        "Very well. One more.\p"
+        "But then you must go to sleep."
+      ))
+      msgbox(
+        "I will! I promise!"
+      )
+      message(
+        "Let's see then…"
+      )
+      applymovement(LOCALID_GRAMMY, moves(
+        walk_up*2,
+        walk_left*2,
+        face_up
+      ))
+      waitmovement(LOCALID_GRAMMY)
+      message("Hmm…")
+      applymovement(LOCALID_GRAMMY, moves(
+        delay_16*4,
+        walk_left,
+        face_up,
+        delay_16*2
+      ))
+      waitmovement(LOCALID_GRAMMY)
+      message("Ah. Perfect.")
+      waitmessage
+      delay(60)
+      closemessage
+      applymovement(LOCALID_GRAMMY, moves(
+        walk_right*3,
+        walk_down*2,
+        face_left
+      ))
+      waitmovement(LOCALID_GRAMMY)
+      delay(30)
+      msgbox("INSERT BOOK TITLE\pAre you ready?")
+      applymovement(LOCALID_CHILD, moves(
+        face_down,
+        delay_16,
+        face_left,
+        delay_16*3,
+        face_down,
+        delay_16,
+        face_right,
+        delay_16*4
+      ))
+      waitmovement(LOCALID_CHILD)
+      msgbox("Ready!")
+      msgbox(format(
+        "Ahem.\p"
+        "Long before there were POKé BALLS\Nor even {PKMN} Trainers,\Nthere was a boy named RENJI…"
+      ))
+      setvar(VAR_TEMP_0, 1)
+      fwdtime(11, 0)
+      warpsilent(MAP_RENJI_HOME_CUTSCENE1, 0)
+      release
+    }
+  ]
+}

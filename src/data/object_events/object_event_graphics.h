@@ -462,3 +462,11 @@ const u16 gObjectEventPal_StrangeBall[] = INCBIN_U16("graphics/object_events/pic
 
 const u32 gFieldEffectObjectPic_CaveDust[] = INCBIN_U32("graphics/field_effects/pics/cave_dust.4bpp");
 const u16 gFieldEffectObjectPalette_CaveDust[] = INCBIN_U16("graphics/field_effects/palettes/cave_dust.gbapal");
+
+const u32 gObjectEventPic_HGSS_LittleBoy[] = INCBIN_U32("graphics/object_events/pics/people/hgss_little_boy.4bpp");
+const u16 gObjectEventPalette_HGSS_LittleBoy[] = INCBIN_U16("graphics/object_events/pics/people/hgss_little_boy.gbapal");
+const u32 gObjectEventPic_HGSS_OldLady[] = INCBIN_U32("graphics/object_events/pics/people/hgss_old_lady.4bpp");
+const u16 gObjectEventPalette_HGSS_OldLady[] = INCBIN_U16("graphics/object_events/pics/people/hgss_old_lady.gbapal");
+
+const u32 gObjectEventPic_Fire[] = INCBIN_U32("graphics/object_events/pics/misc/fire.4bpp");
+const u16 gObjectEventPal_Fire[] = INCBIN_U16("graphics/object_events/pics/misc/fire.gbapal");

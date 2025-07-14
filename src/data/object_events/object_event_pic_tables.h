@@ -1356,3 +1356,38 @@ static const struct SpriteFrameImage sPicTable_KirliaOld[] = {
 static const struct SpriteFrameImage sPicTable_RubySapphireMay[] = {
     overworld_ascending_frames(gObjectEventPic_RubySapphireMayNormal, 2, 4),
 };
+
+static const struct SpriteFrameImage sPicTable_HGSS_LittleBoy[] = {
+    overworld_frame(gObjectEventPic_HGSS_LittleBoy, 4, 4, 0),
+    overworld_frame(gObjectEventPic_HGSS_LittleBoy, 4, 4, 1),
+    overworld_frame(gObjectEventPic_HGSS_LittleBoy, 4, 4, 2),
+    overworld_frame(gObjectEventPic_HGSS_LittleBoy, 4, 4, 3),
+    overworld_frame(gObjectEventPic_HGSS_LittleBoy, 4, 4, 4),
+    overworld_frame(gObjectEventPic_HGSS_LittleBoy, 4, 4, 5),
+    overworld_frame(gObjectEventPic_HGSS_LittleBoy, 4, 4, 6),
+    overworld_frame(gObjectEventPic_HGSS_LittleBoy, 4, 4, 7),
+    overworld_frame(gObjectEventPic_HGSS_LittleBoy, 4, 4, 8),
+};
+
+static const struct SpriteFrameImage sPicTable_HGSS_OldLady[] = {
+    overworld_frame(gObjectEventPic_HGSS_OldLady, 4, 4, 0),
+    overworld_frame(gObjectEventPic_HGSS_OldLady, 4, 4, 1),
+    overworld_frame(gObjectEventPic_HGSS_OldLady, 4, 4, 2),
+    overworld_frame(gObjectEventPic_HGSS_OldLady, 4, 4, 3),
+    overworld_frame(gObjectEventPic_HGSS_OldLady, 4, 4, 4),
+    overworld_frame(gObjectEventPic_HGSS_OldLady, 4, 4, 5),
+    overworld_frame(gObjectEventPic_HGSS_OldLady, 4, 4, 6),
+    overworld_frame(gObjectEventPic_HGSS_OldLady, 4, 4, 7),
+    overworld_frame(gObjectEventPic_HGSS_OldLady, 4, 4, 8),
+};
+
+static const struct SpriteFrameImage sPicTable_Fire[] = {
+    overworld_frame(gObjectEventPic_Fire, 2, 4, 0),
+    overworld_frame(gObjectEventPic_Fire, 2, 4, 1),
+    overworld_frame(gObjectEventPic_Fire, 2, 4, 2),
+    overworld_frame(gObjectEventPic_Fire, 2, 4, 3),
+    overworld_frame(gObjectEventPic_Fire, 2, 4, 4),
+    overworld_frame(gObjectEventPic_Fire, 2, 4, 5),
+    overworld_frame(gObjectEventPic_Fire, 2, 4, 6),
+    overworld_frame(gObjectEventPic_Fire, 2, 4, 7),
+};

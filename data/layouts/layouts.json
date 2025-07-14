@@ -4410,6 +4410,36 @@
       "secondary_tileset": "gTileset_MysteryEventsHouse",
       "border_filepath": "data/layouts/SootopolisCity_MysteryEventsHouse_1F_StairsUnblocked/border.bin",
       "blockdata_filepath": "data/layouts/SootopolisCity_MysteryEventsHouse_1F_StairsUnblocked/map.bin"
+    },
+    {
+      "id": "LAYOUT_HOME_TOWN",
+      "name": "HomeTown_Layout",
+      "width": 42,
+      "height": 24,
+      "primary_tileset": "gTileset_OldenTimes",
+      "secondary_tileset": "gTileset_DojoExterior",
+      "border_filepath": "data/layouts/HomeTown/border.bin",
+      "blockdata_filepath": "data/layouts/HomeTown/map.bin"
+    },
+    {
+      "id": "LAYOUT_MODERN_TIME_BEDROOM",
+      "name": "ModernTime_Bedroom_Layout",
+      "width": 13,
+      "height": 9,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Gen4Interior",
+      "border_filepath": "data/layouts/ModernTime_Bedroom/border.bin",
+      "blockdata_filepath": "data/layouts/ModernTime_Bedroom/map.bin"
+    },
+    {
+      "id": "LAYOUT_RENJI_HOME_CUTSCENE1",
+      "name": "RenjiHomeCutscene1_Layout",
+      "width": 21,
+      "height": 20,
+      "primary_tileset": "gTileset_OldenTimes",
+      "secondary_tileset": "gTileset_DojoExterior",
+      "border_filepath": "data/layouts/RenjiHomeCutscene1/border.bin",
+      "blockdata_filepath": "data/layouts/RenjiHomeCutscene1/map.bin"
     }
   ]
 }
