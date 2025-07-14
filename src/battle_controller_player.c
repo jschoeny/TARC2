@@ -1850,8 +1850,8 @@ static u32 PlayerGetTrainerBackPicId(void)
 
     if (gBattleTypeFlags & BATTLE_TYPE_LINK)
         trainerPicId = LinkPlayerGetTrainerPicId(GetMultiplayerId());
-    else
-        trainerPicId = gSaveBlock2Ptr->playerGender + TRAINER_BACK_PIC_BRENDAN;
+    else;
+        trainerPicId = TRAINER_BACK_PIC_PLAYER;
 
     return trainerPicId;
 }
