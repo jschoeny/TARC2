@@ -871,14 +871,6 @@ static const s8 sFriendshipEventModifiers[][3] =
     [FRIENDSHIP_EVENT_FAINT_LARGE]     = {-5, -5, -10},
 };
 
-#define HM_MOVES_END 0xFFFF
-
-static const u16 sHMMoves[] =
-{
-    MOVE_CUT, MOVE_FLY, MOVE_SURF, MOVE_STRENGTH, MOVE_FLASH,
-    MOVE_ROCK_SMASH, MOVE_WATERFALL, MOVE_DIVE, HM_MOVES_END
-};
-
 static const struct SpeciesItem sAlteringCaveWildMonHeldItems[] =
 {
     {SPECIES_NONE,      ITEM_NONE},
@@ -1081,7 +1073,7 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
         {
             isShiny = TRUE;
         }
-        else if (P_ONLY_OBTAINABLE_SHINIES && InBattlePyramid())
+        else if (P_ONLY_OBTAINABLE_SHINIES && (InBattlePyramid() || (B_FLAG_NO_CATCHING != 0 && FlagGet(B_FLAG_NO_CATCHING))))
         {
             isShiny = FALSE;
         }
@@ -3701,7 +3693,7 @@ void PokemonToBattleMon(struct Pokemon *src, struct BattlePokemon *dst)
     for (i = 0; i < NUM_BATTLE_STATS; i++)
         dst->statStages[i] = DEFAULT_STAT_STAGE;
 
-    dst->status2 = 0;
+    memset(&dst->volatiles, 0, sizeof(struct Volatiles));
 }
 
 void CopyPartyMonToBattleData(u32 battler, u32 partyIndex)
@@ -5947,19 +5939,21 @@ const u16 *GetMonSpritePalFromSpecies(u16 species, bool32 isShiny, bool32 isFema
     }
 }
 
-bool8 IsMoveHM(u16 move)
-{
-    int i = 0;
+#define OR_MOVE_IS_HM(_hm) || (move == MOVE_##_hm)
 
+bool32 IsMoveHM(u16 move)
+{
+    return FALSE FOREACH_HM(OR_MOVE_IS_HM);
+}
+
+#undef OR_MOVE_IS_HM
+
+bool32 CannotForgetMove(u16 move)
+{
     if (P_CAN_FORGET_HIDDEN_MOVE)
         return FALSE;
 
-    while (sHMMoves[i] != HM_MOVES_END)
-    {
-        if (sHMMoves[i++] == move)
-            return TRUE;
-    }
-    return FALSE;
+    return IsMoveHM(move);
 }
 
 bool8 IsMonSpriteNotFlipped(u16 species)
@@ -7159,4 +7153,12 @@ u8 *GetSavedPlayerPartyCount(void)
 void SavePlayerPartyMon(u32 index, struct Pokemon *mon)
 {
     gSaveBlock1Ptr->playerParty[index] = *mon;
+}
+
+u32 IsSpeciesOfType(u32 species, u32 type)
+{
+    if (gSpeciesInfo[species].types[0] == type
+     || gSpeciesInfo[species].types[1] == type)
+        return TRUE;
+    return FALSE;
 }
