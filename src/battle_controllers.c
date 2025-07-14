@@ -1868,20 +1868,6 @@ static void SetBattlerMonData(u32 battler, struct Pokemon *party, u32 monId)
 // In normal singles, if follower Pokémon exists, and the Pokémon following is being sent out, have it slide in instead of being thrown
 static bool8 ShouldDoSlideInAnim(u32 battler)
 {
-    struct ObjectEvent *followerObj = GetFollowerObject();
-    if (!followerObj || followerObj->invisible)
-        return FALSE;
-
-    if (gBattleTypeFlags & (
-        BATTLE_TYPE_LINK | BATTLE_TYPE_DOUBLE | BATTLE_TYPE_FRONTIER | BATTLE_TYPE_FIRST_BATTLE |
-        BATTLE_TYPE_SAFARI | BATTLE_TYPE_WALLY_TUTORIAL | BATTLE_TYPE_EREADER_TRAINER | BATTLE_TYPE_TWO_OPPONENTS |
-        BATTLE_TYPE_INGAME_PARTNER | BATTLE_TYPE_RECORDED | BATTLE_TYPE_TRAINER_HILL)
-    )
-        return FALSE;
-
-    if (GetFirstLiveMon() != GetBattlerMon(battler))
-        return FALSE;
-
     return TRUE;
 }
 
