@@ -191,3 +191,6 @@ ghoulslash
 ### [Msgbox tiles + speakername](https://github.com/mudskipper13/pokeemerald/commit/ea080ca694bfdff924627667bfa2d6f117ccca53)
 Tustin
 Mudskip
+
+### [Field Mugshot System](https://github.com/mudskipper13/pokeemerald/tree/feature/field-mugshot)
+Mudskip
