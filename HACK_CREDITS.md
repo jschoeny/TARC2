@@ -186,3 +186,8 @@ grunt-lucas
 ## Tutorials
 ### [Spawn Invisible Player](https://github.com/pret/pokeemerald/wiki/Spawn-Invisible-Player)
 ghoulslash
+
+## Other
+### [Msgbox tiles + speakername](https://github.com/mudskipper13/pokeemerald/commit/ea080ca694bfdff924627667bfa2d6f117ccca53)
+Tustin
+Mudskip
