@@ -179,6 +179,11 @@ Coffee Cup
 ### [Fire Animation - Pixel Art FX Sprites](https://brullov.itch.io/fire-animation)
 brullov
 
+### [Growlithe Portraits](https://sprites.pmdcollab.org/#/0058?form=2)
+- baronessfaron
+- Murpi (https://bsky.app/profile/murpia57.bsky.social)
+- Emmuffin (https://twitter.com/Ernmuffin)
+
 ## Tools
 ### [Porytiles](https://github.com/grunt-lucas/porytiles)
 grunt-lucas

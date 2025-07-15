@@ -3,10 +3,25 @@
 
 #define MUGSHOT_NONE  0
 #define MUGSHOT_TEST  1
-#define MUGSHOT_COUNT 2
+#define MUGSHOT_GROWLITHE 2
+#define MUGSHOT_COUNT 3
 
-#define EMOTE_NORMAL  0
-#define EMOTE_ALT     1
-#define EMOTE_COUNT   2
+#define EMOTE_NORMAL      0
+#define EMOTE_HAPPY       1
+#define EMOTE_PAIN        2
+#define EMOTE_ANGRY       3
+#define EMOTE_WORRIED     4
+#define EMOTE_SAD         5
+#define EMOTE_CRYING      6
+#define EMOTE_SHOUTING    7
+#define EMOTE_TEARY_EYED  8
+#define EMOTE_DETERMINED  9
+#define EMOTE_JOYOUS      10
+#define EMOTE_INSPIRED    11
+#define EMOTE_SURPRISED   12
+#define EMOTE_DIZZY       13
+#define EMOTE_SIGH        14
+#define EMOTE_STUNNED     15
+#define EMOTE_COUNT       16
 
 #endif // GUARD_CONSTANTS_FIELD_MUGSHOTS_H
