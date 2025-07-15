@@ -4,21 +4,26 @@ mapscripts ModernTime_Bedroom_MapScripts {
       applymovement(LOCALID_PLAYER, moves(walk_slow_down*2))
       waitmovement(LOCALID_PLAYER)
       delay(16)
+      speakername("GRANDMA")
       msgbox(format("Off to bed now little one."))
       closemessage
       applymovement(LOCALID_CHILD, moves(disable_jump_landing_ground_effect, jump_in_place_right*2))
       waitmovement(LOCALID_CHILD)
+      speakername("CHILD")
       msgbox(format("Just one more story Grammy! Pleeeease!"))
       closemessage
       applymovement(LOCALID_GRAMMY, moves(face_up, delay_16*4, face_left, delay_16*2))
       waitmovement(LOCALID_GRAMMY)
+      speakername("GRANDMA")
       msgbox(format(
         "Very well. One more.\p"
         "But then you must go to sleep."
       ))
+      speakername("CHILD")
       msgbox(
         "I will! I promise!"
       )
+      speakername("GRANDMA")
       message(
         "Let's see then…"
       )
@@ -28,6 +33,7 @@ mapscripts ModernTime_Bedroom_MapScripts {
         face_up
       ))
       waitmovement(LOCALID_GRAMMY)
+      speakername("GRANDMA")
       message("Hmm…")
       applymovement(LOCALID_GRAMMY, moves(
         delay_16*4,
@@ -36,6 +42,7 @@ mapscripts ModernTime_Bedroom_MapScripts {
         delay_16*2
       ))
       waitmovement(LOCALID_GRAMMY)
+      speakername("GRANDMA")
       message("Ah. Perfect.")
       waitmessage
       delay(60)
@@ -47,6 +54,7 @@ mapscripts ModernTime_Bedroom_MapScripts {
       ))
       waitmovement(LOCALID_GRAMMY)
       delay(30)
+      speakername("GRANDMA")
       msgbox("INSERT BOOK TITLE\pAre you ready?")
       applymovement(LOCALID_CHILD, moves(
         face_down,
@@ -59,7 +67,9 @@ mapscripts ModernTime_Bedroom_MapScripts {
         delay_16*4
       ))
       waitmovement(LOCALID_CHILD)
+      speakername("CHILD")
       msgbox("Ready!")
+      speakername("GRANDMA")
       msgbox(format(
         "Ahem.\p"
         "Long before there were POKé BALLS\Nor even {PKMN} Trainers,\Nthere was a boy named RENJI…"

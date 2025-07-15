@@ -1890,6 +1890,12 @@
 	_dynmultichoice \left, \top, \ignoreBPress, \maxBeforeScroll, \shouldSort, \initialSelected, \callbacks, NULL
 	.endm
 
+	@ Sets the text of the name box in the next-shown message box.
+	.macro speakername text:req
+	.byte SCR_OP_SPEAKERNAME
+	.4byte \text
+	.endm
+
 @ Supplementary
 
 	.macro goto_if_unset flag:req, dest:req

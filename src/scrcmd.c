@@ -1687,6 +1687,13 @@ bool8 ScrCmd_release(struct ScriptContext *ctx)
     return FALSE;
 }
 
+bool8 ScrCmd_setspeaker(struct ScriptContext *ctx)
+{
+    const u8 *name = (const u8 *)ScriptReadWord(ctx);
+    SetSpeakerName(name);
+    return FALSE;
+}
+
 bool8 ScrCmd_message(struct ScriptContext *ctx)
 {
     #if PORYLIVE
