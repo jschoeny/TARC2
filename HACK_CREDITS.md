@@ -176,6 +176,9 @@ Poffin_Case, RavePossum
 ### [Front / Back Sprite Customization Resources](https://github.com/Pawkkie/Team-Aquas-Asset-Repo/tree/main/Trainer%20Back%20Sprites/Coffee%20Cup)
 Coffee Cup
 
+### [Overworld Base Trainer Sprites GBC GSC RBY](https://www.deviantart.com/trainerdx/art/Pokemon-Overworld-Base-Trainer-Sprites-GBC-GSC-RBY-905573805)
+TrainerDX
+
 ### [Fire Animation - Pixel Art FX Sprites](https://brullov.itch.io/fire-animation)
 brullov
 
