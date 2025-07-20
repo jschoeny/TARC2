@@ -459,7 +459,7 @@ void CB2_FlashNotDetectedScreen(void)
         "does not have a working flash chip.");
     SaveFailedScreenTextPrint(saveFailedMessage, 1, 0);
     TransferPlttBuffer();
-    *(u16*)PLTT = RGB(17, 18, 31);
+    *(u16*)PLTT = MAIN_MENU_BG_COLOR;
     ShowBg(0);
     gMain.state++;
 }

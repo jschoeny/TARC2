@@ -174,7 +174,7 @@ void DecompressionError_CB2(void)
     DecompressErrorScreenTextPrint(addressStr, 7, 4);
     DecompressErrorScreenTextPrint(errorStr, 7, 6);
     TransferPlttBuffer();
-    *(u16*)PLTT = RGB(17, 18, 31);
+    *(u16*)PLTT = MAIN_MENU_BG_COLOR;
     ShowBg(0);
     sErrorAddress = 0;
     //  This loop is apparently needed to prevent the game from doing
