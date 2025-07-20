@@ -202,3 +202,23 @@ Mudskip
 
 ### [Field Mugshot System](https://github.com/mudskipper13/pokeemerald/tree/feature/field-mugshot)
 Mudskip
+
+### [Gen 5ish Party Menu](https://github.com/TeamAquasHideout/pokeemerald/tree/gen5ish_party_menu)
+Archie
+TheXaman
+
+### [BW Summary Screen](https://github.com/ravepossum/pokeemerald-expansion/wiki#bw_summary_screen_expansion)
+RavePossum
+Againsts (tiles)
+Sphericalice (grade sprites)
+Vexx (auto-format code)
+Buffelsaft (IV/EV code)
+Dizzyegg (nature color code)
+Zeturic (wrapping summary screen)
+Greenphx9 (referencing code in their pokefirered version)
+Skeli (graphic for heart indicator based on Unbound's)
+Zatsu (Tera type icons)
+Lhea (status icons)
+
+### [HGSS Battle UI Expansion](https://github.com/ravepossum/pokeemerald-expansion/tree/hgss_battle_ui_expansion)
+RavePossum
