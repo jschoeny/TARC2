@@ -31944,23 +31944,17 @@ LightGeyser:
 	return
 
 gBattleAnimGeneral_AffectionHangedOn::
-	loadspritegfx ANIM_TAG_RED_HEART
-	loopsewithpan SE_M_CHARM, SOUND_PAN_ATTACKER, 12, 3
-	createvisualtask AnimTask_SwayMon, 5, 0, 12, 4096, 4, ANIM_ATTACKER
-	delay 15
-	createvisualtask AnimTask_AffectionHangedOn, 0x5
-	jumpargeq 0x0, AFFECTION_THREE_HEARTS, General_AffectionHangedOn_3Hearts
-	jumpargeq 0x0, AFFECTION_FOUR_HEARTS, General_AffectionHangedOn_4Hearts
-	jumpargeq 0x0, AFFECTION_FIVE_HEARTS, General_AffectionHangedOn_5Hearts
-	createsprite gRedHeartBurstSpriteTemplate, ANIM_ATTACKER, 3, -384, -31
-General_AffectionHangedOn_5Hearts:
-	createsprite gRedHeartBurstSpriteTemplate, ANIM_ATTACKER, 3, -128, -22
-General_AffectionHangedOn_4Hearts:
-	createsprite gRedHeartBurstSpriteTemplate, ANIM_ATTACKER, 3, 416, -38
-General_AffectionHangedOn_3Hearts:
-	createsprite gRedHeartBurstSpriteTemplate, ANIM_ATTACKER, 3, 160, -32
-	createsprite gRedHeartBurstSpriteTemplate, ANIM_ATTACKER, 3, -256, -40
-	createsprite gRedHeartBurstSpriteTemplate, ANIM_ATTACKER, 3, 128, -16
+	loadspritegfx ANIM_TAG_FOCUS_ENERGY
+	call SkullBashSetUpHeadDown
+	waitforvisualfinish
+	playsewithpan SE_M_DRAGON_RAGE, SOUND_PAN_ATTACKER
+	call EndureEffect
+	delay 8
+	createvisualtask AnimTask_BlendColorCycle, 2, F_PAL_ATTACKER, 2, 2, 0, 11, RGB_RED
+	createvisualtask AnimTask_ShakeMon2, 2, ANIM_ATTACKER, 1, 0, 32, 1
+	call EndureEffect
+	delay 8
+	call EndureEffect
 	waitforvisualfinish
 	end
 
