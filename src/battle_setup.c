@@ -626,6 +626,8 @@ enum BattleEnvironments BattleSetup_GetEnvironmentId(void)
     u16 tileBehavior;
     s16 x, y;
 
+    return BATTLE_ENVIRONMENT_GRASS;
+
     if (I_FISHING_ENVIRONMENT >= GEN_4 && gIsFishingEncounter)
         GetXYCoordsOneStepInFrontOfPlayer(&x, &y);
     else

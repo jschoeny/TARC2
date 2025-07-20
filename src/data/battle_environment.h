@@ -36,6 +36,10 @@ const u32 gBattleEnvironmentTiles_Building[] = INCBIN_U32("graphics/battle_envir
 const u16 gBattleEnvironmentPalette_Frontier[] = INCBIN_U16("graphics/battle_environment/stadium/battle_frontier.gbapal"); // this is also used for link battles
 const u32 gBattleEnvironmentTilemap_Building[] = INCBIN_U32("graphics/battle_environment/building/map.bin.smolTM");
 
+const u32 gBattleEnvironmentTiles_OldForest[] = INCBIN_U32("graphics/battle_environment/old_forest/tiles.4bpp.smol");
+const u16 gBattleEnvironmentPalette_OldForest[] = INCBIN_U16("graphics/battle_environment/old_forest/palette.gbapal");
+const u32 gBattleEnvironmentTilemap_OldForest[] = INCBIN_U32("graphics/battle_environment/old_forest/map.bin.smolTM");
+
 #define ENVIRONMENT_BACKGROUND(background)                      \
 {                                                               \
     .tileset = gBattleEnvironmentTiles_##background,            \
@@ -58,7 +62,14 @@ const struct BattleEnvironment gBattleEnvironmentInfo[BATTLE_ENVIRONMENT_COUNT] 
     #endif
         .secretPowerEffect = B_SECRET_POWER_EFFECT >= GEN_4 ? MOVE_EFFECT_SLEEP : MOVE_EFFECT_POISON,
         .camouflageType = TYPE_GRASS,
-        .background = ENVIRONMENT_BACKGROUND(TallGrass),
+        .background =
+        {
+            .tileset = gBattleEnvironmentTiles_OldForest,
+            .tilemap = gBattleEnvironmentTilemap_OldForest,
+            .entryTileset = gBattleEnvironmentAnimTiles_TallGrass,
+            .entryTilemap = gBattleEnvironmentAnimTilemap_TallGrass,
+            .palette = gBattleEnvironmentPalette_OldForest,
+        },
     },
 
     [BATTLE_ENVIRONMENT_LONG_GRASS] =
