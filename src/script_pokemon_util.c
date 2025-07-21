@@ -157,6 +157,83 @@ void CreateScriptedDoubleWildMon(u16 species1, u8 level1, u16 item1, u16 species
     }
 }
 
+void CreateScriptedWildMonCustom(u16 species, u8 level, u16 item, u8 nature, u8 abilityNum, u8 *evs, u8 *ivs, u16 *moves, bool8 isShiny)
+{
+    u8 heldItem[2];
+    u8 i;
+    u8 evTotal = 0;
+
+    ZeroEnemyPartyMons();
+
+    if (nature != NUM_NATURES && nature != 0xFF)
+    {
+        CreateMonWithNature(&gEnemyParty[0], species, level, 32, nature);
+    }
+    else if (OW_SYNCHRONIZE_NATURE > GEN_3)
+    {
+        CreateMonWithNature(&gEnemyParty[0], species, level, 32, PickWildMonNature());
+    }
+    else
+    {
+        CreateMon(&gEnemyParty[0], species, level, 32, 0, 0, OT_ID_PLAYER_ID, 0);
+    }
+
+    for (i = 0; i < NUM_STATS; i++)
+    {
+        // EVs
+        if (evs[i] != 0xFF && evTotal < MAX_TOTAL_EVS)
+        {
+            if ((evTotal + evs[i]) > MAX_TOTAL_EVS)
+                evs[i] = MAX_TOTAL_EVS - evTotal;
+            evTotal += evs[i];
+            SetMonData(&gEnemyParty[0], MON_DATA_HP_EV + i, &evs[i]);
+        }
+
+        // IVs
+        if (ivs[i] != 32 && ivs[i] != 0xFF)
+        {
+            SetMonData(&gEnemyParty[0], MON_DATA_HP_IV + i, &ivs[i]);
+        }
+    }
+    CalculateMonStats(&gEnemyParty[0]);
+
+    // Moves
+    for (i = 0; i < MAX_MON_MOVES; i++)
+    {
+        if (moves[i] >= MOVES_COUNT)
+            continue;
+        SetMonMoveSlot(&gEnemyParty[0], moves[i], i);
+    }
+
+    // Ability
+    if (abilityNum == NUM_ABILITY_PERSONALITY)
+    {
+        abilityNum = GetMonData(&gEnemyParty[0], MON_DATA_PERSONALITY) & 1;
+    }
+    else if (abilityNum > NUM_NORMAL_ABILITY_SLOTS || GetAbilityBySpecies(species, abilityNum) == ABILITY_NONE)
+    {
+        do {
+            abilityNum = Random() % NUM_ABILITY_SLOTS; // includes hidden abilities
+        } while (GetAbilityBySpecies(species, abilityNum) == ABILITY_NONE);
+    }
+    SetMonData(&gEnemyParty[0], MON_DATA_ABILITY_NUM, &abilityNum);
+
+    // Held Item
+    if (item)
+    {
+        heldItem[0] = item;
+        heldItem[1] = item >> 8;
+        SetMonData(&gEnemyParty[0], MON_DATA_HELD_ITEM, heldItem);
+    }
+
+    // Shininess
+    if (P_FLAG_FORCE_SHINY != 0 && FlagGet(P_FLAG_FORCE_SHINY))
+        isShiny = TRUE;
+    else if (P_FLAG_FORCE_NO_SHINY != 0 && FlagGet(P_FLAG_FORCE_NO_SHINY))
+        isShiny = FALSE;
+    SetMonData(&gEnemyParty[0], MON_DATA_IS_SHINY, &isShiny);
+}
+
 void ScriptSetMonMoveSlot(u8 monIndex, u16 move, u8 slot)
 {
 // Allows monIndex to go out of bounds of gPlayerParty. Doesn't occur in vanilla
