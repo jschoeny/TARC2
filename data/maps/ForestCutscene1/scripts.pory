@@ -1,1 +1,71 @@
-mapscripts ForestCutscene1_MapScripts {}
+mapscripts ForestCutscene1_MapScripts {
+  MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE [
+    VAR_TEMP_0, 0 {
+      turnobject(LOCALID_PLAYER, DIR_NORTH)
+      setvar(VAR_TEMP_0, 1)
+    }
+  ]
+  MAP_SCRIPT_ON_FRAME_TABLE [
+    VAR_MSG_TRACKER, 0 {
+      setflag(FLAG_HIDE_MAP_NAME_POPUP)
+      applymovement(LOCALID_PLAYER, moves(
+        walk_up*2,
+      ))
+      waitmovement(LOCALID_PLAYER)
+      setvar(VAR_MSG_TRACKER, 1)
+      message(format(
+        "RENJI loved exploring the forest.\p"
+        "The village had driven out the most aggressive POKéMON, so he felt safe there.{PAUSE_UNTIL_PRESS}{CLOSE}"
+      ))
+    }
+    VAR_MSG_TRACKER, 1 {
+      applymovement(LOCALID_PLAYER, moves(
+        walk_up*2,
+        walk_right,
+        delay_16*2,
+        walk_left,
+        walk_up,
+        walk_left*2,
+        face_down,
+        delay_16*2,
+        face_up,
+        delay_16*2,
+        walk_right*2,
+        walk_slow_up*4,
+        face_left,
+        delay_16*2,
+        walk_slow_right,
+        face_up,
+        delay_16,
+        player_run_up*8,
+        delay_16*2,
+        face_left,
+        delay_16*2,
+        face_right,
+        delay_16*2,
+        walk_slow_up,
+        walk_slow_left,
+        walk_slow_up,
+        walk_slow_right,
+        walk_slow_up,
+        walk_slow_left,
+        walk_slow_up,
+        face_left,
+        delay_16*2,
+        player_run_right,
+        player_run_up*5,
+        delay_16*2,
+        face_down,
+        delay_16*2,
+        walk_down*4,
+        delay_16*2,
+        walk_down,
+        face_left,
+        delay_16*2,
+        walk_slow_up,
+        face_right,
+        delay_16*2
+      ))
+    }
+  ]
+}

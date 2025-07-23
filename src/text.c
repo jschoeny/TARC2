@@ -13,6 +13,8 @@
 #include "dynamic_placeholder_text_util.h"
 #include "fonts.h"
 #include "field_mugshot.h"
+#include "event_data.h"
+#include "field_message_box.h"
 
 static u16 RenderText(struct TextPrinter *);
 static u32 RenderFont(struct TextPrinter *);
@@ -411,6 +413,12 @@ void RunTextPrinters(void)
                     break;
                 case RENDER_FINISH:
                     sTextPrinters[i].active = FALSE;
+                    if (sTextPrinters[i].state == RENDER_STATE_CLOSE)
+                    {
+                        // {CLOSE} was used
+                        VarSet(VAR_MSG_TRACKER, VarGet(VAR_MSG_TRACKER) + 1);
+                        HideFieldMessageBox();
+                    }
                     break;
                 }
             }
@@ -1259,6 +1267,9 @@ static u16 RenderText(struct TextPrinter *textPrinter)
             case EXT_CTRL_CODE_DESTROY_MUGSHOT:
                 RemoveFieldMugshot();
                 return RENDER_REPEAT;
+            case EXT_CTRL_CODE_CLOSE:
+                textPrinter->state = RENDER_STATE_CLOSE;
+                return RENDER_FINISH;
             }
             break;
         case CHAR_PROMPT_CLEAR:
@@ -1589,6 +1600,7 @@ s32 GetStringWidth(u8 fontId, const u8 *str, s16 letterSpacing)
                 ++str;
             case EXT_CTRL_CODE_CREATE_MUGSHOT:
             case EXT_CTRL_CODE_DESTROY_MUGSHOT:
+            case EXT_CTRL_CODE_CLOSE:
             case EXT_CTRL_CODE_PLAY_BGM:
             case EXT_CTRL_CODE_PLAY_SE:
                 ++str;
