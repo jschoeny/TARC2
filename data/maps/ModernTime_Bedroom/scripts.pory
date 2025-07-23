@@ -56,6 +56,7 @@ mapscripts ModernTime_Bedroom_MapScripts {
       delay(30)
       speakername("GRANDMA")
       msgbox("INSERT BOOK TITLE\pAre you ready?")
+      closemessage
       applymovement(LOCALID_CHILD, moves(
         face_down,
         delay_16,
@@ -72,11 +73,12 @@ mapscripts ModernTime_Bedroom_MapScripts {
       speakername("GRANDMA")
       msgbox(format(
         "Ahem.\p"
-        "Long before there were POKé BALLS\Nor even {PKMN} Trainers,\Nthere was a boy named RENJI…"
+        "Long before there were POKé BALLS\Nor even POKéMON Trainers,\Nthere was a boy named RENJI…"
       ))
       setvar(VAR_TEMP_0, 1)
       fwdtime(11, 0)
-      warpsilent(MAP_RENJI_HOME_CUTSCENE1, 0)
+      setflag(FLAG_SPAWN_INVISIBLE)
+      warpsilent(MAP_RENJI_HOME_CUTSCENE1, 9, 7)
       release
     }
   ]

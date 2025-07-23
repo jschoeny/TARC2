@@ -2,7 +2,7 @@
   "map_sections": [
     {
       "id": "MAPSEC_LITTLEROOT_TOWN",
-      "name": "Home Town",
+      "name": "RENJI'S HOME",
       "x": 4,
       "y": 11,
       "width": 1,
@@ -1409,7 +1409,7 @@
     },
     {
       "id": "MAPSEC_BERRY_FOREST",
-      "name": "BERRY FOREST",
+      "name": "FOREST",
       "x": 0,
       "y": 0,
       "width": 1,

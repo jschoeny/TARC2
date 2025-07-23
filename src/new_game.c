@@ -204,12 +204,15 @@ void NewGameInitData(void)
     InitDewfordTrend();
     ResetFanClub();
     ResetLotteryCorner();
-    ScriptGiveMon(SPECIES_GROWLITHE, 20, ITEM_NONE);
+    ScriptGiveMon(SPECIES_GROWLITHE, 10, ITEM_NONE);
+    // Set first mon to have 5 hp
+    gPlayerParty[0].hp = 5;
     FlagSet(FLAG_SYS_POKEMON_GET);
     FlagSet(FLAG_RESCUED_BIRCH);
     FlagSet(FLAG_ADVENTURE_STARTED);
     FlagSet(FLAG_RECEIVED_RUNNING_SHOES);
     FlagSet(FLAG_SYS_B_DASH);
+    FlagSet(FLAG_HIDE_RENJI_FIRE_HOUSE);
     WarpToIntro();
     RunScriptImmediately(EventScript_ResetAllMapFlags);
     ResetMiniGamesRecords();

@@ -1,1 +1,56 @@
-mapscripts RenjiHomeCutscene1_MapScripts {}
+mapscripts RenjiHomeCutscene1_MapScripts {
+  MAP_SCRIPT_ON_LOAD {
+    call_if_set(FLAG_HIDE_RENJI_FIRE_HOUSE, RenjiHomeCutscene1_EventScript_HideFireScene)
+  }
+  MAP_SCRIPT_ON_FRAME_TABLE [
+    VAR_STORY_PROGRESS, STORY_INITIAL {
+      applymovement(LOCALID_PLAYER, moves(
+        walk_slow_down*4,
+        delay_16*2
+      ))
+      waitmovement(LOCALID_PLAYER)
+      playse(SE_DOOR)
+      applymovement(LOCALID_PLAYER, moves(
+        set_visible,
+        walk_slow_down,
+        delay_16*2,
+        walk_slow_right,
+        face_up,
+        delay_16*4,
+        walk_slow_right,
+        delay_16,
+        walk_slow_right,
+        delay_16,
+        walk_slow_up,
+        delay_16,
+        walk_slow_up,
+        face_left,
+        delay_16*4,
+        player_run_up*6,
+        set_invisible,
+      ))
+      waitmovement(LOCALID_PLAYER)
+      playse(SE_EXIT)
+      waitse
+      speakername("GRANDMA")
+      msgbox(format(
+        "RENJI loved to play out in the woods.\p"
+        "Even though his parents always told him not to."
+      ))
+      closemessage
+      setvar(VAR_STORY_PROGRESS, STORY_FIRE_SCENE)
+      fwdtime(0, 0)
+      warpsilent(MAP_FOREST_CUTSCENE1, 4, 10)
+      release
+    }
+  ]
+}
+
+script RenjiHomeCutscene1_EventScript_HideFireScene {
+  setmetatile(9, 11, 0x0B9, TRUE)
+  setmetatile(10, 11, 0x0BA, TRUE)
+  setmetatile(11, 11, 0x0BB, TRUE)
+  setmetatile(12, 9, 0x002, FALSE)
+  setmetatile(12, 10, 0x002, FALSE)
+  setmetatile(12, 11, 0x002, FALSE)
+}

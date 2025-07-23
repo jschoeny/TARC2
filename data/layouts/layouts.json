@@ -4440,6 +4440,16 @@
       "secondary_tileset": "gTileset_DojoExterior",
       "border_filepath": "data/layouts/RenjiHomeCutscene1/border.bin",
       "blockdata_filepath": "data/layouts/RenjiHomeCutscene1/map.bin"
+    },
+    {
+      "id": "LAYOUT_FOREST_CUTSCENE1",
+      "name": "ForestCutscene1_Layout",
+      "width": 8,
+      "height": 20,
+      "primary_tileset": "gTileset_OldenTimes",
+      "secondary_tileset": "gTileset_DojoExterior",
+      "border_filepath": "data/layouts/ForestCutscene1/border.bin",
+      "blockdata_filepath": "data/layouts/ForestCutscene1/map.bin"
     }
   ]
 }

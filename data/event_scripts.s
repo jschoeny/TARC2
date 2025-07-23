@@ -1165,3 +1165,5 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/ModernTime_Bedroom/scripts.inc"
 
 	.include "data/maps/RenjiHomeCutscene1/scripts.inc"
+
+	.include "data/maps/ForestCutscene1/scripts.inc"
