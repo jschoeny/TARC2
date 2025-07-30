@@ -1493,22 +1493,61 @@ static const union AnimCmd *const sAnimTable_Fishing[] = {
 
 static const union AnimCmd sAnim_Fire[] =
 {
-    ANIMCMD_FRAME(0, 8),
-    ANIMCMD_FRAME(1, 8),
-    ANIMCMD_FRAME(2, 8),
-    ANIMCMD_FRAME(3, 8),
-    ANIMCMD_FRAME(4, 8),
-    ANIMCMD_FRAME(5, 8),
-    ANIMCMD_FRAME(6, 8),
-    ANIMCMD_FRAME(7, 8),
+    ANIMCMD_FRAME(0, 4),
+    ANIMCMD_FRAME(1, 4),
+    ANIMCMD_FRAME(2, 4),
+    ANIMCMD_FRAME(3, 4),
+    ANIMCMD_FRAME(4, 4),
+    ANIMCMD_FRAME(5, 4),
+    ANIMCMD_FRAME(6, 4),
+    ANIMCMD_FRAME(7, 4),
+    ANIMCMD_JUMP(0),
+};
+
+static const union AnimCmd sAnim_Fire_Left[] =
+{
+    ANIMCMD_FRAME(8,  4),
+    ANIMCMD_FRAME(9,  4),
+    ANIMCMD_FRAME(10, 4),
+    ANIMCMD_FRAME(11, 4),
+    ANIMCMD_FRAME(12, 4),
+    ANIMCMD_FRAME(13, 4),
+    ANIMCMD_FRAME(14, 4),
+    ANIMCMD_FRAME(15, 4),
+    ANIMCMD_JUMP(0),
+};
+
+static const union AnimCmd sAnim_Fire_Right[] =
+{
+    ANIMCMD_FRAME(16, 4),
+    ANIMCMD_FRAME(17, 4),
+    ANIMCMD_FRAME(18, 4),
+    ANIMCMD_FRAME(19, 4),
+    ANIMCMD_FRAME(20, 4),
+    ANIMCMD_FRAME(21, 4),
+    ANIMCMD_FRAME(22, 4),
+    ANIMCMD_FRAME(23, 4),
+    ANIMCMD_JUMP(0),
+};
+
+static const union AnimCmd sAnim_Fire_LeftRight[] =
+{
+    ANIMCMD_FRAME(24, 4),
+    ANIMCMD_FRAME(25, 4),
+    ANIMCMD_FRAME(26, 4),
+    ANIMCMD_FRAME(27, 4),
+    ANIMCMD_FRAME(28, 4),
+    ANIMCMD_FRAME(29, 4),
+    ANIMCMD_FRAME(30, 4),
+    ANIMCMD_FRAME(31, 4),
     ANIMCMD_JUMP(0),
 };
 
 static const union AnimCmd *const sAnimTable_Fire[] = {
-    [ANIM_STD_FACE_SOUTH] = sAnim_Fire,
-    [ANIM_STD_FACE_NORTH] = sAnim_Fire,
-    [ANIM_STD_FACE_WEST] = sAnim_Fire,
-    [ANIM_STD_FACE_EAST] = sAnim_Fire,
+    [ANIM_STD_GO_SOUTH] = sAnim_Fire,
+    [ANIM_STD_GO_NORTH] = sAnim_Fire_LeftRight,
+    [ANIM_STD_GO_WEST] = sAnim_Fire_Left,
+    [ANIM_STD_GO_EAST] = sAnim_Fire_Right,
 };
 
 static const union AffineAnimCmd *const sAffineAnimTable_KyogreGroudon[] = {

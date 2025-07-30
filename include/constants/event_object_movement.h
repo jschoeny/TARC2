@@ -85,6 +85,11 @@
 #define MOVEMENT_TYPE_FOLLOW_PLAYER                    0x51
 #define NUM_MOVEMENT_TYPES                             0x52
 
+#define MOVEMENT_TYPE_TILE_NONE                        MOVEMENT_TYPE_WALK_IN_PLACE_DOWN
+#define MOVEMENT_TYPE_TILE_LEFT                        MOVEMENT_TYPE_WALK_IN_PLACE_LEFT
+#define MOVEMENT_TYPE_TILE_CENTER                      MOVEMENT_TYPE_WALK_IN_PLACE_UP
+#define MOVEMENT_TYPE_TILE_RIGHT                       MOVEMENT_TYPE_WALK_IN_PLACE_RIGHT
+
 #define MOVEMENT_ACTION_FACE_DOWN                       0x0
 #define MOVEMENT_ACTION_FACE_UP                         0x1
 #define MOVEMENT_ACTION_FACE_LEFT                       0x2

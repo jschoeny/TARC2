@@ -1382,12 +1382,36 @@ static const struct SpriteFrameImage sPicTable_HGSS_OldLady[] = {
 };
 
 static const struct SpriteFrameImage sPicTable_Fire[] = {
-    overworld_frame(gObjectEventPic_Fire, 2, 4, 0),
-    overworld_frame(gObjectEventPic_Fire, 2, 4, 1),
-    overworld_frame(gObjectEventPic_Fire, 2, 4, 2),
-    overworld_frame(gObjectEventPic_Fire, 2, 4, 3),
-    overworld_frame(gObjectEventPic_Fire, 2, 4, 4),
-    overworld_frame(gObjectEventPic_Fire, 2, 4, 5),
-    overworld_frame(gObjectEventPic_Fire, 2, 4, 6),
-    overworld_frame(gObjectEventPic_Fire, 2, 4, 7),
+    overworld_frame(gObjectEventPic_Fire,           2,  4,  0), // 0
+    overworld_frame(gObjectEventPic_Fire,           2,  4,  1), // 1
+    overworld_frame(gObjectEventPic_Fire,           2,  4,  2), // 2
+    overworld_frame(gObjectEventPic_Fire,           2,  4,  3), // 3
+    overworld_frame(gObjectEventPic_Fire,           2,  4,  4), // 4
+    overworld_frame(gObjectEventPic_Fire,           2,  4,  5), // 5
+    overworld_frame(gObjectEventPic_Fire,           2,  4,  6), // 6
+    overworld_frame(gObjectEventPic_Fire,           2,  4,  7), // 7
+    overworld_frame(gObjectEventPic_Fire_Left,      2,  4,  0), // 8
+    overworld_frame(gObjectEventPic_Fire_Left,      2,  4,  1), // 9
+    overworld_frame(gObjectEventPic_Fire_Left,      2,  4,  2), // 10
+    overworld_frame(gObjectEventPic_Fire_Left,      2,  4,  3), // 11
+    overworld_frame(gObjectEventPic_Fire_Left,      2,  4,  4), // 12
+    overworld_frame(gObjectEventPic_Fire_Left,      2,  4,  5), // 13
+    overworld_frame(gObjectEventPic_Fire_Left,      2,  4,  6), // 14
+    overworld_frame(gObjectEventPic_Fire_Left,      2,  4,  7), // 15
+    overworld_frame(gObjectEventPic_Fire_Right,     2,  4,  0), // 16
+    overworld_frame(gObjectEventPic_Fire_Right,     2,  4,  1), // 17
+    overworld_frame(gObjectEventPic_Fire_Right,     2,  4,  2), // 18
+    overworld_frame(gObjectEventPic_Fire_Right,     2,  4,  3), // 19
+    overworld_frame(gObjectEventPic_Fire_Right,     2,  4,  4), // 20
+    overworld_frame(gObjectEventPic_Fire_Right,     2,  4,  5), // 21
+    overworld_frame(gObjectEventPic_Fire_Right,     2,  4,  6), // 22
+    overworld_frame(gObjectEventPic_Fire_Right,     2,  4,  7), // 23
+    overworld_frame(gObjectEventPic_Fire_LeftRight, 2,  4,  0), // 24
+    overworld_frame(gObjectEventPic_Fire_LeftRight, 2,  4,  1), // 25
+    overworld_frame(gObjectEventPic_Fire_LeftRight, 2,  4,  2), // 26
+    overworld_frame(gObjectEventPic_Fire_LeftRight, 2,  4,  3), // 27
+    overworld_frame(gObjectEventPic_Fire_LeftRight, 2,  4,  4), // 28
+    overworld_frame(gObjectEventPic_Fire_LeftRight, 2,  4,  5), // 29
+    overworld_frame(gObjectEventPic_Fire_LeftRight, 2,  4,  6), // 30
+    overworld_frame(gObjectEventPic_Fire_LeftRight, 2,  4,  7), // 31
 };

@@ -469,4 +469,7 @@ const u32 gObjectEventPic_HGSS_OldLady[] = INCBIN_U32("graphics/object_events/pi
 const u16 gObjectEventPalette_HGSS_OldLady[] = INCBIN_U16("graphics/object_events/pics/people/hgss_old_lady.gbapal");
 
 const u32 gObjectEventPic_Fire[] = INCBIN_U32("graphics/object_events/pics/misc/fire.4bpp");
+const u32 gObjectEventPic_Fire_Left[] = INCBIN_U32("graphics/object_events/pics/misc/fire_l.4bpp");
+const u32 gObjectEventPic_Fire_Right[] = INCBIN_U32("graphics/object_events/pics/misc/fire_r.4bpp");
+const u32 gObjectEventPic_Fire_LeftRight[] = INCBIN_U32("graphics/object_events/pics/misc/fire_lr.4bpp");
 const u16 gObjectEventPal_Fire[] = INCBIN_U16("graphics/object_events/pics/misc/fire.gbapal");
