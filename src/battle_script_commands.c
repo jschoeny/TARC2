@@ -3094,6 +3094,10 @@ void SetMoveEffect(u32 battler, u32 effectBattler, bool32 primary, bool32 certai
                 gBattlescriptCurrInstr++;
             }
         }
+        else if (FlagGet(FLAG_CUTSCENE_MUST_ENDURE))
+        {
+            gBattlescriptCurrInstr++;
+        }
         else if (gBattleMons[gEffectBattler].volatiles.flinched)
         {
             gBattlescriptCurrInstr++;

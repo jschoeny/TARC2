@@ -593,7 +593,7 @@ BattleScript_AffectionBasedEndurance::
 	printstring STRINGID_TARGETTOUGHEDITOUT
 	waitmessage B_WAIT_TIME_LONG
 	jumpifstat BS_TARGET, CMP_EQUAL, STAT_ATK, MAX_STAT_STAGE, BattleScript_AffectionBasedEndurance_MaxAttack
-	setstatchanger STAT_ATK, 2, FALSE
+	setstatchanger STAT_ATK, 3, FALSE
 	statbuffchange BS_TARGET, STAT_CHANGE_ALLOW_PTR, BattleScript_AffectionBasedEndurance_MaxAttack
 	printfromtable gStatUpStringIds
 	waitmessage B_WAIT_TIME_LONG

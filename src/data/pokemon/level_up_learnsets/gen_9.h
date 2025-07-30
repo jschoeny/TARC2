@@ -1510,8 +1510,8 @@ static const struct LevelUpMove sAnnihilapeLevelUpLearnset[] = {
 static const struct LevelUpMove sGrowlitheLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 1, MOVE_DOUBLE_KICK),
     LEVEL_UP_MOVE( 1, MOVE_EMBER),
-    LEVEL_UP_MOVE( 4, MOVE_HOWL),
-    LEVEL_UP_MOVE( 8, MOVE_BITE),
+    LEVEL_UP_MOVE(11, MOVE_HOWL),
+    LEVEL_UP_MOVE(11, MOVE_BITE),
     LEVEL_UP_MOVE(12, MOVE_FLAME_WHEEL),
     LEVEL_UP_MOVE(16, MOVE_HELPING_HAND),
     LEVEL_UP_MOVE(20, MOVE_AGILITY),
