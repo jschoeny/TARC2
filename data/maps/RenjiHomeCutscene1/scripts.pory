@@ -1,6 +1,7 @@
 mapscripts RenjiHomeCutscene1_MapScripts {
   MAP_SCRIPT_ON_LOAD {
     call_if_set(FLAG_HIDE_RENJI_FIRE_HOUSE, RenjiHomeCutscene1_EventScript_HideFireScene)
+    call_if_eq(VAR_STORY_PROGRESS, STORY_INTRO_FIRE, RenjiHomeCutscene1_EventScript_PlayBGM)
   }
   MAP_SCRIPT_ON_FRAME_TABLE [
     VAR_STORY_PROGRESS, STORY_INITIAL {
@@ -35,13 +36,178 @@ mapscripts RenjiHomeCutscene1_MapScripts {
       speakername("GRANDMA")
       msgbox(format(
         "RENJI loved to play out in the woods.\p"
-        "Even though his parents always told him not to."
+        "Even though his parents always told\Nhim not to."
       ))
       closemessage
-      setvar(VAR_STORY_PROGRESS, STORY_FIRE_SCENE)
+      fadescreen(FADE_TO_BLACK)
+      setvar(VAR_STORY_PROGRESS, STORY_INTRO_FOREST)
       fwdtime(0, 0)
       warpsilent(MAP_FOREST_CUTSCENE1, 4, 10)
-      release
+    }
+    VAR_STORY_PROGRESS, STORY_INTRO_FIRE {
+      hideobjectat(LOCALID_CUTSCENE1_HOUNDOUR1, MAP_RENJI_HOME_CUTSCENE1)
+      hideobjectat(LOCALID_CUTSCENE1_HOUNDOUR2, MAP_RENJI_HOME_CUTSCENE1)
+      hideobjectat(LOCALID_CUTSCENE1_HOUNDOUR3, MAP_RENJI_HOME_CUTSCENE1)
+      applymovement(LOCALID_PLAYER, moves(
+        walk_slow_down*2,
+        delay_16*2,
+        set_visible,
+        walk_slow_down*4,
+        delay_16*4,
+        player_run_down*5,
+        player_run_left,
+      ))
+      waitmovement(LOCALID_PLAYER)
+      delay(30)
+      speakername("GROWLITHE")
+      msgbox(format(
+        "{CREATE_MUGSHOT MUGSHOT_GROWLITHE EMOTE_DIZZY}"
+        "Grrrr…………"
+      ))
+      closemessage
+      delay(30)
+      playse(SE_DOOR)
+      applymovement(LOCALID_PLAYER, moves(
+        emote_exclamation_mark,
+      ))
+      applymovement(LOCALID_CUTSCENE1_HOUNDOUR3, moves(
+        walk_down,
+        set_visible,
+        walk_down,
+        walk_left,
+        walk_down,
+        face_right
+      ))
+      applymovement(LOCALID_CUTSCENE1_HOUNDOUR2, moves(
+        walk_down*2,
+        set_visible,
+        walk_down,
+        walk_left,
+        face_right
+      ))
+      applymovement(LOCALID_CUTSCENE1_HOUNDOUR1, moves(
+        walk_down*3,
+        set_visible,
+        walk_down,
+        delay_16,
+        face_right
+      ))
+      waitmovement(LOCALID_CUTSCENE1_HOUNDOUR3)
+      waitmovement(LOCALID_CUTSCENE1_HOUNDOUR2)
+      waitmovement(LOCALID_CUTSCENE1_HOUNDOUR1)
+      delay(30)
+      applymovement(LOCALID_GROWLITHE, moves(
+        walk_in_place_slow_up,
+        delay_16*2,
+        walk_in_place_left,
+        delay_16*2,
+      ))
+      waitmovement(LOCALID_GROWLITHE)
+      speakername("GROWLITHE")
+      msgbox(format(
+        "{CREATE_MUGSHOT MUGSHOT_GROWLITHE EMOTE_DETERMINED}"
+        "Grr…"
+      ))
+      playmoncry(SPECIES_GROWLITHE, CRY_MODE_NORMAL)
+      applymovement(LOCALID_GROWLITHE, moves(
+        jump_in_place_left,
+      ))
+      speakername("GROWLITHE")
+      message(format(
+        "{CREATE_MUGSHOT MUGSHOT_GROWLITHE EMOTE_SHOUTING}"
+        "Growl!!"
+      ))
+      applymovement(LOCALID_CUTSCENE1_HOUNDOUR3, moves(
+        lock_facing_direction,
+        jump_left,
+        unlock_facing_direction,
+      ))
+      applymovement(LOCALID_CUTSCENE1_HOUNDOUR2, moves(
+        lock_facing_direction,
+        jump_left,
+        unlock_facing_direction,
+      ))
+      applymovement(LOCALID_CUTSCENE1_HOUNDOUR1, moves(
+        lock_facing_direction,
+        jump_left,
+        unlock_facing_direction,
+      ))
+      waitmovement(LOCALID_CUTSCENE1_HOUNDOUR3)
+      waitmovement(LOCALID_CUTSCENE1_HOUNDOUR2)
+      waitmovement(LOCALID_CUTSCENE1_HOUNDOUR1)
+      waitmovement(LOCALID_GROWLITHE)
+      waitse
+      waitmessage
+      waitbuttonpress
+      closemessage
+      delay(30)
+      applymovement(LOCALID_CUTSCENE1_HOUNDOUR1, moves(
+        walk_right,
+      ))
+      waitmovement(LOCALID_CUTSCENE1_HOUNDOUR1)
+      delay(10)
+      playmoncry(SPECIES_HOUNDOUR, CRY_MODE_ENCOUNTER)
+      delay(40)
+      waitmoncry
+      setsinglewildbattlecustom(SPECIES_HOUNDOUR, 15, move1=MOVE_BITE, move2=MOVE_NONE, move3=MOVE_NONE, move4=MOVE_NONE, abilityNum=1, nature=NATURE_HASTY, atkIv=31, atkEv=255, speedIv=31, speedEv=255)
+      setflag(FLAG_CUTSCENE_MUST_ENDURE)
+      setflag(FLAG_NO_RUNNING_FROM_BATTLE)
+      setflag(FLAG_NO_WHITEOUT_FROM_BATTLE)
+      setflag(FLAG_SMART_WILD_AI_FLAG)
+      dowildbattle
+      clearflag(FLAG_CUTSCENE_MUST_ENDURE)
+      clearflag(FLAG_NO_RUNNING_FROM_BATTLE)
+      clearflag(FLAG_NO_WHITEOUT_FROM_BATTLE)
+      clearflag(FLAG_SMART_WILD_AI_FLAG)
+      applymovement(LOCALID_CUTSCENE1_HOUNDOUR1, moves(
+        lock_facing_direction,
+        walk_slow_left,
+        unlock_facing_direction,
+      ))
+      waitmovement(LOCALID_CUTSCENE1_HOUNDOUR1)
+      delay(60)
+      playse(SE_FLEE)
+      applymovement(LOCALID_CUTSCENE1_HOUNDOUR2, moves(
+        walk_fast_left*6,
+      ))
+      applymovement(LOCALID_CUTSCENE1_HOUNDOUR3, moves(
+        walk_fast_left*2,
+        jump_left,
+        walk_fast_left*3,
+      ))
+      applymovement(LOCALID_CUTSCENE1_HOUNDOUR1, moves(
+        walk_fast_left*6,
+      ))
+      waitmovement(LOCALID_CUTSCENE1_HOUNDOUR1)
+      waitmovement(LOCALID_CUTSCENE1_HOUNDOUR2)
+      waitmovement(LOCALID_CUTSCENE1_HOUNDOUR3)
+      delay(30)
+      speakername("GRANDMA")
+      msgbox(format(
+        "Those HOUNDOUR took everything…\p"
+        "Even his family."
+      ))
+      closemessage
+      applymovement(LOCALID_GROWLITHE, moves(
+        face_right,
+      ))
+      waitmovement(LOCALID_GROWLITHE)
+      delay(30)
+      speakername("GRANDMA")
+      msgbox(format(
+        "All RENJI had left was that brave little GROWLITHE."
+      ))
+      closemessage
+      delay(30)
+      speakername("CHILD")
+      msgbox(format(
+        "…\p"
+        "Grammy that's kinda dark…"
+      ))
+      closemessage
+      setflag(FLAG_SPAWN_INVISIBLE)
+      warpsilent(MAP_MODERN_TIME_BEDROOM, 6, 5)
+      setvar(VAR_STORY_PROGRESS, STORY_INTRO_HOUNDOUR_DEFEATED)
     }
   ]
 }
@@ -53,4 +219,8 @@ script RenjiHomeCutscene1_EventScript_HideFireScene {
   setmetatile(12, 9, 0x002, FALSE)
   setmetatile(12, 10, 0x002, FALSE)
   setmetatile(12, 11, 0x002, FALSE)
+}
+
+script RenjiHomeCutscene1_EventScript_PlayBGM {
+  playbgm(MUS_ABNORMAL_WEATHER, TRUE)
 }

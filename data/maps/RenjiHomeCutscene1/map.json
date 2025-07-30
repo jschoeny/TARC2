@@ -33,7 +33,7 @@
       "x": 10,
       "y": 8,
       "elevation": 4,
-      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_type": "MOVEMENT_TYPE_TILE_NONE",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -46,7 +46,7 @@
       "x": 9,
       "y": 10,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_type": "MOVEMENT_TYPE_TILE_RIGHT",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -59,7 +59,7 @@
       "x": 11,
       "y": 10,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_type": "MOVEMENT_TYPE_TILE_LEFT",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -72,7 +72,7 @@
       "x": 11,
       "y": 11,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_type": "MOVEMENT_TYPE_TILE_NONE",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -85,7 +85,7 @@
       "x": 10,
       "y": 10,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_type": "MOVEMENT_TYPE_TILE_CENTER",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -98,7 +98,7 @@
       "x": 11,
       "y": 9,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_type": "MOVEMENT_TYPE_TILE_LEFT",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -107,9 +107,10 @@
       "flag": "FLAG_HIDE_RENJI_FIRE_HOUSE"
     },
     {
+      "local_id": "LOCALID_CUTSCENE1_HOUNDOUR1",
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(HOUNDOUR)",
       "x": 9,
-      "y": 12,
+      "y": 8,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
       "movement_range_x": 0,
@@ -120,9 +121,10 @@
       "flag": "FLAG_HIDE_RENJI_FIRE_HOUSE"
     },
     {
+      "local_id": "LOCALID_CUTSCENE1_HOUNDOUR2",
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(HOUNDOUR)",
-      "x": 8,
-      "y": 12,
+      "x": 9,
+      "y": 9,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
       "movement_range_x": 0,
@@ -133,11 +135,25 @@
       "flag": "FLAG_HIDE_RENJI_FIRE_HOUSE"
     },
     {
+      "local_id": "LOCALID_CUTSCENE1_HOUNDOUR3",
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(HOUNDOUR)",
-      "x": 8,
-      "y": 13,
+      "x": 9,
+      "y": 10,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_HIDE_RENJI_FIRE_HOUSE"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_FIRE",
+      "x": 10,
+      "y": 9,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_TILE_RIGHT",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -146,15 +162,7 @@
       "flag": "FLAG_HIDE_RENJI_FIRE_HOUSE"
     }
   ],
-  "warp_events": [
-    {
-      "x": 9,
-      "y": 11,
-      "elevation": 0,
-      "dest_map": "MAP_RENJI_HOME_CUTSCENE1",
-      "dest_warp_id": "0"
-    }
-  ],
+  "warp_events": [],
   "coord_events": [],
   "bg_events": []
 }

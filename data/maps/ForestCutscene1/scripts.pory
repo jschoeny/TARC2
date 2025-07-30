@@ -13,9 +13,12 @@ mapscripts ForestCutscene1_MapScripts {
       ))
       waitmovement(LOCALID_PLAYER)
       setvar(VAR_MSG_TRACKER, 1)
+      speakername("GRANDMA")
       message(format(
         "RENJI loved exploring the forest.\p"
-        "The village had driven out the most aggressive POKéMON, so he felt safe there.{PAUSE_UNTIL_PRESS}{CLOSE}"
+        "He liked being alone, with no one to\Ntell him what to do.\p"
+        "The village had driven out all of\Nthe most aggressive POKéMON,\Nso he felt safe there."
+        "{PAUSE_UNTIL_PRESS}{CLOSE}"
       ))
     }
     VAR_MSG_TRACKER, 1 {
@@ -66,6 +69,27 @@ mapscripts ForestCutscene1_MapScripts {
         face_right,
         delay_16*2
       ))
+    }
+    VAR_MSG_TRACKER, 2 {
+      fadescreen(FADE_TO_BLACK)
+      speakername("GRANDMA")
+      msgbox(format(
+        "But little did RENJI know…\p"
+        "Someone was not happy he had\Ntrespassed on their territory."
+      ))
+      closemessage
+      delay(60)
+      playse(SE_DOOR)
+      waitse
+      playse(SE_M_ROCK_THROW)
+      waitse
+      playse(SE_M_FLAMETHROWER)
+      fadescreenswapbuffers(FADE_TO_WHITE)
+      clearflag(FLAG_HIDE_RENJI_FIRE_HOUSE)
+      setflag(FLAG_SPAWN_INVISIBLE)
+      warpsilent(MAP_RENJI_HOME_CUTSCENE1, 12, 1)
+      setvar(VAR_MSG_TRACKER, 3)
+      setvar(VAR_STORY_PROGRESS, STORY_INTRO_FIRE)
     }
   ]
 }

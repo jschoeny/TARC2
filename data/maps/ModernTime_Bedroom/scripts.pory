@@ -1,5 +1,30 @@
 mapscripts ModernTime_Bedroom_MapScripts {
   MAP_SCRIPT_ON_FRAME_TABLE [
+    VAR_STORY_PROGRESS, STORY_INTRO_HOUNDOUR_DEFEATED {
+      speakername("GRANDMA")
+      msgbox(format(
+        "That's life buddy.\p"
+        "How do you think UNCLE DRIF got his name?"
+      ))
+      speakername("CHILD")
+      msgbox("Huh?")
+      speakername("GRANDMA")
+      msgbox(format(
+        "Never mind.\p"
+        "Let's see…\NWhere were we…"
+      ))
+      closemessage
+      delay(16)
+      fadescreen(FADE_TO_BLACK)
+      speakername("GRANDMA")
+      msgbox(format(
+        "Ah yes.\p"
+        "Years later, the two became inseparable."
+      ))
+      closemessage
+      setvar(VAR_STORY_PROGRESS, STORY_INTRO_TOWN_SQUARE)
+      setvar(VAR_TEMP_0, 1)
+    }
     VAR_TEMP_0, 0 {
       applymovement(LOCALID_PLAYER, moves(walk_slow_down*2))
       waitmovement(LOCALID_PLAYER)
