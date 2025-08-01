@@ -3849,7 +3849,15 @@ static void TryDoEventsBeforeFirstTurn(void)
             }
             if (gBattleMons[GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT)].isShadow || gBattleMons[GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT)].isShadow)
             {
-                PrepareStringBattle(STRINGID_SHADOWPKMNNOTICE, GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT));
+                if (FlagGet(FLAG_SHADOW_MON_SEEN))
+                {
+                    PrepareStringBattle(STRINGID_SHADOWPKMNNOTICE, GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT));
+                }
+                else
+                {
+                    PrepareStringBattle(STRINGID_SHADOWPKMNFIRSTENCOUNTER, GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT));
+                    FlagSet(FLAG_SHADOW_MON_SEEN);
+                }
             }
             gBattleStruct->shadowMonDone = TRUE;
             return;
