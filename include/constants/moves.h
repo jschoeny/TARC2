@@ -910,7 +910,11 @@
 
 #define MOVES_COUNT_GEN9 848
 
-#define MOVES_COUNT         MOVES_COUNT_GEN9
+// Shadow Moves
+#define MOVE_SHADOW_WAVE 848
+#define MOVES_COUNT_SHADOW 849
+
+#define MOVES_COUNT         MOVES_COUNT_SHADOW
 
 // Z Moves
 #define MOVE_BREAKNECK_BLITZ (MOVES_COUNT + 0)

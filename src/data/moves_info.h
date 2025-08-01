@@ -21126,6 +21126,24 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .battleAnimScript = gBattleAnimMove_MalignantChain,
     },
 
+    // Shadow Moves
+    [MOVE_SHADOW_WAVE] =
+    {
+        .name = COMPOUND_STRING("Shadow Wave"),
+        .description = COMPOUND_STRING(
+            "Shadowy aura waves are\n"
+            "loosed to inflict damage."),
+        .effect = EFFECT_HIT,
+        .power = 50,
+        .type = TYPE_SHADOW,
+        .accuracy = 100,
+        .pp = 60,
+        .target = MOVE_TARGET_BOTH,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_SPECIAL,
+        .battleAnimScript = gBattleAnimMove_ShadowWave,
+    },
+
     // Z-Moves
     [MOVE_BREAKNECK_BLITZ] =
     {
