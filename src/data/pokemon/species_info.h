@@ -149,6 +149,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .levelUpLearnset = sNoneLevelUpLearnset,
         .teachableLearnset = sNoneTeachableLearnset,
         .eggMoveLearnset = sNoneEggMoveLearnset,
+        .shadowLearnset = sNoneShadowLearnset,
     },
 
     #include "species_info/gen_1_families.h"

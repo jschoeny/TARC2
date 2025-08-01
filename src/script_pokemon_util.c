@@ -705,17 +705,15 @@ void Script_SetStatus1(struct ScriptContext *ctx)
 void CreateScriptedWildShadowMon(u16 species, u8 level, u16 item)
 {
     u8 heldItem[2];
-    u8 isShadow = 1;
 
     ZeroEnemyPartyMons();
-    CreateMon(&gEnemyParty[0], species, level, USE_RANDOM_IVS, 0, 0, OT_ID_PLAYER_ID, 0);
+    CreateMonShadow(&gEnemyParty[0], species, level, USE_RANDOM_IVS, 0, 0, OT_ID_PLAYER_ID, 0, TRUE);
     if (item)
     {
         heldItem[0] = item;
         heldItem[1] = item >> 8;
         SetMonData(&gEnemyParty[0], MON_DATA_HELD_ITEM, heldItem);
     }
-    SetMonData(&gEnemyParty[0], MON_DATA_IS_SHADOW, &isShadow);
 }
 
 // heartValue args can take 0 to make the left/right mon not shadow
@@ -723,32 +721,22 @@ void CreateScriptedDoubleWildShadowMon(u16 species1, u8 level1, u16 item1, bool8
 {
     u8 heldItem1[2];
     u8 heldItem2[2];
-    u8 isShadow = 1;
-
 
     ZeroEnemyPartyMons();
 
-    CreateMon(&gEnemyParty[0], species1, level1, 32, 0, 0, OT_ID_PLAYER_ID, 0);
+    CreateMonShadow(&gEnemyParty[0], species1, level1, 32, 0, 0, OT_ID_PLAYER_ID, 0, isShadow1);
     if (item1)
     {
         heldItem1[0] = item1;
         heldItem1[1] = item1 >> 8;
         SetMonData(&gEnemyParty[0], MON_DATA_HELD_ITEM, heldItem1);
     }
-    if (isShadow1)
-    {
-        SetMonData(&gEnemyParty[0], MON_DATA_IS_SHADOW, &isShadow);
-    }
 
-    CreateMon(&gEnemyParty[3], species2, level2, 32, 0, 0, OT_ID_PLAYER_ID, 0);
+    CreateMonShadow(&gEnemyParty[3], species2, level2, 32, 0, 0, OT_ID_PLAYER_ID, 0, isShadow2);
     if (item2)
     {
         heldItem2[0] = item2;
         heldItem2[1] = item2 >> 8;
         SetMonData(&gEnemyParty[3], MON_DATA_HELD_ITEM, heldItem2);
-    }
-    if (isShadow2)
-    {
-        SetMonData(&gEnemyParty[3], MON_DATA_IS_SHADOW, &isShadow);
     }
 }

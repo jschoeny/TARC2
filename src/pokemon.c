@@ -709,6 +709,7 @@ const struct NatureInfo gNaturesInfo[NUM_NATURES] =
 
 #include "data/pokemon/teachable_learnsets.h"
 #include "data/pokemon/egg_moves.h"
+#include "data/pokemon/shadow_learnsets.h"
 #include "data/pokemon/form_species_tables.h"
 #include "data/pokemon/form_change_tables.h"
 #include "data/pokemon/form_change_table_pointers.h"
@@ -1026,9 +1027,14 @@ void ZeroEnemyPartyMons(void)
 
 void CreateMon(struct Pokemon *mon, u16 species, u8 level, u8 fixedIV, u8 hasFixedPersonality, u32 fixedPersonality, u8 otIdType, u32 fixedOtId)
 {
+    CreateMonShadow(mon, species, level, fixedIV, hasFixedPersonality, fixedPersonality, otIdType, fixedOtId, FALSE);
+}
+
+void CreateMonShadow(struct Pokemon *mon, u16 species, u8 level, u8 fixedIV, u8 hasFixedPersonality, u32 fixedPersonality, u8 otIdType, u32 fixedOtId, u8 isShadow)
+{
     u32 mail;
     ZeroMonData(mon);
-    CreateBoxMon(&mon->box, species, level, fixedIV, hasFixedPersonality, fixedPersonality, otIdType, fixedOtId);
+    CreateBoxMonShadow(&mon->box, species, level, fixedIV, hasFixedPersonality, fixedPersonality, otIdType, fixedOtId, isShadow);
     SetMonData(mon, MON_DATA_LEVEL, &level);
     mail = MAIL_NONE;
     SetMonData(mon, MON_DATA_MAIL, &mail);
@@ -1036,6 +1042,11 @@ void CreateMon(struct Pokemon *mon, u16 species, u8 level, u8 fixedIV, u8 hasFix
 }
 
 void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, u8 hasFixedPersonality, u32 fixedPersonality, u8 otIdType, u32 fixedOtId)
+{
+    CreateBoxMonShadow(boxMon, species, level, fixedIV, hasFixedPersonality, fixedPersonality, otIdType, fixedOtId, FALSE);
+}
+
+void CreateBoxMonShadow(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, u8 hasFixedPersonality, u32 fixedPersonality, u8 otIdType, u32 fixedOtId, u8 isShadow)
 {
     u8 speciesName[POKEMON_NAME_LENGTH + 1];
     u32 personality = Random32();
@@ -1045,6 +1056,7 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
     u8 availableIVs[NUM_STATS];
     u8 selectedIvs[NUM_STATS];
     bool32 isShiny;
+    bool8 shadowFlag = TRUE;
 
     ZeroBoxMonData(boxMon);
 
@@ -1210,6 +1222,11 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
     {
         value = personality & 1;
         SetBoxMonData(boxMon, MON_DATA_ABILITY_NUM, &value);
+    }
+
+    if (isShadow)
+    {
+        SetBoxMonData(boxMon, MON_DATA_IS_SHADOW, &shadowFlag);
     }
 
     GiveBoxMonInitialMoveset(boxMon);
@@ -1865,10 +1882,12 @@ void GiveMonInitialMoveset(struct Pokemon *mon)
 void GiveBoxMonInitialMoveset(struct BoxPokemon *boxMon) //Credit: AsparagusEduardo
 {
     u16 species = GetBoxMonData(boxMon, MON_DATA_SPECIES, NULL);
+    u8 isShadow = GetBoxMonData(boxMon, MON_DATA_IS_SHADOW, NULL);
     s32 level = GetLevelFromBoxMonExp(boxMon);
     s32 i;
     u16 moves[MAX_MON_MOVES] = {MOVE_NONE};
     u8 addedMoves = 0;
+    const u16 *shadowLearnset = GetSpeciesShadowLearnset(species);
     const struct LevelUpMove *learnset = GetSpeciesLevelUpLearnset(species);
 
     for (i = 0; learnset[i].move != LEVEL_UP_MOVE_END; i++)
@@ -1904,6 +1923,15 @@ void GiveBoxMonInitialMoveset(struct BoxPokemon *boxMon) //Credit: AsparagusEdua
                 moves[MAX_MON_MOVES - 1] = learnset[i].move;
             }
         }
+    }
+    for (i = 0; shadowLearnset[i] != MOVE_UNAVAILABLE; i++)
+    {
+        if (!isShadow)
+            break;
+        if (shadowLearnset[i] == MOVE_UNAVAILABLE)
+            break;
+
+        moves[i] = shadowLearnset[i];
     }
     for (i = 0; i < MAX_MON_MOVES; i++)
     {
@@ -3603,6 +3631,14 @@ const u16 *GetSpeciesEggMoves(u16 species)
     const u16 *learnset = gSpeciesInfo[SanitizeSpeciesId(species)].eggMoveLearnset;
     if (learnset == NULL)
         return gSpeciesInfo[SPECIES_NONE].eggMoveLearnset;
+    return learnset;
+}
+
+const u16 *GetSpeciesShadowLearnset(u16 species)
+{
+    const u16 *learnset = gSpeciesInfo[SanitizeSpeciesId(species)].shadowLearnset;
+    if (learnset == NULL)
+        return gSpeciesInfo[SPECIES_NONE].shadowLearnset;
     return learnset;
 }
 
