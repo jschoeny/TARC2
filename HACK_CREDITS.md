@@ -232,3 +232,9 @@ Archie, TheXaman
 
 ### [HGSS Battle UI Expansion](https://github.com/ravepossum/pokeemerald-expansion/tree/hgss_battle_ui_expansion)
 RavePossum
+
+### [Shadow Pokemon](https://github.com/rh-hideout/pokeemerald-expansion/pull/4128)
+- gruxor - Initial Shadow Pokémon machanics implementation
+- Kobazco - Shadow Move implementation
+- BittersweetNSour - Continued Shadow Pokémon mechanics implementation
+- AsparagusEduardo - Cleanup and merge updates

@@ -3316,3 +3316,28 @@ void Script_EndTrainerCanSeeIf(struct ScriptContext *ctx)
     if (ctx->breakOnTrainerBattle && sScriptConditionTable[condition][ctx->comparisonResult] == 1)
         StopScript(ctx);
 }
+
+bool8 ScrCmd_setwildshadowbattle(struct ScriptContext *ctx)
+{
+    u16 species = ScriptReadHalfword(ctx);
+    u8 level = ScriptReadByte(ctx);
+    u16 item = ScriptReadHalfword(ctx);
+    u8 isShadow1 = ScriptReadByte(ctx);
+    u16 species2 = ScriptReadHalfword(ctx);
+    u8 level2 = ScriptReadByte(ctx);
+    u16 item2 = ScriptReadHalfword(ctx);
+    u8 isShadow2 = ScriptReadByte(ctx);
+
+    if(species2 == SPECIES_NONE)
+    {
+        CreateScriptedWildShadowMon(species, level, item);
+        sIsScriptedWildDouble = FALSE;
+    }
+    else
+    {
+        CreateScriptedDoubleWildShadowMon(species, level, item, isShadow1, species2, level2, item2, isShadow2);
+        sIsScriptedWildDouble = TRUE;
+    }
+
+    return FALSE;
+}

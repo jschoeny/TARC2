@@ -3836,6 +3836,29 @@ static void TryDoEventsBeforeFirstTurn(void)
         }
         gBattleStruct->eventsBeforeFirstTurnState++;
         break;
+    case FIRST_TURN_EVENTS_SHADOW_MON:
+        if (!gBattleStruct->shadowMonDone)
+        {
+            if (gBattleMons[GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT)].isShadow)
+            {
+                LaunchStatusAnimation(GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT), B_ANIM_STATUS_SHADOW);
+            }
+            else if (gBattleMons[GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT)].isShadow)
+            {
+                LaunchStatusAnimation(GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT), B_ANIM_STATUS_SHADOW);
+            }
+            if (gBattleMons[GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT)].isShadow || gBattleMons[GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT)].isShadow)
+            {
+                PrepareStringBattle(STRINGID_SHADOWPKMNNOTICE, GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT));
+            }
+            gBattleStruct->shadowMonDone = TRUE;
+            return;
+        }
+        if (!gAnimScriptActive)
+        {
+            gBattleStruct->eventsBeforeFirstTurnState++;
+        }
+        break;
     case FIRST_TURN_EVENTS_STARTING_STATUS:
         if (!gBattleStruct->startingStatusDone
          && gBattleStruct->startingStatus

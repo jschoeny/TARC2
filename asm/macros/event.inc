@@ -2000,6 +2000,19 @@
 	.4byte \text
 	.endm
 
+	@ As setwildbattle, but with one extra arg for each species to determine shadow mon values.
+	.macro setwildshadowbattle species:req, level:req, item=ITEM_NONE, isShadow1=TRUE, species2=SPECIES_NONE, level2=0, item2=ITEM_NONE, isShadow2=TRUE
+	.byte SCR_OP_SETWILDSHADOWBATTLE
+	.2byte \species
+	.byte \level
+	.2byte \item
+	.byte \isShadow1
+	.2byte \species2
+	.byte \level2
+	.2byte \item2
+	.byte \isShadow2
+	.endm
+
 @ Supplementary
 
 	.macro goto_if_unset flag:req, dest:req

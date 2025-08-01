@@ -711,6 +711,8 @@ const u16 gBattleInterface_BallStatusBarPal[] = INCBIN_U16("graphics/battle_inte
 
 const u16 gBattleInterface_BallDisplayPal[] = INCBIN_U16("graphics/battle_interface/ball_display.gbapal");
 
+const u16 gBattleInterface_ShadowMenuPal[] = INCBIN_U16("graphics/battle_interface/shadow_menu.gbapal");
+
 const u8 gHealthboxElementsGfxTable[][32] = INCBIN_U8("graphics/battle_interface/hpbar.4bpp",
                                                   "graphics/battle_interface/expbar.4bpp",
                                                   "graphics/battle_interface/status.4bpp",
@@ -1307,6 +1309,9 @@ const u32 gBattleAnimSpriteGfx_SaltParticle[] = INCBIN_U32("graphics/battle_anim
 const u16 gBattleAnimSpritePal_SaltParticle[] = INCBIN_U16("graphics/battle_anims/sprites/salt_particle.gbapal");
 
 const u16 gBattleAnimUnusedPal_Unknown2[] = INCBIN_U16("graphics/battle_anims/unused/unknown_2.gbapal");
+
+const u32 gBattleAnimSpriteGfx_ShadowParticles[] = INCBIN_U32("graphics/battle_anims/sprites/shadowparticles.4bpp.smol");
+const u16 gBattleAnimSpritePal_ShadowParticles[] = INCBIN_U16("graphics/battle_anims/sprites/shadowparticles.gbapal");
 
 #include "data/graphics/trainers.h"
 

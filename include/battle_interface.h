@@ -54,7 +54,7 @@ enum
 #define TAG_STATUS_SUMMARY_BALLS_TILE   0xD714
 
 #define TAG_HEALTHBAR_PAL               TAG_HEALTHBAR_PLAYER1_TILE
-#define TAG_HEALTHBOX_PAL               TAG_HEALTHBOX_PLAYER1_TILE
+#define TAG_HEALTHBOX_PAL               TAG_HEALTHBOX_PLAYER1_PAL
 #define TAG_SHADOW_PAL                  TAG_HEALTHBOX_PLAYER1_TILE
 
 #define TAG_SHADOW_TILE                 0xD759
@@ -91,6 +91,11 @@ enum
 #define TAG_MEGA_INDICATOR_PAL          0xD778
 #define TAG_MISC_INDICATOR_PAL          0xD779 // Alpha, Omega, and Dynamax indicators use the same palette as each of them only uses 4 different colors.
 #define TAG_TERA_INDICATOR_PAL          0xD77A
+
+#define TAG_HEALTHBOX_PLAYER1_PAL       0xD77D
+#define TAG_HEALTHBOX_PLAYER2_PAL       0xD77E
+#define TAG_HEALTHBOX_OPPONENT1_PAL     0xD77F
+#define TAG_HEALTHBOX_OPPONENT2_PAL     0xD780
 
 enum
 {

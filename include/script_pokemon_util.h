@@ -14,4 +14,7 @@ void Script_GetChosenMonDefensiveEVs(void);
 void Script_GetChosenMonOffensiveIVs(void);
 void Script_GetChosenMonDefensiveIVs(void);
 
+void CreateScriptedWildShadowMon(u16 species, u8 level, u16 item);
+void CreateScriptedDoubleWildShadowMon(u16 species, u8 level, u16 item, bool8 isShadow1, u16 species2, u8 level2, u16 item2, bool8 isShadow2);
+
 #endif // GUARD_SCRIPT_POKEMON_UTIL_H

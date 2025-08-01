@@ -229,7 +229,7 @@ static const struct SpriteTemplate sHealthboxPlayerSpriteTemplates[2] =
 {
     {
         .tileTag = TAG_HEALTHBOX_PLAYER1_TILE,
-        .paletteTag = TAG_HEALTHBOX_PAL,
+        .paletteTag = TAG_HEALTHBOX_PLAYER1_PAL,
         .oam = &sOamData_64x32,
         .anims = gDummySpriteAnimTable,
         .images = NULL,
@@ -238,7 +238,7 @@ static const struct SpriteTemplate sHealthboxPlayerSpriteTemplates[2] =
     },
     {
         .tileTag = TAG_HEALTHBOX_PLAYER2_TILE,
-        .paletteTag = TAG_HEALTHBOX_PAL,
+        .paletteTag = TAG_HEALTHBOX_PLAYER2_PAL,
         .oam = &sOamData_64x32,
         .anims = gDummySpriteAnimTable,
         .images = NULL,
@@ -251,7 +251,7 @@ static const struct SpriteTemplate sHealthboxOpponentSpriteTemplates[2] =
 {
     {
         .tileTag = TAG_HEALTHBOX_OPPONENT1_TILE,
-        .paletteTag = TAG_HEALTHBOX_PAL,
+        .paletteTag = TAG_HEALTHBOX_OPPONENT1_PAL,
         .oam = &sOamData_64x32,
         .anims = gDummySpriteAnimTable,
         .images = NULL,
@@ -260,7 +260,7 @@ static const struct SpriteTemplate sHealthboxOpponentSpriteTemplates[2] =
     },
     {
         .tileTag = TAG_HEALTHBOX_OPPONENT2_TILE,
-        .paletteTag = TAG_HEALTHBOX_PAL,
+        .paletteTag = TAG_HEALTHBOX_OPPONENT2_PAL,
         .oam = &sOamData_64x32,
         .anims = gDummySpriteAnimTable,
         .images = NULL,

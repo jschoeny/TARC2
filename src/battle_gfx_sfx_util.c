@@ -81,6 +81,28 @@ const struct SpritePalette sSpritePalettes_HealthBoxHealthBar[2] =
     {gBattleInterface_BallDisplayPal, TAG_HEALTHBAR_PAL}
 };
 
+const struct SpritePalette gSpritePalettes_HealthBoxHealthBar[10] =
+{
+    // The healthbox palettes are changed from vanilla by Shadow Pokemon, because we need to individually
+    // set palette tags for each battler to avoid the palette swaps affecting non-shadow mon.
+
+    // vanilla palettes (still used by safari and probably elsewhere, plus the healthbar doesn't change)
+    /* 0 */ {gBattleInterface_BallStatusBarPal, TAG_HEALTHBOX_PAL},
+    /* 1 */ {gBattleInterface_BallDisplayPal, TAG_HEALTHBAR_PAL},
+
+    // default palettes
+    /* 2 */ {gBattleInterface_BallStatusBarPal, TAG_HEALTHBOX_PLAYER1_PAL},
+    /* 3 */ {gBattleInterface_BallStatusBarPal, TAG_HEALTHBOX_PLAYER2_PAL},
+    /* 4 */ {gBattleInterface_BallStatusBarPal, TAG_HEALTHBOX_OPPONENT1_PAL},
+    /* 5 */ {gBattleInterface_BallStatusBarPal, TAG_HEALTHBOX_OPPONENT2_PAL},
+
+    // shadow palettes
+    /* 6 */ {gBattleInterface_ShadowMenuPal, TAG_HEALTHBOX_PLAYER1_PAL},
+    /* 7 */ {gBattleInterface_ShadowMenuPal, TAG_HEALTHBOX_PLAYER2_PAL},
+    /* 8 */ {gBattleInterface_ShadowMenuPal, TAG_HEALTHBOX_OPPONENT1_PAL},
+    /* 9 */ {gBattleInterface_ShadowMenuPal, TAG_HEALTHBOX_OPPONENT2_PAL},
+};
+
 const struct CompressedSpriteSheet gSpriteSheet_EnemyShadow =
 {
     .data = gEnemyMonShadow_Gfx, .size = 0x80, .tag = TAG_SHADOW_TILE
@@ -122,6 +144,44 @@ const struct SpriteTemplate gSpriteTemplate_EnemyShadow =
 };
 
 // code
+void ShadowLoadHealthboxPalette(u8 battlerId)
+{
+    u8 palNum;
+    u8 isShadow;
+    struct Pokemon *mon;
+
+    if (GetBattlerSide(battlerId) != B_SIDE_PLAYER)
+        mon = &gEnemyParty[gBattlerPartyIndexes[battlerId]];
+    else
+        mon = &gPlayerParty[gBattlerPartyIndexes[battlerId]];
+
+    switch (battlerId)
+    {
+        default:
+        case 0:
+            FreeSpritePaletteByTag(TAG_HEALTHBOX_PLAYER1_PAL);
+            isShadow = GetMonData(mon, MON_DATA_IS_SHADOW);
+            palNum = isShadow ? 6 : 2; break;
+        case 1:
+            FreeSpritePaletteByTag(TAG_HEALTHBOX_OPPONENT1_PAL);
+            isShadow = GetMonData(mon, MON_DATA_IS_SHADOW);
+            palNum = isShadow ? 8 : 4; break;
+        case 2:
+            FreeSpritePaletteByTag(TAG_HEALTHBOX_PLAYER2_PAL);
+            isShadow = GetMonData(mon, MON_DATA_IS_SHADOW);
+            palNum = isShadow ? 7 : 3; break;
+        case 3:
+            FreeSpritePaletteByTag(TAG_HEALTHBOX_OPPONENT2_PAL);
+            isShadow = GetMonData(mon, MON_DATA_IS_SHADOW);
+            palNum = isShadow ? 9 : 5; break;
+    }
+
+    LoadSpritePalette(&gSpritePalettes_HealthBoxHealthBar[palNum]);
+
+    if (GetMonData(mon, MON_DATA_STATUS))
+        UpdateHealthboxAttribute(gHealthboxSpriteIds[battlerId], mon, HEALTHBOX_STATUS_ICON);
+}
+
 void AllocateBattleSpritesData(void)
 {
     gBattleSpritesDataPtr = AllocZeroed(sizeof(struct BattleSpriteData));
@@ -742,8 +802,8 @@ bool8 BattleLoadAllHealthBoxesGfx(u8 state)
     {
         if (state == 1)
         {
-            LoadSpritePalette(&sSpritePalettes_HealthBoxHealthBar[0]);
-            LoadSpritePalette(&sSpritePalettes_HealthBoxHealthBar[1]);
+            LoadSpritePalette(&gSpritePalettes_HealthBoxHealthBar[0]);
+            LoadSpritePalette(&gSpritePalettes_HealthBoxHealthBar[1]);
             LoadIndicatorSpritesGfx();
             CategoryIcons_LoadSpritesGfx();
         }
@@ -755,10 +815,12 @@ bool8 BattleLoadAllHealthBoxesGfx(u8 state)
                     LoadCompressedSpriteSheet(&sSpriteSheet_SafariHealthbox);
                 else
                     LoadCompressedSpriteSheet(&sSpriteSheet_SinglesPlayerHealthbox);
+                ShadowLoadHealthboxPalette(0);
             }
             else if (state == 3)
             {
                 LoadCompressedSpriteSheet(&sSpriteSheet_SinglesOpponentHealthbox);
+                ShadowLoadHealthboxPalette(1);
             }
             else if (state == 4)
             {
@@ -786,13 +848,23 @@ bool8 BattleLoadAllHealthBoxesGfx(u8 state)
                     LoadCompressedSpriteSheet(&sSpriteSheet_SinglesPlayerHealthbox);
                     break;
                 }
+                ShadowLoadHealthboxPalette(0);
             }
             else if (state == 3)
+            {
                 LoadCompressedSpriteSheet(&sSpriteSheets_DoublesPlayerHealthbox[1]);
+                ShadowLoadHealthboxPalette(2);
+            }
             else if (state == 4)
+            {
                 LoadCompressedSpriteSheet(&sSpriteSheets_DoublesOpponentHealthbox[0]);
+                ShadowLoadHealthboxPalette(1);
+            }
             else if (state == 5)
+            {
                 LoadCompressedSpriteSheet(&sSpriteSheets_DoublesOpponentHealthbox[1]);
+                ShadowLoadHealthboxPalette(3);
+            }
             else if (state == 6)
                 LoadCompressedSpriteSheet(&sSpriteSheets_HealthBar[GetBattlerPosition(B_BATTLER_0)]);
             else if (state == 7)

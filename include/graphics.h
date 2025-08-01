@@ -1999,6 +1999,7 @@ extern const u32 gShopMenuMoney_Gfx[];
 extern const u32 gBattleInterface_BallStatusBarGfx[];
 extern const u8 gBattleInterface_BallDisplayGfx[];
 extern const u16 gBattleInterface_BallStatusBarPal[];
+extern const u16 gBattleInterface_ShadowMenuPal[];
 extern const u16 gBattleInterface_BallDisplayPal[];
 extern const u8 gHealthboxElementsGfxTable[][32];
 
@@ -2905,6 +2906,8 @@ extern const u32 gBattleAnimSpriteGfx_TeraStarstormBeam[];
 extern const u16 gBattleAnimSpritePal_TeraStarstormBeam[];
 extern const u32 gBattleAnimSpriteGfx_SaltParticle[];
 extern const u16 gBattleAnimSpritePal_SaltParticle[];
+extern const u32 gBattleAnimSpriteGfx_ShadowParticles[];
+extern const u16 gBattleAnimSpritePal_ShadowParticles[];
 
 extern const u32 gBattleAnimBgImage_Dark[];
 extern const u32 gBattleAnimBgImage_Ghost[];

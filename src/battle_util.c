@@ -9706,6 +9706,15 @@ static inline uq4_12_t CalcTypeEffectivenessMultiplierInternal(struct DamageCont
         }
     }
 
+    // Shadow Move conditional type effectiveness
+    if (gMovesInfo[ctx->move].type == TYPE_SHADOW)
+    {
+        if (gBattleMons[ctx->battlerDef].isShadow)
+            modifier = UQ_4_12(0.5);
+        else
+            modifier = UQ_4_12(2.0);
+    }
+
     if (ctx->updateFlags)
         TryInitializeFirstSTABMoveTrainerSlide(ctx->battlerDef, ctx->battlerAtk, ctx->moveType);
 

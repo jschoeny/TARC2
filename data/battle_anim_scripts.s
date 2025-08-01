@@ -21149,6 +21149,18 @@ MatchaGotchaDoubleProjectile:
 	delay 3
 	return
 
+ShadowAuraEffect:
+	createsprite gShadowParticleSpriteTemplate, ANIM_ATTACKER, 2, 0, -24, 26, 2
+	delay 4
+	createsprite gShadowParticleSpriteTemplate, ANIM_ATTACKER, 2, 0, 14, 28, 1
+	delay 4
+	createsprite gShadowParticleSpriteTemplate, ANIM_ATTACKER, 2, 0, -5, 10, 2
+	delay 4
+	createsprite gShadowParticleSpriteTemplate, ANIM_ATTACKER, 2, 0, 28, 26, 3
+	delay 4
+	createsprite gShadowParticleSpriteTemplate, ANIM_ATTACKER, 2, 0, -12, 0, 1
+	return
+
 @@@@@@@@@@@@@@@@@@@@@@@ GEN 1-3 @@@@@@@@@@@@@@@@@@@@@@@
 gBattleAnimMove_None::
 gBattleAnimMove_MirrorMove::
@@ -31086,6 +31098,19 @@ gBattleAnimStatus_Nightmare::
 
 gBattleAnimGeneral_StatsChange::
 	createvisualtask AnimTask_StatsChange, 5
+	waitforvisualfinish
+	end
+
+gBattleAnimStatus_Shadow::
+	loadspritegfx ANIM_TAG_SHADOW_PARTICLES
+	loopsewithpan SE_M_SACRED_FIRE2, SOUND_PAN_TARGET, 13, 6
+	call ShadowAuraEffect
+	delay 8
+	call ShadowAuraEffect
+	createvisualtask AnimTask_ShakeMon2, 2, ANIM_ATTACKER, 1, 0, 18, 2
+	createvisualtask AnimTask_BlendColorCycle, 2, F_PAL_ATTACKER, 2, 2, 0, 12, RGB(22, 22, 31)
+	delay 8
+	call ShadowAuraEffect
 	waitforvisualfinish
 	end
 

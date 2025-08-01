@@ -423,6 +423,7 @@
 #define ANIM_TAG_TATSUGIRI_CURLY            (ANIM_SPRITES_START + 409)
 #define ANIM_TAG_TATSUGIRI_DROOPY           (ANIM_SPRITES_START + 410)
 #define ANIM_TAG_TATSUGIRI_STRETCHY         (ANIM_SPRITES_START + 411)
+#define ANIM_TAG_SHADOW_PARTICLES           (ANIM_SPRITES_START + 412)
 
 // battlers
 #define ANIM_ATTACKER         0
@@ -616,8 +617,9 @@
 #define B_ANIM_STATUS_FRZ               6
 #define B_ANIM_STATUS_CURSED            7
 #define B_ANIM_STATUS_NIGHTMARE         8
+#define B_ANIM_STATUS_SHADOW            9
 
-#define NUM_B_ANIMS_STATUS              9
+#define NUM_B_ANIMS_STATUS              10
 
 // Tasks with return values often assign them to gBattleAnimArgs[7].
 #define ARG_RET_ID 7
