@@ -24,6 +24,9 @@ mapscripts ModernTime_Bedroom_MapScripts {
       closemessage
       setvar(VAR_STORY_PROGRESS, STORY_INTRO_TOWN_SQUARE)
       setvar(VAR_TEMP_0, 1)
+      clearflag(FLAG_FOLLOWERS_DISABLED)
+	    special(HealPlayerParty)
+      warpsilent(MAP_TOWN_SQUARE, 17, 14)
     }
     VAR_TEMP_0, 0 {
       applymovement(LOCALID_PLAYER, moves(walk_slow_down*2))

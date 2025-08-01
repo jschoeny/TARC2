@@ -4450,6 +4450,16 @@
       "secondary_tileset": "gTileset_DojoExterior",
       "border_filepath": "data/layouts/ForestCutscene1/border.bin",
       "blockdata_filepath": "data/layouts/ForestCutscene1/map.bin"
+    },
+    {
+      "id": "LAYOUT_TOWN_SQUARE",
+      "name": "TownSquare_Layout",
+      "width": 42,
+      "height": 28,
+      "primary_tileset": "gTileset_OldenTimes",
+      "secondary_tileset": "gTileset_DojoExterior",
+      "border_filepath": "data/layouts/TownSquare/border.bin",
+      "blockdata_filepath": "data/layouts/TownSquare/map.bin"
     }
   ]
 }

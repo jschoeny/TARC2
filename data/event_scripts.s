@@ -1167,3 +1167,5 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/RenjiHomeCutscene1/scripts.inc"
 
 	.include "data/maps/ForestCutscene1/scripts.inc"
+
+	.include "data/maps/TownSquare/scripts.inc"
