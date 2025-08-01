@@ -1,4 +1,6 @@
 # Credits
+Based off of RHH's [pokeemerald-expansion](https://github.com/rh-hideout/pokeemerald-expansion)
+
 ## Tilesets
 
 ### [Fairy Forest](https://www.deviantart.com/emeiry/art/Fairy-Forest-GBC-Esque-palette-901425506)
@@ -187,9 +189,19 @@ brullov
 - Murpi (https://bsky.app/profile/murpia57.bsky.social)
 - Emmuffin (https://twitter.com/Ernmuffin)
 
+### [MINIDEX 001-251](https://imgur.com/approximately-2-years-ago-we-managed-to-expand-minisprite-limit-pokemon-g-s-c-from-38-to-255-here-is-what-they-look-like-VKCdkx5)
+_Used as a reference for some of my follower sprites_
+- Chamber, Solo0993, Blue Emerald, Lake, Neslug, Pikachu25
+
 ## Tools
 ### [Porytiles](https://github.com/grunt-lucas/porytiles)
 grunt-lucas
+
+### [Porymap](https://github.com/huderlem/porymap)
+huderlem
+
+### [Poryscript](https://github.com/huderlem/poryscript)
+huderlem
 
 ## Tutorials
 ### [Spawn Invisible Player](https://github.com/pret/pokeemerald/wiki/Spawn-Invisible-Player)
@@ -197,28 +209,26 @@ ghoulslash
 
 ## Other
 ### [Msgbox tiles + speakername](https://github.com/mudskipper13/pokeemerald/commit/ea080ca694bfdff924627667bfa2d6f117ccca53)
-Tustin
-Mudskip
+Tustin, Mudskip
 
 ### [Field Mugshot System](https://github.com/mudskipper13/pokeemerald/tree/feature/field-mugshot)
 Mudskip
 
 ### [Gen 5ish Party Menu](https://github.com/TeamAquasHideout/pokeemerald/tree/gen5ish_party_menu)
-Archie
-TheXaman
+Archie, TheXaman
 
 ### [BW Summary Screen](https://github.com/ravepossum/pokeemerald-expansion/wiki#bw_summary_screen_expansion)
-RavePossum
-Againsts (tiles)
-Sphericalice (grade sprites)
-Vexx (auto-format code)
-Buffelsaft (IV/EV code)
-Dizzyegg (nature color code)
-Zeturic (wrapping summary screen)
-Greenphx9 (referencing code in their pokefirered version)
-Skeli (graphic for heart indicator based on Unbound's)
-Zatsu (Tera type icons)
-Lhea (status icons)
+- RavePossum
+- Againsts (tiles)
+- Sphericalice (grade sprites)
+- Vexx (auto-format code)
+- Buffelsaft (IV/EV code)
+- Dizzyegg (nature color code)
+- Zeturic (wrapping summary screen)
+- Greenphx9 (referencing code in their pokefirered version)
+- Skeli (graphic for heart indicator based on Unbound's)
+- Zatsu (Tera type icons)
+- Lhea (status icons)
 
 ### [HGSS Battle UI Expansion](https://github.com/ravepossum/pokeemerald-expansion/tree/hgss_battle_ui_expansion)
 RavePossum
