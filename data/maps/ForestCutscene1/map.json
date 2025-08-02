@@ -2,7 +2,7 @@
   "id": "MAP_FOREST_CUTSCENE1",
   "name": "ForestCutscene1",
   "layout": "LAYOUT_FOREST_CUTSCENE1",
-  "music": "MUS_RG_VIRIDIAN_FOREST",
+  "music": "MUS_PMDRED_FRIEND_AREA_FOREST",
   "region_map_section": "MAPSEC_BERRY_FOREST",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

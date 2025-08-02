@@ -2,7 +2,7 @@
   "id": "MAP_TOWN_SQUARE",
   "name": "TownSquare",
   "layout": "LAYOUT_TOWN_SQUARE",
-  "music": "MUS_DUMMY",
+  "music": "MUS_PMDRED_FRIEND_AREA_POND",
   "region_map_section": "MAPSEC_OLDALE_TOWN",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

@@ -222,5 +222,5 @@ script RenjiHomeCutscene1_EventScript_HideFireScene {
 }
 
 script RenjiHomeCutscene1_EventScript_PlayBGM {
-  playbgm(MUS_ABNORMAL_WEATHER, TRUE)
+  playbgm(MUS_PMDRED_RISING_FEAR, TRUE)
 }
