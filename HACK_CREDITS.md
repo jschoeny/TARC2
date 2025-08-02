@@ -1,6 +1,13 @@
 # Credits
 Based off of RHH's [pokeemerald-expansion](https://github.com/rh-hideout/pokeemerald-expansion)
 
+## Music
+### [Universal Voice Group](https://github.com/aichiya/pokeemerald-expansion/tree/pokeemerald-expansion-universal-voicegroup)
+aichiya
+
+### [PMD Red Rescue Team Music](https://github.com/aichiya/pokeemerald-expansion/tree/pokeemerald-expansion-pmd-red-music-test)
+aichiya
+
 ## Tilesets
 
 ### [Fairy Forest](https://www.deviantart.com/emeiry/art/Fairy-Forest-GBC-Esque-palette-901425506)
