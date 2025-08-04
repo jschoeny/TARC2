@@ -9510,11 +9510,15 @@ const u32 gObjectEventPic_Substitute[] = INCBIN_COMP("graphics/pokemon/question_
 #if P_FOOTPRINTS
     const u8 gMonFootprint_HoOh[] = INCBIN_U8("graphics/pokemon/ho_oh/footprint.1bpp");
 #endif //P_FOOTPRINTS
+    const u32 gMonFrontPic_HoOhShadow[] = INCBIN_U32("graphics/pokemon/ho_oh/shadow/anim_front.4bpp.smol");
+    const u16 gMonPalette_HoOhShadow[] = INCBIN_U16("graphics/pokemon/ho_oh/shadow/normal.gbapal");
 #if OW_POKEMON_OBJECT_EVENTS
     const u32 gObjectEventPic_HoOh[] = INCBIN_COMP("graphics/pokemon/ho_oh/overworld.4bpp");
+    const u32 gObjectEventPic_HoOhShadow[] = INCBIN_COMP("graphics/pokemon/ho_oh/shadow/overworld.4bpp");
 #if OW_PKMN_OBJECTS_SHARE_PALETTES == FALSE
     const u16 gOverworldPalette_HoOh[] = INCBIN_U16("graphics/pokemon/ho_oh/overworld_normal.gbapal");
     const u16 gShinyOverworldPalette_HoOh[] = INCBIN_U16("graphics/pokemon/ho_oh/overworld_shiny.gbapal");
+    const u16 gOverworldPalette_HoOhShadow[] = INCBIN_U16("graphics/pokemon/ho_oh/shadow/overworld_normal.gbapal");
 #endif //OW_PKMN_OBJECTS_SHARE_PALETTES
 #endif //OW_POKEMON_OBJECT_EVENTS
 #endif //P_FAMILY_HO_OH

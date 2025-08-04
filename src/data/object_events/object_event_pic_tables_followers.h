@@ -2128,6 +2128,9 @@ static const struct SpriteFrameImage sPicTable_Lugia[] = {
 static const struct SpriteFrameImage sPicTable_HoOh[] = {
     overworld_ascending_frames(gObjectEventPic_HoOh, 8, 8),
 };
+static const struct SpriteFrameImage sPicTable_HoOhShadow[] = {
+    overworld_ascending_frames(gObjectEventPic_HoOhShadow, 8, 8),
+};
 #endif //P_FAMILY_HO_OH
 
 #if P_FAMILY_CELEBI

@@ -248,4 +248,86 @@ const struct SpeciesInfo gSpeciesInfo[] =
         //.perfectIVCount = NUM_STATS,
     },
     */
+
+#if P_FAMILY_HO_OH
+[SPECIES_SHADOW_HO_OH] =
+{
+    .baseHP        = 106,
+    .baseAttack    = 130,
+    .baseDefense   = 90,
+    .baseSpeed     = 90,
+    .baseSpAttack  = 110,
+    .baseSpDefense = 154,
+    .types = MON_TYPES(TYPE_FIRE, TYPE_FLYING),
+    .catchRate = 3,
+#if P_UPDATED_EXP_YIELDS >= GEN_8
+    .expYield = 340,
+#elif P_UPDATED_EXP_YIELDS >= GEN_5
+    .expYield = 306,
+#else
+    .expYield = 220,
+#endif
+    .evYield_SpDefense = 3,
+    .itemCommon = ITEM_SACRED_ASH,
+    .itemRare   = ITEM_SACRED_ASH,
+    .genderRatio = MON_GENDERLESS,
+    .eggCycles = 120,
+    .friendship = 0,
+    .growthRate = GROWTH_SLOW,
+    .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
+    .abilities = { ABILITY_PRESSURE, ABILITY_NONE, ABILITY_REGENERATOR },
+    .bodyColor = BODY_COLOR_RED,
+    .speciesName = _("Ho-Oh"),
+    .cryId = CRY_HO_OH,
+    .natDexNum = NATIONAL_DEX_HO_OH,
+    .categoryName = _("Rainbow"),
+    .height = 38,
+    .weight = 1990,
+    .description = COMPOUND_STRING(
+        "Its feathers--which glow in seven colors\n"
+        "depending on the angle at which they are\n"
+        "struck by light--are thought to bring joy.\n"
+        "It is said to live at the foot of a rainbow."),
+    .pokemonScale = 256,
+    .pokemonOffset = 0,
+    .trainerScale = 610,
+    .trainerOffset = 17,
+    .frontPic = gMonFrontPic_HoOhShadow,
+    .frontPicSize = MON_COORDS_SIZE(64, 64),
+    .frontPicYOffset = 0,
+    .frontAnimFrames = ANIM_FRAMES(
+        ANIMCMD_FRAME(1, 20),
+        ANIMCMD_FRAME(0, 20),
+    ),
+    .frontAnimId = ANIM_GROW_VIBRATE,
+    .enemyMonElevation = 6,
+    .backPic = gMonBackPic_HoOh,
+    .backPicSize = MON_COORDS_SIZE(64, 64),
+    .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 1 : 2,
+    .backAnimId = BACK_ANIM_SHAKE_GLOW_RED,
+    .palette = gMonPalette_HoOhShadow,
+    .shinyPalette = gMonShinyPalette_HoOh,
+    .iconSprite = gMonIcon_HoOh,
+    .iconPalIndex = 1,
+    .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+    SHADOW(1, 17, SHADOW_SIZE_L)
+    FOOTPRINT(HoOh)
+    OVERWORLD(
+        sPicTable_HoOhShadow,
+        SIZE_64x64,
+        SHADOW_SIZE_M,
+        TRACKS_NONE,
+        sAnimTable_Following,
+        gOverworldPalette_HoOhShadow,
+        gShinyOverworldPalette_HoOh
+    )
+    .isLegendary = TRUE,
+    .isFrontierBanned = TRUE,
+    .isXDForm = TRUE,
+    .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
+    .levelUpLearnset = sHoOhLevelUpLearnset,
+    .teachableLearnset = sHoOhTeachableLearnset,
+    .shadowLearnset = sHoOhShadowLearnset,
+},
+#endif //P_FAMILY_HO_OH
 };

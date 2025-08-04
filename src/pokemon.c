@@ -1224,7 +1224,7 @@ void CreateBoxMonShadow(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fix
         SetBoxMonData(boxMon, MON_DATA_ABILITY_NUM, &value);
     }
 
-    if (isShadow)
+    if (isShadow || gSpeciesInfo[species].isXDForm)
     {
         SetBoxMonData(boxMon, MON_DATA_IS_SHADOW, &shadowFlag);
     }
@@ -1924,7 +1924,7 @@ void GiveBoxMonInitialMoveset(struct BoxPokemon *boxMon) //Credit: AsparagusEdua
             }
         }
     }
-    for (i = 0; shadowLearnset[i] != MOVE_UNAVAILABLE; i++)
+    for (i = 0; i < MAX_MON_MOVES; i++)
     {
         if (!isShadow)
             break;
