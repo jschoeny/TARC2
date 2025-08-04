@@ -2,7 +2,7 @@
   "id": "MAP_MODERN_TIME_BEDROOM",
   "name": "ModernTime_Bedroom",
   "layout": "LAYOUT_MODERN_TIME_BEDROOM",
-  "music": "MUS_DUMMY",
+  "music": "MUS_HG_NEW_BARK",
   "region_map_section": "MAPSEC_SOOTOPOLIS_CITY",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

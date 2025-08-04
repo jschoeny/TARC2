@@ -3729,6 +3729,7 @@ static void DebugAction_DestroyFollowerNPC(u8 taskId)
     X(MUS_PMDRED_MT_THUNDER_PEAK) \
     X(MUS_PMDRED_FRIEND_AREA_HEALING_FOREST) \
     X(MUS_PMDRED_MONSTER_HOUSE) \
+    X(MUS_HG_NEW_BARK) \
 
 #define SOUND_LIST_SE               \
     X(SE_USE_ITEM)                  \

@@ -624,7 +624,10 @@
 #define MUS_PMDRED_FRIEND_AREA_HEALING_FOREST      686 // seq_127
 #define MUS_PMDRED_MONSTER_HOUSE                   687 // seq_128
 
-#define END_MUS                     MUS_PMDRED_MONSTER_HOUSE
+// HGSS
+#define MUS_HG_NEW_BARK                            688
+
+#define END_MUS                     MUS_HG_NEW_BARK
 
 #define MUS_ROUTE118                0x7FFF  // Map is split into 2 music sections. controlled by GetCurrLocationDefaultMusic().
 

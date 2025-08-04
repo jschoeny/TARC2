@@ -689,6 +689,7 @@ gSongTable::
 	song seq_126, 0, 0
 	song seq_127, 0, 0
 	song seq_128, 0, 0
+	song mus_hg_new_bark, 0, 0
 
 	.align 2
 dummy_song_header:
