@@ -13,6 +13,7 @@
 #include "expansion_intro.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
+#include "title_screen.h"
 
 #if EXPANSION_INTRO == TRUE
 
@@ -71,6 +72,7 @@ static void ExpansionIntro_InitBgs();
 static void ExpansionIntro_StartBlend();
 static void ExpansionIntro_LoadGraphics();
 static void ExpansionIntro_CreateSprites();
+static void MainCB2_EndExpansionIntro(void);
 
 static const union AnimCmd sAnimCmd_DizzyWalking[] =
 {
@@ -278,13 +280,19 @@ void Task_HandleExpansionIntro(u8 taskId)
             ResetSpriteData();
             FreeAllSpritePalettes();
             DestroyTask(taskId);
-            CreateTask(Task_Scene1_Load, 0);
-            SetMainCallback2(MainCB2_Intro);
+            // CreateTask(Task_Scene1_Load, 0);
+            SetMainCallback2(MainCB2_EndExpansionIntro);
         }
         break;
     }
 }
 #undef tState
+
+static void MainCB2_EndExpansionIntro(void)
+{
+    if (!UpdatePaletteFade())
+        SetMainCallback2(CB2_InitTitleScreen);
+}
 
 static void VBlankCB_ExpansionIntro(void)
 {
