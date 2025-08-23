@@ -2,7 +2,7 @@
 	.include "MPlayDef.s"
 
 	.equ	seq_021_grp, voicegroup504
-	.equ	seq_021_pri, 50
+	.equ	seq_021_pri, 1
 	.equ	seq_021_rev, 188
 	.equ	seq_021_mvl, 127
 	.equ	seq_021_key, 0

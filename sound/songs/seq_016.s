@@ -2,7 +2,7 @@
 	.include "MPlayDef.s"
 
 	.equ	seq_016_grp, voicegroup504
-	.equ	seq_016_pri, 50
+	.equ	seq_016_pri, 1
 	.equ	seq_016_rev, 208
 	.equ	seq_016_mvl, 127
 	.equ	seq_016_key, 0
@@ -1497,7 +1497,7 @@ seq_016_9:
 	.byte	W18
 	.byte		VOICE , 93
 	.byte	W01
-	.byte		VOL   , 59*seq_016_mvl/mxv
+	.byte		VOL   , 29*seq_016_mvl/mxv
 	.byte	W01
 	.byte		PAN   , c_v+0
 	.byte	W01
@@ -1520,25 +1520,25 @@ seq_016_9:
 	.byte	W16
 	.byte		N15
 	.byte	W04
-	.byte		VOL   , 53*seq_016_mvl/mxv
+	.byte		VOL   , 26*seq_016_mvl/mxv
 	.byte	W02
 	.byte		        40*seq_016_mvl/mxv
 	.byte		BEND  , c_v-11
 	.byte	W02
-	.byte		VOL   , 34*seq_016_mvl/mxv
+	.byte		VOL   , 17*seq_016_mvl/mxv
 	.byte		BEND  , c_v-22
 	.byte	W02
-	.byte		VOL   , 27*seq_016_mvl/mxv
+	.byte		VOL   , 13*seq_016_mvl/mxv
 	.byte		BEND  , c_v-38
 	.byte	W02
-	.byte		VOL   , 20*seq_016_mvl/mxv
+	.byte		VOL   , 10*seq_016_mvl/mxv
 	.byte		BEND  , c_v-48
 	.byte	W02
-	.byte		VOL   , 13*seq_016_mvl/mxv
+	.byte		VOL   , 6*seq_016_mvl/mxv
 	.byte		BEND  , c_v-64
 	.byte	W36
 	.byte	W01
-	.byte		VOL   , 59*seq_016_mvl/mxv
+	.byte		VOL   , 29*seq_016_mvl/mxv
 	.byte		BEND  , c_v+0
 	.byte	W09
 	.byte		N04   , Cs2 , v092
@@ -1561,27 +1561,27 @@ seq_016_9:
 	.byte	W16
 	.byte		N15
 	.byte	W04
-	.byte		VOL   , 53*seq_016_mvl/mxv
+	.byte		VOL   , 26*seq_016_mvl/mxv
 	.byte	W02
-	.byte		        40*seq_016_mvl/mxv
+	.byte		        20*seq_016_mvl/mxv
 	.byte		BEND  , c_v-11
 	.byte	W02
-	.byte		VOL   , 34*seq_016_mvl/mxv
+	.byte		VOL   , 17*seq_016_mvl/mxv
 	.byte		BEND  , c_v-22
 	.byte	W02
-	.byte		VOL   , 27*seq_016_mvl/mxv
+	.byte		VOL   , 13*seq_016_mvl/mxv
 	.byte		BEND  , c_v-38
 	.byte	W02
-	.byte		VOL   , 20*seq_016_mvl/mxv
+	.byte		VOL   , 10*seq_016_mvl/mxv
 	.byte		BEND  , c_v-48
 	.byte	W02
-	.byte		VOL   , 13*seq_016_mvl/mxv
+	.byte		VOL   , 6*seq_016_mvl/mxv
 	.byte		BEND  , c_v-64
 	.byte	W32
 	.byte	W02
 	.byte		N04   , Cs2 , v092
 	.byte	W03
-	.byte		VOL   , 59*seq_016_mvl/mxv
+	.byte		VOL   , 29*seq_016_mvl/mxv
 	.byte		BEND  , c_v+0
 	.byte	W01
 	.byte		N05
@@ -1906,7 +1906,7 @@ seq_016_9:
 	.byte	W04
 	.byte		N16   , Cs2 , v127
 	.byte	W05
-	.byte		VOL   , 53*seq_016_mvl/mxv
+	.byte		VOL   , 26*seq_016_mvl/mxv
 	.byte	W02
 	.byte		        44*seq_016_mvl/mxv
 	.byte	W02
@@ -1916,11 +1916,11 @@ seq_016_9:
 	.byte	W01
 	.byte		BEND  , c_v-11
 	.byte	W01
-	.byte		VOL   , 28*seq_016_mvl/mxv
+	.byte		VOL   , 14*seq_016_mvl/mxv
 	.byte	W01
 	.byte		BEND  , c_v-22
 	.byte	W01
-	.byte		VOL   , 19*seq_016_mvl/mxv
+	.byte		VOL   , 9*seq_016_mvl/mxv
 	.byte	W01
 	.byte		BEND  , c_v-38
 	.byte	W02
@@ -1929,7 +1929,7 @@ seq_016_9:
 	.byte		        c_v-64
 	.byte	W24
 	.byte	W03
-	.byte		VOL   , 59*seq_016_mvl/mxv
+	.byte		VOL   , 29*seq_016_mvl/mxv
 	.byte		BEND  , c_v-27
 	.byte	W48
 	.byte	W01
@@ -2133,7 +2133,7 @@ seq_016_11:
 	.byte	W18
 	.byte		VOICE , 127
 	.byte	W01
-	.byte		VOL   , 69*seq_016_mvl/mxv
+	.byte		VOL   , 34*seq_016_mvl/mxv
 	.byte	W01
 	.byte		PAN   , c_v+0
 	.byte	W04
