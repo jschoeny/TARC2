@@ -1509,7 +1509,7 @@ static const struct LevelUpMove sAnnihilapeLevelUpLearnset[] = {
 #if P_FAMILY_GROWLITHE
 static const struct LevelUpMove sGrowlitheLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 1, MOVE_DOUBLE_KICK),
-    LEVEL_UP_MOVE( 1, MOVE_EMBER),
+    LEVEL_UP_MOVE(11, MOVE_EMBER),
     LEVEL_UP_MOVE(11, MOVE_HOWL),
     LEVEL_UP_MOVE(11, MOVE_BITE),
     LEVEL_UP_MOVE(12, MOVE_FLAME_WHEEL),
