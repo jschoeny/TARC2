@@ -1415,3 +1415,7 @@ static const struct SpriteFrameImage sPicTable_Fire[] = {
     overworld_frame(gObjectEventPic_Fire_LeftRight, 2,  4,  6), // 30
     overworld_frame(gObjectEventPic_Fire_LeftRight, 2,  4,  7), // 31
 };
+
+static const struct SpriteFrameImage sPicTable_Guard[] = {
+    overworld_ascending_frames(gObjectEventPic_Guard, 2, 4),
+};

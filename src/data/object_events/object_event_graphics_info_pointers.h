@@ -246,6 +246,8 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HGSS_OldLad
 
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Fire;
 
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Guard;
+
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Bard;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Hipster;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Trader;
@@ -500,6 +502,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_HGSS_LITTLE_BOY] =          &gObjectEventGraphicsInfo_HGSS_LittleBoy,
     [OBJ_EVENT_GFX_HGSS_OLD_LADY] =            &gObjectEventGraphicsInfo_HGSS_OldLady,
     [OBJ_EVENT_GFX_FIRE] =                     &gObjectEventGraphicsInfo_Fire,
+    [OBJ_EVENT_GFX_GUARD] =                    &gObjectEventGraphicsInfo_Guard,
 };
 
 const struct ObjectEventGraphicsInfo *const gMauvilleOldManGraphicsInfoPointers[] = {

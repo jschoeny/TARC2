@@ -473,3 +473,6 @@ const u32 gObjectEventPic_Fire_Left[] = INCBIN_U32("graphics/object_events/pics/
 const u32 gObjectEventPic_Fire_Right[] = INCBIN_U32("graphics/object_events/pics/misc/fire_r.4bpp");
 const u32 gObjectEventPic_Fire_LeftRight[] = INCBIN_U32("graphics/object_events/pics/misc/fire_lr.4bpp");
 const u16 gObjectEventPal_Fire[] = INCBIN_U16("graphics/object_events/pics/misc/fire.gbapal");
+
+const u32 gObjectEventPic_Guard[] = INCBIN_U32("graphics/object_events/pics/people/guard.4bpp");
+const u16 gObjectEventPal_Guard[] = INCBIN_U16("graphics/object_events/pics/people/guard.gbapal");

@@ -219,6 +219,9 @@ $(OBJEVENTGFXDIR)/people/girl_2.4bpp: %.4bpp: %.png
 $(OBJEVENTGFXDIR)/people/girl_3.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
 
+$(OBJEVENTGFXDIR)/people/guard.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 2 -mheight 4
+
 $(OBJEVENTGFXDIR)/people/hex_maniac.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
 
