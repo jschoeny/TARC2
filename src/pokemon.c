@@ -5886,6 +5886,13 @@ u16 GetBattleBGM(void)
             return MUS_VS_TRAINER;
         }
     }
+    else if (GetMonData(&gEnemyParty[0], MON_DATA_IS_SHADOW, NULL) || FlagGet(FLAG_NO_RUNNING_FROM_BATTLE))
+    {
+        if (GetMonData(&gEnemyParty[0], MON_DATA_SPECIES, NULL) == SPECIES_SHADOW_HO_OH)
+            return MUS_PMD_SKY_VS_DIALGA;
+        else
+            return MUS_VS_MEW;
+    }
     else
     {
         return MUS_VS_WILD;
