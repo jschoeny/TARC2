@@ -1,0 +1,113 @@
+const GUARD0 = 0
+const GUARD1 = 1
+
+mapscripts TownOutskirts_MapScripts {}
+
+script TownOutskirts_EventScript_Guard0 {
+  msgbox(format(
+    "…\p"
+    "He appears to be sleeping…"
+  ))
+  closemessage
+  releaseall
+}
+
+script TownOutskirts_Trigger_TooDangerous {
+  lockall
+  applymovement(GUARD1, moves(
+    face_left,
+    emote_exclamation_mark,
+    delay_16,
+    walk_in_place_left,
+    delay_16,
+  ))
+  delay(16)
+  applymovement(LOCALID_PLAYER, moves(
+    face_right,
+  ))
+  delay(8)
+  applymovement(LOCALID_FOLLOWING_POKEMON, moves(
+    face_right,
+  ))
+  waitmovement(GUARD1)
+  waitmovement(LOCALID_PLAYER)
+  waitmovement(LOCALID_FOLLOWING_POKEMON)
+  speakername("GUARD")
+  msgbox(format(
+    "It's too dangerous.\n"
+    "Magical creatures are on a rampage."
+  ))
+  closemessage
+  applymovement(LOCALID_PLAYER, moves(
+    face_down,
+    delay_16*4,
+    face_right,
+  ))
+  applymovement(LOCALID_FOLLOWING_POKEMON, moves(
+    face_up,
+    delay_16*4,
+    face_right,
+  ))
+  waitmovement(LOCALID_FOLLOWING_POKEMON)
+  waitmovement(LOCALID_PLAYER)
+  delay(30)
+  speakername("GUARD")
+  msgbox(format(
+    "I see…\p"
+    "In that case…"
+  ))
+  closemessage
+  delay(16)
+  applymovement(GUARD1, moves(
+    face_right,
+    delay_16*4,
+    face_left,
+    delay_16*2,
+  ))
+  waitmovement(GUARD1)
+  speakername("GUARD")
+  msgbox(format(
+    "Look out for something blue and angry.\p"
+    "If you get hurt, don't tell anyone.\n"
+    "Just come back here."
+  ))
+  closemessage
+  applymovement(LOCALID_FOLLOWING_POKEMON, moves(
+    face_up,
+  ))
+  waitmovement(LOCALID_FOLLOWING_POKEMON)
+  speakername("GROWLITHE")
+  msgbox(format(
+    "{CREATE_MUGSHOT MUGSHOT_GROWLITHE EMOTE_JOYOUS}"
+    "Growl!"
+  ))
+  closemessage
+  setvar(VAR_STORY_PROGRESS, STORY_INTRO_PASS_GUARD)
+  releaseall
+  end
+}
+
+script TownOutskirts_EventScript_Guard1 {
+  lockall
+  faceplayer
+  speakername("GUARD")
+  if(var(VAR_STORY_PROGRESS) == STORY_INTRO_PASS_GUARD) {
+    msgbox(format(
+      "Good luck out there kid."
+    ))
+  } else {
+    msgbox(format(
+      "It's too dangerous.\n"
+      "Magical creatures are on a rampage."
+    ))
+  }
+  closemessage
+  applymovement(GUARD1, moves(
+    face_down,
+  ))
+  releaseall
+}
+
+script TownOutskirts_Trigger_SetHealLocation {
+  setrespawn(HEAL_LOCATION_TOWN_OUTSKIRTS)
+}

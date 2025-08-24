@@ -630,6 +630,11 @@
   "gMapGroup_OldenTimes": [
     "RenjiHomeCutscene1",
     "ForestCutscene1",
-    "TownSquare"
+    "TownSquare",
+    "MountainSummit",
+    "MountainPath1",
+    "TownOutskirts",
+    "MountainPath2",
+    "MountainPath3"
   ]
 }

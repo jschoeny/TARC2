@@ -1169,3 +1169,13 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/ForestCutscene1/scripts.inc"
 
 	.include "data/maps/TownSquare/scripts.inc"
+
+	.include "data/maps/MountainSummit/scripts.inc"
+
+	.include "data/maps/TownOutskirts/scripts.inc"
+
+	.include "data/maps/MountainPath1/scripts.inc"
+
+	.include "data/maps/MountainPath2/scripts.inc"
+
+	.include "data/maps/MountainPath3/scripts.inc"

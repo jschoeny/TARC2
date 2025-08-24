@@ -200,6 +200,7 @@ mapscripts RenjiHomeCutscene1_MapScripts {
       closemessage
       delay(30)
       speakername("CHILD")
+      playbgm(MUS_DUMMY, FALSE)
       msgbox(format(
         "…\p"
         "Grammy that's kinda dark…"

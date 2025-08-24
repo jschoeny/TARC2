@@ -4460,6 +4460,56 @@
       "secondary_tileset": "gTileset_DojoExterior",
       "border_filepath": "data/layouts/TownSquare/border.bin",
       "blockdata_filepath": "data/layouts/TownSquare/map.bin"
+    },
+    {
+      "id": "LAYOUT_MOUNTAIN_SUMMIT",
+      "name": "MountainSummit_Layout",
+      "width": 20,
+      "height": 23,
+      "primary_tileset": "gTileset_OldenTimes",
+      "secondary_tileset": "gTileset_DojoExterior",
+      "border_filepath": "data/layouts/MountainSummit/border.bin",
+      "blockdata_filepath": "data/layouts/MountainSummit/map.bin"
+    },
+    {
+      "id": "LAYOUT_TOWN_OUTSKIRTS",
+      "name": "TownOutskirts_Layout",
+      "width": 34,
+      "height": 14,
+      "primary_tileset": "gTileset_OldenTimes",
+      "secondary_tileset": "gTileset_DojoExterior",
+      "border_filepath": "data/layouts/TownOutskirts/border.bin",
+      "blockdata_filepath": "data/layouts/TownOutskirts/map.bin"
+    },
+    {
+      "id": "LAYOUT_MOUNTAIN_PATH1",
+      "name": "MountainPath1_Layout",
+      "width": 38,
+      "height": 26,
+      "primary_tileset": "gTileset_OldenTimes",
+      "secondary_tileset": "gTileset_DojoExterior",
+      "border_filepath": "data/layouts/MountainPath1/border.bin",
+      "blockdata_filepath": "data/layouts/MountainPath1/map.bin"
+    },
+    {
+      "id": "LAYOUT_MOUNTAIN_PATH2",
+      "name": "MountainPath2_Layout",
+      "width": 42,
+      "height": 33,
+      "primary_tileset": "gTileset_OldenTimes",
+      "secondary_tileset": "gTileset_DojoExterior",
+      "border_filepath": "data/layouts/MountainPath2/border.bin",
+      "blockdata_filepath": "data/layouts/MountainPath2/map.bin"
+    },
+    {
+      "id": "LAYOUT_MOUNTAIN_PATH3",
+      "name": "MountainPath3_Layout",
+      "width": 28,
+      "height": 25,
+      "primary_tileset": "gTileset_OldenTimes",
+      "secondary_tileset": "gTileset_DojoExterior",
+      "border_filepath": "data/layouts/MountainPath3/border.bin",
+      "blockdata_filepath": "data/layouts/MountainPath3/map.bin"
     }
   ]
 }
