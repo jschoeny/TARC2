@@ -18,10 +18,10 @@
 static const u8 sCondMsg00[] = _("{STR_VAR_1} danced happily.");
 static const u8 sCondMsg01[] = _("{STR_VAR_1} danced beautifully.");
 static const u8* const sCelebiTexts[] = {sCondMsg00, sCondMsg01, NULL};
-static const u8 sCondMsg02[] = _("{STR_VAR_1} emitted fire and shouted.");
-static const u8 sCondMsg03[] = _("{STR_VAR_1} is vigorously producing\nfire!");
-static const u8 sCondMsg04[] = _("{STR_VAR_1} spat fire!");
-static const u8 sCondMsg05[] = _("{STR_VAR_1} is vigorously breathing\nfire!");
+static const u8 sCondMsg02[] = _("{CREATE_MUGSHOT MUGSHOT_GROWLITHE EMOTE_JOYOUS} {STR_VAR_1} emitted fire and shouted.");
+static const u8 sCondMsg03[] = _("{CREATE_MUGSHOT MUGSHOT_GROWLITHE EMOTE_JOYOUS} {STR_VAR_1} is vigorously producing\nfire!");
+static const u8 sCondMsg04[] = _("{CREATE_MUGSHOT MUGSHOT_GROWLITHE EMOTE_JOYOUS} {STR_VAR_1} spat fire!");
+static const u8 sCondMsg05[] = _("{CREATE_MUGSHOT MUGSHOT_GROWLITHE EMOTE_JOYOUS} {STR_VAR_1} is vigorously breathing\nfire!");
 static const u8* const sFireTexts[] = {sCondMsg02, sCondMsg03, sCondMsg04, sCondMsg05, NULL};
 static const u8 sCondMsg06[] = _("{STR_VAR_1} is staring straight at\nthe POKéMON LEAGUE.");
 static const u8 sCondMsg07[] = _("Your POKéMON is staring intently at\nthe mountain peak.");
