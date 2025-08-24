@@ -627,7 +627,10 @@
 // HGSS
 #define MUS_HG_NEW_BARK                            688
 
-#define END_MUS                     MUS_HG_NEW_BARK
+#define MUS_CIPHER_ADMIN_BATTLE                    689
+#define MUS_PMD_SKY_VS_DIALGA                      690
+
+#define END_MUS                     MUS_PMD_SKY_VS_DIALGA
 
 #define MUS_ROUTE118                0x7FFF  // Map is split into 2 music sections. controlled by GetCurrLocationDefaultMusic().
 
