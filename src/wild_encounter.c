@@ -480,6 +480,7 @@ u8 PickWildMonNature(void)
 void CreateWildMon(u16 species, u8 level)
 {
     bool32 checkCuteCharm = TRUE;
+    u8 isShadow = FALSE;
 
     ZeroEnemyPartyMons();
 
@@ -511,7 +512,12 @@ void CreateWildMon(u16 species, u8 level)
         return;
     }
 
-    CreateMonWithNature(&gEnemyParty[0], species, level, USE_RANDOM_IVS, PickWildMonNature());
+    if (Random() % 100 < VarGet(VAR_WILD_SHADOW_CHANCE))
+    {
+        isShadow = TRUE;
+    }
+
+    CreateMonWithNatureShadow(&gEnemyParty[0], species, level, USE_RANDOM_IVS, PickWildMonNature(), isShadow);
 }
 #ifdef BUGFIX
 #define TRY_GET_ABILITY_INFLUENCED_WILD_MON_INDEX(wildPokemon, type, ability, ptr, count) TryGetAbilityInfluencedWildMonIndex(wildPokemon, type, ability, ptr, count)

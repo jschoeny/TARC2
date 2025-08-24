@@ -1236,6 +1236,11 @@ void CreateBoxMonShadow(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fix
 
 void CreateMonWithNature(struct Pokemon *mon, u16 species, u8 level, u8 fixedIV, u8 nature)
 {
+    CreateMonWithNatureShadow(mon, species, level, fixedIV, nature, FALSE);
+}
+
+void CreateMonWithNatureShadow(struct Pokemon *mon, u16 species, u8 level, u8 fixedIV, u8 nature, u8 isShadow)
+{
     u32 personality;
 
     do
@@ -1244,7 +1249,7 @@ void CreateMonWithNature(struct Pokemon *mon, u16 species, u8 level, u8 fixedIV,
     }
     while (nature != GetNatureFromPersonality(personality));
 
-    CreateMon(mon, species, level, fixedIV, TRUE, personality, OT_ID_PLAYER_ID, 0);
+    CreateMonShadow(mon, species, level, fixedIV, TRUE, personality, OT_ID_PLAYER_ID, 0, isShadow);
 }
 
 void CreateMonWithGenderNatureLetter(struct Pokemon *mon, u16 species, u8 level, u8 fixedIV, u8 gender, u8 nature, u8 unownLetter)
