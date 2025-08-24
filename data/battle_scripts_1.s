@@ -1188,7 +1188,7 @@ BattleScript_StrengthSapAnimation:
 @ Drain HP without lowering a stat
 BattleScript_StrengthSapHp:
 	jumpifability BS_TARGET, ABILITY_LIQUID_OOZE, BattleScript_StrengthSapManipulateDmg
-	jumpifstatus3 BS_ATTACKER, STATUS3_HEAL_BLOCK, BattleScript_MoveEnd
+	jumpifvolatile BS_ATTACKER, VOLATILE_HEAL_BLOCK, BattleScript_MoveEnd
 	jumpiffullhp BS_ATTACKER, BattleScript_MoveEnd
 BattleScript_StrengthSapManipulateDmg:
 	manipulatedamage DMG_BIG_ROOT
@@ -1246,7 +1246,7 @@ BattleScript_EffectLaserFocus::
 	attackcanceler
 	attackstring
 	ppreduce
-	setuserstatus3 STATUS3_LASER_FOCUS, BattleScript_ButItFailed
+	trysetvolatile BS_ATTACKER, VOLATILE_LASER_FOCUS, BattleScript_ButItFailed
 	attackanimation
 	waitanimation
 	printstring STRINGID_LASERFOCUS
@@ -2195,8 +2195,8 @@ BattleScript_EffectHealPulse::
 	attackcanceler
 	attackstring
 	ppreduce
-	jumpifstatus3 BS_ATTACKER, STATUS3_HEAL_BLOCK, BattleScript_MoveUsedHealBlockPrevents @ stops pollen puff
-	jumpifstatus3 BS_TARGET, STATUS3_HEAL_BLOCK, BattleScript_MoveUsedHealBlockPrevents
+	jumpifvolatile BS_ATTACKER, VOLATILE_HEAL_BLOCK, BattleScript_MoveUsedHealBlockPrevents @ stops pollen puff
+	jumpifvolatile BS_TARGET, VOLATILE_HEAL_BLOCK, BattleScript_MoveUsedHealBlockPrevents
 	accuracycheck BattleScript_ButItFailed, NO_ACC_CALC_CHECK_LOCK_ON
 	jumpifsubstituteblocks BattleScript_ButItFailed
 	tryhealpulse BattleScript_AlreadyAtFullHp
@@ -2465,6 +2465,7 @@ BattleScript_EffectGastroAcid::
 	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
 	attackstring
 	ppreduce
+	jumpifvolatile BS_TARGET, VOLATILE_GASTRO_ACID, BattleScript_ButItFailed
 	setgastroacid BattleScript_ButItFailed
 	attackanimation
 	waitanimation
@@ -2491,7 +2492,9 @@ BattleScript_EffectMagnetRise::
 	attackcanceler
 	attackstring
 	ppreduce
-	setuserstatus3 STATUS3_MAGNET_RISE, BattleScript_ButItFailed
+	jumpifvolatile BS_ATTACKER, VOLATILE_ROOT, BattleScript_ButItFailed
+	jumpifvolatile BS_ATTACKER, VOLATILE_SMACK_DOWN, BattleScript_ButItFailed
+	trysetvolatile BS_ATTACKER, VOLATILE_MAGNET_RISE, BattleScript_ButItFailed
 	attackanimation
 	waitanimation
 	printstring STRINGID_PKMNLEVITATEDONELECTROMAGNETISM
@@ -2539,7 +2542,7 @@ BattleScript_EffectAquaRing::
 	attackcanceler
 	attackstring
 	ppreduce
-	setuserstatus3 STATUS3_AQUA_RING, BattleScript_ButItFailed
+	setvolatile BS_ATTACKER, VOLATILE_AQUA_RING
 	attackanimation
 	waitanimation
 	printstring STRINGID_PKMNSURROUNDEDWITHVEILOFWATER
@@ -2600,7 +2603,7 @@ BattleScript_EffectMiracleEye::
 	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
 	attackstring
 	ppreduce
-	setmiracleeye BattleScript_ButItFailed
+	setvolatile BS_TARGET, VOLATILE_MIRACLE_EYE
 	goto BattleScript_IdentifiedFoe
 
 BattleScript_EffectGravity::
@@ -2617,7 +2620,9 @@ BattleScript_EffectGravitySuccess::
 	selectfirstvalidtarget
 BattleScript_GravityLoop:
 	movevaluescleanup
-	jumpifstatus3 BS_TARGET, STATUS3_ON_AIR | STATUS3_MAGNET_RISE | STATUS3_TELEKINESIS, BattleScript_GravityLoopDrop
+	jumpfifsemiinvulnerable BS_TARGET, STATE_ON_AIR, BattleScript_GravityLoopDrop
+	jumpifvolatile BS_TARGET, VOLATILE_MAGNET_RISE, BattleScript_GravityLoopDrop
+	jumpifvolatile BS_TARGET, VOLATILE_TELEKINESIS, BattleScript_GravityLoopDrop
 	goto BattleScript_GravityLoopEnd
 BattleScript_GravityLoopDrop:
 	gravityonairbornemons
@@ -2729,7 +2734,7 @@ BattleScript_EffectNaturalGift::
 	jumpifnotberry BS_ATTACKER, BattleScript_ButItFailed
 	jumpifword CMP_COMMON_BITS, gFieldStatuses, STATUS_FIELD_MAGIC_ROOM, BattleScript_ButItFailed
 	jumpifability BS_ATTACKER, ABILITY_KLUTZ, BattleScript_ButItFailed
-	jumpifstatus3 BS_ATTACKER, STATUS3_EMBARGO, BattleScript_ButItFailed
+	jumpifvolatile BS_ATTACKER, VOLATILE_EMBARGO, BattleScript_ButItFailed
 	accuracycheck BattleScript_MoveMissedPause, ACC_CURR_MOVE
 	call BattleScript_HitFromCritCalc
 
@@ -2745,12 +2750,6 @@ BattleScript_MoveMissed::
 	resultmessage
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
-
-BattleScript_EffectDarkVoid::
-.if B_DARK_VOID_FAIL >= GEN_7
-	jumpifspecies SPECIES_DARKRAI, BattleScript_EffectNonVolatileStatus
-	goto BattleScript_PokemonCantUseTheMove
-.endif
 
 BattleScript_TerrainPreventsEnd2::
 	pause B_WAIT_TIME_SHORT
@@ -2844,13 +2843,6 @@ BattleScript_AlreadyAsleep::
 	setmoveresultflags MOVE_RESULT_FAILED
 	goto BattleScript_MoveEnd
 
-BattleScript_WasntAffected::
-	pause B_WAIT_TIME_SHORT
-	printstring STRINGID_PKMNWASNTAFFECTED
-	waitmessage B_WAIT_TIME_LONG
-	setmoveresultflags MOVE_RESULT_FAILED
-	goto BattleScript_MoveEnd
-
 BattleScript_CantMakeAsleep::
 	pause B_WAIT_TIME_SHORT
 	printfromtable gUproarAwakeStringIds
@@ -2895,44 +2887,10 @@ BattleScript_MaxHp50Recoil::
 
 BattleScript_EffectDreamEater::
 	attackcanceler
-	jumpifsubstituteblocks BattleScript_DreamEaterNoEffect
-	jumpifstatus BS_TARGET, STATUS1_SLEEP, BattleScript_DreamEaterWorked
-	jumpifability BS_TARGET, ABILITY_COMATOSE, BattleScript_DreamEaterWorked
-BattleScript_DreamEaterNoEffect:
-	attackstring
-	ppreduce
-	waitmessage B_WAIT_TIME_LONG
-	goto BattleScript_WasntAffected
-BattleScript_DreamEaterWorked:
-	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
-	attackstring
-	ppreduce
-	critcalc
-	damagecalc
-	adjustdamage
-	attackanimation
-	waitanimation
-	effectivenesssound
-	hitanimation BS_TARGET
-	waitstate
-	healthbarupdate BS_TARGET
-	datahpupdate BS_TARGET
-	critmessage
-	waitmessage B_WAIT_TIME_LONG
-	resultmessage
-	waitmessage B_WAIT_TIME_LONG
-	jumpifstatus3 BS_ATTACKER, STATUS3_HEAL_BLOCK, BattleScript_DreamEaterTryFaintEnd
-	setdrainedhp
-	manipulatedamage DMG_BIG_ROOT
-	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE
-	healthbarupdate BS_ATTACKER
-	datahpupdate BS_ATTACKER
-	jumpifmovehadnoeffect BattleScript_DreamEaterTryFaintEnd
-	printstring STRINGID_PKMNENERGYDRAINED
-	waitmessage B_WAIT_TIME_LONG
-BattleScript_DreamEaterTryFaintEnd:
-	tryfaintmon BS_TARGET
-	goto BattleScript_MoveEnd
+	jumpifsubstituteblocks BattleScript_DoesntAffectTargetAtkString
+	jumpifstatus BS_TARGET, STATUS1_SLEEP, BattleScript_HitFromAccCheck
+	jumpifability BS_TARGET, ABILITY_COMATOSE, BattleScript_HitFromAccCheck
+	goto BattleScript_DoesntAffectTargetAtkString
 
 BattleScript_EffectMirrorMove::
 	attackcanceler
@@ -3113,7 +3071,7 @@ BattleScript_EffectRoar::
 	jumpifcommanderactive BattleScript_ButItFailed
 	jumpifability BS_TARGET, ABILITY_GUARD_DOG, BattleScript_ButItFailed
 	jumpifability BS_TARGET, ABILITY_SUCTION_CUPS, BattleScript_AbilityPreventsPhasingOut
-	jumpifstatus3 BS_TARGET, STATUS3_ROOTED, BattleScript_PrintMonIsRooted
+	jumpifvolatile BS_TARGET, VOLATILE_ROOT, BattleScript_PrintMonIsRooted
 	jumpiftargetdynamaxed BattleScript_RoarBlockedByDynamax
 	accuracycheck BattleScript_ButItFailed, NO_ACC_CALC_CHECK_LOCK_ON
 	accuracycheck BattleScript_MoveMissedPause, ACC_CURR_MOVE
@@ -3417,6 +3375,7 @@ BattleScript_PowerHerbActivation:
 BattleScript_EffectTwoTurnsAttack::
 	jumpifvolatile BS_ATTACKER, VOLATILE_MULTIPLETURNS, BattleScript_TwoTurnMovesSecondTurn
 	jumpifword CMP_COMMON_BITS, gHitMarker, HITMARKER_NO_ATTACKSTRING, BattleScript_TwoTurnMovesSecondTurn
+	jumpifword CMP_COMMON_BITS, gHitMarker, HITMARKER_ATTACKSTRING_PRINTED, BattleScript_EffectHit @ if it's not the first hit
 	tryfiretwoturnmovewithoutcharging BS_ATTACKER, BattleScript_EffectHit @ e.g. Solar Beam
 	call BattleScript_FirstChargingTurn
 	tryfiretwoturnmoveaftercharging BS_ATTACKER, BattleScript_TwoTurnMovesSecondTurn @ e.g. Electro Shot
@@ -3836,7 +3795,7 @@ BattleScript_NightmareWorked::
 
 BattleScript_EffectMinimize::
 	attackcanceler
-	setminimize
+	setvolatile BS_ATTACKER, VOLATILE_MINIMIZE
 .if B_MINIMIZE_EVASION >= GEN_5
 	setstatchanger STAT_EVASION, 2, FALSE
 .else
@@ -4549,6 +4508,11 @@ BattleScript_FlatterTryConfuse::
 	seteffectprimary BS_ATTACKER, BS_TARGET, MOVE_EFFECT_CONFUSION
 	goto BattleScript_MoveEnd
 
+BattleScript_EffectDarkVoid::
+.if B_DARK_VOID_FAIL >= GEN_7
+	jumpifspecies SPECIES_DARKRAI, BattleScript_EffectNonVolatileStatus
+	goto BattleScript_PokemonCantUseTheMove
+.endif
 BattleScript_EffectNonVolatileStatus::
 	attackcanceler
 	attackstring
@@ -4741,7 +4705,7 @@ BattleScript_EffectIngrain::
 	attackcanceler
 	attackstring
 	ppreduce
-	setuserstatus3 STATUS3_ROOTED, BattleScript_ButItFailed
+	trysetvolatile BS_ATTACKER, VOLATILE_ROOT, BattleScript_ButItFailed
 	attackanimation
 	waitanimation
 	printstring STRINGID_PKMNPLANTEDROOTS
@@ -4890,7 +4854,7 @@ BattleScript_EffectGrudge::
 	attackcanceler
 	attackstring
 	ppreduce
-	setuserstatus3 STATUS3_GRUDGE, BattleScript_ButItFailed
+	trysetvolatile BS_ATTACKER, VOLATILE_GRUDGE, BattleScript_ButItFailed
 	attackanimation
 	waitanimation
 	printstring STRINGID_PKMNWANTSGRUDGE
@@ -5625,6 +5589,7 @@ BattleScript_LeechSeedTurnDrainHealBlock::
 BattleScript_LeechSeedTurnDrainRecovery::
 	call BattleScript_LeechSeedTurnDrain
 BattleScript_LeechSeedTurnDrainGainHp:
+	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
 	healthbarupdate BS_TARGET
 	datahpupdate BS_TARGET
 	printfromtable gLeechSeedStringIds
@@ -6546,30 +6511,30 @@ BattleScript_UltraBurst::
 	end3
 
 BattleScript_GulpMissileFormChange::
-	call BattleScript_AttackerFormChange
+	call BattleScript_BattlerFormChange
 	goto BattleScript_FromTwoTurnMovesSecondTurnRet
 
-BattleScript_AttackerFormChange::
+BattleScript_BattlerFormChange::
 	pause 5
-	call BattleScript_AbilityPopUp
+	call BattleScript_AbilityPopUpScripting
 	flushtextbox
-BattleScript_AttackerFormChangeNoPopup::
-	handleformchange BS_ATTACKER, 0
-	handleformchange BS_ATTACKER, 1
-	playanimation BS_ATTACKER, B_ANIM_FORM_CHANGE
+BattleScript_BattlerFormChangeNoPopup:
+	handleformchange BS_SCRIPTING, 0
+	handleformchange BS_SCRIPTING, 1
+	playanimation BS_SCRIPTING, B_ANIM_FORM_CHANGE
 	waitanimation
-	handleformchange BS_ATTACKER, 2
+	handleformchange BS_SCRIPTING, 2
 	return
 
-BattleScript_AttackerFormChangeEnd3::
-	call BattleScript_AttackerFormChange
+BattleScript_BattlerFormChangeEnd3::
+	call BattleScript_BattlerFormChange
 	end3
 
-BattleScript_AttackerFormChangeEnd3NoPopup::
-	call BattleScript_AttackerFormChangeNoPopup
+BattleScript_BattlerFormChangeEnd3NoPopup::
+	call BattleScript_BattlerFormChangeNoPopup
 	end3
 
-BattleScript_AttackerFormChangeWithStringEnd3::
+BattleScript_BattlerFormChangeWithStringEnd3::
 	pause 5
 	call BattleScript_AbilityPopUpScripting
 	flushtextbox
@@ -6644,19 +6609,6 @@ BattleScript_TargetFormChangeWithStringNoPopup::
 	printstring STRINGID_PKMNTRANSFORMED
 	waitmessage B_WAIT_TIME_LONG
 	return
-
-BattleScript_BattlerFormChangeWithStringEnd3::
-	pause 5
-	call BattleScript_AbilityPopUpScripting
-	flushtextbox
-	handleformchange BS_SCRIPTING, 0
-	handleformchange BS_SCRIPTING, 1
-	playanimation BS_SCRIPTING, B_ANIM_FORM_CHANGE, NULL
-	waitanimation
-	handleformchange BS_SCRIPTING, 2
-	printstring STRINGID_PKMNTRANSFORMED
-	waitmessage B_WAIT_TIME_LONG
-	end3
 
 BattleScript_IllusionOffAndTerastallization::
 	call BattleScript_IllusionOff
@@ -6999,7 +6951,7 @@ BattleScript_YawnMakesAsleep::
 	waitmessage B_WAIT_TIME_LONG
 	updatestatusicon BS_EFFECT_BATTLER
 	waitstate
-	jumpifstatus3 BS_EFFECT_BATTLER, STATUS3_SKY_DROPPED, BattleScript_YawnEnd
+	jumpfifsemiinvulnerable BS_EFFECT_BATTLER, STATE_SKY_DROP, BattleScript_YawnEnd
 	makevisible BS_EFFECT_BATTLER
 	skydropyawn
 BattleScript_YawnEnd:
@@ -7428,6 +7380,7 @@ BattleScript_IntimidateLoopIncrement:
 	copybyte sBATTLER, gBattlerAttacker
 	destroyabilitypopup
 	restoretarget
+	restoreattacker
 	pause B_WAIT_TIME_MED
 	end3
 
@@ -7456,7 +7409,6 @@ BattleScript_IntimidateInReverse::
 BattleScript_SupersweetSyrupActivates::
  	savetarget
 	call BattleScript_AbilityPopUp
-	destroyabilitypopup
 	printstring STRINGID_SUPERSWEETAROMAWAFTS
 	waitmessage B_WAIT_TIME_LONG
 	setbyte gBattlerTarget, 0
@@ -7485,6 +7437,7 @@ BattleScript_SupersweetSyrupLoopIncrement:
 	copybyte sBATTLER, gBattlerAttacker
 	destroyabilitypopup
 	restoretarget
+	restoreattacker
 	pause B_WAIT_TIME_MED
 	end3
 
@@ -7629,10 +7582,9 @@ BattleScript_HospitalityActivates::
 	printstring STRINGID_HOSPITALITYRESTORATION
 	waitmessage B_WAIT_TIME_LONG
 	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE
-	healthbarupdate BS_TARGET
-	datahpupdate BS_TARGET
-	restoreattacker
-	restoretarget
+ 	playanimation BS_EFFECT_BATTLER, B_ANIM_SIMPLE_HEAL
+	healthbarupdate BS_EFFECT_BATTLER
+	datahpupdate BS_EFFECT_BATTLER
 	end3
 
 BattleScript_AttackWeakenedByStrongWinds::
@@ -7976,6 +7928,8 @@ BattleScript_MummyActivates::
 	return
 
 BattleScript_WanderingSpiritActivates::
+	saveattacker
+	savetarget
 .if B_ABILITY_POP_UP == TRUE
 	copybyte gBattlerAbility, gBattlerTarget
 	sethword sABILITY_OVERWRITE, ABILITY_WANDERING_SPIRIT
@@ -7992,6 +7946,8 @@ BattleScript_WanderingSpiritActivates::
 	jumpiffainted BS_TARGET, TRUE, BattleScript_WanderingSpiritActivatesRet
 	switchinabilities BS_TARGET
 BattleScript_WanderingSpiritActivatesRet:
+	restoreattacker
+	restoretarget
 	return
 
 BattleScript_TargetsStatWasMaxedOut::
@@ -8086,6 +8042,7 @@ BattleScript_FellStingerRaisesAtkEnd:
 
 BattleScript_AttackerAbilityStatRaiseEnd3::
 	call BattleScript_AttackerAbilityStatRaise
+	restoreattacker
 	end3
 
 BattleScript_SwitchInAbilityMsg::
@@ -9112,7 +9069,7 @@ BattleScript_RedCardActivates::
 	printstring STRINGID_REDCARDACTIVATE
 	waitmessage B_WAIT_TIME_LONG
 	swapattackerwithtarget
-	jumpifstatus3 BS_EFFECT_BATTLER, STATUS3_ROOTED, BattleScript_RedCardIngrain
+	jumpifvolatile BS_EFFECT_BATTLER, VOLATILE_ROOT, BattleScript_RedCardIngrain
 	jumpifability BS_EFFECT_BATTLER, ABILITY_SUCTION_CUPS, BattleScript_RedCardSuctionCups
 	jumpiftargetdynamaxed BattleScript_RedCardDynamaxed
 	removeitem BS_SCRIPTING
@@ -9178,7 +9135,7 @@ BattleScript_EjectPackActivates::
 	jumpifcantswitch BS_SCRIPTING, BattleScript_EjectButtonEnd
 	goto BattleScript_EjectPackActivate_Ret
 
-BattleScript_DarkTypePreventsPrankster::
+BattleScript_DoesntAffectTargetAtkString::
 	attackstring
 	ppreduce
 	pause B_WAIT_TIME_SHORT

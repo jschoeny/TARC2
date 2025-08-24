@@ -1012,7 +1012,7 @@ void HandleSpeciesGfxDataChange(u8 battlerAtk, u8 battlerDef, bool32 megaEvo, bo
         {
             // Get base form if its currently Gigantamax
             if (IsGigantamaxed(battlerDef))
-                targetSpecies = gBattleStruct->changedSpecies[GetBattlerSide(battlerDef)][gBattlerPartyIndexes[battlerDef]];
+                targetSpecies = GetBattlerPartyState(battlerDef)->changedSpecies;
             else if (gBattleStruct->illusion[battlerDef].state == ILLUSION_ON)
                 targetSpecies = GetIllusionMonSpecies(battlerDef);
             else
@@ -1233,7 +1233,7 @@ void CreateEnemyShadowSprite(u32 battler)
 {
     if (B_ENEMY_MON_SHADOW_STYLE >= GEN_4 && P_GBA_STYLE_SPECIES_GFX == FALSE)
     {
-        u16 species = SanitizeSpeciesId(gBattleMons[battler].species);
+        u16 species = GetBattlerVisualSpecies(battler);
         u8 size = gSpeciesInfo[species].enemyShadowSize;
 
         gBattleSpritesDataPtr->healthBoxesData[battler].shadowSpriteIdPrimary = CreateSprite(&gSpriteTemplate_EnemyShadow,
@@ -1337,8 +1337,8 @@ void SpriteCB_EnemyShadow(struct Sprite *shadowSprite)
     }
     else if (transformSpecies != SPECIES_NONE)
     {
-        xOffset = gSpeciesInfo[transformSpecies].enemyShadowXOffset;
-        yOffset = gSpeciesInfo[transformSpecies].enemyShadowYOffset;
+        xOffset = gSpeciesInfo[transformSpecies].enemyShadowXOffset + (shadowSprite->tSpriteSide == SPRITE_SIDE_LEFT ? -16 : 16);
+        yOffset = gSpeciesInfo[transformSpecies].enemyShadowYOffset + 16;
         size = gSpeciesInfo[transformSpecies].enemyShadowSize;
 
         invisible = (B_ENEMY_MON_SHADOW_STYLE >= GEN_4 && P_GBA_STYLE_SPECIES_GFX == FALSE)
@@ -1347,7 +1347,7 @@ void SpriteCB_EnemyShadow(struct Sprite *shadowSprite)
     }
     else if (B_ENEMY_MON_SHADOW_STYLE >= GEN_4 && P_GBA_STYLE_SPECIES_GFX == FALSE)
     {
-        u16 species = SanitizeSpeciesId(gBattleMons[battler].species);
+        u16 species = GetBattlerVisualSpecies(battler);
         xOffset = gSpeciesInfo[species].enemyShadowXOffset + (shadowSprite->tSpriteSide == SPRITE_SIDE_LEFT ? -16 : 16);
         yOffset = gSpeciesInfo[species].enemyShadowYOffset + 16;
         size = gSpeciesInfo[species].enemyShadowSize;
