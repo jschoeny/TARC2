@@ -26,6 +26,7 @@ mapscripts ModernTime_Bedroom_MapScripts {
       setvar(VAR_TEMP_0, 1)
       clearflag(FLAG_FOLLOWERS_DISABLED)
 	    special(HealPlayerParty)
+      setmonlevel(0, 30)
       warpsilent(MAP_TOWN_SQUARE, 17, 14)
     }
     VAR_TEMP_0, 0 {

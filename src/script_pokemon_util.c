@@ -740,3 +740,18 @@ void CreateScriptedDoubleWildShadowMon(u16 species1, u8 level1, u16 item1, bool8
         SetMonData(&gEnemyParty[3], MON_DATA_HELD_ITEM, heldItem2);
     }
 }
+
+void ScrCmd_setmonlevel(struct ScriptContext *ctx)
+{
+    u8 partyIndex = ScriptReadByte(ctx);
+    u8 level = ScriptReadByte(ctx);
+
+    u32 newExp = gExperienceTables[gSpeciesInfo[GetMonData(&gPlayerParty[partyIndex], MON_DATA_SPECIES, NULL)].growthRate][level];
+
+    if (newExp != 0) // Failsafe
+    {
+        SetMonData(&gPlayerParty[partyIndex], MON_DATA_EXP, &newExp);
+        CalculateMonStats(&gPlayerParty[partyIndex]);
+        GiveMonInitialMoveset(&gPlayerParty[partyIndex]);
+    }
+}
