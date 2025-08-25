@@ -11491,6 +11491,144 @@
               }
             ]
           }
+        },
+        {
+          "map": "MAP_MOUNTAIN_PATH1",
+          "base_label": "gMountainPath1",
+          "land_mons": {
+            "encounter_rate": 10,
+            "mons": [
+              {
+                "min_level": 23,
+                "max_level": 26,
+                "species": "SPECIES_STARLY"
+              },
+              {
+                "min_level": 23,
+                "max_level": 26,
+                "species": "SPECIES_MANKEY"
+              },
+              {
+                "min_level": 23,
+                "max_level": 26,
+                "species": "SPECIES_STARLY"
+              },
+              {
+                "min_level": 23,
+                "max_level": 26,
+                "species": "SPECIES_STARLY"
+              },
+              {
+                "min_level": 23,
+                "max_level": 26,
+                "species": "SPECIES_MANKEY"
+              },
+              {
+                "min_level": 23,
+                "max_level": 26,
+                "species": "SPECIES_MANKEY"
+              },
+              {
+                "min_level": 25,
+                "max_level": 27,
+                "species": "SPECIES_STARAVIA"
+              },
+              {
+                "min_level": 25,
+                "max_level": 27,
+                "species": "SPECIES_STARAVIA"
+              },
+              {
+                "min_level": 24,
+                "max_level": 26,
+                "species": "SPECIES_SKIPLOOM"
+              },
+              {
+                "min_level": 24,
+                "max_level": 26,
+                "species": "SPECIES_SKIPLOOM"
+              },
+              {
+                "min_level": 23,
+                "max_level": 26,
+                "species": "SPECIES_LARVITAR"
+              },
+              {
+                "min_level": 23,
+                "max_level": 26,
+                "species": "SPECIES_LARVITAR"
+              }
+            ]
+          }
+        },
+        {
+          "map": "MAP_MOUNTAIN_PATH2",
+          "base_label": "gMountainPath2",
+          "land_mons": {
+            "encounter_rate": 10,
+            "mons": [
+              {
+                "min_level": 24,
+                "max_level": 27,
+                "species": "SPECIES_STARLY"
+              },
+              {
+                "min_level": 24,
+                "max_level": 27,
+                "species": "SPECIES_MANKEY"
+              },
+              {
+                "min_level": 24,
+                "max_level": 27,
+                "species": "SPECIES_SKIPLOOM"
+              },
+              {
+                "min_level": 24,
+                "max_level": 27,
+                "species": "SPECIES_SKIPLOOM"
+              },
+              {
+                "min_level": 24,
+                "max_level": 27,
+                "species": "SPECIES_MURKROW"
+              },
+              {
+                "min_level": 23,
+                "max_level": 26,
+                "species": "SPECIES_ARIADOS"
+              },
+              {
+                "min_level": 23,
+                "max_level": 26,
+                "species": "SPECIES_NOCTOWL"
+              },
+              {
+                "min_level": 23,
+                "max_level": 26,
+                "species": "SPECIES_NOCTOWL"
+              },
+              {
+                "min_level": 24,
+                "max_level": 26,
+                "species": "SPECIES_PARASECT"
+              },
+              {
+                "min_level": 24,
+                "max_level": 26,
+                "species": "SPECIES_PARASECT"
+              },
+              {
+                "min_level": 24,
+                "max_level": 26,
+                "species": "SPECIES_SCYTHER"
+              },
+              {
+                "min_level": 24,
+                "max_level": 26,
+                "species": "SPECIES_SCYTHER"
+              }
+            ]
+          }
         }
       ]
     },
