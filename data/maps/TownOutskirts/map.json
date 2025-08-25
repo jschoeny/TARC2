@@ -2,7 +2,7 @@
   "id": "MAP_TOWN_OUTSKIRTS",
   "name": "TownOutskirts",
   "layout": "LAYOUT_TOWN_OUTSKIRTS",
-  "music": "MUS_RG_ROUTE1",
+  "music": "MUS_PMDRED_FRIEND_AREA_SWAMP",
   "region_map_section": "MAPSEC_DEWFORD_TOWN",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

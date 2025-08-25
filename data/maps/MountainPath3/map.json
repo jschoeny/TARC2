@@ -2,7 +2,7 @@
   "id": "MAP_MOUNTAIN_PATH3",
   "name": "MountainPath3",
   "layout": "LAYOUT_MOUNTAIN_PATH3",
-  "music": "MUS_RG_ROUTE1",
+  "music": "MUS_PMDRED_MAKUHITA_DOJO",
   "region_map_section": "MAPSEC_ROUTE_101",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
