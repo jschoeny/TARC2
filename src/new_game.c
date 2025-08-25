@@ -205,6 +205,8 @@ void NewGameInitData(void)
     ResetFanClub();
     ResetLotteryCorner();
     ScriptGiveMon(SPECIES_GROWLITHE, 10, ITEM_NONE);
+    u8 metLoc = MAPSEC_LITTLEROOT_TOWN; // RENJI'S HOME
+    SetMonData(&gPlayerParty[0], MON_DATA_MET_LOCATION, &metLoc);
     // Set first mon to have 5 hp
     gPlayerParty[0].hp = 5;
     FlagSet(FLAG_SYS_POKEMON_GET);
