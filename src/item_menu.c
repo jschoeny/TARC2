@@ -1384,6 +1384,13 @@ static void ChangeBagPocketId(u8 *bagPocketId, s8 deltaBagPocketId)
         *bagPocketId = 0;
     else if (deltaBagPocketId == MENU_CURSOR_DELTA_LEFT && *bagPocketId == 0)
         *bagPocketId = POCKETS_COUNT - 1;
+    else if (*bagPocketId + deltaBagPocketId == POCKET_TM_HM || *bagPocketId + deltaBagPocketId == POCKET_POKE_BALLS)
+    {
+        if (deltaBagPocketId == MENU_CURSOR_DELTA_RIGHT)
+            *bagPocketId = POCKET_BERRIES;
+        else
+            *bagPocketId = POCKET_ITEMS;
+    }
     else
         *bagPocketId += deltaBagPocketId;
 }
@@ -1484,6 +1491,10 @@ static void DrawItemListBgRow(u8 y)
 
 static void DrawPocketIndicatorSquare(u8 x, bool8 isCurrentPocket)
 {
+    if (x > POCKET_POKE_BALLS)
+        x -= 1;
+    else
+        x += 1;
     if (!isCurrentPocket)
         FillBgTilemapBufferRect_Palette0(2, 0x1017, x + 5, 3, 1, 1);
     else
