@@ -214,9 +214,9 @@ mapscripts RenjiHomeCutscene1_MapScripts {
 }
 
 script RenjiHomeCutscene1_EventScript_HideFireScene {
-  setmetatile(9, 11, 0x0B9, TRUE)
-  setmetatile(10, 11, 0x0BA, TRUE)
-  setmetatile(11, 11, 0x0BB, TRUE)
+  setmetatile(9, 11, 0x221, TRUE)
+  setmetatile(10, 11, 0x222, TRUE)
+  setmetatile(11, 11, 0x223, TRUE)
   setmetatile(12, 9, 0x002, FALSE)
   setmetatile(12, 10, 0x002, FALSE)
   setmetatile(12, 11, 0x002, FALSE)
