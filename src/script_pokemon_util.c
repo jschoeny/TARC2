@@ -755,3 +755,11 @@ void ScrCmd_setmonlevel(struct ScriptContext *ctx)
         GiveMonInitialMoveset(&gPlayerParty[partyIndex]);
     }
 }
+
+void ScrCmd_setmonitem(struct ScriptContext *ctx)
+{
+    u8 partyIndex = ScriptReadByte(ctx);
+    u16 itemId = ScriptReadHalfword(ctx);
+
+    SetMonData(&gPlayerParty[partyIndex], MON_DATA_HELD_ITEM, &itemId);
+}
