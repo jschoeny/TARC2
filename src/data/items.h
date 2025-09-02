@@ -1,3 +1,12 @@
+#ifdef __INTELLISENSE__
+#include "include/constants/item.h"
+#include "include/item.h"
+#include "include/item_use.h"
+#include "include/graphics.h"
+#include "include/pokeball.h"
+#include "src/data/pokemon/item_effects.h"
+#endif
+
 #if I_USE_EVO_HELD_ITEMS_FROM_BAG == TRUE
     #define EVO_HELD_ITEM_TYPE ITEM_USE_PARTY_MENU
     #define EVO_HELD_ITEM_FIELD_FUNC ItemUseOutOfBattle_EvolutionStone
@@ -9799,10 +9808,10 @@ const struct Item gItemsInfo[] =
         .pluralName = ITEM_PLURAL_NAME("Oran Berries"),
         .price = (I_BERRY_PRICE >= GEN_8) ? 80 : 20,
         .holdEffect = HOLD_EFFECT_RESTORE_HP,
-        .holdEffectParam = 10,
+        .holdEffectParam = 30,
         .description = COMPOUND_STRING(
             "A hold item that\n"
-            "restores 10 HP in\n"
+            "restores 30 HP in\n"
             "battle."),
         .pocket = POCKET_BERRIES,
         .type = ITEM_USE_PARTY_MENU,
