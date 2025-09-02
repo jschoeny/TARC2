@@ -5465,6 +5465,7 @@ static void FormatTextByWidth(u8 *result, s32 maxWidth, u8 fontId, const u8 *str
 static inline bool32 ShouldShowMoveRelearner(void)
 {
     return (P_SUMMARY_SCREEN_MOVE_RELEARNER
+         && !gMapHeader.allowEscaping
          && !sMonSummaryScreen->lockMovesFlag
          && sMonSummaryScreen->mode != SUMMARY_MODE_BOX
          && sMonSummaryScreen->mode != SUMMARY_MODE_BOX_CURSOR
