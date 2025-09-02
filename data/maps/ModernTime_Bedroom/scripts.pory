@@ -25,6 +25,7 @@ mapscripts ModernTime_Bedroom_MapScripts {
       setvar(VAR_STORY_PROGRESS, STORY_INTRO_TOWN_SQUARE)
       setvar(VAR_TEMP_0, 1)
       clearflag(FLAG_FOLLOWERS_DISABLED)
+      clearflag(FLAG_HIDE_MAP_NAME_POPUP)
 	    special(HealPlayerParty)
       setmonlevel(0, 30)
       setmonitem(0, ITEM_ORAN_BERRY)
