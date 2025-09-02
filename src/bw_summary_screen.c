@@ -116,6 +116,7 @@ enum BWSkillsPageState
 // Dynamic fields for the Battle Moves and Contest Moves pages.
 #define PSS_DATA_WINDOW_MOVE_NAMES_PP 0
 #define PSS_DATA_WINDOW_MOVE_DESCRIPTION 1
+#define PSS_DATA_WINDOW_MOVE_MESSAGE 2
 
 #define MOVE_SELECTOR_SPRITES_COUNT 15
 #define TYPE_ICON_SPRITE_COUNT (MAX_MON_MOVES + 1)
@@ -321,6 +322,9 @@ static void PrintMoveDetails(u16);
 static void PrintNewMoveDetailsOrCancelText(void);
 static void SwapMovesNamesPP(u8, u8);
 static void PrintHMMovesCantBeForgotten(void);
+static void DisplayMoveMessage(u8 taskId, const u8 *message);
+static void Task_HandleMoveMessageInput(u8 taskId);
+static void CloseMoveMessage(u8 taskId);
 static void ResetSpriteIds(void);
 static void SetSpriteInvisibility(u8, bool8);
 static void HidePageSpecificSprites(void);
@@ -734,6 +738,15 @@ static const struct WindowTemplate sPageMovesTemplate[] = // This is used for bo
         .paletteNum = 6,
         .baseBlock = 515,
     },
+    [PSS_DATA_WINDOW_MOVE_MESSAGE] = {
+        .bg = 0,
+        .tilemapLeft = 2,
+        .tilemapTop = 15,
+        .width = 26,
+        .height = 4,
+        .paletteNum = 15,
+        .baseBlock = 650,
+    },
 };
 static const u8 sTextColors[][3] =
 {
@@ -750,6 +763,7 @@ static const u8 sTextColors[][3] =
     {0, 3, 4},
     {0, 5, 6},
     {0, 7, 8},
+    {0, 2, 3},
 };
 
 static void (*const sTextPrinterFunctions[])(void) =
@@ -2493,6 +2507,13 @@ static void Task_HandleInput(u8 taskId)
                 && ShouldShowMoveRelearner()
                 && (sMonSummaryScreen->currPageIndex == PSS_PAGE_BATTLE_MOVES || sMonSummaryScreen->currPageIndex == PSS_PAGE_CONTEST_MOVES))
         {
+            if (gMapHeader.allowEscaping)
+            {
+                PlaySE(SE_FAILURE);
+                HideMoveRelearner();
+                DisplayMoveMessage(taskId, gText_CantRelearnInTheWild);
+                return;
+            }
             sMonSummaryScreen->callback = CB2_InitLearnMove;
             gSpecialVar_0x8004 = sMonSummaryScreen->curMonIndex;
             gOriginSummaryScreenPage = sMonSummaryScreen->currPageIndex;
@@ -4781,6 +4802,61 @@ static void PrintHMMovesCantBeForgotten(void)
     PrintTextOnWindow_BW_Font(windowId, gText_HMMovesCantBeForgotten2, 2, 0, 0, 0);
 }
 
+static void DisplayMoveMessage(u8 taskId, const u8 *message)
+{
+    u8 windowId;
+
+    LoadMessageBoxAndBorderGfx();
+
+    windowId = AddWindowFromTemplateList(sPageMovesTemplate, PSS_DATA_WINDOW_MOVE_MESSAGE);
+    FillWindowPixelBuffer(windowId, PIXEL_FILL(0));
+
+    DrawDialogFrameWithCustomTileAndPalette(windowId, TRUE, DLG_WINDOW_BASE_TILE_NUM, DLG_WINDOW_PALETTE_NUM);
+
+    GetMonNickname(&sMonSummaryScreen->currentMon, gStringVar1);
+    StringExpandPlaceholders(gStringVar4, message);
+
+    PrintTextOnWindow(windowId, gStringVar4, 0, 1, 2, 13);
+    PutWindowTilemap(windowId);
+    CopyWindowToVram(windowId, COPYWIN_FULL);
+    ScheduleBgCopyTilemapToVram(0);
+
+    gTasks[taskId].func = Task_HandleMoveMessageInput;
+}
+
+static void Task_HandleMoveMessageInput(u8 taskId)
+{
+    if (JOY_NEW(A_BUTTON | B_BUTTON))
+    {
+        PlaySE(SE_SELECT);
+        CloseMoveMessage(taskId);
+        gTasks[taskId].func = Task_HandleInput;
+    }
+}
+
+static void CloseMoveMessage(u8 taskId)
+{
+    u8 windowId;
+
+    // Clear the message area INCLUDING the dialog frame border
+    // Frame extends 2 tiles left, 2 tiles right, 1 tile up, 1 tile down
+    FillBgTilemapBufferRect(0, 0, 0, 14, 30, 6, 15);
+    ScheduleBgCopyTilemapToVram(0);
+
+    // Redraw just move 3 (which is what the message overlaps)
+    if (sMonSummaryScreen->currPageIndex == PSS_PAGE_BATTLE_MOVES || sMonSummaryScreen->currPageIndex == PSS_PAGE_CONTEST_MOVES)
+    {
+        PrintMoveNameAndPP(3);
+
+        windowId = AddWindowFromTemplateList(sPageMovesTemplate, PSS_DATA_WINDOW_MOVE_NAMES_PP);
+        PutWindowTilemap(windowId);
+        CopyWindowToVram(windowId, COPYWIN_FULL);
+    }
+
+    if (ShouldShowMoveRelearner())
+        ShowMoveRelearner();
+}
+
 static void ShowCategoryIcon(u16 move)
 {
     if (sMonSummaryScreen->spriteIds[SPRITE_ARR_ID_CATEGORY] == SPRITE_NONE)
@@ -5465,7 +5541,6 @@ static void FormatTextByWidth(u8 *result, s32 maxWidth, u8 fontId, const u8 *str
 static inline bool32 ShouldShowMoveRelearner(void)
 {
     return (P_SUMMARY_SCREEN_MOVE_RELEARNER
-         && !gMapHeader.allowEscaping
          && !sMonSummaryScreen->lockMovesFlag
          && sMonSummaryScreen->mode != SUMMARY_MODE_BOX
          && sMonSummaryScreen->mode != SUMMARY_MODE_BOX_CURSOR
