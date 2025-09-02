@@ -151,6 +151,10 @@ ifeq ($(RELEASE),1)
   override CPPFLAGS += -DRELEASE
 endif
 
+ifneq ($(SKIP_INTRO),)
+  override CPPFLAGS += -DSKIP_INTRO=$(SKIP_INTRO)
+endif
+
 override CFLAGS += -mthumb -mthumb-interwork -O$(O_LEVEL) -mabi=apcs-gnu -mtune=arm7tdmi -march=armv4t -Wno-pointer-to-int-cast -std=gnu17 -Werror -Wall -Wno-strict-aliasing -Wno-attribute-alias -Woverride-init -Wnonnull -Wenum-conversion
 
 ifneq ($(LTO),0)
@@ -235,6 +239,16 @@ $(DATA_SRC_SUBDIR)/wild_encounters.h: $(DATA_SRC_SUBDIR)/wild_encounters.json $(
 
 $(C_BUILDDIR)/wild_encounter.o: c_dep += $(DATA_SRC_SUBDIR)/wild_encounters.h
 
+# Recompile new_game.c if SKIP_INTRO changes
+SKIP_INTRO_STAMP := $(OBJ_DIR)/skip_intro.stamp
+
+$(SKIP_INTRO_STAMP): FORCE
+	@mkdir -p $(dir $@)
+	@echo "$(SKIP_INTRO)" > $@.tmp
+	@if ! cmp -s $@.tmp $@ 2>/dev/null; then mv $@.tmp $@; else rm $@.tmp; fi
+
+$(C_BUILDDIR)/new_game.o: $(SKIP_INTRO_STAMP)
+
 PERL := perl
 SHA1 := $(shell { command -v sha1sum || command -v shasum; } 2>/dev/null) -c
 
@@ -248,7 +262,7 @@ MAKEFLAGS += --no-print-directory
 .DELETE_ON_ERROR:
 
 RULES_NO_SCAN += libagbsyscall clean clean-assets tidy tidymodern tidycheck generated clean-generated tidyrelease
-.PHONY: all rom agbcc modern compare check debug release
+.PHONY: all rom agbcc modern compare check debug release FORCE
 .PHONY: $(RULES_NO_SCAN)
 
 # PoryLive no scan rules

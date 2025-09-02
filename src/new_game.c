@@ -133,10 +133,15 @@ static void ClearFrontierRecord(void)
 
 static void WarpToIntro(void)
 {
+#if SKIP_INTRO == TRUE
+    SetWarpDestination(MAP_GROUP(MAP_TOWN_SQUARE), MAP_NUM(MAP_TOWN_SQUARE), 0, 17, 14);
+    WarpIntoMap();
+#else
     FlagSet(FLAG_SPAWN_INVISIBLE);
     FlagSet(FLAG_FOLLOWERS_DISABLED);
     SetWarpDestination(MAP_GROUP(MAP_MODERN_TIME_BEDROOM), MAP_NUM(MAP_MODERN_TIME_BEDROOM), 0, -1, -1);
     WarpIntoMap();
+#endif
 }
 
 void Sav2_ClearSetDefault(void)
@@ -204,11 +209,22 @@ void NewGameInitData(void)
     InitDewfordTrend();
     ResetFanClub();
     ResetLotteryCorner();
+#if SKIP_INTRO == TRUE
+    ScriptGiveMon(SPECIES_GROWLITHE, 30, ITEM_ORAN_BERRY);
+    u8 metLoc = MAPSEC_LITTLEROOT_TOWN; // RENJI'S HOME
+    SetMonData(&gPlayerParty[0], MON_DATA_MET_LOCATION, &metLoc);
+    VarSet(VAR_STORY_PROGRESS, STORY_INTRO_TOWN_SQUARE);
+    FlagClear(FLAG_FOLLOWERS_DISABLED);
+    FlagClear(FLAG_HIDE_MAP_NAME_POPUP);
+    AddBagItem(ITEM_ORAN_BERRY, 5);
+    AddBagItem(ITEM_LEPPA_BERRY, 10);
+    AddBagItem(ITEM_HEAL_POWDER, 3);
+#else
     ScriptGiveMon(SPECIES_GROWLITHE, 10, ITEM_NONE);
     u8 metLoc = MAPSEC_LITTLEROOT_TOWN; // RENJI'S HOME
     SetMonData(&gPlayerParty[0], MON_DATA_MET_LOCATION, &metLoc);
-    // Set first mon to have 5 hp
     gPlayerParty[0].hp = 5;
+#endif
     FlagSet(FLAG_SYS_POKEMON_GET);
     FlagSet(FLAG_RESCUED_BIRCH);
     FlagSet(FLAG_ADVENTURE_STARTED);
