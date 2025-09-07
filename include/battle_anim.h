@@ -223,6 +223,7 @@ enum {
 };
 
 void LaunchStatusAnimation(u8 battler, u8 statusAnimId);
+void LaunchStatusAnimation2(u8 battler1, u8 battler2, u8 statusAnimId);
 extern const union AnimCmd *const gAnims_SpinningSparkle[];
 
 // battle_anim_ground.c

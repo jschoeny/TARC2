@@ -3827,16 +3827,11 @@ static void TryDoEventsBeforeFirstTurn(void)
     case FIRST_TURN_EVENTS_SHADOW_MON:
         if (!gBattleStruct->shadowMonDone)
         {
-            if (gBattleMons[GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT)].isShadow)
+            bool8 leftShadow = gBattleMons[GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT)].isShadow;
+            bool8 rightShadow = gBattleMons[GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT)].isShadow;
+            if (leftShadow || rightShadow)
             {
-                LaunchStatusAnimation(GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT), B_ANIM_STATUS_SHADOW);
-            }
-            else if (gBattleMons[GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT)].isShadow)
-            {
-                LaunchStatusAnimation(GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT), B_ANIM_STATUS_SHADOW);
-            }
-            if (gBattleMons[GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT)].isShadow || gBattleMons[GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT)].isShadow)
-            {
+                LaunchStatusAnimation2(leftShadow ? GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT) : GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT), rightShadow ? GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT) : GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT), B_ANIM_STATUS_SHADOW);
                 if (FlagGet(FLAG_SHADOW_MON_SEEN))
                 {
                     PrepareStringBattle(STRINGID_SHADOWPKMNNOTICE, GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT));

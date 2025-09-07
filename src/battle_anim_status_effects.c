@@ -597,6 +597,19 @@ void LaunchStatusAnimation(u8 battler, u8 statusAnimId)
     LaunchBattleAnimation(ANIM_TYPE_STATUS, statusAnimId);
     taskId = CreateTask(Task_DoStatusAnimation, 10);
     gTasks[taskId].data[0] = battler;
+    gTasks[taskId].data[1] = battler;
+}
+
+void LaunchStatusAnimation2(u8 battler1, u8 battler2, u8 statusAnimId)
+{
+    u8 taskId;
+
+    gBattleAnimAttacker = battler1;
+    gBattleAnimTarget = battler2;
+    LaunchBattleAnimation(ANIM_TYPE_STATUS, statusAnimId);
+    taskId = CreateTask(Task_DoStatusAnimation, 10);
+    gTasks[taskId].data[0] = battler1;
+    gTasks[taskId].data[1] = battler2;
 }
 
 static void Task_DoStatusAnimation(u8 taskId)
@@ -605,6 +618,10 @@ static void Task_DoStatusAnimation(u8 taskId)
     if (!gAnimScriptActive)
     {
         gBattleSpritesDataPtr->healthBoxesData[gTasks[taskId].data[0]].statusAnimActive = FALSE;
+        if (gTasks[taskId].data[1] != gTasks[taskId].data[0])
+        {
+            gBattleSpritesDataPtr->healthBoxesData[gTasks[taskId].data[1]].statusAnimActive = FALSE;
+        }
         DestroyTask(taskId);
     }
 }

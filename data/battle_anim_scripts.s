@@ -21161,6 +21161,23 @@ ShadowAuraEffect:
 	createsprite gShadowParticleSpriteTemplate, ANIM_ATTACKER, 2, 0, -12, 0, 1
 	return
 
+ShadowAuraEffectDouble:
+	createsprite gShadowParticleSpriteTemplate, ANIM_ATTACKER, 2, 0, -24, 26, 2
+	createsprite gShadowParticleSpriteTemplate, ANIM_ATTACKER, 2, 1, -24, 26, 2
+	delay 4
+	createsprite gShadowParticleSpriteTemplate, ANIM_ATTACKER, 2, 0, 14, 28, 1
+	createsprite gShadowParticleSpriteTemplate, ANIM_ATTACKER, 2, 1, 14, 28, 1
+	delay 4
+	createsprite gShadowParticleSpriteTemplate, ANIM_ATTACKER, 2, 0, -5, 10, 2
+	createsprite gShadowParticleSpriteTemplate, ANIM_ATTACKER, 2, 1, -5, 10, 2
+	delay 4
+	createsprite gShadowParticleSpriteTemplate, ANIM_ATTACKER, 2, 0, 28, 26, 3
+	createsprite gShadowParticleSpriteTemplate, ANIM_ATTACKER, 2, 1, 28, 26, 3
+	delay 4
+	createsprite gShadowParticleSpriteTemplate, ANIM_ATTACKER, 2, 0, -12, 0, 1
+	createsprite gShadowParticleSpriteTemplate, ANIM_ATTACKER, 2, 1, -12, 0, 1
+	return
+
 gBattleAnimMove_ShadowWave::
 	loadspritegfx ANIM_TAG_DRAGON_PULSE
 	monbg ANIM_TARGET
@@ -31135,6 +31152,8 @@ gBattleAnimGeneral_StatsChange::
 	end
 
 gBattleAnimStatus_Shadow::
+	createvisualtask AnimTask_IsTargetPartner, 0x5
+	jumpargeq 0x0 0x1 gBattleAnimStatus_ShadowDouble
 	loadspritegfx ANIM_TAG_SHADOW_PARTICLES
 	loopsewithpan SE_M_SACRED_FIRE2, SOUND_PAN_TARGET, 13, 6
 	call ShadowAuraEffect
@@ -31144,6 +31163,20 @@ gBattleAnimStatus_Shadow::
 	createvisualtask AnimTask_BlendColorCycle, 2, F_PAL_ATTACKER, 2, 2, 0, 12, RGB(22, 22, 31)
 	delay 8
 	call ShadowAuraEffect
+	waitforvisualfinish
+	end
+
+gBattleAnimStatus_ShadowDouble::
+	loadspritegfx ANIM_TAG_SHADOW_PARTICLES
+	loopsewithpan SE_M_SACRED_FIRE2, SOUND_PAN_TARGET, 13, 6
+	call ShadowAuraEffectDouble
+	delay 8
+	call ShadowAuraEffectDouble
+	createvisualtask AnimTask_ShakeMon2, 2, ANIM_ATTACKER, 1, 0, 18, 2
+	createvisualtask AnimTask_ShakeMon2, 2, ANIM_TARGET, 1, 0, 18, 2
+	createvisualtask AnimTask_BlendColorCycle, 2, (F_PAL_ATTACKER | F_PAL_TARGET), 2, 2, 0, 12, RGB(22, 22, 31)
+	delay 8
+	call ShadowAuraEffectDouble
 	waitforvisualfinish
 	end
 
