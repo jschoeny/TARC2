@@ -82,6 +82,17 @@ script TownOutskirts_Trigger_TooDangerous {
     "Growl!"
   ))
   closemessage
+  speakername("GUARD")
+  applymovement(GUARD1, moves(emote_exclamation_mark))
+  msgbox(format(
+    "Oh! And before you go...\p"
+    "You should check if your fire creature can learn any other moves.\p"
+    "Just go to its SUMMARY screen and press SELECT.\p"
+    "Don't ask me how I know that…\p"
+    "But it's not safe to do your training out in the wild.\p"
+    "You'll need to come back here for that."
+  ))
+  closemessage
   setvar(VAR_STORY_PROGRESS, STORY_INTRO_PASS_GUARD)
   releaseall
   end
