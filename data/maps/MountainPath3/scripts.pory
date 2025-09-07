@@ -1,1 +1,144 @@
-mapscripts MountainPath3_MapScripts {}
+const LOCAL_ID_EXTRA_QUAGSIRE_1 = 2
+const LOCAL_ID_EXTRA_QUAGSIRE_2 = 3
+const LOCAL_ID_SHADOW_QUAGSIRE = 4
+
+mapscripts MountainPath3_MapScripts {
+  MAP_SCRIPT_ON_LOAD {
+    if (var(VAR_TEMP_0) == 0) {
+      // Hide QUAGSIRE
+      setflag(FLAG_TEMP_2)
+      setflag(FLAG_TEMP_3)
+      setflag(FLAG_TEMP_4)
+      if (var(VAR_STORY_PROGRESS) >= STORY_INTRO_WOOPER_DEFEATED) {
+        // Hide WOOPER
+        setflag(FLAG_TEMP_1)
+        setvar(VAR_TEMP_0, 1)
+      }
+    }
+  }
+}
+
+script MountainPath3_WooperCutscene {
+  lockall
+
+  special(SpawnCameraObject)
+  applymovement(LOCALID_CAMERA, moves(walk_slow_up*2))
+  waitmovement(LOCALID_CAMERA)
+
+  applymovement(LOCAL_ID_SHADOW_WOOPER, moves(
+    walk_in_place_up,
+    delay_16*2,
+    walk_in_place_up,
+    delay_16*2,
+  ))
+  waitmovement(LOCAL_ID_SHADOW_WOOPER)
+
+  // GRANDMA narration
+  speakername("GRANDMA")
+  msgbox(format("RENJI was confused.\p"
+                "Why were the guards scared of this little blue creature?"))
+  closemessage
+
+  // WOOPER turns around and stares for a few seconds
+  applymovement(LOCAL_ID_SHADOW_WOOPER, moves(face_down))
+  waitmovement(LOCAL_ID_SHADOW_WOOPER)
+  delay(120)  // 2 seconds stare
+
+  // GROWLITHE confused reaction
+  speakername("GROWLITHE")
+  msgbox("{CREATE_MUGSHOT MUGSHOT_GROWLITHE EMOTE_STUNNED}Growl?")
+  closemessage
+  delay(60)
+
+  playbgm(MUS_DUMMY, FALSE)
+  delay(20)
+
+  // WOOPER jumps, then earthquake starts
+  applymovement(LOCAL_ID_SHADOW_WOOPER, moves(jump_in_place_down))
+  waitmovement(LOCAL_ID_SHADOW_WOOPER)
+
+  // Start earthquake effect (camera shake)
+  setvar(VAR_0x8005, 2)  // horizontal pan
+  setvar(VAR_0x8006, 32) // num shakes
+  setvar(VAR_0x8007, 2)  // shake delay
+  special(ShakeCamera)
+
+  delay(10)
+  addobject(LOCAL_ID_SHADOW_QUAGSIRE)
+  addobject(LOCAL_ID_EXTRA_QUAGSIRE_1)
+  addobject(LOCAL_ID_EXTRA_QUAGSIRE_2)
+
+  // RENJI and GROWLITHE show exclamation marks
+  applymovement(OBJ_EVENT_ID_FOLLOWER, moves(emote_exclamation_mark))
+  delay(10)
+  applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark))
+  waitmovement(LOCALID_PLAYER)
+  waitmovement(OBJ_EVENT_ID_FOLLOWER)
+  delay(60)
+
+  playbgm(MUS_PMDRED_RISING_FEAR, FALSE)
+  delay(60)
+
+  applymovement(LOCAL_ID_SHADOW_WOOPER, moves(jump_in_place_down))
+  waitmovement(LOCAL_ID_SHADOW_WOOPER)
+
+  // Start earthquake effect (camera shake)
+  setvar(VAR_0x8005, 2)  // horizontal pan
+  setvar(VAR_0x8006, 32) // num shakes
+  setvar(VAR_0x8007, 2)  // shake delay
+  special(ShakeCamera)
+
+  // Move GROWLITHE to front
+  applymovement(OBJ_EVENT_ID_FOLLOWER, moves(walk_fast_up*2))
+  waitmovement(OBJ_EVENT_ID_FOLLOWER)
+
+  // Show QUAGSIRE and other WOOPER emerging from pond
+  applymovement(LOCAL_ID_SHADOW_QUAGSIRE, moves(walk_slow_down, walk_slow_right*3, face_down))
+  applymovement(LOCAL_ID_EXTRA_QUAGSIRE_1, moves(walk_slow_down*4))
+  applymovement(LOCAL_ID_EXTRA_QUAGSIRE_2, moves(walk_slow_down*2, walk_slow_left*3))
+  waitmovement(LOCAL_ID_SHADOW_QUAGSIRE)
+  waitmovement(LOCAL_ID_EXTRA_QUAGSIRE_1)
+  waitmovement(LOCAL_ID_EXTRA_QUAGSIRE_2)
+
+  applymovement(LOCAL_ID_SHADOW_WOOPER, moves(walk_down))
+  applymovement(LOCAL_ID_SHADOW_QUAGSIRE, moves(walk_slow_down))
+  delay(10)
+  applymovement(LOCALID_CAMERA, moves(walk_down*2))
+  waitmovement(LOCAL_ID_SHADOW_WOOPER)
+  waitmovement(LOCAL_ID_SHADOW_QUAGSIRE)
+  waitmovement(LOCALID_CAMERA)
+
+  // Play emergence sound effects
+  playmoncry(SPECIES_QUAGSIRE, CRY_MODE_NORMAL)
+  waitmoncry
+  playmoncry(SPECIES_WOOPER, CRY_MODE_ENCOUNTER)
+  waitmoncry
+
+  delay(60)
+
+  // Set up the 1v2 Shadow battle
+  setwildshadowbattle(SPECIES_WOOPER, 24, ITEM_NONE, TRUE, SPECIES_QUAGSIRE, 20, ITEM_NONE, TRUE)
+  dowildbattle
+
+  // After battle cleanup
+  if (var(VAR_RESULT) == B_OUTCOME_WON) {
+    fadescreenswapbuffers(FADE_TO_BLACK)
+    delay(20)
+    playse(SE_FLEE)
+    removeobject(LOCAL_ID_SHADOW_WOOPER)
+    removeobject(LOCAL_ID_SHADOW_QUAGSIRE)
+    removeobject(LOCAL_ID_EXTRA_QUAGSIRE_1)
+    removeobject(LOCAL_ID_EXTRA_QUAGSIRE_2)
+    setvar(VAR_TEMP_0, 1)  // Mark cutscene as completed
+    setvar(VAR_STORY_PROGRESS, STORY_INTRO_WOOPER_DEFEATED)
+    waitse
+    delay(20)
+    fadescreenswapbuffers(FADE_FROM_BLACK)
+  }
+  special(SpawnCameraObject)
+  applymovement(LOCALID_CAMERA, moves(walk_down*2))
+  waitmovement(LOCALID_CAMERA)
+  special(RemoveCameraObject)
+  releaseall
+  end
+}

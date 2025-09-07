@@ -3451,6 +3451,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         )
         .levelUpLearnset = sQuagsireLevelUpLearnset,
         .teachableLearnset = sQuagsireTeachableLearnset,
+        .shadowLearnset = sQuagsireShadowLearnset,
     },
 
 #if P_PALDEAN_FORMS

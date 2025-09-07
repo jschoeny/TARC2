@@ -275,6 +275,7 @@ enum StoryProgress
     STORY_INTRO_HOUNDOUR_DEFEATED,
     STORY_INTRO_TOWN_SQUARE,
     STORY_INTRO_PASS_GUARD,
+    STORY_INTRO_WOOPER_DEFEATED,
 };
 #define VAR_UNUSED_0x40F8                                0x40F8 // Unused Var
 #define VAR_UNUSED_0x40F9                                0x40F9 // Unused Var

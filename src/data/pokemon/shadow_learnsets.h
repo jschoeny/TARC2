@@ -6,7 +6,16 @@ static const u16 sNoneShadowLearnset[] = {
 
 static const u16 sWooperShadowLearnset[] = {
     MOVE_SHADOW_WAVE,
-    MOVE_UNAVAILABLE,
+    MOVE_BULLDOZE,
+    MOVE_WATER_GUN,
+    MOVE_COUNTER,
+};
+
+static const u16 sQuagsireShadowLearnset[] = {
+    MOVE_SHADOW_WAVE,
+    MOVE_HAZE,
+    MOVE_RAIN_DANCE,
+    MOVE_HELPING_HAND,
 };
 
 static const u16 sHoOhShadowLearnset[] = {
