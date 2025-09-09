@@ -5909,6 +5909,8 @@ u16 GetBattleBGM(void)
 
 void PlayBattleBGM(void)
 {
+    if (FlagGet(FLAG_NO_BATTLE_MUSIC))
+        return;
     ResetMapMusic();
     m4aMPlayAllStop();
     PlayBGM(GetBattleBGM());
@@ -5916,6 +5918,8 @@ void PlayBattleBGM(void)
 
 void PlayMapChosenOrBattleBGM(u16 songId)
 {
+    if (FlagGet(FLAG_NO_BATTLE_MUSIC))
+        return;
     ResetMapMusic();
     m4aMPlayAllStop();
     if (songId)
@@ -5931,6 +5935,8 @@ void CreateTask_PlayMapChosenOrBattleBGM(u16 songId)
 {
     u8 taskId;
 
+    if (FlagGet(FLAG_NO_BATTLE_MUSIC))
+        return;
     ResetMapMusic();
     m4aMPlayAllStop();
 
@@ -5940,6 +5946,12 @@ void CreateTask_PlayMapChosenOrBattleBGM(u16 songId)
 
 static void Task_PlayMapChosenOrBattleBGM(u8 taskId)
 {
+    if (FlagGet(FLAG_NO_BATTLE_MUSIC))
+    {
+        DestroyTask(taskId);
+        return;
+    }
+
     if (gTasks[taskId].tSongId)
         PlayNewMapMusic(gTasks[taskId].tSongId);
     else
