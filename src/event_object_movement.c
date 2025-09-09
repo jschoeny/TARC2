@@ -5517,6 +5517,13 @@ static bool32 TryStartFollowerTransformEffect(struct ObjectEvent *objectEvent, s
     u32 multi;
     struct Pokemon *mon;
     u32 ability;
+
+    if (FlagGet(FLAG_FORCE_FOLLOWER_TRANSFORM_EFFECT))
+    {
+        sprite->data[7] = TRANSFORM_TYPE_PERMANENT << 8;
+        return TRUE;
+    }
+
     if (DoesSpeciesHaveFormChangeMethod(OW_SPECIES(objectEvent), FORM_CHANGE_OVERWORLD_WEATHER)
         && OW_SPECIES(objectEvent) != (multi = GetOverworldWeatherSpecies(OW_SPECIES(objectEvent))))
     {
@@ -5537,7 +5544,7 @@ static bool32 TryStartFollowerTransformEffect(struct ObjectEvent *objectEvent, s
     return FALSE;
 }
 
-static bool8 UpdateFollowerTransformEffect(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+bool8 UpdateFollowerTransformEffect(struct ObjectEvent *objectEvent, struct Sprite *sprite)
 {
     u8 type = sprite->data[7] >> 8;
     u8 frames = sprite->data[7] & 0xFF;
@@ -5558,8 +5565,16 @@ static bool8 UpdateFollowerTransformEffect(struct ObjectEvent *objectEvent, stru
         switch (type)
         {
         case TRANSFORM_TYPE_PERMANENT:
+        {
+            struct Pokemon *mon = GetFirstLiveMon();
+            bool32 shiny;
+            bool32 female;
+            u32 newSpecies;
+            GetMonInfo(mon, &newSpecies, &shiny, &female);
+            objectEvent->graphicsId = GetGraphicsIdForMon(newSpecies, shiny, female);
             RefreshFollowerGraphics(objectEvent);
             break;
+        }
         case TRANSFORM_TYPE_WEATHER:
             multi = objectEvent->graphicsId;
             objectEvent->graphicsId = GetOverworldWeatherSpecies(OW_SPECIES(objectEvent));

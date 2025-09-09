@@ -1138,18 +1138,13 @@ void DoSpinExitWarp(void)
     CreateTask(Task_SpinExitWarp, 10);
 }
 
-static void LoadOrbEffectPalette(bool8 blueOrb)
+static void LoadOrbEffectPalette(u16 color)
 {
     int i;
-    u16 color[1];
-
-    if (!blueOrb)
-        color[0] = RGB_RED;
-    else
-        color[0] = RGB_BLUE;
+    u16 colorArray[1] = {color};
 
     for (i = 0; i < 16; i++)
-        LoadPalette(color, BG_PLTT_ID(15) + i, PLTT_SIZEOF(1));
+        LoadPalette(colorArray, BG_PLTT_ID(15) + i, PLTT_SIZEOF(1));
 }
 
 static bool8 UpdateOrbEffectBlend(u16 shakeDir)
@@ -1176,7 +1171,7 @@ static bool8 UpdateOrbEffectBlend(u16 shakeDir)
         return FALSE;
 }
 
-#define tBlueOrb     data[1]
+#define tOrbColor    data[1]
 #define tCenterX     data[2]
 #define tCenterY     data[3]
 #define tShakeDelay  data[4]
@@ -1190,6 +1185,7 @@ static bool8 UpdateOrbEffectBlend(u16 shakeDir)
 static void Task_OrbEffect(u8 taskId)
 {
     s16 *data = gTasks[taskId].data;
+    struct ObjectEvent *followerObj = GetFollowerObject();
 
     switch (tState)
     {
@@ -1214,8 +1210,8 @@ static void Task_OrbEffect(u8 taskId)
         break;
     case 1:
         BgDmaFill(0, PIXEL_FILL(1), 0, 1);
-        LoadOrbEffectPalette(tBlueOrb);
-        StartUpdateOrbFlashEffect(tCenterX, tCenterY, 1, 160, 1, 2);
+        LoadOrbEffectPalette(tOrbColor);
+        StartUpdateOrbFlashEffect(tCenterX, tCenterY, 1, 160, 1, 1);
         tState = 2;
         break;
     case 2:
@@ -1235,6 +1231,13 @@ static void Task_OrbEffect(u8 taskId)
     case 4:
         // If the caller script is delayed after starting the orb effect, a `waitstate` might be reached *after*
         // we enable the ScriptContext in case 2; enabling it here as well avoids softlocks in this scenario
+        if (FlagGet(FLAG_FORCE_FOLLOWER_TRANSFORM_EFFECT))
+        {
+            if(!UpdateFollowerTransformEffect(followerObj, &gSprites[followerObj->spriteId]))
+            {
+                FlagClear(FLAG_FORCE_FOLLOWER_TRANSFORM_EFFECT);
+            }
+        }
         ScriptContext_Enable();
         if (--tShakeDelay == 0)
         {
@@ -1256,7 +1259,7 @@ static void Task_OrbEffect(u8 taskId)
     case 7:
         if (--tShakeDelay == 0)
         {
-            tShakeDelay = 8;
+            tShakeDelay = 1;
             tShakeDir ^= 1;
             if (UpdateOrbEffectBlend(tShakeDir) == TRUE)
             {
@@ -1286,22 +1289,29 @@ void DoOrbEffect(void)
 
     if (gSpecialVar_Result == 0)
     {
-        tBlueOrb = FALSE;
+        tOrbColor = RGB_RED;
         tCenterX = 104;
     }
     else if (gSpecialVar_Result == 1)
     {
-        tBlueOrb = TRUE;
+        tOrbColor = RGB_BLUE;
         tCenterX = 136;
     }
     else if (gSpecialVar_Result == 2)
     {
-        tBlueOrb = FALSE;
+        tOrbColor = RGB_RED;
         tCenterX = 120;
+    }
+    else if (gSpecialVar_Result == 3)
+    {
+        tOrbColor = RGB_WHITE;
+        tCenterX = 120;
+        tCenterY = 64;
+        return;
     }
     else
     {
-        tBlueOrb = TRUE;
+        tOrbColor = RGB_BLUE;
         tCenterX = 120;
     }
 
@@ -1314,7 +1324,7 @@ void FadeOutOrbEffect(void)
     gTasks[taskId].tState = 6;
 }
 
-#undef tBlueOrb
+#undef tOrbColor
 #undef tCenterX
 #undef tCenterY
 #undef tShakeDelay

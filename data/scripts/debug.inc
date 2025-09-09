@@ -165,8 +165,44 @@ Debug_EventScript_Script_7::
 	end
 
 Debug_EventScript_Script_8::
+	playbgm MUS_DUMMY, FALSE
+	delay 30
+	applymovement OBJ_EVENT_ID_FOLLOWER, Debug_EventScript_Script_8_Movement
+	playmoncry SPECIES_GROWLITHE, CRY_MODE_NORMAL
+	waitmovement OBJ_EVENT_ID_FOLLOWER
+	playse MUS_EVOLUTION_INTRO
+	waitse
+	playbgm MUS_EVOLUTION, FALSE
+	setvar VAR_RESULT, 3
+	special DoOrbEffect
+	waitstate
+	delay 180
+	setmonspecies 0, SPECIES_ARCANINE
+	setflag FLAG_FORCE_FOLLOWER_TRANSFORM_EFFECT
+	delay 8
+	applymovement OBJ_EVENT_ID_FOLLOWER, Debug_EventScript_Script_8_Movement2
+	waitmovement OBJ_EVENT_ID_FOLLOWER
+	delay 10
+	special FadeOutOrbEffect
+	waitstate
+	applymovement OBJ_EVENT_ID_FOLLOWER, Debug_EventScript_Script_8_Movement
+	playmoncry SPECIES_ARCANINE, CRY_MODE_ENCOUNTER
+	waitmovement OBJ_EVENT_ID_FOLLOWER
+	waitmoncry
+	playbgm MUS_EVOLVED, FALSE
+	delay 60
+	fadedefaultbgm
 	release
 	end
+
+Debug_EventScript_Script_8_Movement:
+	jump_in_place_up
+	jump_in_place_up
+	step_end
+
+Debug_EventScript_Script_8_Movement2:
+	walk_in_place_up
+	step_end
 
 Debug_CheckSaveBlock::
 	callnative CheckSaveBlock1Size

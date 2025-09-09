@@ -1137,6 +1137,12 @@
 	.2byte \itemId
 	.endm
 
+	.macro setmonspecies partyIndex:req, species:req
+	callnative ScrCmd_setmonspecies, requests_effects=1
+	.byte \partyIndex
+	.2byte \species
+	.endm
+
 	@ Checks if at least one Pokemon in the player's party knows the specified field move and if the field move is unlocked. If so, VAR_RESULT is set to the
 	@ (zero-indexed) slot number of the first Pokemon that knows the move. If not, VAR_RESULT is set to PARTY_SIZE.
 	@ VAR_0x8004 is also set to this Pokemon's species.

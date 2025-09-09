@@ -763,3 +763,14 @@ void ScrCmd_setmonitem(struct ScriptContext *ctx)
 
     SetMonData(&gPlayerParty[partyIndex], MON_DATA_HELD_ITEM, &itemId);
 }
+
+void ScrCmd_setmonspecies(struct ScriptContext *ctx)
+{
+    u8 partyIndex = ScriptReadByte(ctx);
+    u16 species = ScriptReadHalfword(ctx);
+    u16 oldSpecies = GetMonData(&gPlayerParty[partyIndex], MON_DATA_SPECIES);
+
+    SetMonData(&gPlayerParty[partyIndex], MON_DATA_SPECIES, &species);
+    EvolutionRenameMon(&gPlayerParty[partyIndex], oldSpecies, species);
+    CalculateMonStats(&gPlayerParty[partyIndex]);
+}

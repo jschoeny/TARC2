@@ -67,7 +67,7 @@
 // Follower Pokémon Restrictions
 // If set, the only pokemon allowed to follow you will be those matching species, met location, and/or met level; These accept vars, too: VAR_TEMP_1, etc
 // For examples, see "docs/tutorials/how_to_new_pokemon.md"
-#define OW_FOLLOWERS_ALLOWED_SPECIES (SPECIES_GROWLITHE)
+#define OW_FOLLOWERS_ALLOWED_SPECIES (0)
 #define OW_FOLLOWERS_ALLOWED_MET_LVL (0)
 #define OW_FOLLOWERS_ALLOWED_MET_LOC (0)
 

@@ -51,7 +51,7 @@
 #define FLAG_SMART_WILD_AI_FLAG 0x25
 #define FLAG_SHADOW_MON_SEEN 0x26 // Set when a shadow Pokémon is seen for the first time
 #define FLAG_NO_BATTLE_MUSIC 0x27
-#define FLAG_UNUSED_0x028    0x28 // Unused Flag
+#define FLAG_FORCE_FOLLOWER_TRANSFORM_EFFECT 0x28
 #define FLAG_UNUSED_0x029    0x29 // Unused Flag
 #define FLAG_UNUSED_0x02A    0x2A // Unused Flag
 #define FLAG_UNUSED_0x02B    0x2B // Unused Flag
