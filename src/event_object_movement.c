@@ -8370,6 +8370,40 @@ bool8 MovementAction_JumpRight_Step1(struct ObjectEvent *objectEvent, struct Spr
     return FALSE;
 }
 
+bool8 MovementAction_JumpDownRight_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    InitJumpRegular(objectEvent, sprite, DIR_SOUTHEAST, JUMP_DISTANCE_NORMAL, JUMP_TYPE_HIGH);
+    return MovementAction_JumpDownRight_Step1(objectEvent, sprite);
+}
+
+bool8 MovementAction_JumpDownRight_Step1(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    if (DoJumpAnim(objectEvent, sprite))
+    {
+        objectEvent->noShadow = FALSE;
+        sprite->sActionFuncId = 2;
+        return TRUE;
+    }
+    return FALSE;
+}
+
+bool8 MovementAction_JumpDownLeft_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    InitJumpRegular(objectEvent, sprite, DIR_SOUTHWEST, JUMP_DISTANCE_NORMAL, JUMP_TYPE_HIGH);
+    return MovementAction_JumpDownLeft_Step1(objectEvent, sprite);
+}
+
+bool8 MovementAction_JumpDownLeft_Step1(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    if (DoJumpAnim(objectEvent, sprite))
+    {
+        objectEvent->noShadow = FALSE;
+        sprite->sActionFuncId = 2;
+        return TRUE;
+    }
+    return FALSE;
+}
+
 bool8 MovementAction_JumpInPlaceDown_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
 {
     InitJumpRegular(objectEvent, sprite, DIR_SOUTH, JUMP_DISTANCE_IN_PLACE, JUMP_TYPE_HIGH);

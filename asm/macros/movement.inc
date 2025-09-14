@@ -74,6 +74,8 @@
 	create_movement_action jump_up, MOVEMENT_ACTION_JUMP_UP
 	create_movement_action jump_left, MOVEMENT_ACTION_JUMP_LEFT
 	create_movement_action jump_right, MOVEMENT_ACTION_JUMP_RIGHT
+	create_movement_action jump_down_right, MOVEMENT_ACTION_JUMP_DOWN_RIGHT
+	create_movement_action jump_down_left, MOVEMENT_ACTION_JUMP_DOWN_LEFT
 	create_movement_action jump_in_place_down, MOVEMENT_ACTION_JUMP_IN_PLACE_DOWN
 	create_movement_action jump_in_place_up, MOVEMENT_ACTION_JUMP_IN_PLACE_UP
 	create_movement_action jump_in_place_left, MOVEMENT_ACTION_JUMP_IN_PLACE_LEFT
