@@ -2,7 +2,7 @@
   "id": "MAP_MOUNTAIN_SUMMIT",
   "name": "MountainSummit",
   "layout": "LAYOUT_MOUNTAIN_SUMMIT",
-  "music": "MUS_DUMMY",
+  "music": "MUS_PMDRED_FRIEND_AREA_FINAL_ISLAND",
   "region_map_section": "MAPSEC_MT_CHIMNEY",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
