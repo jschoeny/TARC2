@@ -444,7 +444,6 @@ static const u8 sButtons_Gfx[][4 * TILE_SIZE_4BPP] = {
 static const u32 sMoveTypes_Gfx_BW[]                        = INCBIN_U32("graphics/types_bw/move_types_bw.4bpp.lz");
 static const u16 sMoveTypes_Pal_BW[]                        = INCBIN_U16("graphics/types_bw/move_types_bw.gbapal");
 #endif
-static const u32 sTeraTypes_Gfx[]                           = INCBIN_U32("graphics/types_bw/tera/tera_types_bw.4bpp.lz");
 static const u32 sSummaryMoveSelect_Gfx_BW[]                = INCBIN_U32("graphics/summary_screen/bw/move_select.4bpp.lz");
 static const u16 sSummaryMoveSelect_Pal_BW[]                = INCBIN_U16("graphics/summary_screen/bw/move_select.gbapal");
 static const u16 sMarkings_Pal_BW[]                         = INCBIN_U16("graphics/summary_screen/bw/markings.gbapal");
@@ -1426,13 +1425,6 @@ static const struct OamData sOamData_TeraType =
     .affineParam = 0,
 };
 
-static const struct CompressedSpriteSheet sSpriteSheet_TeraType =
-{
-    .data = sTeraTypes_Gfx,
-    .size = NUMBER_OF_MON_TYPES * (16 * 16),
-    .tag = TAG_TERA_TYPE
-};
-
 static const struct SpriteTemplate sSpriteTemplate_TeraType =
 {
     .tileTag = TAG_TERA_TYPE,
@@ -2151,8 +2143,6 @@ static bool8 DecompressGraphics(void)
         sMonSummaryScreen->switchCounter++;
         break;
     case 23:
-        if (BW_SUMMARY_SHOW_TERA_TYPE)
-            LoadCompressedSpriteSheet(&sSpriteSheet_TeraType);
         sMonSummaryScreen->switchCounter++;
         break;
     case 24:
