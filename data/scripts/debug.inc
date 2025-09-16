@@ -136,73 +136,8 @@ Debug_EventScript_Text_OffensiveIVs:
 Debug_EventScript_Text_DefensiveIVs:
 	.string "HP IVs: {STR_VAR_1}, DEF IVs: {STR_VAR_2}, SPDEF IVs: {STR_VAR_3}$"
 
-Debug_EventScript_Script_1::
-	release
-	end
-
-Debug_EventScript_Script_2::
-	release
-	end
-
-Debug_EventScript_Script_3::
-	release
-	end
-
-Debug_EventScript_Script_4::
-	release
-	end
-
-Debug_EventScript_Script_5::
-	release
-	end
-
-Debug_EventScript_Script_6::
-	release
-	end
-
-Debug_EventScript_Script_7::
-	release
-	end
-
-Debug_EventScript_Script_8::
-	playbgm MUS_DUMMY, FALSE
-	delay 30
-	applymovement OBJ_EVENT_ID_FOLLOWER, Debug_EventScript_Script_8_Movement
-	playmoncry SPECIES_GROWLITHE, CRY_MODE_NORMAL
-	waitmovement OBJ_EVENT_ID_FOLLOWER
-	playse MUS_EVOLUTION_INTRO
-	waitse
-	playbgm MUS_EVOLUTION, FALSE
-	setvar VAR_RESULT, 3
-	special DoOrbEffect
-	waitstate
-	delay 180
-	setmonspecies 0, SPECIES_ARCANINE
-	setflag FLAG_FORCE_FOLLOWER_TRANSFORM_EFFECT
-	delay 8
-	applymovement OBJ_EVENT_ID_FOLLOWER, Debug_EventScript_Script_8_Movement2
-	waitmovement OBJ_EVENT_ID_FOLLOWER
-	delay 10
-	special FadeOutOrbEffect
-	waitstate
-	applymovement OBJ_EVENT_ID_FOLLOWER, Debug_EventScript_Script_8_Movement
-	playmoncry SPECIES_ARCANINE, CRY_MODE_ENCOUNTER
-	waitmovement OBJ_EVENT_ID_FOLLOWER
-	waitmoncry
-	playbgm MUS_EVOLVED, FALSE
-	delay 60
-	fadedefaultbgm
-	release
-	end
-
-Debug_EventScript_Script_8_Movement:
-	jump_in_place_up
-	jump_in_place_up
-	step_end
-
-Debug_EventScript_Script_8_Movement2:
-	walk_in_place_up
-	step_end
+@ Debug EventScripts from debug/scripts.pory
+	.include "data/scripts/debug/scripts.inc"
 
 Debug_CheckSaveBlock::
 	callnative CheckSaveBlock1Size
