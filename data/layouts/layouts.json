@@ -4510,6 +4510,36 @@
       "secondary_tileset": "gTileset_DojoExterior",
       "border_filepath": "data/layouts/MountainPath3/border.bin",
       "blockdata_filepath": "data/layouts/MountainPath3/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROCKY_PATH1",
+      "name": "RockyPath1_Layout",
+      "width": 34,
+      "height": 20,
+      "primary_tileset": "gTileset_OldenTimes",
+      "secondary_tileset": "gTileset_OldenTimesTown",
+      "border_filepath": "data/layouts/RockyPath1/border.bin",
+      "blockdata_filepath": "data/layouts/RockyPath1/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROCKY_PATH2",
+      "name": "RockyPath2_Layout",
+      "width": 45,
+      "height": 31,
+      "primary_tileset": "gTileset_OldenTimes",
+      "secondary_tileset": "gTileset_OldenTimesTown",
+      "border_filepath": "data/layouts/RockyPath2/border.bin",
+      "blockdata_filepath": "data/layouts/RockyPath2/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROCKY_PATH3",
+      "name": "RockyPath3_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_OldenTimes",
+      "secondary_tileset": "gTileset_OldenTimesMountain",
+      "border_filepath": "data/layouts/RockyPath3/border.bin",
+      "blockdata_filepath": "data/layouts/RockyPath3/map.bin"
     }
   ]
 }

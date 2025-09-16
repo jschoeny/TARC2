@@ -11629,6 +11629,144 @@
               }
             ]
           }
+        },
+        {
+          "map": "MAP_ROCKY_PATH1",
+          "base_label": "gRockyPath1",
+          "land_mons": {
+            "encounter_rate": 10,
+            "mons": [
+              {
+                "min_level": 26,
+                "max_level": 29,
+                "species": "SPECIES_SKIPLOOM"
+              },
+              {
+                "min_level": 26,
+                "max_level": 29,
+                "species": "SPECIES_SKIPLOOM"
+              },
+              {
+                "min_level": 26,
+                "max_level": 29,
+                "species": "SPECIES_SKIPLOOM"
+              },
+              {
+                "min_level": 26,
+                "max_level": 29,
+                "species": "SPECIES_STARAVIA"
+              },
+              {
+                "min_level": 26,
+                "max_level": 29,
+                "species": "SPECIES_STARAVIA"
+              },
+              {
+                "min_level": 26,
+                "max_level": 29,
+                "species": "SPECIES_LARVITAR"
+              },
+              {
+                "min_level": 26,
+                "max_level": 29,
+                "species": "SPECIES_LARVITAR"
+              },
+              {
+                "min_level": 26,
+                "max_level": 29,
+                "species": "SPECIES_LARVITAR"
+              },
+              {
+                "min_level": 26,
+                "max_level": 29,
+                "species": "SPECIES_ABSOL"
+              },
+              {
+                "min_level": 26,
+                "max_level": 29,
+                "species": "SPECIES_ABSOL"
+              },
+              {
+                "min_level": 25,
+                "max_level": 28,
+                "species": "SPECIES_SNEASEL_HISUI"
+              },
+              {
+                "min_level": 25,
+                "max_level": 28,
+                "species": "SPECIES_SNEASEL_HISUI"
+              }
+            ]
+          }
+        },
+        {
+          "map": "MAP_ROCKY_PATH2",
+          "base_label": "gRockyPath2",
+          "land_mons": {
+            "encounter_rate": 10,
+            "mons": [
+              {
+                "min_level": 27,
+                "max_level": 30,
+                "species": "SPECIES_STARAVIA"
+              },
+              {
+                "min_level": 27,
+                "max_level": 30,
+                "species": "SPECIES_LARVITAR"
+              },
+              {
+                "min_level": 27,
+                "max_level": 30,
+                "species": "SPECIES_STARAVIA"
+              },
+              {
+                "min_level": 27,
+                "max_level": 30,
+                "species": "SPECIES_ABSOL"
+              },
+              {
+                "min_level": 27,
+                "max_level": 30,
+                "species": "SPECIES_ABSOL"
+              },
+              {
+                "min_level": 28,
+                "max_level": 31,
+                "species": "SPECIES_DRIFLOON"
+              },
+              {
+                "min_level": 27,
+                "max_level": 30,
+                "species": "SPECIES_GRAVELER"
+              },
+              {
+                "min_level": 27,
+                "max_level": 30,
+                "species": "SPECIES_GRAVELER"
+              },
+              {
+                "min_level": 27,
+                "max_level": 30,
+                "species": "SPECIES_PAWMO"
+              },
+              {
+                "min_level": 27,
+                "max_level": 30,
+                "species": "SPECIES_PAWMO"
+              },
+              {
+                "min_level": 27,
+                "max_level": 30,
+                "species": "SPECIES_SNEASEL_HISUI"
+              },
+              {
+                "min_level": 27,
+                "max_level": 30,
+                "species": "SPECIES_SNEASEL_HISUI"
+              }
+            ]
+          }
         }
       ]
     },

@@ -1,0 +1,101 @@
+mapscripts RockyPath3_MapScripts {}
+
+script RockyPath3_TriggerLeft {
+  lockall
+  applymovement(LOCALID_PLAYER, moves(walk_up*3))
+  applymovement(OBJ_EVENT_ID_FOLLOWER, moves(walk_up*3))
+  waitmovement(LOCALID_PLAYER)
+  waitmovement(OBJ_EVENT_ID_FOLLOWER)
+  applymovement(OBJ_EVENT_ID_FOLLOWER, moves(walk_right, walk_up))
+  waitmovement(OBJ_EVENT_ID_FOLLOWER)
+  goto(RockyPath3_ShadowEonsCutscene)
+}
+
+script RockyPath3_TriggerRight {
+  lockall
+  applymovement(LOCALID_PLAYER, moves(walk_up*3, walk_left, face_up))
+  applymovement(OBJ_EVENT_ID_FOLLOWER, moves(walk_up*4))
+  waitmovement(LOCALID_PLAYER)
+  waitmovement(OBJ_EVENT_ID_FOLLOWER)
+  goto(RockyPath3_ShadowEonsCutscene)
+}
+
+script RockyPath3_ShadowEonsCutscene {
+  speakername("GRANDMA")
+  msgbox(format("RENJI and GROWLITHE observed the shrine.\p"
+                "It described the legend surrounding the mythical HO-OH.\p"
+                "“A shadowy blight shall corrupt the whole land,\N”"
+                "“Closing the hearts of all who-”"))
+  closemessage
+  playmoncry(SPECIES_FLAREON, CRY_MODE_ENCOUNTER)
+  applymovement(OBJ_EVENT_ID_FOLLOWER, moves(
+    emote_question_mark,
+    face_left,
+    delay_16,
+    face_right,
+    delay_16,
+    face_left,
+  ))
+  waitmovement(OBJ_EVENT_ID_FOLLOWER)
+  waitmoncry
+  applymovement(LOCALID_SHADOW_FLAREON, moves(
+    walk_right,
+    jump_down_right,
+    jump_down_right,
+    walk_right,
+    jump_down_right,
+    walk_right,
+    jump_down_right,
+    jump_right,
+  ))
+  applymovement(LOCALID_SHADOW_JOLTEON, moves(
+    walk_left,
+    jump_down_left,
+    jump_down_left,
+    walk_left,
+    jump_down_left,
+    walk_left,
+    jump_down_left,
+    jump_left,
+  ))
+  waitmovement(LOCALID_SHADOW_FLAREON)
+  waitmovement(LOCALID_SHADOW_JOLTEON)
+  applymovement(LOCALID_PLAYER, moves(
+    lock_facing_direction,
+    walk_down,
+    unlock_facing_direction,
+  ))
+  applymovement(OBJ_EVENT_ID_FOLLOWER, moves(
+    face_up,
+    lock_facing_direction,
+    walk_down,
+    unlock_facing_direction,
+  ))
+  applymovement(LOCALID_SHADOW_FLAREON, moves(
+    walk_right,
+    face_down,
+  ))
+  applymovement(LOCALID_SHADOW_JOLTEON, moves(
+    walk_left,
+    face_down,
+  ))
+  waitmovement(OBJ_EVENT_ID_FOLLOWER)
+  waitmovement(LOCALID_PLAYER)
+  waitmovement(LOCALID_SHADOW_JOLTEON)
+  waitmovement(LOCALID_SHADOW_FLAREON)
+  delay(30)
+
+  speakername("GRANDMA")
+  msgbox(format("RENJI and GROWLITHE observed the shrine.\p"
+                "It described the legend surrounding the mythical HO-OH.\p"
+                "“A shadowy blight shall corrupt the whole land,\N”"
+                "“Closing the hearts of all who draw near.\p”"
+                "“With vengeance will FIRE of the sky rain down,\N”"
+                "“And with power will FIRE of the earth make clear.\p”"
+                "“The fire will grow not by stone, but by bond.\N”"
+                "“And by stone will the bond seal the evil within.\p”"
+                "“To the top of the mount must the hero embark,\N”"
+                "“And there will be summoned the FIRE to win.”"))
+  closemessage
+  releaseall
+}

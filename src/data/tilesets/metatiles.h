@@ -219,3 +219,6 @@ const u16 gMetatileAttributes_Gen4Interior[] = INCBIN_U16("data/tilesets/seconda
 
 const u16 gMetatiles_OldenTimesTown[] = INCBIN_U16("data/tilesets/secondary/olden_times_town/metatiles.bin");
 const u16 gMetatileAttributes_OldenTimesTown[] = INCBIN_U16("data/tilesets/secondary/olden_times_town/metatile_attributes.bin");
+
+const u16 gMetatiles_OldenTimesMountain[] = INCBIN_U16("data/tilesets/secondary/olden_times_mountain/metatiles.bin");
+const u16 gMetatileAttributes_OldenTimesMountain[] = INCBIN_U16("data/tilesets/secondary/olden_times_mountain/metatile_attributes.bin");

@@ -1179,3 +1179,9 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/MountainPath2/scripts.inc"
 
 	.include "data/maps/MountainPath3/scripts.inc"
+
+	.include "data/maps/RockyPath1/scripts.inc"
+
+	.include "data/maps/RockyPath2/scripts.inc"
+
+	.include "data/maps/RockyPath3/scripts.inc"

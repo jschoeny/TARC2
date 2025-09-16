@@ -874,3 +874,14 @@ const struct Tileset gTileset_OldenTimesTown =
     .metatileAttributes = gMetatileAttributes_OldenTimesTown,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_OldenTimesMountain =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_OldenTimesMountain,
+    .palettes = gTilesetPalettes_OldenTimesMountain,
+    .metatiles = gMetatiles_OldenTimesMountain,
+    .metatileAttributes = gMetatileAttributes_OldenTimesMountain,
+    .callback = NULL,
+};

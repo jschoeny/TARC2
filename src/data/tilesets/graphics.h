@@ -1710,3 +1710,22 @@ const u16 gTilesetPalettes_OldenTimesTown[][16] =
 };
 
 const u32 gTilesetTiles_OldenTimesTown[] = INCBIN_U32("data/tilesets/secondary/olden_times_town/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_OldenTimesMountain[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/olden_times_mountain/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/olden_times_mountain/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/olden_times_mountain/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/olden_times_mountain/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/olden_times_mountain/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/olden_times_mountain/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/olden_times_mountain/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/olden_times_mountain/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/olden_times_mountain/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/olden_times_mountain/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/olden_times_mountain/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/olden_times_mountain/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/olden_times_mountain/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_OldenTimesMountain[] = INCBIN_U32("data/tilesets/secondary/olden_times_mountain/tiles.4bpp.lz");
