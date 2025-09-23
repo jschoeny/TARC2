@@ -5676,6 +5676,62 @@ bool8 MovementType_FollowPlayer_Moving(struct ObjectEvent *objectEvent, struct S
     return FALSE;
 }
 
+static bool8 DoShakeAnim(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    // Initialize shake parameters if not already done
+    if (sprite->sActionFuncId == 0)
+    {
+        sprite->data[4] = 0; // shake counter
+        sprite->data[5] = 0; // shake direction (0 = left, 1 = right)
+        sprite->data[6] = 4; // shake duration (frames per direction)
+        sprite->data[7] = 16; // total shake cycles
+        sprite->sActionFuncId = 1; // Mark as initialized
+        return FALSE;
+    }
+
+    // Perform shake animation
+    s16 shakeOffset = sprite->data[5] ? 1 : -1; // 1 pixel right, -1 pixel left
+
+    // Apply horizontal shake offset
+    sprite->x2 = shakeOffset;
+
+    // Update shake counter
+    sprite->data[4]++;
+
+    // Check if we need to change direction
+    if (sprite->data[4] >= sprite->data[6])
+    {
+        sprite->data[4] = 0; // reset counter
+        sprite->data[5] ^= 1; // flip direction
+        sprite->data[7]--; // decrement total cycles
+
+        // Check if shake is complete
+        if (sprite->data[7] <= 0)
+        {
+            sprite->x2 = 0; // reset horizontal offset
+            return TRUE; // Animation complete
+        }
+    }
+
+    return FALSE; // Animation still running
+}
+
+bool8 MovementAction_Shake_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    // Reset initialization flag to start fresh
+    return MovementAction_Shake_Step1(objectEvent, sprite); // Don't finish yet, wait for animation to complete
+}
+
+bool8 MovementAction_Shake_Step1(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    if (DoShakeAnim(objectEvent, sprite))
+    {
+        sprite->sActionFuncId = 2; // Move to finish step
+        return TRUE;
+    }
+    return FALSE;
+}
+
 // single function for updating an OW mon's walk-in-place movements
 static bool32 UpdateMonMoveInPlace(struct ObjectEvent *objectEvent, struct Sprite *sprite)
 {
