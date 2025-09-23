@@ -1186,3 +1186,127 @@ static void BlendAnimPalette_BattleDome_FloorLightsNoBlend(u16 timer)
             sSecondaryTilesetAnimCallback = NULL;
     }
 }
+
+// Custom
+const u16 gTilesetAnims_OldenTimesMountain_OvercastTop_Frame0[] = INCBIN_U16("data/tilesets/secondary/olden_times_mountain/anim/overcast_top/00.4bpp");
+const u16 gTilesetAnims_OldenTimesMountain_OvercastTop_Frame1[] = INCBIN_U16("data/tilesets/secondary/olden_times_mountain/anim/overcast_top/01.4bpp");
+const u16 gTilesetAnims_OldenTimesMountain_OvercastTop_Frame2[] = INCBIN_U16("data/tilesets/secondary/olden_times_mountain/anim/overcast_top/02.4bpp");
+const u16 gTilesetAnims_OldenTimesMountain_OvercastTop_Frame3[] = INCBIN_U16("data/tilesets/secondary/olden_times_mountain/anim/overcast_top/03.4bpp");
+const u16 gTilesetAnims_OldenTimesMountain_OvercastTop_Frame4[] = INCBIN_U16("data/tilesets/secondary/olden_times_mountain/anim/overcast_top/04.4bpp");
+const u16 gTilesetAnims_OldenTimesMountain_OvercastTop_Frame5[] = INCBIN_U16("data/tilesets/secondary/olden_times_mountain/anim/overcast_top/05.4bpp");
+const u16 gTilesetAnims_OldenTimesMountain_OvercastTop_Frame6[] = INCBIN_U16("data/tilesets/secondary/olden_times_mountain/anim/overcast_top/06.4bpp");
+const u16 gTilesetAnims_OldenTimesMountain_OvercastTop_Frame7[] = INCBIN_U16("data/tilesets/secondary/olden_times_mountain/anim/overcast_top/07.4bpp");
+const u16 gTilesetAnims_OldenTimesMountain_OvercastTop_Frame8[] = INCBIN_U16("data/tilesets/secondary/olden_times_mountain/anim/overcast_top/08.4bpp");
+const u16 gTilesetAnims_OldenTimesMountain_OvercastTop_Frame9[] = INCBIN_U16("data/tilesets/secondary/olden_times_mountain/anim/overcast_top/09.4bpp");
+const u16 gTilesetAnims_OldenTimesMountain_OvercastTop_Frame10[] = INCBIN_U16("data/tilesets/secondary/olden_times_mountain/anim/overcast_top/10.4bpp");
+const u16 gTilesetAnims_OldenTimesMountain_OvercastTop_Frame11[] = INCBIN_U16("data/tilesets/secondary/olden_times_mountain/anim/overcast_top/11.4bpp");
+const u16 gTilesetAnims_OldenTimesMountain_OvercastTop_Frame12[] = INCBIN_U16("data/tilesets/secondary/olden_times_mountain/anim/overcast_top/12.4bpp");
+const u16 gTilesetAnims_OldenTimesMountain_OvercastTop_Frame13[] = INCBIN_U16("data/tilesets/secondary/olden_times_mountain/anim/overcast_top/13.4bpp");
+const u16 gTilesetAnims_OldenTimesMountain_OvercastTop_Frame14[] = INCBIN_U16("data/tilesets/secondary/olden_times_mountain/anim/overcast_top/14.4bpp");
+const u16 gTilesetAnims_OldenTimesMountain_OvercastTop_Frame15[] = INCBIN_U16("data/tilesets/secondary/olden_times_mountain/anim/overcast_top/15.4bpp");
+
+const u16 *const gTilesetAnims_OldenTimesMountain_OvercastTop[] = {
+    gTilesetAnims_OldenTimesMountain_OvercastTop_Frame0,
+    gTilesetAnims_OldenTimesMountain_OvercastTop_Frame1,
+    gTilesetAnims_OldenTimesMountain_OvercastTop_Frame2,
+    gTilesetAnims_OldenTimesMountain_OvercastTop_Frame3,
+    gTilesetAnims_OldenTimesMountain_OvercastTop_Frame4,
+    gTilesetAnims_OldenTimesMountain_OvercastTop_Frame5,
+    gTilesetAnims_OldenTimesMountain_OvercastTop_Frame6,
+    gTilesetAnims_OldenTimesMountain_OvercastTop_Frame7,
+    gTilesetAnims_OldenTimesMountain_OvercastTop_Frame8,
+    gTilesetAnims_OldenTimesMountain_OvercastTop_Frame9,
+    gTilesetAnims_OldenTimesMountain_OvercastTop_Frame10,
+    gTilesetAnims_OldenTimesMountain_OvercastTop_Frame11,
+    gTilesetAnims_OldenTimesMountain_OvercastTop_Frame12,
+    gTilesetAnims_OldenTimesMountain_OvercastTop_Frame13,
+    gTilesetAnims_OldenTimesMountain_OvercastTop_Frame14,
+    gTilesetAnims_OldenTimesMountain_OvercastTop_Frame15,
+};
+
+static void QueueAnimTiles_OldenTimesMountain_OvercastTop_Top(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gTilesetAnims_OldenTimesMountain_OvercastTop);
+    AppendTilesetAnimToBuffer(gTilesetAnims_OldenTimesMountain_OvercastTop[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(NUM_TILES_IN_PRIMARY + 4)), 2 * TILE_SIZE_4BPP);
+}
+
+static void QueueAnimTiles_OldenTimesMountain_OvercastTop_Bottom(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gTilesetAnims_OldenTimesMountain_OvercastTop);
+    AppendTilesetAnimToBuffer((const u16 *)(gTilesetAnims_OldenTimesMountain_OvercastTop[i] + TILE_SIZE_4BPP), (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(NUM_TILES_IN_PRIMARY + 6)), 2 * TILE_SIZE_4BPP);
+}
+
+const u16 gTilesetAnims_OldenTimesMountain_OvercastBottom_Frame0[] = INCBIN_U16("data/tilesets/secondary/olden_times_mountain/anim/overcast_bottom/00.4bpp");
+const u16 gTilesetAnims_OldenTimesMountain_OvercastBottom_Frame1[] = INCBIN_U16("data/tilesets/secondary/olden_times_mountain/anim/overcast_bottom/01.4bpp");
+const u16 gTilesetAnims_OldenTimesMountain_OvercastBottom_Frame2[] = INCBIN_U16("data/tilesets/secondary/olden_times_mountain/anim/overcast_bottom/02.4bpp");
+const u16 gTilesetAnims_OldenTimesMountain_OvercastBottom_Frame3[] = INCBIN_U16("data/tilesets/secondary/olden_times_mountain/anim/overcast_bottom/03.4bpp");
+const u16 gTilesetAnims_OldenTimesMountain_OvercastBottom_Frame4[] = INCBIN_U16("data/tilesets/secondary/olden_times_mountain/anim/overcast_bottom/04.4bpp");
+const u16 gTilesetAnims_OldenTimesMountain_OvercastBottom_Frame5[] = INCBIN_U16("data/tilesets/secondary/olden_times_mountain/anim/overcast_bottom/05.4bpp");
+const u16 gTilesetAnims_OldenTimesMountain_OvercastBottom_Frame6[] = INCBIN_U16("data/tilesets/secondary/olden_times_mountain/anim/overcast_bottom/06.4bpp");
+const u16 gTilesetAnims_OldenTimesMountain_OvercastBottom_Frame7[] = INCBIN_U16("data/tilesets/secondary/olden_times_mountain/anim/overcast_bottom/07.4bpp");
+const u16 gTilesetAnims_OldenTimesMountain_OvercastBottom_Frame8[] = INCBIN_U16("data/tilesets/secondary/olden_times_mountain/anim/overcast_bottom/08.4bpp");
+const u16 gTilesetAnims_OldenTimesMountain_OvercastBottom_Frame9[] = INCBIN_U16("data/tilesets/secondary/olden_times_mountain/anim/overcast_bottom/09.4bpp");
+const u16 gTilesetAnims_OldenTimesMountain_OvercastBottom_Frame10[] = INCBIN_U16("data/tilesets/secondary/olden_times_mountain/anim/overcast_bottom/10.4bpp");
+const u16 gTilesetAnims_OldenTimesMountain_OvercastBottom_Frame11[] = INCBIN_U16("data/tilesets/secondary/olden_times_mountain/anim/overcast_bottom/11.4bpp");
+const u16 gTilesetAnims_OldenTimesMountain_OvercastBottom_Frame12[] = INCBIN_U16("data/tilesets/secondary/olden_times_mountain/anim/overcast_bottom/12.4bpp");
+const u16 gTilesetAnims_OldenTimesMountain_OvercastBottom_Frame13[] = INCBIN_U16("data/tilesets/secondary/olden_times_mountain/anim/overcast_bottom/13.4bpp");
+const u16 gTilesetAnims_OldenTimesMountain_OvercastBottom_Frame14[] = INCBIN_U16("data/tilesets/secondary/olden_times_mountain/anim/overcast_bottom/14.4bpp");
+const u16 gTilesetAnims_OldenTimesMountain_OvercastBottom_Frame15[] = INCBIN_U16("data/tilesets/secondary/olden_times_mountain/anim/overcast_bottom/15.4bpp");
+
+const u16 *const gTilesetAnims_OldenTimesMountain_OvercastBottom[] = {
+    gTilesetAnims_OldenTimesMountain_OvercastBottom_Frame0,
+    gTilesetAnims_OldenTimesMountain_OvercastBottom_Frame1,
+    gTilesetAnims_OldenTimesMountain_OvercastBottom_Frame2,
+    gTilesetAnims_OldenTimesMountain_OvercastBottom_Frame3,
+    gTilesetAnims_OldenTimesMountain_OvercastBottom_Frame4,
+    gTilesetAnims_OldenTimesMountain_OvercastBottom_Frame5,
+    gTilesetAnims_OldenTimesMountain_OvercastBottom_Frame6,
+    gTilesetAnims_OldenTimesMountain_OvercastBottom_Frame7,
+    gTilesetAnims_OldenTimesMountain_OvercastBottom_Frame8,
+    gTilesetAnims_OldenTimesMountain_OvercastBottom_Frame9,
+    gTilesetAnims_OldenTimesMountain_OvercastBottom_Frame10,
+    gTilesetAnims_OldenTimesMountain_OvercastBottom_Frame11,
+    gTilesetAnims_OldenTimesMountain_OvercastBottom_Frame12,
+    gTilesetAnims_OldenTimesMountain_OvercastBottom_Frame13,
+    gTilesetAnims_OldenTimesMountain_OvercastBottom_Frame14,
+    gTilesetAnims_OldenTimesMountain_OvercastBottom_Frame15,
+};
+
+static void QueueAnimTiles_OldenTimesMountain_OvercastBottom_Top(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gTilesetAnims_OldenTimesMountain_OvercastBottom);
+    AppendTilesetAnimToBuffer(gTilesetAnims_OldenTimesMountain_OvercastBottom[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(NUM_TILES_IN_PRIMARY + 0)), 2 * TILE_SIZE_4BPP);
+}
+
+static void QueueAnimTiles_OldenTimesMountain_OvercastBottom_Bottom(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gTilesetAnims_OldenTimesMountain_OvercastBottom);
+    AppendTilesetAnimToBuffer((const u16 *)(gTilesetAnims_OldenTimesMountain_OvercastBottom[i] + TILE_SIZE_4BPP), (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(NUM_TILES_IN_PRIMARY + 2)), 2 * TILE_SIZE_4BPP);
+}
+
+static void TilesetAnim_OldenTimesMountain(u16 timer)
+{
+    if (timer % 2 == 0)
+    {
+        QueueAnimTiles_OldenTimesMountain_OvercastTop_Top(timer / 2);
+    }
+    if (timer % 4 == 0)
+    {
+        QueueAnimTiles_OldenTimesMountain_OvercastTop_Bottom(timer / 4);
+    }
+    if (timer % 8 == 0)
+    {
+        QueueAnimTiles_OldenTimesMountain_OvercastBottom_Top(timer / 8);
+    }
+    if (timer % 16 == 0)
+    {
+        QueueAnimTiles_OldenTimesMountain_OvercastBottom_Bottom(timer / 16);
+    }
+}
+
+void InitTilesetAnim_OldenTimesMountain(void)
+{
+    sSecondaryTilesetAnimCounter = 0;
+    sSecondaryTilesetAnimCounterMax = 1024;
+    sSecondaryTilesetAnimCallback = TilesetAnim_OldenTimesMountain;
+}

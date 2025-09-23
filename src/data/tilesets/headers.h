@@ -883,5 +883,5 @@ const struct Tileset gTileset_OldenTimesMountain =
     .palettes = gTilesetPalettes_OldenTimesMountain,
     .metatiles = gMetatiles_OldenTimesMountain,
     .metatileAttributes = gMetatileAttributes_OldenTimesMountain,
-    .callback = NULL,
+    .callback = InitTilesetAnim_OldenTimesMountain,
 };

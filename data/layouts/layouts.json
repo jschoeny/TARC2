@@ -4467,7 +4467,7 @@
       "width": 20,
       "height": 23,
       "primary_tileset": "gTileset_OldenTimes",
-      "secondary_tileset": "gTileset_DojoExterior",
+      "secondary_tileset": "gTileset_OldenTimesMountain",
       "border_filepath": "data/layouts/MountainSummit/border.bin",
       "blockdata_filepath": "data/layouts/MountainSummit/map.bin"
     },
