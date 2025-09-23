@@ -994,7 +994,7 @@ bool32 TextPrinterWaitAutoMode(struct TextPrinter *textPrinter)
 {
     struct TextPrinterSubStruct *subStruct = (struct TextPrinterSubStruct *)(&textPrinter->subStructFields);
 
-    if (subStruct->autoScrollDelay == NUM_FRAMES_AUTO_SCROLL_DELAY)
+    if (subStruct->autoScrollDelay == (gTextFlags.isCredits ? 254 : NUM_FRAMES_AUTO_SCROLL_DELAY))
     {
         subStruct->autoScrollDelay = 0;
         return TRUE;

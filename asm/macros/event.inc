@@ -1388,6 +1388,11 @@
 	.4byte \text
 	.endm
 
+	.macro messagecredits text:req
+	callnative ScrCmd_messagecredits
+	.4byte \text
+	.endm
+
 	@ Executes the specified field effect animation (FLDEFF_*).
 	.macro dofieldeffect animation:req
 	.byte SCR_OP_DOFIELDEFFECT

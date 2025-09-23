@@ -28,6 +28,8 @@ void InitFieldMessageBox(void)
     gTextFlags.useAlternateDownArrow = FALSE;
     gTextFlags.autoScroll = FALSE;
     gTextFlags.forceMidTextSpeed = FALSE;
+    gTextFlags.forceSlowTextSpeed = FALSE;
+    gTextFlags.isCredits = FALSE;
 }
 
 #define tState data[0]
@@ -114,6 +116,15 @@ bool8 ShowFieldAutoScrollMessage(const u8 *str)
     return TRUE;
 }
 
+bool8 ShowFieldCreditsMessage(const u8 *str)
+{
+    if (sFieldMessageBoxMode != FIELD_MESSAGE_BOX_HIDDEN)
+        return FALSE;
+    sFieldMessageBoxMode = FIELD_MESSAGE_BOX_CREDITS;
+    ExpandStringAndStartDrawFieldMessage(str, FALSE);
+    return TRUE;
+}
+
 static bool8 UNUSED ForceShowFieldAutoScrollMessage(const u8 *str)
 {
     sFieldMessageBoxMode = FIELD_MESSAGE_BOX_AUTO_SCROLL;
@@ -154,7 +165,14 @@ static void ExpandStringAndStartDrawFieldMessage(const u8 *str, bool32 allowSkip
         CopyWindowToVram(1, COPYWIN_FULL);
     }
     StringExpandPlaceholders(gStringVar4, str);
-    AddTextPrinterForMessage(allowSkippingDelayWithButtonPress);
+    if (sFieldMessageBoxMode == FIELD_MESSAGE_BOX_CREDITS)
+    {
+        AddTextPrinterForMessage_Colors(allowSkippingDelayWithButtonPress, TEXT_COLOR_WHITE, TEXT_COLOR_TRANSPARENT, TEXT_COLOR_DARK_GRAY);
+    }
+    else
+    {
+        AddTextPrinterForMessage(allowSkippingDelayWithButtonPress);
+    }
     CreateTask_DrawFieldMessage();
     if (IsFieldMugshotActive())
     {

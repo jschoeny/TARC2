@@ -7,6 +7,7 @@ enum
     FIELD_MESSAGE_BOX_UNUSED,
     FIELD_MESSAGE_BOX_NORMAL,
     FIELD_MESSAGE_BOX_AUTO_SCROLL,
+    FIELD_MESSAGE_BOX_CREDITS,
 };
 
 extern const u8* gSpeakerName;
@@ -15,6 +16,7 @@ bool8 ShowFieldMessage(const u8 *str);
 bool8 ShowPokenavFieldMessage(const u8 *str);
 bool8 ShowFieldMessageFromBuffer(void);
 bool8 ShowFieldAutoScrollMessage(const u8 *str);
+bool8 ShowFieldCreditsMessage(const u8 *str);
 void HideFieldMessageBox(void);
 bool8 IsFieldMessageBoxHidden(void);
 u8 GetFieldMessageBoxMode(void);

@@ -209,9 +209,13 @@ u16 AddTextPrinterParameterized2(u8 windowId, u8 fontId, const u8 *str, u8 speed
 
 void AddTextPrinterForMessage(bool8 allowSkippingDelayWithButtonPress)
 {
+    AddTextPrinterForMessage_Colors(allowSkippingDelayWithButtonPress, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GRAY);
+}
+void AddTextPrinterForMessage_Colors(bool8 allowSkippingDelayWithButtonPress, u8 fgColor, u8 bgColor, u8 shadowColor)
+{
     void (*callback)(struct TextPrinterTemplate *, u16) = NULL;
     gTextFlags.canABSpeedUpPrint = allowSkippingDelayWithButtonPress;
-    AddTextPrinterParameterized2(0, FONT_NORMAL, gStringVar4, GetPlayerTextSpeedDelay(), callback, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GRAY);
+    AddTextPrinterParameterized2(0, FONT_NORMAL, gStringVar4, GetPlayerTextSpeedDelay(), callback, fgColor, bgColor, shadowColor);
 }
 
 void AddTextPrinterForMessage_2(bool8 allowSkippingDelayWithButtonPress)
@@ -348,8 +352,15 @@ static inline void *GetWindowFunc_DialogueFrame(void)
 
 void DrawDialogueFrame(u8 windowId, bool8 copyToVram)
 {
-    CallWindowFunction(windowId, GetWindowFunc_DialogueFrame());
-    FillWindowPixelBuffer(windowId, PIXEL_FILL(1));
+    if (gTextFlags.isCredits)
+    {
+        FillWindowPixelBuffer(windowId, PIXEL_FILL(0));
+    }
+    else
+    {
+        CallWindowFunction(windowId, GetWindowFunc_DialogueFrame());
+        FillWindowPixelBuffer(windowId, PIXEL_FILL(1));
+    }
     PutWindowTilemap(windowId);
     if (copyToVram == TRUE)
         CopyWindowToVram(windowId, COPYWIN_FULL);
@@ -591,6 +602,8 @@ void DisplayYesNoMenuWithDefault(u8 initialCursorPos)
 
 u32 GetPlayerTextSpeed(void)
 {
+    if (gTextFlags.isCredits || gTextFlags.forceSlowTextSpeed)
+        return OPTIONS_TEXT_SPEED_SLOW;
     if (gTextFlags.forceMidTextSpeed)
         return OPTIONS_TEXT_SPEED_MID;
     return gSaveBlock2Ptr->optionsTextSpeed;
