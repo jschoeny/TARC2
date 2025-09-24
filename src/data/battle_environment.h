@@ -40,6 +40,10 @@ const u32 gBattleEnvironmentTiles_OldForest[] = INCBIN_U32("graphics/battle_envi
 const u16 gBattleEnvironmentPalette_OldForest[] = INCBIN_U16("graphics/battle_environment/old_forest/palette.gbapal");
 const u32 gBattleEnvironmentTilemap_OldForest[] = INCBIN_U32("graphics/battle_environment/old_forest/map.bin.smolTM");
 
+const u32 gBattleEnvironmentTiles_Summit[] = INCBIN_U32("graphics/battle_environment/summit/tiles.4bpp.smol");
+const u16 gBattleEnvironmentPalette_Summit[] = INCBIN_U16("graphics/battle_environment/summit/palette.gbapal");
+const u32 gBattleEnvironmentTilemap_Summit[] = INCBIN_U32("graphics/battle_environment/summit/map.bin.smolTM");
+
 #define ENVIRONMENT_BACKGROUND(background)                      \
 {                                                               \
     .tileset = gBattleEnvironmentTiles_##background,            \
@@ -135,7 +139,14 @@ const struct BattleEnvironment gBattleEnvironmentInfo[BATTLE_ENVIRONMENT_COUNT] 
         .secretPowerEffect = MOVE_EFFECT_CONFUSION,
     #endif
         .camouflageType = B_CAMOUFLAGE_TYPES >= GEN_5 ? TYPE_GROUND : TYPE_ROCK,
-        .background = ENVIRONMENT_BACKGROUND(Rock),
+        .background =
+        {
+            .tileset = gBattleEnvironmentTiles_Summit,
+            .tilemap = gBattleEnvironmentTilemap_Summit,
+            .entryTileset = gBattleEnvironmentAnimTiles_Rock,
+            .entryTilemap = gBattleEnvironmentAnimTilemap_Rock,
+            .palette = gBattleEnvironmentPalette_Summit,
+        },
     },
 
     [BATTLE_ENVIRONMENT_CAVE] =

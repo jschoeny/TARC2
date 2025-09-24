@@ -626,6 +626,8 @@ enum BattleEnvironments BattleSetup_GetEnvironmentId(void)
     u16 tileBehavior;
     s16 x, y;
 
+    if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_MOUNTAIN_SUMMIT) && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_MOUNTAIN_SUMMIT))
+        return BATTLE_ENVIRONMENT_MOUNTAIN;
     return BATTLE_ENVIRONMENT_GRASS;
 
     if (I_FISHING_ENVIRONMENT >= GEN_4 && gIsFishingEncounter)
