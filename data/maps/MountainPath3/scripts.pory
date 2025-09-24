@@ -110,14 +110,18 @@ script MountainPath3_WooperCutscene {
 
   // Play emergence sound effects
   playmoncry(SPECIES_QUAGSIRE, CRY_MODE_NORMAL)
+  applymovement(LOCAL_ID_SHADOW_QUAGSIRE, moves(shake))
   waitmoncry
   playmoncry(SPECIES_WOOPER, CRY_MODE_ENCOUNTER)
+  applymovement(LOCAL_ID_SHADOW_WOOPER, moves(shake))
+  waitmovement(LOCAL_ID_SHADOW_QUAGSIRE)
+  waitmovement(LOCAL_ID_SHADOW_WOOPER)
   waitmoncry
 
   delay(60)
 
   // Set up the 1v2 Shadow battle
-  setwildshadowbattle(SPECIES_WOOPER, 24, ITEM_NONE, TRUE, SPECIES_QUAGSIRE, 20, ITEM_NONE, TRUE)
+  setwildshadowbattle(SPECIES_WOOPER, 26, ITEM_NONE, TRUE, SPECIES_QUAGSIRE, 22, ITEM_NONE, TRUE)
   dowildbattle
 
   // After battle cleanup
