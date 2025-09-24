@@ -24,7 +24,7 @@ script RockyPath3_ShadowEonsCutscene {
   speakername("GRANDMA")
   msgbox(format("RENJI and GROWLITHE observed the shrine.\p"
                 "It described the legend surrounding the mythical HO-OH.\p"
-                "“A shadowy blight shall corrupt the whole land,\N”"
+                "“A shadowy blight shall corrupt the whole land,”\N"
                 "“Closing the hearts of all who-”"))
   closemessage
   playmoncry(SPECIES_FLAREON, CRY_MODE_ENCOUNTER)
@@ -88,13 +88,13 @@ script RockyPath3_ShadowEonsCutscene {
   speakername("GRANDMA")
   msgbox(format("RENJI and GROWLITHE observed the shrine.\p"
                 "It described the legend surrounding the mythical HO-OH.\p"
-                "“A shadowy blight shall corrupt the whole land,\N”"
-                "“Closing the hearts of all who draw near.\p”"
-                "“With vengeance will FIRE of the sky rain down,\N”"
-                "“And with power will FIRE of the earth make clear.\p”"
-                "“The fire will grow not by stone, but by bond.\N”"
-                "“And by stone will the bond seal the evil within.\p”"
-                "“To the top of the mount must the hero embark,\N”"
+                "“A shadowy blight shall corrupt the whole land,”\N"
+                "“Closing the hearts of all who draw near.”\p"
+                "“With vengeance will FIRE of the sky rain down,”\N"
+                "“And with power will FIRE of the earth make clear.”\p"
+                "“The fire will grow not by stone, but by bond.”\N"
+                "“And by stone will the bond seal the evil within.”\p"
+                "“To the top of the mount must the hero embark,”\N"
                 "“And there will be summoned the FIRE to win.”"))
   closemessage
   releaseall
