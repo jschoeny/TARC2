@@ -2820,3 +2820,6 @@
 	callnative RemoveFieldMugshot
 	.endm
 
+	.macro softreset
+	callnative ScrCmd_softreset
+	.endm

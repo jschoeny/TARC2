@@ -3356,3 +3356,9 @@ bool8 ScrCmd_setwildshadowbattle(struct ScriptContext *ctx)
 
     return FALSE;
 }
+
+bool8 ScrCmd_softreset(struct ScriptContext *ctx)
+{
+    SoftReset(RESET_ALL);
+    return FALSE;
+}
