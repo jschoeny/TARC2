@@ -1,1 +1,337 @@
-mapscripts MountainSummit_MapScripts {}
+mapscripts MountainSummit_MapScripts {
+  MAP_SCRIPT_ON_LOAD {
+    if (var(VAR_TEMP_0) == 0) {
+      setflag(FLAG_TEMP_1) // Hide Shadow Ho-Oh
+      setflag(FLAG_TEMP_2) // Hide Ho-Oh
+      setflag(FLAG_TEMP_3) // Hide Blight
+      setflag(FLAG_TEMP_4) // Hide Arcanine Statue
+    }
+  }
+}
+
+script MountainSummit_EventScript_Trigger {
+  special(SpawnCameraObject)
+  applymovement(LOCALID_CAMERA, moves(walk_up*6))
+  applymovement(LOCALID_PLAYER, moves(walk_slow_up*5))
+  applymovement(OBJ_EVENT_ID_FOLLOWER, moves(walk_slow_up*5))
+  waitmovement(LOCALID_CAMERA)
+  waitmovement(LOCALID_PLAYER)
+  waitmovement(OBJ_EVENT_ID_FOLLOWER)
+
+  delay(10)
+  speakername("GRANDMA")
+  msgbox(format("The wind was strong at the summit.\p"
+                "This was the place where the legendary HO-OH should be."))
+  closemessage
+
+  playmoncry(SPECIES_SHADOW_HO_OH, CRY_MODE_WEAK)
+  delay(10)
+  applymovement(LOCALID_PLAYER, moves(
+    emote_question_mark,
+    face_left,
+    delay_16*2,
+    face_right,
+    delay_16*2,
+    face_left,
+  ))
+  applymovement(OBJ_EVENT_ID_FOLLOWER, moves(
+    emote_question_mark,
+    delay_16,
+    face_right,
+    delay_16*2,
+    face_left,
+    delay_16*2,
+    face_right,
+  ))
+  waitmovement(LOCALID_PLAYER)
+  waitmovement(OBJ_EVENT_ID_FOLLOWER)
+  waitmoncry
+
+  delay(30)
+
+  addobject(LOCALID_SUMMIT_SHADOW_HO_OH)
+  applymovement(LOCALID_SUMMIT_SHADOW_HO_OH, moves(walk_slow_down*4))
+  delay(20)
+  applymovement(LOCALID_PLAYER, moves(face_up, emote_exclamation_mark))
+  applymovement(OBJ_EVENT_ID_FOLLOWER, moves(face_up, emote_exclamation_mark))
+  waitmovement(LOCALID_SUMMIT_SHADOW_HO_OH)
+  waitmovement(LOCALID_PLAYER)
+  waitmovement(OBJ_EVENT_ID_FOLLOWER)
+
+  delay(60)
+
+  playmoncry(SPECIES_SHADOW_HO_OH, CRY_MODE_DYNAMAX)
+  setvar(VAR_0x8005, 2) // horizontal pan
+  setvar(VAR_0x8006, 32) // num shakes
+  setvar(VAR_0x8007, 2) // shake delay
+  special(ShakeCamera)
+  delay(10)
+  applymovement(OBJ_EVENT_ID_FOLLOWER, moves(walk_fast_up*2))
+  applymovement(LOCALID_PLAYER, moves(
+    lock_facing_direction
+    walk_fast_left,
+    unlock_facing_direction,
+    face_right
+  ))
+  waitmovement(OBJ_EVENT_ID_FOLLOWER)
+  waitmovement(LOCALID_PLAYER)
+
+  delay(90)
+
+  applymovement(LOCALID_PLAYER, moves(player_run_right, face_up))
+  waitmovement(LOCALID_PLAYER)
+
+  delay(60)
+
+  playmoncry(SPECIES_SHADOW_HO_OH, CRY_MODE_ENCOUNTER)
+  applymovement(LOCALID_SUMMIT_SHADOW_HO_OH, moves(shake))
+  waitmovement(LOCALID_SUMMIT_SHADOW_HO_OH)
+  waitmoncry
+
+  applymovement(LOCALID_CAMERA, moves(walk_down))
+  waitmovement(LOCALID_CAMERA)
+  special(RemoveCameraObject)
+
+  delay(60)
+
+  setflag(FLAG_NO_RUNNING_FROM_BATTLE)
+  setflag(FLAG_SMART_WILD_AI_FLAG)
+
+  setwildbattle(SPECIES_SHADOW_HO_OH, 40)
+  dowildbattle
+
+  if (var(VAR_RESULT) == B_OUTCOME_WON) {
+    playbgm(MUS_DUMMY, FALSE)
+    fadescreen(FADE_TO_WHITE)
+    delay(20)
+    playse(SE_ORB)
+    removeobject(LOCALID_SUMMIT_SHADOW_HO_OH)
+    addobject(LOCALID_SUMMIT_HO_OH)
+    addobject(LOCALID_SUMMIT_BLIGHT)
+    waitse
+    lockall
+    delay(20)
+    fadescreen(FADE_FROM_WHITE)
+    playbgm(MUS_PMDRED_WORLD_CALAMITY, FALSE)
+    delay(90)
+    applymovement(LOCALID_SUMMIT_BLIGHT, moves(
+      shake,
+      delay_16*2,
+    ))
+    waitmovement(LOCALID_SUMMIT_BLIGHT)
+    applymovement(LOCALID_SUMMIT_BLIGHT, moves(
+      shake,
+    ))
+    applymovement(LOCALID_PLAYER, moves(
+      lock_facing_direction,
+      walk_fast_down*2,
+      unlock_facing_direction,
+    ))
+    applymovement(OBJ_EVENT_ID_FOLLOWER, moves(
+      lock_facing_direction,
+      walk_fast_down*2,
+      unlock_facing_direction,
+    ))
+    waitmovement(LOCALID_PLAYER)
+    waitmovement(OBJ_EVENT_ID_FOLLOWER)
+    waitmovement(LOCALID_SUMMIT_BLIGHT)
+    delay(120)
+    special(SpawnCameraObject)
+    applymovement(LOCALID_CAMERA, moves(walk_slow_up))
+    applymovement(OBJ_EVENT_ID_FOLLOWER, moves(walk_slow_up))
+    waitmovement(LOCALID_CAMERA)
+    waitmovement(OBJ_EVENT_ID_FOLLOWER)
+    playmoncry(SPECIES_GROWLITHE, CRY_MODE_ENCOUNTER)
+    speakername("GROWLITHE")
+    msgbox(format(
+      "{CREATE_MUGSHOT MUGSHOT_GROWLITHE EMOTE_DETERMINED}"
+      "Growl!"
+    ))
+    closemessage
+    delay(60)
+    playse(SE_M_DETECT)
+    dofieldeffectsparkle(10, 7, 0)
+    waitfieldeffect(FLDEFF_SPARKLE)
+    delay(60)
+    playse(SE_M_MEGA_KICK)
+    setvar(VAR_RESULT, 3)
+    special(DoOrbEffect)
+    applymovement(OBJ_EVENT_ID_FOLLOWER, moves(delay_16*2, shake*5))
+    waitstate
+    delay(180)
+    setmonspecies(0, SPECIES_ARCANINE)
+    setflag(FLAG_FORCE_FOLLOWER_TRANSFORM_EFFECT)
+    delay(8)
+    applymovement(OBJ_EVENT_ID_FOLLOWER, moves(
+      walk_in_place_up, // The object event needs to move in order to
+                        // trigger the sprite update to ARCANINE
+    ))
+    waitmovement(OBJ_EVENT_ID_FOLLOWER)
+    delay(10)
+    special(FadeOutOrbEffect)
+    waitstate
+    delay(10)
+    applymovement(OBJ_EVENT_ID_FOLLOWER, moves(
+      shake,
+    ))
+    playmoncry(SPECIES_ARCANINE, CRY_MODE_ENCOUNTER)
+    waitmovement(OBJ_EVENT_ID_FOLLOWER)
+    waitmoncry
+    delay(60)
+    applymovement(OBJ_EVENT_ID_FOLLOWER, moves(jump_in_place_up*2))
+    waitmovement(OBJ_EVENT_ID_FOLLOWER)
+    delay(10)
+    applymovement(LOCALID_SUMMIT_BLIGHT, moves(shake))
+    waitmovement(LOCALID_SUMMIT_BLIGHT)
+    delay(60)
+    applymovement(OBJ_EVENT_ID_FOLLOWER, moves(walk_fast_up))
+    waitmovement(OBJ_EVENT_ID_FOLLOWER)
+    applymovement(LOCALID_SUMMIT_BLIGHT, moves(walk_slow_down))
+    applymovement(OBJ_EVENT_ID_FOLLOWER, moves(
+      lock_facing_direction,
+      walk_slow_down,
+      unlock_facing_direction,
+    ))
+    waitmovement(LOCALID_SUMMIT_BLIGHT)
+    waitmovement(OBJ_EVENT_ID_FOLLOWER)
+    delay(20)
+    applymovement(LOCALID_SUMMIT_BLIGHT, moves(shake))
+    applymovement(OBJ_EVENT_ID_FOLLOWER, moves(shake))
+    waitmovement(LOCALID_SUMMIT_BLIGHT)
+    waitmovement(OBJ_EVENT_ID_FOLLOWER)
+    delay(30)
+    applymovement(LOCALID_SUMMIT_BLIGHT, moves(shake))
+    applymovement(OBJ_EVENT_ID_FOLLOWER, moves(face_down))
+    fadeoutbgm(0)
+    playbgm(MUS_PMDRED_ESCAPE_THROUGH_THE_SNOW, FALSE)
+    speakername("ARCANINE")
+    msgbox(format(
+      "{CREATE_MUGSHOT MUGSHOT_GROWLITHE EMOTE_TEARY_EYED}"
+      "Growl…"
+    ))
+    closemessage
+    delay(10)
+    speakername("GRANDMA")
+    msgbox(format("ARCANINE knew this meant goodbye."))
+    closemessage
+    delay(10)
+    applymovement(LOCALID_SUMMIT_BLIGHT, moves(shake))
+    applymovement(OBJ_EVENT_ID_FOLLOWER, moves(face_up, shake))
+    waitmovement(LOCALID_SUMMIT_BLIGHT)
+    waitmovement(OBJ_EVENT_ID_FOLLOWER)
+    speakername("GRANDMA")
+    msgbox(format(
+      "“The fire will grow not by stone,\Nbut by bond.”\p"
+      "“And by stone will the bond\Nseal the evil within.”"
+    ))
+    applymovement(LOCALID_SUMMIT_BLIGHT, moves(shake, delay_16*2, shake))
+    applymovement(OBJ_EVENT_ID_FOLLOWER, moves(shake, delay_16*2, shake))
+    closemessage
+    waitmovement(LOCALID_SUMMIT_BLIGHT)
+    waitmovement(OBJ_EVENT_ID_FOLLOWER)
+    delay(30)
+    playmoncry(SPECIES_ARCANINE, CRY_MODE_ENCOUNTER)
+    waitmoncry
+    setvar(VAR_RESULT, 3)
+    special(DoOrbEffect)
+    applymovement(OBJ_EVENT_ID_FOLLOWER, moves(delay_16*2, shake*4))
+    applymovement(LOCALID_SUMMIT_BLIGHT, moves(delay_16*2, shake*4))
+    waitmovement(OBJ_EVENT_ID_FOLLOWER)
+    waitmovement(LOCALID_SUMMIT_BLIGHT)
+    waitstate
+    delay(120)
+    applymovement(OBJ_EVENT_ID_FOLLOWER, moves(face_down))
+    waitmovement(OBJ_EVENT_ID_FOLLOWER)
+    delay(30)
+    playse(SE_M_DRAGON_RAGE)
+    waitse
+    playse(SE_M_FLAMETHROWER)
+    removeobject(LOCALID_SUMMIT_BLIGHT)
+    waitse
+    special(FadeOutOrbEffect)
+    waitstate
+    playbgm(MUS_DUMMY, FALSE)
+    delay(10)
+    applymovement(OBJ_EVENT_ID_FOLLOWER, moves(shake, delay_16*4))
+    waitmovement(OBJ_EVENT_ID_FOLLOWER)
+    removeobject(OBJ_EVENT_ID_FOLLOWER)
+    addobject(LOCALID_SUMMIT_ARCANINE_STATUE)
+    applymovement(LOCALID_SUMMIT_ARCANINE_STATUE, moves(shake))
+    waitmovement(LOCALID_SUMMIT_ARCANINE_STATUE)
+    delay(60)
+    dofieldeffectsparkle(10, 7, 0)
+    waitfieldeffect(FLDEFF_SPARKLE)
+    releaseall
+    setweather(WEATHER_NONE)
+    doweather
+    delay(120)
+    playbgm(MUS_PMDRED_FAREWELL, FALSE)
+    applymovement(LOCALID_CAMERA, moves(walk_slow_up))
+    waitmovement(LOCALID_CAMERA)
+    delay(60)
+    special(WaitWeather)
+    waitstate
+    messagecredits(format(
+      "STORY\NTeon\p"
+      "SCRIPTING\NTeon\p"
+      "PROGRAMMING\NTeon\p"
+      "MAPPING\NTeon\p"
+      "TILESETS\NTeon\p"
+      "GRAPHICS\NTeon\p"
+      "MUSIC SELECTION\NTeon\p"
+      "IDEA GUY\NTeon\p"
+      "FAKEMON\NTeon\p"
+      "TESTERS\NTeon\p"
+      "EXECUTIVE PRODUCER\NTeon\p"
+      "EXECUTIVE DIRECTOR\NTeon\p"
+      "SPECIAL THANKS\NTeam Aqua Hideout\p"
+      "SPECIAL THANKS\NWifey and the fam\p"
+      "See HACK_CREDITS.md in the repo for a full list of the actual credits.\p"
+      "Made with love by Teon.{PAUSE 15}{PAUSE 15}{PAUSE 15}{PAUSE 15}\N"
+      "T{PAUSE 4}h{PAUSE 4}a{PAUSE 4}n{PAUSE 4}k{PAUSE 4}s{PAUSE 4} f{PAUSE 4}o{PAUSE 4}r{PAUSE 4} p{PAUSE 4}l{PAUSE 4}a{PAUSE 4}y{PAUSE 4}i{PAUSE 4}n{PAUSE 4}g{PAUSE 4}!{PAUSE_UNTIL_PRESS}"
+    ))
+    delay(60)
+    applymovement(LOCALID_SUMMIT_HO_OH, moves(
+      lock_facing_direction,
+      walk_slow_up,
+      walk_in_place_down*24,
+      unlock_facing_direction,
+      walk_slow_right*12,
+    ))
+    waitmovement(LOCALID_SUMMIT_HO_OH)
+    delay(240)
+    applymovement(LOCALID_PLAYER, moves(
+      walk_slow_up,
+      delay_16*8,
+      walk_slow_right,
+      delay_16*16,
+      walk_slow_left,
+      delay_16*8,
+      face_up,
+      delay_16*2,
+      jump_in_place_up*2,
+      delay_16*4,
+      face_left,
+      delay_16*2,
+      walk_slow_right,
+      delay_16*2,
+      walk_slow_left,
+      delay_16*4,
+      face_up,
+      delay_16*32,
+      player_run_down*5,
+      player_run_left,
+      player_run_down*2,
+    ))
+    waitmovement(LOCALID_PLAYER)
+    waitmessage
+    closemessage
+    fadescreenspeed(FADE_TO_BLACK, 30)
+    fadeoutbgm(4)
+    // delay(120)
+    softreset
+  }
+  else {
+    releaseall
+  }
+}

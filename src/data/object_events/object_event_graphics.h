@@ -479,3 +479,9 @@ const u16 gObjectEventPal_Fire[] = INCBIN_U16("graphics/object_events/pics/misc/
 
 const u32 gObjectEventPic_Guard[] = INCBIN_U32("graphics/object_events/pics/people/guard.4bpp");
 const u16 gObjectEventPal_Guard[] = INCBIN_U16("graphics/object_events/pics/people/guard.gbapal");
+
+const u32 gObjectEventPic_Blight[] = INCBIN_U32("graphics/object_events/pics/misc/blight.4bpp");
+const u16 gObjectEventPal_Blight[] = INCBIN_U16("graphics/object_events/palettes/blight.gbapal");
+
+const u32 gObjectEventPic_ArcanineStatue[] = INCBIN_U32("graphics/object_events/pics/misc/arcanine_statue.4bpp");
+const u16 gObjectEventPal_ArcanineStatue[] = INCBIN_U16("graphics/object_events/palettes/arcanine_statue.gbapal");

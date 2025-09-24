@@ -560,6 +560,8 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPalette_HGSS_OldLady,      OBJ_EVENT_PAL_HGSS_OLD_LADY},
     {gObjectEventPal_Fire,                  OBJ_EVENT_PAL_FIRE},
     {gObjectEventPal_Guard,                 OBJ_EVENT_PAL_GUARD},
+    {gObjectEventPal_Blight,                OBJ_EVENT_PAL_TAG_BLIGHT},
+    {gObjectEventPal_ArcanineStatue,        OBJ_EVENT_PAL_TAG_ARCANINE_STATUE},
     {gObjectEventPal_Substitute,            OBJ_EVENT_PAL_TAG_SUBSTITUTE},
     {gObjectEventPaletteLight,              OBJ_EVENT_PAL_TAG_LIGHT},
     {gObjectEventPaletteLight2,             OBJ_EVENT_PAL_TAG_LIGHT_2},

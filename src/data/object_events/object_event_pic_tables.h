@@ -1419,3 +1419,11 @@ static const struct SpriteFrameImage sPicTable_Fire[] = {
 static const struct SpriteFrameImage sPicTable_Guard[] = {
     overworld_ascending_frames(gObjectEventPic_Guard, 2, 4),
 };
+
+static const struct SpriteFrameImage sPicTable_Blight[] = {
+    obj_frame_tiles(gObjectEventPic_Blight),
+};
+
+static const struct SpriteFrameImage sPicTable_ArcanineStatue[] = {
+    obj_frame_tiles(gObjectEventPic_ArcanineStatue),
+};

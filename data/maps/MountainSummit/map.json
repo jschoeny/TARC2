@@ -5,7 +5,7 @@
   "music": "MUS_PMDRED_FRIEND_AREA_FINAL_ISLAND",
   "region_map_section": "MAPSEC_MT_CHIMNEY",
   "requires_flash": false,
-  "weather": "WEATHER_NONE",
+  "weather": "WEATHER_RAIN_THUNDERSTORM",
   "map_type": "MAP_TYPE_NONE",
   "allow_cycling": false,
   "allow_escaping": true,
@@ -18,7 +18,35 @@
       "local_id": "LOCALID_SUMMIT_SHADOW_HO_OH",
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(SHADOW_HO_OH)",
       "x": 10,
+      "y": 0,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMP_1"
+    },
+    {
+      "local_id": "LOCALID_SUMMIT_HO_OH",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(HO_OH)",
+      "x": 10,
       "y": 5,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMP_2"
+    },
+    {
+      "local_id": "LOCALID_SUMMIT_BLIGHT",
+      "graphics_id": "OBJ_EVENT_GFX_BLIGHT",
+      "x": 10,
+      "y": 6,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -26,10 +54,42 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_TEMP_3"
+    },
+    {
+      "local_id": "LOCALID_SUMMIT_ARCANINE_STATUE",
+      "graphics_id": "OBJ_EVENT_GFX_ARCANINE_STATUE",
+      "x": 10,
+      "y": 7,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMP_4"
     }
   ],
-  "warp_events": [],
-  "coord_events": [],
+  "warp_events": [
+    {
+      "x": 9,
+      "y": 17,
+      "elevation": 0,
+      "dest_map": "MAP_MOUNTAIN_SUMMIT",
+      "dest_warp_id": "0"
+    }
+  ],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 10,
+      "y": 12,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "MountainSummit_EventScript_Trigger"
+    }
+  ],
   "bg_events": []
 }

@@ -310,12 +310,11 @@ const struct SpeciesInfo gSpeciesInfo[] =
     .iconSprite = gMonIcon_HoOh,
     .iconPalIndex = 1,
     .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-    SHADOW(1, 17, SHADOW_SIZE_L)
     FOOTPRINT(HoOh)
     OVERWORLD(
         sPicTable_HoOhShadow,
         SIZE_64x64,
-        SHADOW_SIZE_M,
+        SHADOW_SIZE_NONE,
         TRACKS_NONE,
         sAnimTable_Following,
         gOverworldPalette_HoOhShadow,
