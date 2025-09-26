@@ -50,7 +50,7 @@ script MountainSummit_EventScript_Trigger {
   delay(30)
 
   addobject(LOCALID_SUMMIT_SHADOW_HO_OH)
-  applymovement(LOCALID_SUMMIT_SHADOW_HO_OH, moves(walk_slow_down*4))
+  applymovement(LOCALID_SUMMIT_SHADOW_HO_OH, moves(walk_slow_down*3))
   delay(20)
   applymovement(LOCALID_PLAYER, moves(face_up, emote_exclamation_mark))
   applymovement(OBJ_EVENT_ID_FOLLOWER, moves(face_up, emote_exclamation_mark))
@@ -58,14 +58,16 @@ script MountainSummit_EventScript_Trigger {
   waitmovement(LOCALID_PLAYER)
   waitmovement(OBJ_EVENT_ID_FOLLOWER)
 
-  delay(60)
+  applymovement(LOCALID_SUMMIT_SHADOW_HO_OH, moves(walk_in_place_down*10))
+  waitmovement(LOCALID_SUMMIT_SHADOW_HO_OH)
 
-  playmoncry(SPECIES_SHADOW_HO_OH, CRY_MODE_DYNAMAX)
+  applymovement(LOCALID_SUMMIT_SHADOW_HO_OH, moves(jump_down))
   setvar(VAR_0x8005, 2) // horizontal pan
   setvar(VAR_0x8006, 32) // num shakes
   setvar(VAR_0x8007, 2) // shake delay
   special(ShakeCamera)
   delay(10)
+  playmoncry(SPECIES_SHADOW_HO_OH, CRY_MODE_DYNAMAX)
   applymovement(OBJ_EVENT_ID_FOLLOWER, moves(walk_fast_up*2))
   applymovement(LOCALID_PLAYER, moves(
     lock_facing_direction
@@ -75,6 +77,9 @@ script MountainSummit_EventScript_Trigger {
   ))
   waitmovement(OBJ_EVENT_ID_FOLLOWER)
   waitmovement(LOCALID_PLAYER)
+  waitmovement(LOCALID_SUMMIT_SHADOW_HO_OH)
+
+  applymovement(LOCALID_SUMMIT_SHADOW_HO_OH, moves(walk_in_place_down*20))
 
   delay(90)
 
@@ -82,11 +87,6 @@ script MountainSummit_EventScript_Trigger {
   waitmovement(LOCALID_PLAYER)
 
   delay(60)
-
-  playmoncry(SPECIES_SHADOW_HO_OH, CRY_MODE_ENCOUNTER)
-  applymovement(LOCALID_SUMMIT_SHADOW_HO_OH, moves(shake))
-  waitmovement(LOCALID_SUMMIT_SHADOW_HO_OH)
-  waitmoncry
 
   applymovement(LOCALID_CAMERA, moves(walk_down))
   waitmovement(LOCALID_CAMERA)
@@ -171,12 +171,26 @@ script MountainSummit_EventScript_Trigger {
     special(FadeOutOrbEffect)
     waitstate
     delay(10)
+    speakername("ARCANINE")
+    message(format(
+      "{CREATE_MUGSHOT MUGSHOT_ARCANINE EMOTE_DETERMINED}"
+      "Roar!"
+    ))
     applymovement(OBJ_EVENT_ID_FOLLOWER, moves(
       shake,
     ))
+    applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark))
     playmoncry(SPECIES_ARCANINE, CRY_MODE_ENCOUNTER)
     waitmovement(OBJ_EVENT_ID_FOLLOWER)
+    waitmovement(LOCALID_PLAYER)
     waitmoncry
+    waitmessage
+    waitbuttonpress
+    closemessage
+    msgbox(format(
+      "GROWLITHE evolved into ARCANINE because it wants to protect you!"
+    ))
+    closemessage
     delay(60)
     applymovement(OBJ_EVENT_ID_FOLLOWER, moves(jump_in_place_up*2))
     waitmovement(OBJ_EVENT_ID_FOLLOWER)
@@ -206,13 +220,16 @@ script MountainSummit_EventScript_Trigger {
     playbgm(MUS_PMDRED_ESCAPE_THROUGH_THE_SNOW, FALSE)
     speakername("ARCANINE")
     msgbox(format(
-      "{CREATE_MUGSHOT MUGSHOT_GROWLITHE EMOTE_TEARY_EYED}"
+      "{CREATE_MUGSHOT MUGSHOT_ARCANINE EMOTE_TEARY_EYED}"
       "Growl…"
     ))
     closemessage
     delay(10)
     speakername("GRANDMA")
-    msgbox(format("ARCANINE knew this meant goodbye."))
+    msgbox(format(
+      "ARCANINE knew what must be done to save everyone.\p"
+      "ARCANINE knew this meant goodbye."
+    ))
     closemessage
     delay(10)
     applymovement(LOCALID_SUMMIT_BLIGHT, moves(shake))
@@ -220,18 +237,30 @@ script MountainSummit_EventScript_Trigger {
     waitmovement(LOCALID_SUMMIT_BLIGHT)
     waitmovement(OBJ_EVENT_ID_FOLLOWER)
     speakername("GRANDMA")
-    msgbox(format(
-      "“The fire will grow not by stone,\Nbut by bond.”\p"
-      "“And by stone will the bond\Nseal the evil within.”"
-    ))
+    msgbox(format("“The fire will grow not by stone,\Nbut by bond.”"))
+    closemessage
+    applymovement(LOCALID_SUMMIT_BLIGHT, moves(shake))
+    applymovement(OBJ_EVENT_ID_FOLLOWER, moves(shake))
+    waitmovement(LOCALID_SUMMIT_BLIGHT)
+    waitmovement(OBJ_EVENT_ID_FOLLOWER)
+    speakername("GRANDMA")
+    msgbox(format("“And by stone will the bond\Nseal the evil within.”"))
+    closemessage
     applymovement(LOCALID_SUMMIT_BLIGHT, moves(shake, delay_16*2, shake))
     applymovement(OBJ_EVENT_ID_FOLLOWER, moves(shake, delay_16*2, shake))
-    closemessage
     waitmovement(LOCALID_SUMMIT_BLIGHT)
     waitmovement(OBJ_EVENT_ID_FOLLOWER)
     delay(30)
     playmoncry(SPECIES_ARCANINE, CRY_MODE_ENCOUNTER)
     waitmoncry
+    applymovement(LOCALID_PLAYER, moves(
+      player_run_up,
+      jump_in_place_up,
+      lock_facing_direction,
+      jump_down,
+      slide_down,
+      unlock_facing_direction,
+    ))
     setvar(VAR_RESULT, 3)
     special(DoOrbEffect)
     applymovement(OBJ_EVENT_ID_FOLLOWER, moves(delay_16*2, shake*4))
@@ -246,6 +275,12 @@ script MountainSummit_EventScript_Trigger {
     playse(SE_M_DRAGON_RAGE)
     waitse
     playse(SE_M_FLAMETHROWER)
+    applymovement(LOCALID_SUMMIT_BLIGHT, moves(
+      walk_down,
+      jump_in_place_down*3,
+      shake*2,
+    ))
+    waitmovement(LOCALID_SUMMIT_BLIGHT)
     removeobject(LOCALID_SUMMIT_BLIGHT)
     waitse
     special(FadeOutOrbEffect)
@@ -253,7 +288,9 @@ script MountainSummit_EventScript_Trigger {
     playbgm(MUS_DUMMY, FALSE)
     delay(10)
     applymovement(OBJ_EVENT_ID_FOLLOWER, moves(shake, delay_16*4))
+    applymovement(LOCALID_PLAYER, moves(walk_slow_up))
     waitmovement(OBJ_EVENT_ID_FOLLOWER)
+    waitmovement(LOCALID_PLAYER)
     removeobject(OBJ_EVENT_ID_FOLLOWER)
     addobject(LOCALID_SUMMIT_ARCANINE_STATUE)
     applymovement(LOCALID_SUMMIT_ARCANINE_STATUE, moves(shake))
@@ -264,13 +301,21 @@ script MountainSummit_EventScript_Trigger {
     releaseall
     setweather(WEATHER_NONE)
     doweather
-    delay(120)
+    special(WaitWeather)
+    waitstate
+    speakername("GRANDMA")
+    msgbox(format(
+      "And thus the prophecy was fulfilled.\p"
+      "The fire of the land conquered the fire of the sky.\p"
+      "And by turning to stone, the evil was\Nsealed within…\p"
+      "Never to ravage the land again."
+    ))
+    closemessage
+    delay(60)
     playbgm(MUS_PMDRED_FAREWELL, FALSE)
     applymovement(LOCALID_CAMERA, moves(walk_slow_up))
     waitmovement(LOCALID_CAMERA)
-    delay(60)
-    special(WaitWeather)
-    waitstate
+    delay(240)
     messagecredits(format(
       "STORY\NTeon\p"
       "SCRIPTING\NTeon\p"
@@ -288,7 +333,7 @@ script MountainSummit_EventScript_Trigger {
       "SPECIAL THANKS\NWifey and the fam\p"
       "See HACK_CREDITS.md in the repo for a full list of the actual credits.\p"
       "Made with love by Teon.{PAUSE 15}{PAUSE 15}{PAUSE 15}{PAUSE 15}\N"
-      "T{PAUSE 4}h{PAUSE 4}a{PAUSE 4}n{PAUSE 4}k{PAUSE 4}s{PAUSE 4} f{PAUSE 4}o{PAUSE 4}r{PAUSE 4} p{PAUSE 4}l{PAUSE 4}a{PAUSE 4}y{PAUSE 4}i{PAUSE 4}n{PAUSE 4}g{PAUSE 4}!{PAUSE_UNTIL_PRESS}"
+      "T{PAUSE 8}h{PAUSE 8}a{PAUSE 8}n{PAUSE 8}k{PAUSE 8}s{PAUSE 8} f{PAUSE 8}o{PAUSE 8}r{PAUSE 8} p{PAUSE 8}l{PAUSE 8}a{PAUSE 8}y{PAUSE 8}i{PAUSE 8}n{PAUSE 8}g{PAUSE 8}!{PAUSE_UNTIL_PRESS}"
     ))
     delay(60)
     applymovement(LOCALID_SUMMIT_HO_OH, moves(
@@ -328,7 +373,6 @@ script MountainSummit_EventScript_Trigger {
     closemessage
     fadescreenspeed(FADE_TO_BLACK, 30)
     fadeoutbgm(4)
-    // delay(120)
     softreset
   }
   else {
