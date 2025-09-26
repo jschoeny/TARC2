@@ -196,6 +196,10 @@ brullov
 - Murpi (https://bsky.app/profile/murpia57.bsky.social)
 - Emmuffin (https://twitter.com/Ernmuffin)
 
+### [Arcanine Portraits](https://sprites.pmdcollab.org/#/0059?form=2)
+- baronessfaron
+- Emmuffin (https://twitter.com/Ernmuffin)
+
 ### [MINIDEX 001-251](https://imgur.com/approximately-2-years-ago-we-managed-to-expand-minisprite-limit-pokemon-g-s-c-from-38-to-255-here-is-what-they-look-like-VKCdkx5)
 _Used as a reference for some of my follower sprites_
 - Chamber, Solo0993, Blue Emerald, Lake, Neslug, Pikachu25

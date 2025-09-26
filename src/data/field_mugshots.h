@@ -36,6 +36,11 @@ static const u16 sFieldMugshotPal_GrowlitheSigh[] = INCBIN_U16("graphics/field_m
 static const u32 sFieldMugshotGfx_GrowlitheStunned[] = INCBIN_U32("graphics/field_mugshots/growlithe/stunned.4bpp.lz");
 static const u16 sFieldMugshotPal_GrowlitheStunned[] = INCBIN_U16("graphics/field_mugshots/growlithe/stunned.gbapal");
 
+static const u32 sFieldMugshotGfx_ArcanineTearyEyed[] = INCBIN_U32("graphics/field_mugshots/arcanine/teary_eyed.4bpp.lz");
+static const u16 sFieldMugshotPal_ArcanineTearyEyed[] = INCBIN_U16("graphics/field_mugshots/arcanine/teary_eyed.gbapal");
+static const u32 sFieldMugshotGfx_ArcanineDetermined[] = INCBIN_U32("graphics/field_mugshots/arcanine/determined.4bpp.lz");
+static const u16 sFieldMugshotPal_ArcanineDetermined[] = INCBIN_U16("graphics/field_mugshots/arcanine/determined.gbapal");
+
 struct MugshotGfx
 {
     const u32 *gfx;
@@ -139,6 +144,19 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         {
             .gfx = sFieldMugshotGfx_GrowlitheStunned,
             .pal = sFieldMugshotPal_GrowlitheStunned,
+        },
+    },
+    [MUGSHOT_ARCANINE] =
+    {
+        [EMOTE_TEARY_EYED] =
+        {
+            .gfx = sFieldMugshotGfx_ArcanineTearyEyed,
+            .pal = sFieldMugshotPal_ArcanineTearyEyed,
+        },
+        [EMOTE_DETERMINED] =
+        {
+            .gfx = sFieldMugshotGfx_ArcanineDetermined,
+            .pal = sFieldMugshotPal_ArcanineDetermined,
         },
     },
 };
