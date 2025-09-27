@@ -1366,6 +1366,7 @@ void UpdateAmbientCry(s16 *state, u16 *delayCounter)
         *state = AMB_CRY_WAIT;
         break;
     case AMB_CRY_RESET:
+        ChooseAmbientCrySpecies();
         divBy = 1;
         monsCount = CalculatePlayerPartyCount();
         for (i = 0; i < monsCount; i++)
