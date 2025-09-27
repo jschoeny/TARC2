@@ -485,3 +485,6 @@ const u16 gObjectEventPal_Blight[] = INCBIN_U16("graphics/object_events/palettes
 
 const u32 gObjectEventPic_ArcanineStatue[] = INCBIN_U32("graphics/object_events/pics/misc/arcanine_statue.4bpp");
 const u16 gObjectEventPal_ArcanineStatue[] = INCBIN_U16("graphics/object_events/palettes/arcanine_statue.gbapal");
+
+const u32 gObjectEventPic_ItemSparkle[] = INCBIN_U32("graphics/object_events/pics/misc/item_sparkle.4bpp");
+const u16 gObjectEventPal_ItemSparkle[] = INCBIN_U16("graphics/object_events/palettes/item_sparkle.gbapal");

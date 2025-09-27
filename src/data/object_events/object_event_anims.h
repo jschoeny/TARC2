@@ -1550,6 +1550,38 @@ static const union AnimCmd *const sAnimTable_Fire[] = {
     [ANIM_STD_GO_EAST] = sAnim_Fire_Right,
 };
 
+static const union AnimCmd sAnim_ItemSparkle[] =
+{
+    // The frame order is like this so the sparkle can be visible in porymap
+
+    // Blank frame (~2 seconds)
+    ANIMCMD_FRAME(3, 14),
+    ANIMCMD_FRAME(3, 14),
+    ANIMCMD_FRAME(3, 14),
+    ANIMCMD_FRAME(3, 14),
+    ANIMCMD_FRAME(3, 14),
+    ANIMCMD_FRAME(3, 14),
+    ANIMCMD_FRAME(3, 14),
+    ANIMCMD_FRAME(3, 14),
+
+    // Sparkle frames
+    ANIMCMD_FRAME(4, 2),
+    ANIMCMD_FRAME(5, 2),
+    ANIMCMD_FRAME(6, 2),
+    ANIMCMD_FRAME(0, 2),
+    ANIMCMD_FRAME(1, 2),
+    ANIMCMD_FRAME(2, 2),
+    ANIMCMD_JUMP(0),
+};
+
+static const union AnimCmd *const sAnimTable_ItemSparkle[] = {
+    [ANIM_STD_GO_SOUTH] = sAnim_ItemSparkle,
+    [ANIM_STD_GO_NORTH] = sAnim_ItemSparkle,
+    [ANIM_STD_GO_WEST] = sAnim_ItemSparkle,
+    [ANIM_STD_GO_EAST] = sAnim_ItemSparkle,
+};
+
+
 static const union AffineAnimCmd *const sAffineAnimTable_KyogreGroudon[] = {
     sAffineAnim_KyogreGroudon_GoSouthStart, // Used by Kyogre/Groudon when awakened
     sAffineAnim_KyogreGroudon_GoSouth,      // Used by Kyogre/Groudon when awakened

@@ -1427,3 +1427,13 @@ static const struct SpriteFrameImage sPicTable_Blight[] = {
 static const struct SpriteFrameImage sPicTable_ArcanineStatue[] = {
     obj_frame_tiles(gObjectEventPic_ArcanineStatue),
 };
+
+static const struct SpriteFrameImage sPicTable_ItemSparkle[] = {
+    overworld_frame(gObjectEventPic_ItemSparkle, 2, 2, 0),
+    overworld_frame(gObjectEventPic_ItemSparkle, 2, 2, 1),
+    overworld_frame(gObjectEventPic_ItemSparkle, 2, 2, 2),
+    overworld_frame(gObjectEventPic_ItemSparkle, 2, 2, 3),
+    overworld_frame(gObjectEventPic_ItemSparkle, 2, 2, 4),
+    overworld_frame(gObjectEventPic_ItemSparkle, 2, 2, 5),
+    overworld_frame(gObjectEventPic_ItemSparkle, 2, 2, 6),
+};

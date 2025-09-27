@@ -4962,5 +4962,8 @@ $(OBJEVENTGFXDIR)/misc/blight.4bpp: %.4bpp: %.png
 $(OBJEVENTGFXDIR)/misc/arcanine_statue.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 4 -mheight 4
 
+$(OBJEVENTGFXDIR)/misc/item_sparkle.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2
+
 graphics/door_anims/battle_tower_multi_corridor.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4

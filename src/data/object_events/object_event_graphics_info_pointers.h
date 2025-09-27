@@ -249,6 +249,7 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Fire;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Guard;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Blight;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ArcanineStatue;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ItemSparkle;
 
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Bard;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Hipster;
@@ -507,6 +508,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_GUARD] =                    &gObjectEventGraphicsInfo_Guard,
     [OBJ_EVENT_GFX_BLIGHT] =                   &gObjectEventGraphicsInfo_Blight,
     [OBJ_EVENT_GFX_ARCANINE_STATUE] =          &gObjectEventGraphicsInfo_ArcanineStatue,
+    [OBJ_EVENT_GFX_ITEM_SPARKLE] =             &gObjectEventGraphicsInfo_ItemSparkle,
 };
 
 const struct ObjectEventGraphicsInfo *const gMauvilleOldManGraphicsInfoPointers[] = {
