@@ -5195,6 +5195,7 @@ BattleScript_LocalBattleWonReward::
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_PayDayMoneyAndPickUpItems::
 	givepaydaymoney
+	trypickupwilditems
 	pickup
 	end2
 
@@ -9695,3 +9696,19 @@ BattleScript_ForfeitBattleGaveMoney::
 .endif
 	waitmessage B_WAIT_TIME_LONG
 	end2
+
+BattleScript_PrintItemFoundString::
+	printstring STRINGID_PLAYERFOUNDITEM
+	waitmessage B_WAIT_TIME_LONG
+	trypickupwilditems
+	return
+
+BattleScript_PrintItemInBagString::
+	printstring STRINGID_PLACEDITEMINBAG
+	waitmessage B_WAIT_TIME_LONG
+	return
+
+BattleScript_PrintItemsInBagString::
+	printstring STRINGID_PLACEDITEMSINBAG
+	waitmessage B_WAIT_TIME_LONG
+	return

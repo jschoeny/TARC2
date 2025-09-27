@@ -2521,3 +2521,7 @@
 	callnative BS_TryBoosterEnergy
 	.byte \onFieldStatus
 	.endm
+
+	.macro trypickupwilditems
+	callnative BS_TryPickupWildItems
+	.endm

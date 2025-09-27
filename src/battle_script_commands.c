@@ -4191,6 +4191,112 @@ static void Cmd_clearvolatile(void)
     gBattleScripting.multihitMoveEffect = 0;
 }
 
+#define ITEMFIND_TABLE_SIZE 6
+static void GetItemsToFind(u16 species)
+{
+    if(!(gBattleTypeFlags &
+         (BATTLE_TYPE_LINK
+          | BATTLE_TYPE_RECORDED_LINK
+          | BATTLE_TYPE_TRAINER_HILL
+          | BATTLE_TYPE_FRONTIER
+          | BATTLE_TYPE_BATTLE_TOWER
+          | BATTLE_TYPE_EREADER_TRAINER
+          | BATTLE_TYPE_TRAINER
+          | BATTLE_TYPE_WALLY_TUTORIAL
+          | BATTLE_TYPE_SECRET_BASE
+          ))) {
+
+        u16 items[ITEMFIND_TABLE_SIZE] = {
+            gSpeciesInfo[species].itemCommon,
+            gSpeciesInfo[species].itemRare,
+            gSpeciesInfo[species].itemCommon,
+            gSpeciesInfo[species].itemRare,
+            gSpeciesInfo[species].itemCommon,
+            gSpeciesInfo[species].itemRare
+        };
+        u8 i = 0;
+        u8 itemCount = 0;
+        u8 factor = 100;
+
+        if (items[0] == ITEM_NONE && items[1] == ITEM_NONE)
+        {
+            u8 rand = Random() % 100;
+            if (rand < 50)
+            {
+                items[0] = ITEM_ORAN_BERRY;
+                items[1] = ITEM_LUM_BERRY;
+                items[2] = ITEM_ORAN_BERRY;
+                items[3] = ITEM_LUM_BERRY;
+                items[4] = ITEM_ORAN_BERRY;
+                items[5] = ITEM_LUM_BERRY;
+            }
+            else if (rand < 80)
+            {
+                items[0] = ITEM_SITRUS_BERRY;
+                items[1] = ITEM_LUM_BERRY;
+                items[2] = ITEM_SITRUS_BERRY;
+                items[3] = ITEM_LUM_BERRY;
+                items[4] = ITEM_SITRUS_BERRY;
+                items[5] = ITEM_LUM_BERRY;
+            }
+            else
+            {
+                items[0] = ITEM_SITRUS_BERRY;
+                items[1] = ITEM_SITRUS_BERRY;
+                items[2] = ITEM_LEPPA_BERRY;
+                items[3] = ITEM_LUM_BERRY;
+                items[4] = ITEM_LEPPA_BERRY;
+                items[5] = ITEM_LUM_BERRY;
+            }
+        }
+        else if (items[0] == ITEM_NONE)
+        {
+            u8 rand = Random() % 100;
+            if (rand < 70)
+            {
+                items[0] = ITEM_ORAN_BERRY;
+                items[2] = ITEM_ORAN_BERRY;
+                items[4] = ITEM_LEPPA_BERRY;
+            }
+            else
+            {
+                items[0] = ITEM_SITRUS_BERRY;
+                items[2] = ITEM_SITRUS_BERRY;
+                items[4] = ITEM_LEPPA_BERRY;
+            }
+        }
+        else if (items[1] == ITEM_NONE)
+        {
+            u8 rand = Random() % 100;
+            if (rand < 70)
+            {
+                items[1] = ITEM_LUM_BERRY;
+                items[3] = ITEM_LUM_BERRY;
+                items[5] = ITEM_LEPPA_BERRY;
+            }
+            else
+            {
+                items[1] = ITEM_SITRUS_BERRY;
+                items[3] = ITEM_SITRUS_BERRY;
+                items[5] = ITEM_LEPPA_BERRY;
+            }
+        }
+        else if (items[0] == items[1])
+        {
+            gBattleResults.itemsFound[0] = items[0];
+            itemCount++;
+            i++;
+        }
+        for ( ; i < ITEMFIND_TABLE_SIZE; i++) {
+            if(itemCount >= B_MAX_FIND_WILD_ITEMS)
+                break;
+            if(items[i] != ITEM_NONE && Random() % 100 < (factor / ((i + 1) * (i % 2 == 0 ? 1 : 2))))
+                gBattleResults.itemsFound[itemCount++] = items[i];
+        }
+    }
+}
+#undef ITEMFIND_TABLE_SIZE
+
 static void Cmd_tryfaintmon(void)
 {
     CMD_ARGS(u8 battler, bool8 isSpikes, const u8 *instr);
@@ -4250,6 +4356,8 @@ static void Cmd_tryfaintmon(void)
                 if (gBattleResults.opponentFaintCounter < 255)
                     gBattleResults.opponentFaintCounter++;
                 gBattleResults.lastOpponentSpecies = GetMonData(GetBattlerMon(battler), MON_DATA_SPECIES, NULL);
+                GetItemsToFind(gBattleResults.lastOpponentSpecies);
+                gBattleResults.wildItemFoundIndex = 0;
                 gSideTimers[B_SIDE_OPPONENT].retaliateTimer = 2;
             }
             if ((gHitMarker & HITMARKER_DESTINYBOND) && IsBattlerAlive(gBattlerAttacker)
@@ -13941,6 +14049,8 @@ static void Cmd_handleballthrow(void)
             BtlController_EmitBallThrowAnim(gBattlerAttacker, B_COMM_TO_CONTROLLER, BALL_3_SHAKES_SUCCESS);
             MarkBattlerForControllerExec(gBattlerAttacker);
             TryBattleFormChange(gBattlerTarget, FORM_CHANGE_END_BATTLE);
+            GetItemsToFind(GetMonData(GetBattlerMon(gBattlerTarget), MON_DATA_SPECIES, NULL));
+            gBattleResults.wildItemFoundIndex = 0;
             gBattlescriptCurrInstr = BattleScript_SuccessBallThrow;
             struct Pokemon *caughtMon = GetBattlerMon(gBattlerTarget);
             SetMonData(caughtMon, MON_DATA_POKEBALL, &ballId);
@@ -14001,6 +14111,8 @@ static void Cmd_handleballthrow(void)
                     gBattleSpritesDataPtr->animationData->criticalCaptureSuccess = TRUE;
 
                 TryBattleFormChange(gBattlerTarget, FORM_CHANGE_END_BATTLE);
+                GetItemsToFind(GetMonData(GetBattlerMon(gBattlerTarget), MON_DATA_SPECIES, NULL));
+                gBattleResults.wildItemFoundIndex = 0;
                 gBattlescriptCurrInstr = BattleScript_SuccessBallThrow;
                 struct Pokemon *caughtMon = GetBattlerMon(gBattlerTarget);
                 SetMonData(caughtMon, MON_DATA_POKEBALL, &ballId);
@@ -18377,4 +18489,31 @@ void BS_BattlerItemToLastUsedItem(void)
     NATIVE_ARGS();
     gBattleMons[gBattlerTarget].item = gLastUsedItem;
     gBattlescriptCurrInstr = cmd->nextInstr;
+}
+
+void BS_TryPickupWildItems(void)
+{
+    NATIVE_ARGS();
+    if (gBattleResults.wildItemFoundIndex < B_MAX_FIND_WILD_ITEMS
+        && gBattleResults.itemsFound[gBattleResults.wildItemFoundIndex] != ITEM_NONE
+        && CheckBagHasSpace(gBattleResults.itemsFound[gBattleResults.wildItemFoundIndex], 1))
+    {
+        AddBagItem(gBattleResults.itemsFound[gBattleResults.wildItemFoundIndex], 1);
+        StringCopy(gBattleTextBuff1, gItemsInfo[gBattleResults.itemsFound[gBattleResults.wildItemFoundIndex]].name);
+        gBattleResults.wildItemFoundIndex++;
+        BattleScriptPush(cmd->nextInstr);
+        gBattlescriptCurrInstr = BattleScript_PrintItemFoundString;
+    }
+    else if (gBattleResults.wildItemFoundIndex > 0)
+    {
+        BattleScriptPush(cmd->nextInstr);
+        if (gBattleResults.wildItemFoundIndex == 1)
+            gBattlescriptCurrInstr = BattleScript_PrintItemInBagString;
+        else
+            gBattlescriptCurrInstr = BattleScript_PrintItemsInBagString;
+    }
+    else
+    {
+        gBattlescriptCurrInstr = cmd->nextInstr;
+    }
 }

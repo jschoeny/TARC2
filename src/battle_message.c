@@ -899,6 +899,9 @@ const u8 *const gBattleStringsTable[STRINGID_COUNT] =
     [STRINGID_ABILITYSHIELDPROTECTS]                = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX}'s Ability is protected by the effects of its {B_LAST_ITEM}!"),
     [STRINGID_SHADOWPKMNNOTICE]                     = COMPOUND_STRING("Oh! It's infected by the blight!"),
     [STRINGID_SHADOWPKMNFIRSTENCOUNTER]             = COMPOUND_STRING("Oh? It's surrounded by a shadowy aura!"),
+    [STRINGID_PLAYERFOUNDITEM]                      = COMPOUND_STRING("{B_PLAYER_NAME} found\nthe {B_BUFF1}!"),
+    [STRINGID_PLACEDITEMINBAG]                      = COMPOUND_STRING("The item was placed\nin the BAG."),
+    [STRINGID_PLACEDITEMSINBAG]                     = COMPOUND_STRING("The items were placed\nin the BAG."),
 };
 
 const u16 gTrainerUsedItemStringIds[] =

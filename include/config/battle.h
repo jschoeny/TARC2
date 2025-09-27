@@ -366,4 +366,7 @@
 #define B_POOL_RULE_ITEM_CLAUSE             FALSE    // Only allow each item to be picked once
 #define B_POOL_RULES_USE_ITEM_EXCLUSIONS    FALSE    // Exclude items listed in poolItemClauseExclusions
 
+// Wild Item Drops
+#define B_MAX_FIND_WILD_ITEMS          3          // Maximum number of items a wild Pokemon can drop
+
 #endif // GUARD_CONFIG_BATTLE_H
