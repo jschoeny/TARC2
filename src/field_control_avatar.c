@@ -75,6 +75,8 @@ static bool8 TryStartMiscWalkingScripts(u16);
 static bool8 TryStartStepCountScript(u16);
 static void UpdateFriendshipStepCounter(void);
 static void UpdateFollowerStepCounter(void);
+static void UpdatePassiveHealCounter(void);
+static void RestoreHPToFirstMon(void);
 #if OW_POISON_DAMAGE < GEN_5
 static bool8 UpdatePoisonStepCounter(void);
 #endif // OW_POISON_DAMAGE
@@ -678,6 +680,7 @@ static bool8 TryStartStepCountScript(u16 metatileBehavior)
 
     if (!(gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_FORCED_MOVE) && !MetatileBehavior_IsForcedMovementTile(metatileBehavior))
     {
+        UpdatePassiveHealCounter();
     #if OW_POISON_DAMAGE < GEN_5
         if (UpdatePoisonStepCounter() == TRUE)
         {
@@ -772,6 +775,36 @@ static void UpdateFollowerStepCounter(void)
 {
     if (gPlayerPartyCount > 0 && gFollowerSteps < (u16)-1)
         gFollowerSteps++;
+}
+
+static void UpdatePassiveHealCounter(void)
+{
+    u16 *ptr = GetVarPointer(VAR_PASSIVE_HEAL_COUNTER);
+    (*ptr)++;
+    (*ptr) %= 16;
+    if (*ptr == 0)
+    {
+        RestoreHPToFirstMon();
+    }
+}
+
+static void RestoreHPToFirstMon(void)
+{
+    if (gMapHeader.mapType != MAP_TYPE_SECRET_BASE)
+    {
+        struct Pokemon *firstMon = &gPlayerParty[0];
+        if (GetMonData(firstMon, MON_DATA_SANITY_HAS_SPECIES))
+        {
+            u32 currentHP = GetMonData(firstMon, MON_DATA_HP, NULL);
+            u32 maxHP = GetMonData(firstMon, MON_DATA_MAX_HP, NULL);
+
+            if (currentHP < maxHP)
+            {
+                currentHP += 1;
+                SetMonData(firstMon, MON_DATA_HP, &currentHP);
+            }
+        }
+    }
 }
 
 void ClearPoisonStepCounter(void)
