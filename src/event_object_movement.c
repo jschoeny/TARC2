@@ -7700,9 +7700,6 @@ bool8 MovementAction_ExitPokeball_Step0(struct ObjectEvent *objectEvent, struct 
     // If mon's right-facing sprite is h-flipped, we need to use a different affine anim
     if (direction == DIR_EAST && sprite->anims[ANIM_STD_FACE_EAST]->frame.hFlip)
         sprite->sSpeedFlip |= 1 << 4;
-    ObjectEventSetPokeballGfx(objectEvent);
-    objectEvent->graphicsId = graphicsId;
-    objectEvent->inanimate = FALSE;
     return MovementAction_ExitPokeball_Step1(objectEvent, sprite);
 }
 
@@ -7762,25 +7759,8 @@ bool8 MovementAction_ExitPokeball_Step1(struct ObjectEvent *objectEvent, struct 
         return TRUE;
     }
     // Set graphics, palette, and affine animation
-    else if (sprite->sDuration == animStepFrame)
+    else if (sprite->sDuration == animStepFrame || sprite->sDuration == (animStepFrame >> 1))
     {
-        FollowerSetGraphics(objectEvent, OW_SPECIES(objectEvent), OW_SHINY(objectEvent), OW_FEMALE(objectEvent));
-        LoadFillColorPalette(RGB_WHITE, OBJ_EVENT_PAL_TAG_WHITE, sprite);
-        // Initialize affine animation
-        sprite->affineAnims = sAffineAnims_PokeballFollower;
-        if (OW_LARGE_OW_SUPPORT && !IS_POW_OF_TWO(-sprite->centerToCornerVecX))
-            return FALSE;
-        sprite->affineAnims = sAffineAnims_PokeballFollower;
-        sprite->oam.affineMode = ST_OAM_AFFINE_NORMAL;
-        InitSpriteAffineAnim(sprite);
-        StartSpriteAffineAnim(sprite, sprite->sSpeedFlip >> 4);
-    // Restore original palette & disable affine
-    }
-    else if (sprite->sDuration == (animStepFrame >> 1))
-    {
-        sprite->affineAnimEnded = TRUE;
-        FreeSpriteOamMatrix(sprite);
-        sprite->oam.affineMode = ST_OAM_AFFINE_OFF;
         FollowerSetGraphics(objectEvent, OW_SPECIES(objectEvent), OW_SHINY(objectEvent), OW_FEMALE(objectEvent));
     }
     return FALSE;
