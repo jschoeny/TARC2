@@ -4216,7 +4216,7 @@ static void GetItemsToFind(u16 species)
         };
         u8 i = 0;
         u8 itemCount = 0;
-        u8 factor = 100;
+        u8 factor = 70;
 
         if (items[0] == ITEM_NONE && items[1] == ITEM_NONE)
         {
@@ -4224,29 +4224,22 @@ static void GetItemsToFind(u16 species)
             if (rand < 50)
             {
                 items[0] = ITEM_ORAN_BERRY;
-                items[1] = ITEM_LUM_BERRY;
-                items[2] = ITEM_ORAN_BERRY;
-                items[3] = ITEM_LUM_BERRY;
-                items[4] = ITEM_ORAN_BERRY;
-                items[5] = ITEM_LUM_BERRY;
+                items[2] = ITEM_LUM_BERRY;
+                items[4] = ITEM_SITRUS_BERRY;
             }
             else if (rand < 80)
             {
-                items[0] = ITEM_SITRUS_BERRY;
-                items[1] = ITEM_LUM_BERRY;
-                items[2] = ITEM_SITRUS_BERRY;
-                items[3] = ITEM_LUM_BERRY;
+                items[0] = ITEM_LUM_BERRY;
+                items[2] = ITEM_LEPPA_BERRY;
                 items[4] = ITEM_SITRUS_BERRY;
-                items[5] = ITEM_LUM_BERRY;
             }
             else
             {
-                items[0] = ITEM_SITRUS_BERRY;
-                items[1] = ITEM_SITRUS_BERRY;
+                items[0] = ITEM_ORAN_BERRY;
+                items[1] = ITEM_ORAN_BERRY;
                 items[2] = ITEM_LEPPA_BERRY;
-                items[3] = ITEM_LUM_BERRY;
-                items[4] = ITEM_LEPPA_BERRY;
-                items[5] = ITEM_LUM_BERRY;
+                items[4] = ITEM_LUM_BERRY;
+                items[5] = ITEM_SITRUS_BERRY;
             }
         }
         else if (items[0] == ITEM_NONE)
@@ -4260,9 +4253,9 @@ static void GetItemsToFind(u16 species)
             }
             else
             {
-                items[0] = ITEM_SITRUS_BERRY;
-                items[2] = ITEM_SITRUS_BERRY;
-                items[4] = ITEM_LEPPA_BERRY;
+                items[0] = ITEM_ORAN_BERRY;
+                items[2] = ITEM_LEPPA_BERRY;
+                items[4] = ITEM_SITRUS_BERRY;
             }
         }
         else if (items[1] == ITEM_NONE)
@@ -4276,9 +4269,9 @@ static void GetItemsToFind(u16 species)
             }
             else
             {
-                items[1] = ITEM_SITRUS_BERRY;
-                items[3] = ITEM_SITRUS_BERRY;
-                items[5] = ITEM_LEPPA_BERRY;
+                items[1] = ITEM_LEPPA_BERRY;
+                items[3] = ITEM_LEPPA_BERRY;
+                items[5] = ITEM_SITRUS_BERRY;
             }
         }
         else if (items[0] == items[1])
