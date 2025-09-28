@@ -1,5 +1,5 @@
-const GUARD0 = 0
 const GUARD1 = 1
+const VAR_TEMP_PLAYER_DIR = VAR_TEMP_1
 
 mapscripts TownOutskirts_MapScripts {}
 
@@ -10,6 +10,12 @@ script TownOutskirts_EventScript_Guard0 {
   ))
   closemessage
   releaseall
+}
+
+script TownOutskirts_EventScript_Guard2 {
+  msgbox(format(
+    "Sorry I can't let you through here."
+  ), MSGBOX_NPC)
 }
 
 script TownOutskirts_Trigger_TooDangerous {
@@ -93,32 +99,116 @@ script TownOutskirts_Trigger_TooDangerous {
     "You'll need to come back here for that."
   ))
   closemessage
+  applymovement(GUARD1, moves(face_down))
+  waitmovement(GUARD1)
   setvar(VAR_STORY_PROGRESS, STORY_INTRO_PASS_GUARD)
   releaseall
   end
 }
 
 script TownOutskirts_EventScript_Guard1 {
-  lockall
-  faceplayer
   speakername("GUARD")
-  if(var(VAR_STORY_PROGRESS) == STORY_INTRO_PASS_GUARD) {
+  if (var(VAR_STORY_PROGRESS) >= STORY_RETURNED_AFTER_WOOPER) {
+    lock
+    faceplayer
+    msgbox(format(
+      "Are you ready to go?"
+    ), MSGBOX_YESNO)
+    switch (var(VAR_RESULT)) {
+      case YES:
+        msgbox(format(
+          "Great! Let's go."
+        ), MSGBOX_NPC)
+        fadescreen(FADE_TO_BLACK)
+        warp(MAP_ROCKY_PATH1, 0)
+        return
+      case NO:
+      case MULTI_B_PRESSED:
+        msgbox(format(
+          "I see. Come back when you're ready."
+        ), MSGBOX_NPC)
+    }
+  } elif (var(VAR_STORY_PROGRESS) == STORY_INTRO_WOOPER_DEFEATED) {
+    setvar(VAR_TEMP_PLAYER_DIR, DIR_SOUTH)
+    playse(SE_PIN)
+    applymovement(GUARD1, moves(emote_exclamation_mark, face_up))
+    waitmovement(GUARD1)
+    waitse
+    delay(30)
+    goto(TownOutskirts_EventScript_DefeatedWooper2)
+  } elif (var(VAR_STORY_PROGRESS) >= STORY_INTRO_PASS_GUARD) {
     msgbox(format(
       "Good luck out there kid."
-    ))
+    ), MSGBOX_NPC)
   } else {
     msgbox(format(
       "It's too dangerous.\n"
       "Magical creatures are on a rampage."
-    ))
+    ), MSGBOX_NPC)
   }
   closemessage
   applymovement(GUARD1, moves(
     face_down,
   ))
+  waitmovement(GUARD1)
   releaseall
 }
 
 script TownOutskirts_Trigger_SetHealLocation {
   setrespawn(HEAL_LOCATION_TOWN_OUTSKIRTS)
+}
+
+script TownOutskirts_Trigger_DefeatedWooper {
+  playse(SE_PIN)
+  applymovement(GUARD1, moves(emote_exclamation_mark, face_left))
+  applymovement(LOCALID_PLAYER, moves(delay_16, face_right))
+  waitmovement(GUARD1)
+  waitmovement(LOCALID_PLAYER)
+  waitse
+  delay(30)
+  goto(TownOutskirts_EventScript_DefeatedWooper2)
+}
+
+script TownOutskirts_EventScript_DefeatedWooper2 {
+  lockall
+  speakername("GUARD")
+  msgbox(format(
+    "You're back! And the blue creature?\p"
+    "Interesting…\p"
+    "It was infected with a shadowy aura?\N"
+    "And that's why it was on a rampage?\N"
+    "How peculiar…\p"
+    "I think I remember hearing of a legend about a shadowy blight that would infect the land.\p"
+    "I saw it written on an ancient shrine built near a rocky path…\p"
+    "…\p"
+    "I feel bad sending a kid out\Nlike this again…"
+  ))
+  closemessage
+  delay(16)
+  if (var(VAR_TEMP_PLAYER_DIR) == DIR_SOUTH) {
+    applymovement(GUARD1, moves(
+      face_right,
+      delay_16*4,
+      face_up,
+      delay_16*2,
+    ))
+  } else {
+    applymovement(GUARD1, moves(
+      face_right,
+      delay_16*4,
+      face_left,
+      delay_16*2,
+    ))
+  }
+  waitmovement(GUARD1)
+  speakername("GUARD")
+  msgbox(format(
+    "Okay here's the plan.\p"
+    "I'll have a GUARD escort you to the\Nfoot of the ROCKY PATH.\p"
+    "Go prepare, then come talk to me when you're ready."
+  ))
+  closemessage
+  applymovement(GUARD1, moves(face_down))
+  waitmovement(GUARD1)
+  setvar(VAR_STORY_PROGRESS, STORY_RETURNED_AFTER_WOOPER)
 }
