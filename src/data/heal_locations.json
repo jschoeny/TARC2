@@ -192,6 +192,12 @@
       "map": "MAP_TOWN_OUTSKIRTS",
       "x": 14,
       "y": 7
+    },
+    {
+      "id": "HEAL_LOCATION_ROCKY_PATH1",
+      "map": "MAP_ROCKY_PATH1",
+      "x": 25,
+      "y": 15
     }
   ]
 }

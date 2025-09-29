@@ -277,6 +277,7 @@ enum StoryProgress
     STORY_INTRO_PASS_GUARD,
     STORY_INTRO_WOOPER_DEFEATED,
     STORY_RETURNED_AFTER_WOOPER,
+    STORY_ENTERED_ROCKY_PATH,
 };
 #define VAR_PASSIVE_HEAL_COUNTER                         0x40F8
 #define VAR_UNUSED_0x40F9                                0x40F9 // Unused Var

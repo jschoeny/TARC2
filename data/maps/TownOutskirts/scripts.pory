@@ -108,18 +108,39 @@ script TownOutskirts_Trigger_TooDangerous {
 
 script TownOutskirts_EventScript_Guard1 {
   speakername("GUARD")
-  if (var(VAR_STORY_PROGRESS) >= STORY_RETURNED_AFTER_WOOPER) {
-    lock
-    faceplayer
+  if (var(VAR_STORY_PROGRESS) >= STORY_ENTERED_ROCKY_PATH) {
     msgbox(format(
-      "Are you ready to go?"
+      "Are you ready to go to ROCKY PATH?"
     ), MSGBOX_YESNO)
     switch (var(VAR_RESULT)) {
       case YES:
         msgbox(format(
-          "Great! Let's go."
+          "Great! My friend will escort you."
         ), MSGBOX_NPC)
-        fadescreen(FADE_TO_BLACK)
+        setrespawn(HEAL_LOCATION_ROCKY_PATH1)
+        warp(MAP_ROCKY_PATH1, 0)
+        return
+      case NO:
+      case MULTI_B_PRESSED:
+        msgbox(format(
+          "Come back when you're ready."
+        ), MSGBOX_NPC)
+    }
+    releaseall
+  } elif (var(VAR_STORY_PROGRESS) >= STORY_RETURNED_AFTER_WOOPER) {
+    lock
+    faceplayer
+    msgbox(format(
+      "Are you ready?"
+    ), MSGBOX_YESNO)
+    switch (var(VAR_RESULT)) {
+      case YES:
+        msgbox(format(
+          "Great! My friend will escort you."
+        ), MSGBOX_NPC)
+        setvar(VAR_STORY_PROGRESS, STORY_ENTERED_ROCKY_PATH)
+        setvar(VAR_WILD_SHADOW_CHANCE, 20)
+        setrespawn(HEAL_LOCATION_ROCKY_PATH1)
         warp(MAP_ROCKY_PATH1, 0)
         return
       case NO:

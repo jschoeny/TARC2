@@ -30,19 +30,38 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "RockyPath1_EventScript_Guard",
       "flag": "0"
     }
   ],
   "warp_events": [
     {
-      "x": 33,
+      "x": 25,
       "y": 15,
       "elevation": 0,
       "dest_map": "MAP_ROCKY_PATH1",
       "dest_warp_id": "0"
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 26,
+      "y": 15,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "RockyPath1_Trigger_Guard"
+    },
+    {
+      "type": "trigger",
+      "x": 26,
+      "y": 16,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "RockyPath1_Trigger_Guard"
+    }
+  ],
   "bg_events": []
 }

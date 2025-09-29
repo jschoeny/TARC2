@@ -1,1 +1,72 @@
+const GUARD = 1
+
 mapscripts RockyPath1_MapScripts {}
+
+script RockyPath1_EventScript_Guard {
+  lockall
+  faceplayer
+  speakername("GUARD")
+  msgbox(format(
+    "At your service."
+  ))
+  dynmultipush("Heal", 0)
+  dynmultipush("Return to Town", 1)
+  dynmultipush("Close", 2)
+  dynmultistack(0, 0, FALSE, 3, FALSE, 0, NULL)
+  switch (var(VAR_RESULT)) {
+    case 0:
+      closemessage
+      call(Common_EventScript_OutOfCenterPartyHeal)
+      msgbox(format(
+        "Be careful out there kid."
+      ), MSGBOX_NPC)
+    case 1:
+      closemessage
+      setrespawn(HEAL_LOCATION_TOWN_OUTSKIRTS)
+      warp(MAP_TOWN_OUTSKIRTS, 14, 8)
+      return
+    case 2:
+    case MULTI_B_PRESSED:
+      msgbox(format(
+        "Come back if you need anything."
+      ), MSGBOX_NPC)
+  }
+  releaseall
+}
+
+script RockyPath1_Trigger_Guard {
+  lockall
+  applymovement(GUARD, moves(face_down))
+  applymovement(LOCALID_PLAYER, moves(face_up))
+  waitmovement(GUARD)
+  waitmovement(LOCALID_PLAYER)
+  speakername("GUARD")
+  msgbox(format(
+    "At your service."
+  ))
+  dynmultipush("Heal", 0)
+  dynmultipush("Return to Town", 1)
+  dynmultipush("Close", 2)
+  dynmultistack(0, 0, FALSE, 3, FALSE, 0, NULL)
+  switch (var(VAR_RESULT)) {
+    case 0:
+      closemessage
+      call(Common_EventScript_OutOfCenterPartyHeal)
+      msgbox(format(
+        "Be careful out there kid."
+      ))
+      closemessage
+    case 1:
+      closemessage
+      setrespawn(HEAL_LOCATION_TOWN_OUTSKIRTS)
+      warp(MAP_TOWN_OUTSKIRTS, 14, 8)
+      return
+    case 2:
+    case MULTI_B_PRESSED:
+      msgbox(format(
+        "Come back if you need anything."
+      ))
+      closemessage
+  }
+  releaseall
+}
