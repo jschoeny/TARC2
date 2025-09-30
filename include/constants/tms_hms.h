@@ -2,6 +2,16 @@
 #define GUARD_CONSTANTS_TMS_HMS_H
 
 #define FOREACH_TM(F) \
+    F(SWIFT) \
+    F(SUNNY_DAY) \
+    F(FLAMETHROWER) \
+    F(WILD_CHARGE) \
+    F(PSYCHIC_FANGS) \
+    F(BREAKING_SWIPE) \
+    F(PLAY_ROUGH) \
+    F(TEMPER_FLARE) \
+    F(CLOSE_COMBAT) \
+    F(OVERHEAT) \
     F(FOCUS_PUNCH) \
     F(DRAGON_CLAW) \
     F(WATER_PULSE) \
@@ -12,7 +22,6 @@
     F(BULK_UP) \
     F(BULLET_SEED) \
     F(HIDDEN_POWER) \
-    F(SUNNY_DAY) \
     F(TAUNT) \
     F(ICE_BEAM) \
     F(BLIZZARD) \
@@ -36,7 +45,6 @@
     F(DOUBLE_TEAM) \
     F(REFLECT) \
     F(SHOCK_WAVE) \
-    F(FLAMETHROWER) \
     F(SLUDGE_BOMB) \
     F(SANDSTORM) \
     F(FIRE_BLAST) \
@@ -50,8 +58,7 @@
     F(THIEF) \
     F(STEEL_WING) \
     F(SKILL_SWAP) \
-    F(SNATCH) \
-    F(OVERHEAT)
+    F(SNATCH)
 
 #define FOREACH_HM(F) \
     F(CUT) \

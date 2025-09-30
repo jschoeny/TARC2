@@ -4684,6 +4684,7 @@
       "MOVE_ROAR",
       "MOVE_DOUBLE_EDGE",
       "MOVE_TEMPER_FLARE",
+      "MOVE_BREAKING_SWIPE",
       "MOVE_CURSE"
     ],
     "EggMoves": [
