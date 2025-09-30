@@ -13,8 +13,12 @@ mapscripts MountainPath3_MapScripts {
       if (var(VAR_STORY_PROGRESS) >= STORY_INTRO_WOOPER_DEFEATED) {
         // Hide WOOPER
         setflag(FLAG_TEMP_1)
-        setvar(VAR_TEMP_0, 1)
       }
+      else {
+        // Hide PEAL item
+        setflag(FLAG_ITEM_MOUNTAIN_PATH_3_PEARL)
+      }
+      setvar(VAR_TEMP_0, 1)
     }
   }
 }
@@ -138,6 +142,7 @@ script MountainPath3_WooperCutscene {
     setvar(VAR_STORY_PROGRESS, STORY_INTRO_WOOPER_DEFEATED)
     waitse
     delay(20)
+    addobject(LOCALID_MOUNTAIN_PATH_3_PEARL)
     fadescreenswapbuffers(FADE_FROM_BLACK)
   }
   special(SpawnCameraObject)

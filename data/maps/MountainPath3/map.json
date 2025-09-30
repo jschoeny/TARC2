@@ -74,6 +74,7 @@
       "flag": "FLAG_TEMP_3"
     },
     {
+      "local_id": "LOCALID_MOUNTAIN_PATH_3_PEARL",
       "graphics_id": "OBJ_EVENT_GFX_ITEM_SPARKLE",
       "x": 12,
       "y": 15,
