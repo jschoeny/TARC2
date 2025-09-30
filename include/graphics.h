@@ -3081,6 +3081,8 @@ extern const u32 gBattleAnimBgTilemap_ZMoveMountain[];
 extern const u16 gBattleAnimSpritePal_SteelBeam[];
 extern const u16 gBattleAnimBgPalette_SteelBeam[];
 
+extern const u16 gBattleAnimBgPalette_ShadowStorm[];
+
 extern const u32 gMetalShineGfx[];
 extern const u16 gMetalShinePalette[];
 extern const u32 gMetalShineTilemap[];

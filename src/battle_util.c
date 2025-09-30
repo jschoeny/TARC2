@@ -201,6 +201,15 @@ static const struct BattleWeatherInfo sBattleWeatherInfo[BATTLE_WEATHER_COUNT] =
         .continuesMessage = B_MSG_WEATHER_TURN_STRONG_WINDS,
         .animation = B_ANIM_STRONG_WINDS,
     },
+
+    [BATTLE_WEATHER_SHADOW_SKY] =
+    {
+        .flag = B_WEATHER_SHADOW_SKY,
+        .rock = HOLD_EFFECT_NONE,
+        .endMessage = B_MSG_WEATHER_END_SHADOW_SKY,
+        .continuesMessage = B_MSG_WEATHER_TURN_SHADOW_SKY,
+        .animation = B_ANIM_SHADOW_SKY_CONTINUES,
+    },
 };
 
 // Helper function for actual dmg calcs during battle. For simulated AI dmg, CalcTypeEffectivenessMultiplier should be used directly
@@ -9035,6 +9044,8 @@ static uq4_12_t GetWeatherDamageModifier(struct DamageContext *ctx)
 {
     if (ctx->weather == B_WEATHER_NONE)
         return UQ_4_12(1.0);
+    if (ctx->weather & B_WEATHER_SHADOW_SKY && ctx->moveType == TYPE_SHADOW)
+        return UQ_4_12(1.5);
     if (GetMoveEffect(ctx->move) == EFFECT_HYDRO_STEAM && (ctx->weather & B_WEATHER_SUN) && ctx->holdEffectAtk != HOLD_EFFECT_UTILITY_UMBRELLA)
         return UQ_4_12(1.5);
     if (ctx->holdEffectDef == HOLD_EFFECT_UTILITY_UMBRELLA)
@@ -9415,6 +9426,7 @@ s32 DoFixedDamageMoveCalc(struct DamageContext *ctx)
         dmg = GetMoveFixedHPDamage(ctx->move);
         break;
     case EFFECT_FIXED_PERCENT_DAMAGE:
+    case EFFECT_SHADOW_HALF:
         dmg = GetNonDynamaxHP(ctx->battlerDef) * GetMoveDamagePercentage(ctx->move) / 100;
         break;
     case EFFECT_FINAL_GAMBIT:

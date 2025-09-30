@@ -4475,6 +4475,14 @@ BattleScript_EffectHail::
 	setfieldweather BATTLE_WEATHER_HAIL
 	goto BattleScript_MoveWeatherChange
 
+BattleScript_EffectShadowSky::
+	attackcanceler
+	attackstring
+	ppreduce
+	call BattleScript_CheckPrimalWeather
+	setfieldweather BATTLE_WEATHER_SHADOW_SKY
+	goto BattleScript_MoveWeatherChange
+
 BattleScript_EffectTorment::
 	attackcanceler
 	attackstring

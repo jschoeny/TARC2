@@ -5557,7 +5557,8 @@ static void PlayAnimation(u32 battler, u8 animId, const u16 *argPtr, const u8 *n
           || animId == B_ANIM_SANDSTORM_CONTINUES
           || animId == B_ANIM_HAIL_CONTINUES
           || animId == B_ANIM_SNOW_CONTINUES
-          || animId == B_ANIM_FOG_CONTINUES)
+          || animId == B_ANIM_FOG_CONTINUES
+          || animId == B_ANIM_SHADOW_SKY_CONTINUES)
     {
         BtlController_EmitBattleAnimation(battler, B_COMM_TO_CONTROLLER, animId, &gDisableStructs[battler], *argPtr);
         MarkBattlerForControllerExec(battler);
@@ -5955,6 +5956,7 @@ static bool32 HandleMoveEndMoveBlock(u32 moveEffect)
         }
         break;
     case EFFECT_MAX_HP_50_RECOIL:
+    case EFFECT_SHADOW_HALF:
         if (IsBattlerAlive(gBattlerAttacker)
          && !(gBattleStruct->moveResultFlags[gBattlerTarget] & MOVE_RESULT_FAILED)
          && GetBattlerAbility(gBattlerAttacker) != ABILITY_MAGIC_GUARD)
@@ -9855,6 +9857,9 @@ static void Cmd_setfieldweather(void)
         break;
     case BATTLE_WEATHER_SNOW:
         gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_STARTED_SNOW;
+        break;
+    case BATTLE_WEATHER_SHADOW_SKY:
+        gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_STARTED_SHADOW_SKY;
         break;
     }
 

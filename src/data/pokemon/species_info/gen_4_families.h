@@ -755,6 +755,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .levelUpLearnset = sStarlyLevelUpLearnset,
         .teachableLearnset = sStarlyTeachableLearnset,
         .eggMoveLearnset = sStarlyEggMoveLearnset,
+        .shadowLearnset = sStarlyShadowLearnset,
         .evolutions = EVOLUTION({EVO_LEVEL, 14, SPECIES_STARAVIA}),
     },
 
@@ -835,6 +836,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         )
         .levelUpLearnset = sStaraviaLevelUpLearnset,
         .teachableLearnset = sStaraviaTeachableLearnset,
+        .shadowLearnset = sStaraviaShadowLearnset,
         .evolutions = EVOLUTION({EVO_LEVEL, 34, SPECIES_STARAPTOR}),
     },
 
@@ -3238,6 +3240,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .levelUpLearnset = sDrifloonLevelUpLearnset,
         .teachableLearnset = sDrifloonTeachableLearnset,
         .eggMoveLearnset = sDrifloonEggMoveLearnset,
+        .shadowLearnset = sDrifloonShadowLearnset,
         .evolutions = EVOLUTION({EVO_LEVEL, 28, SPECIES_DRIFBLIM}),
     },
 

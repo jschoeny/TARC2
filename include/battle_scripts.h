@@ -532,6 +532,8 @@ extern const u8 BattleScript_AlreadyParalyzed[];
 extern const u8 BattleScript_AlreadyBurned[];
 extern const u8 BattleScript_PrintAbilityMadeIneffective[];
 extern const u8 BattleScript_ItDoesntAffectFoe[];
+extern const u8 BattleScript_ShadowSkyContinues[];
+extern const u8 BattleScript_ShadowSkyEnd[];
 
 // zmoves
 extern const u8 BattleScript_ZMoveActivateDamaging[];
@@ -865,6 +867,7 @@ extern const u8 BattleScript_FickleBeamDoubled[];
 extern const u8 BattleScript_QuestionForfeitBattle[];
 extern const u8 BattleScript_ForfeitBattleGaveMoney[];
 extern const u8 BattleScript_AbilityPopUp[];
+extern const u8 BattleScript_EffectShadowSky[];
 
 extern const u8 BattleScript_PrintItemFoundString[];
 extern const u8 BattleScript_PrintItemInBagString[];

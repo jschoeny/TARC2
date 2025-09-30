@@ -899,6 +899,10 @@ const u8 *const gBattleStringsTable[STRINGID_COUNT] =
     [STRINGID_ABILITYSHIELDPROTECTS]                = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX}'s Ability is protected by the effects of its {B_LAST_ITEM}!"),
     [STRINGID_SHADOWPKMNNOTICE]                     = COMPOUND_STRING("Oh! It's infected by the blight!"),
     [STRINGID_SHADOWPKMNFIRSTENCOUNTER]             = COMPOUND_STRING("Oh? It's surrounded by a shadowy aura!"),
+    [STRINGID_STARTEDSHADOW_SKY]                    = COMPOUND_STRING("A shadowy aura filled\nthe sky!"),
+    [STRINGID_SHADOW_SKYCONTINUES]                  = COMPOUND_STRING("Bursts of light showered\nfrom the shadowy aura!"),
+    [STRINGID_SHADOW_SKYSTOPPED]                    = COMPOUND_STRING("The shadowy aura faded away!"),
+    [STRINGID_SHADOW_SKYDAMAGE]                     = COMPOUND_STRING("The flashing light strikes\n{B_ATK_NAME_WITH_PREFIX}!"),
     [STRINGID_PLAYERFOUNDITEM]                      = COMPOUND_STRING("{B_PLAYER_NAME} found\nthe {B_BUFF1}!"),
     [STRINGID_PLACEDITEMINBAG]                      = COMPOUND_STRING("The item was placed\nin the BAG."),
     [STRINGID_PLACEDITEMSINBAG]                     = COMPOUND_STRING("The items were placed\nin the BAG."),
@@ -1029,6 +1033,7 @@ const u16 gMoveWeatherChangeStringIds[] =
     [B_MSG_STARTED_HAIL]      = STRINGID_STARTEDHAIL,
     [B_MSG_STARTED_SNOW]      = STRINGID_STARTEDSNOW,
     [B_MSG_STARTED_FOG]       = STRINGID_FOGCREPTUP, // Unused, can use for custom moves that set fog
+    [B_MSG_STARTED_SHADOW_SKY] = STRINGID_STARTEDSHADOW_SKY,
 };
 
 const u16 gWeatherEndsStringIds[B_MSG_WEATHER_END_COUNT] =
@@ -1040,6 +1045,7 @@ const u16 gWeatherEndsStringIds[B_MSG_WEATHER_END_COUNT] =
     [B_MSG_WEATHER_END_SNOW]         = STRINGID_SNOWSTOPPED,
     [B_MSG_WEATHER_END_FOG]          = STRINGID_FOGLIFTED,
     [B_MSG_WEATHER_END_STRONG_WINDS] = STRINGID_STRONGWINDSDISSIPATED,
+    [B_MSG_WEATHER_END_SHADOW_SKY]   = STRINGID_SHADOW_SKYSTOPPED,
 };
 
 const u16 gWeatherTurnStringIds[] =
@@ -1052,12 +1058,14 @@ const u16 gWeatherTurnStringIds[] =
     [B_MSG_WEATHER_TURN_SNOW]         = STRINGID_SNOWCONTINUES,
     [B_MSG_WEATHER_TURN_FOG]          = STRINGID_FOGISDEEP,
     [B_MSG_WEATHER_TURN_STRONG_WINDS] = STRINGID_MYSTERIOUSAIRCURRENTBLOWSON,
+    [B_MSG_WEATHER_TURN_SHADOW_SKY]   = STRINGID_SHADOW_SKYCONTINUES,
 };
 
 const u16 gSandStormHailDmgStringIds[] =
 {
     [B_MSG_SANDSTORM] = STRINGID_PKMNBUFFETEDBYSANDSTORM,
-    [B_MSG_HAIL]      = STRINGID_PKMNPELTEDBYHAIL
+    [B_MSG_HAIL]      = STRINGID_PKMNPELTEDBYHAIL,
+    [B_MSG_SHADOW_SKY] = STRINGID_SHADOW_SKYDAMAGE,
 };
 
 const u16 gProtectLikeUsedStringIds[] =

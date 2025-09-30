@@ -536,6 +536,7 @@
 #define BG_CHLOROBLAST 80
 #define BG_RAINBOW 81
 #define BG_SWAMP 82
+#define BG_SHADOWSTORM 83
 
 // table ids for general animations (sBattleAnims_General)
 #define B_ANIM_STATS_CHANGE             0
@@ -592,8 +593,9 @@
 #define B_ANIM_TERA_ACTIVATE            51
 #define B_ANIM_SIMPLE_HEAL              52
 #define B_ANIM_POWER_CONSTRUCT          53
+#define B_ANIM_SHADOW_SKY_CONTINUES     54
 
-#define NUM_B_ANIMS_GENERAL             54
+#define NUM_B_ANIMS_GENERAL             55
 
 // special animations table (sBattleAnims_Special)
 #define B_ANIM_LVL_UP                   0
@@ -647,6 +649,7 @@
 #define ANIM_WEATHER_HAIL 4
 #define ANIM_WEATHER_SNOW 5
 #define ANIM_WEATHER_FOG 6
+#define ANIM_WEATHER_SHADOW_SKY 7
 
 // horseshoe/fist frames
 #define ANIM_RIGHT_FIST  0

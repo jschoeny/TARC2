@@ -6329,6 +6329,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         )
         .levelUpLearnset = sParasectLevelUpLearnset,
         .teachableLearnset = sParasectTeachableLearnset,
+        .shadowLearnset = sParasectShadowLearnset,
     },
 #endif //P_FAMILY_PARAS
 
@@ -7501,6 +7502,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .levelUpLearnset = sMankeyLevelUpLearnset,
         .teachableLearnset = sMankeyTeachableLearnset,
         .eggMoveLearnset = sMankeyEggMoveLearnset,
+        .shadowLearnset = sMankeyShadowLearnset,
         .evolutions = EVOLUTION({EVO_LEVEL, 28, SPECIES_PRIMEAPE}),
     },
 
@@ -17819,6 +17821,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         )
         .levelUpLearnset = sVaporeonLevelUpLearnset,
         .teachableLearnset = sVaporeonTeachableLearnset,
+        .shadowLearnset = sVaporeonShadowLearnset,
     },
 
     [SPECIES_JOLTEON] =
@@ -17885,6 +17888,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         )
         .levelUpLearnset = sJolteonLevelUpLearnset,
         .teachableLearnset = sJolteonTeachableLearnset,
+        .shadowLearnset = sJolteonShadowLearnset,
     },
 
     [SPECIES_FLAREON] =
@@ -17951,6 +17955,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         )
         .levelUpLearnset = sFlareonLevelUpLearnset,
         .teachableLearnset = sFlareonTeachableLearnset,
+        .shadowLearnset = sFlareonShadowLearnset,
     },
 
 #if P_GEN_2_CROSS_EVOS

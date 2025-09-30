@@ -1617,6 +1617,8 @@ const u32 gBattleAnimBgTilemap_ZMoveMountain[] = INCBIN_U32("graphics/battle_ani
 
 const u16 gBattleAnimBgPalette_SteelBeam[] = INCBIN_U16("graphics/battle_anims/backgrounds/steel_beam.gbapal");
 
+const u16 gBattleAnimBgPalette_ShadowStorm[] = INCBIN_U16("graphics/battle_anims/backgrounds/shadowstorm.gbapal");
+
 // misc
 const u32 gBerryBlenderCenter_Gfx[] = INCBIN_U32("graphics/berry_blender/center.8bpp.smol");
 const u32 gBerryBlenderOuter_Gfx[] = INCBIN_U32("graphics/berry_blender/outer.4bpp.smol");
