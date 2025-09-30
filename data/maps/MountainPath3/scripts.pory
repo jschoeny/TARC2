@@ -4,7 +4,7 @@ const LOCAL_ID_SHADOW_QUAGSIRE = 4
 
 mapscripts MountainPath3_MapScripts {
   MAP_SCRIPT_ON_LOAD {
-    setescapewarp(MAP_TOWN_OUTSKIRTS, 14, 7)
+    setescapewarp(MAP_TOWN_OUTSKIRTS, 14, 4)
     if (var(VAR_TEMP_1) == 0) {
       // Hide QUAGSIRE
       setflag(FLAG_TEMP_2)

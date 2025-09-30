@@ -1,5 +1,5 @@
 mapscripts MountainPath2_MapScripts {
   MAP_SCRIPT_ON_LOAD {
-    setescapewarp(MAP_TOWN_OUTSKIRTS, 14, 7)
+    setescapewarp(MAP_TOWN_OUTSKIRTS, 14, 4)
   }
 }

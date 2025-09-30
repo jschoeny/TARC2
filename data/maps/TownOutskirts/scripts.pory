@@ -3,7 +3,7 @@ const VAR_TEMP_PLAYER_DIR = VAR_TEMP_1
 
 mapscripts TownOutskirts_MapScripts {
   MAP_SCRIPT_ON_LOAD {
-    setescapewarp(MAP_TOWN_OUTSKIRTS, 14, 7)
+    setescapewarp(MAP_TOWN_OUTSKIRTS, 14, 4)
   }
   MAP_SCRIPT_ON_FRAME_TABLE [
     VAR_STORY_PROGRESS, STORY_DEFEATED_GUARDIANS {
