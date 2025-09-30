@@ -11049,9 +11049,9 @@ const struct Item gItemsInfo[] =
         .name = ITEM_NAME("TS09"),
         .price = 600,
         .description = COMPOUND_STRING(
-            "A strong attack but\n"
-            "lowers the defensive\n"
-            "stats."),
+            "A strong attack\n"
+            "but lowers the\n"
+            "defensive stats."),
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
