@@ -1384,7 +1384,7 @@ static void ChangeBagPocketId(u8 *bagPocketId, s8 deltaBagPocketId)
         *bagPocketId = 0;
     else if (deltaBagPocketId == MENU_CURSOR_DELTA_LEFT && *bagPocketId == 0)
         *bagPocketId = POCKETS_COUNT - 1;
-    else if (*bagPocketId + deltaBagPocketId == POCKET_TM_HM || *bagPocketId + deltaBagPocketId == POCKET_POKE_BALLS)
+    else if (*bagPocketId + deltaBagPocketId == POCKET_KEY_ITEMS || *bagPocketId + deltaBagPocketId == POCKET_POKE_BALLS)
     {
         if (deltaBagPocketId == MENU_CURSOR_DELTA_RIGHT)
             *bagPocketId = POCKET_BERRIES;
