@@ -9,6 +9,30 @@ mapscripts MountainSummit_MapScripts {
   }
 }
 
+script MountainSummit_Trigger_NoGoingBackNow_Left {
+  msgbox(format(
+    "There's no going back now."
+  ))
+  closemessage
+  applymovement(LOCALID_PLAYER, moves(walk_slow_up))
+  applymovement(OBJ_EVENT_ID_FOLLOWER, moves(walk_right, face_left))
+  waitmovement(LOCALID_PLAYER)
+  waitmovement(OBJ_EVENT_ID_FOLLOWER)
+  releaseall
+}
+
+script MountainSummit_Trigger_NoGoingBackNow_Right {
+  msgbox(format(
+    "There's no going back now."
+  ))
+  closemessage
+  applymovement(LOCALID_PLAYER, moves(walk_slow_up))
+  applymovement(OBJ_EVENT_ID_FOLLOWER, moves(walk_left, face_right))
+  waitmovement(LOCALID_PLAYER)
+  waitmovement(OBJ_EVENT_ID_FOLLOWER)
+  releaseall
+}
+
 script MountainSummit_EventScript_Trigger {
   special(SpawnCameraObject)
   applymovement(LOCALID_CAMERA, moves(walk_up*6))
@@ -21,7 +45,7 @@ script MountainSummit_EventScript_Trigger {
   delay(10)
   speakername("GRANDMA")
   msgbox(format("The wind was strong at the summit.\p"
-                "This was the place where the legendary HO-OH should be."))
+                "This was the place where the\Nlegendary HO-OH should be."))
   closemessage
 
   playmoncry(SPECIES_SHADOW_HO_OH, CRY_MODE_WEAK)
@@ -237,7 +261,7 @@ script MountainSummit_EventScript_Trigger {
     waitmovement(LOCALID_SUMMIT_BLIGHT)
     waitmovement(OBJ_EVENT_ID_FOLLOWER)
     speakername("GRANDMA")
-    msgbox(format("“The fire will grow not by stone,\Nbut by bond.”"))
+    msgbox(format("“The FIRE will grow not by stone,\Nbut by bond.”"))
     closemessage
     applymovement(LOCALID_SUMMIT_BLIGHT, moves(shake))
     applymovement(OBJ_EVENT_ID_FOLLOWER, moves(shake))
@@ -313,6 +337,12 @@ script MountainSummit_EventScript_Trigger {
     closemessage
     delay(60)
     playbgm(MUS_PMDRED_FAREWELL, FALSE)
+    speakername("GRANDMA")
+    msgbox(format(
+      "And that is how ARCANINE became known\Nas the LEGENDARY POKéMON."
+    ))
+    closemessage
+    delay(60)
     applymovement(LOCALID_CAMERA, moves(walk_slow_up))
     waitmovement(LOCALID_CAMERA)
     delay(240)

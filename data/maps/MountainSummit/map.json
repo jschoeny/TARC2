@@ -74,7 +74,7 @@
   "warp_events": [
     {
       "x": 9,
-      "y": 17,
+      "y": 16,
       "elevation": 0,
       "dest_map": "MAP_MOUNTAIN_SUMMIT",
       "dest_warp_id": "0"
@@ -89,6 +89,24 @@
       "var": "VAR_TEMP_0",
       "var_value": "0",
       "script": "MountainSummit_EventScript_Trigger"
+    },
+    {
+      "type": "trigger",
+      "x": 9,
+      "y": 17,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "MountainSummit_Trigger_NoGoingBackNow_Left"
+    },
+    {
+      "type": "trigger",
+      "x": 10,
+      "y": 17,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "MountainSummit_Trigger_NoGoingBackNow_Right"
     }
   ],
   "bg_events": []

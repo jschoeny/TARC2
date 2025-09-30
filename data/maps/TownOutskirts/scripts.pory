@@ -1,7 +1,49 @@
 const GUARD1 = 1
 const VAR_TEMP_PLAYER_DIR = VAR_TEMP_1
 
-mapscripts TownOutskirts_MapScripts {}
+mapscripts TownOutskirts_MapScripts {
+  MAP_SCRIPT_ON_FRAME_TABLE [
+    VAR_STORY_PROGRESS, STORY_DEFEATED_GUARDIANS {
+      applymovement(LOCALID_PLAYER, moves(face_up))
+      waitmovement(LOCALID_PLAYER)
+      speakername("GUARD")
+      msgbox(format(
+        "You're back! I heard you did great out there.\p"
+        "So what did you find?"
+      ))
+      closemessage
+      delay(16)
+      speakername("GRANDMA")
+      msgbox(format(
+        "RENJI told the GUARD about the shrine."
+      ))
+      closemessage
+      delay(16)
+      speakername("GUARD")
+      msgbox(format(
+        "“To the top of the mount\Nmust the hero embark…”\p"
+        "…"
+      ))
+      closemessage
+      delay(30)
+      playse(SE_PIN)
+      applymovement(GUARD1, moves(emote_exclamation_mark))
+      waitmovement(GUARD1)
+      speakername("GUARD")
+      msgbox(format(
+        "That must be you!\p"
+        "You and your fire creature need to\Nclimb to the top of the mountain peak.\p"
+        "That's where you will find the\Nlegendary rainbow bird, HO-OH.\p"
+        "Then HO-OH can cleanse the land of that blight!\p"
+        "…\p"
+        "The journey will be dangerous.\p"
+        "You should go prepare first.\NI'll be waiting here to prepare\Nfor your expedition."
+      ))
+      closemessage
+      setvar(VAR_STORY_PROGRESS, STORY_RETURNED_AFTER_GUARDIANS)
+    }
+  ]
+}
 
 script TownOutskirts_EventScript_Guard0 {
   msgbox(format(
@@ -108,7 +150,47 @@ script TownOutskirts_Trigger_TooDangerous {
 
 script TownOutskirts_EventScript_Guard1 {
   speakername("GUARD")
-  if (var(VAR_STORY_PROGRESS) >= STORY_ENTERED_ROCKY_PATH) {
+  if (var(VAR_STORY_PROGRESS) >= STORY_ENTERED_MOUNTAIN_SUMMIT) {
+    msgbox(format(
+      "That was a close call.\p"
+      "Are you ready to go back?"
+    ), MSGBOX_YESNO)
+    switch (var(VAR_RESULT)) {
+      case YES:
+        msgbox(format(
+          "Great! You can do this!"
+        ), MSGBOX_NPC)
+        setrespawn(HEAL_LOCATION_TOWN_OUTSKIRTS)
+        warp(MAP_MOUNTAIN_SUMMIT, 0)
+        return
+      default:
+        msgbox(format(
+          "Come back when you're ready."
+        ))
+    }
+    releaseall
+  } elif (var(VAR_STORY_PROGRESS) >= STORY_RETURNED_AFTER_GUARDIANS) {
+    speakername("GUARD")
+    msgbox(format(
+      "Are you ready to embark?"
+    ), MSGBOX_YESNO)
+    switch (var(VAR_RESULT)) {
+      case YES:
+        msgbox(format(
+          "Great! To the mountain peak!"
+        ), MSGBOX_NPC)
+        setrespawn(HEAL_LOCATION_TOWN_OUTSKIRTS)
+        setvar(VAR_STORY_PROGRESS, STORY_ENTERED_MOUNTAIN_SUMMIT)
+        warp(MAP_MOUNTAIN_SUMMIT, 0)
+        return
+      default:
+        msgbox(format(
+          "Come back when you're ready."
+        ))
+    }
+    releaseall
+  }
+  elif (var(VAR_STORY_PROGRESS) >= STORY_ENTERED_ROCKY_PATH) {
     msgbox(format(
       "Are you ready to go to ROCKY PATH?"
     ), MSGBOX_YESNO)

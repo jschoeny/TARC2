@@ -23,8 +23,14 @@ script RockyPath1_EventScript_Guard {
     case 1:
       closemessage
       setrespawn(HEAL_LOCATION_TOWN_OUTSKIRTS)
-      warp(MAP_TOWN_OUTSKIRTS, 14, 8)
-      return
+      if (var(VAR_STORY_PROGRESS) >= STORY_DEFEATED_GUARDIANS) {
+        warp(MAP_TOWN_OUTSKIRTS, 15, 7)
+        return
+      }
+      else {
+        warp(MAP_TOWN_OUTSKIRTS, 14, 8)
+        return
+      }
     case 2:
     case MULTI_B_PRESSED:
       msgbox(format(
@@ -59,8 +65,14 @@ script RockyPath1_Trigger_Guard {
     case 1:
       closemessage
       setrespawn(HEAL_LOCATION_TOWN_OUTSKIRTS)
-      warp(MAP_TOWN_OUTSKIRTS, 14, 8)
-      return
+      if (var(VAR_STORY_PROGRESS) >= STORY_DEFEATED_GUARDIANS) {
+        warp(MAP_TOWN_OUTSKIRTS, 15, 7)
+        return
+      }
+      else {
+        warp(MAP_TOWN_OUTSKIRTS, 14, 8)
+        return
+      }
     case 2:
     case MULTI_B_PRESSED:
       msgbox(format(
@@ -68,5 +80,9 @@ script RockyPath1_Trigger_Guard {
       ))
       closemessage
   }
+  applymovement(LOCALID_PLAYER, moves(walk_left))
+  applymovement(OBJ_EVENT_ID_FOLLOWER, moves(walk_right, face_left))
+  waitmovement(LOCALID_PLAYER)
+  waitmovement(OBJ_EVENT_ID_FOLLOWER)
   releaseall
 }
