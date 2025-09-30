@@ -58,6 +58,7 @@ script TownOutskirts_EventScript_Guard0 {
 }
 
 script TownOutskirts_EventScript_Guard2 {
+  speakername("GUARD")
   msgbox(format(
     "Sorry I can't let you through here."
   ), MSGBOX_NPC)
@@ -123,17 +124,22 @@ script TownOutskirts_Trigger_TooDangerous {
     "Just come back here."
   ))
   closemessage
+  delay(16)
   applymovement(LOCALID_FOLLOWING_POKEMON, moves(
     face_up,
   ))
   waitmovement(LOCALID_FOLLOWING_POKEMON)
+  playmoncry(SPECIES_GROWLITHE, CRY_MODE_ENCOUNTER)
   speakername("GROWLITHE")
   msgbox(format(
     "{CREATE_MUGSHOT MUGSHOT_GROWLITHE EMOTE_JOYOUS}"
     "Growl!"
   ))
   closemessage
+  waitmoncry
+  delay(16)
   speakername("GUARD")
+  playse(SE_PIN)
   applymovement(GUARD1, moves(emote_exclamation_mark))
   msgbox(format(
     "Oh! And before you go...\p"
@@ -148,7 +154,6 @@ script TownOutskirts_Trigger_TooDangerous {
   waitmovement(GUARD1)
   setvar(VAR_STORY_PROGRESS, STORY_INTRO_PASS_GUARD)
   releaseall
-  end
 }
 
 script TownOutskirts_EventScript_Guard1 {
@@ -156,84 +161,28 @@ script TownOutskirts_EventScript_Guard1 {
   if (var(VAR_STORY_PROGRESS) >= STORY_ENTERED_MOUNTAIN_SUMMIT) {
     msgbox(format(
       "That was a close call.\p"
-      "Are you ready to go back?"
-    ), MSGBOX_YESNO)
-    switch (var(VAR_RESULT)) {
-      case YES:
-        msgbox(format(
-          "Great! You can do this!"
-        ), MSGBOX_NPC)
-        setrespawn(HEAL_LOCATION_TOWN_OUTSKIRTS)
-        warp(MAP_MOUNTAIN_SUMMIT, 0)
-        return
-      default:
-        msgbox(format(
-          "Come back when you're ready."
-        ))
-    }
-    releaseall
+      "Are you ready to go back to\Nthe SUMMIT?"
+    ), MSGBOX_NPC)
+    goto(TownOutskirts_EventScript_GuardMultiChoice)
   } elif (var(VAR_STORY_PROGRESS) >= STORY_RETURNED_AFTER_GUARDIANS) {
     speakername("GUARD")
     msgbox(format(
-      "Are you ready to embark?"
-    ), MSGBOX_YESNO)
-    switch (var(VAR_RESULT)) {
-      case YES:
-        msgbox(format(
-          "Great! To the mountain peak!"
-        ), MSGBOX_NPC)
-        setrespawn(HEAL_LOCATION_TOWN_OUTSKIRTS)
-        setvar(VAR_STORY_PROGRESS, STORY_ENTERED_MOUNTAIN_SUMMIT)
-        warp(MAP_MOUNTAIN_SUMMIT, 0)
-        return
-      default:
-        msgbox(format(
-          "Come back when you're ready."
-        ))
-    }
-    releaseall
+      "Are you ready to embark to\NMOUNTAIN SUMMIT?"
+    ), MSGBOX_NPC)
+    goto(TownOutskirts_EventScript_GuardMultiChoice)
   }
   elif (var(VAR_STORY_PROGRESS) >= STORY_ENTERED_ROCKY_PATH) {
     msgbox(format(
-      "Are you ready to go to ROCKY PATH?"
-    ), MSGBOX_YESNO)
-    switch (var(VAR_RESULT)) {
-      case YES:
-        msgbox(format(
-          "Great! My friend will escort you."
-        ), MSGBOX_NPC)
-        setrespawn(HEAL_LOCATION_ROCKY_PATH1)
-        warp(MAP_ROCKY_PATH1, 0)
-        return
-      case NO:
-      case MULTI_B_PRESSED:
-        msgbox(format(
-          "Come back when you're ready."
-        ), MSGBOX_NPC)
-    }
-    releaseall
+      "Are you ready to return to\NROCKY PATH?"
+    ), MSGBOX_NPC)
+    goto(TownOutskirts_EventScript_GuardMultiChoice)
   } elif (var(VAR_STORY_PROGRESS) >= STORY_RETURNED_AFTER_WOOPER) {
     lock
     faceplayer
     msgbox(format(
-      "Are you ready?"
-    ), MSGBOX_YESNO)
-    switch (var(VAR_RESULT)) {
-      case YES:
-        msgbox(format(
-          "Great! My friend will escort you."
-        ), MSGBOX_NPC)
-        setvar(VAR_STORY_PROGRESS, STORY_ENTERED_ROCKY_PATH)
-        setvar(VAR_WILD_SHADOW_CHANCE, 20)
-        setrespawn(HEAL_LOCATION_ROCKY_PATH1)
-        warp(MAP_ROCKY_PATH1, 0)
-        return
-      case NO:
-      case MULTI_B_PRESSED:
-        msgbox(format(
-          "I see. Come back when you're ready."
-        ), MSGBOX_NPC)
-    }
+      "Are you ready to go to\NROCKY PATH?"
+    ), MSGBOX_NPC)
+    goto(TownOutskirts_EventScript_GuardMultiChoice)
   } elif (var(VAR_STORY_PROGRESS) == STORY_INTRO_WOOPER_DEFEATED) {
     setvar(VAR_TEMP_PLAYER_DIR, DIR_SOUTH)
     playse(SE_PIN)
@@ -242,6 +191,11 @@ script TownOutskirts_EventScript_Guard1 {
     waitse
     delay(30)
     goto(TownOutskirts_EventScript_DefeatedWooper2)
+  } elif (var(VAR_STORY_PROGRESS) >= STORY_ENTERED_MOUNTAIN_PATH) {
+    msgbox(format(
+      "How can I help?"
+    ), MSGBOX_NPC)
+    goto(TownOutskirts_EventScript_GuardMultiChoice)
   } elif (var(VAR_STORY_PROGRESS) >= STORY_INTRO_PASS_GUARD) {
     msgbox(format(
       "Good luck out there kid."
@@ -316,5 +270,93 @@ script TownOutskirts_EventScript_DefeatedWooper2 {
   closemessage
   applymovement(GUARD1, moves(face_down))
   waitmovement(GUARD1)
+  playmoncry(SPECIES_GROWLITHE, CRY_MODE_ENCOUNTER)
+  speakername("GROWLITHE")
+  msgbox(format(
+    "{CREATE_MUGSHOT MUGSHOT_GROWLITHE EMOTE_JOYOUS}"
+    "Growl!"
+  ))
+  closemessage
+  waitmoncry
   setvar(VAR_STORY_PROGRESS, STORY_RETURNED_AFTER_WOOPER)
+  releaseall
+}
+
+script TownOutskirts_EventScript_GuardMultiChoice {
+  dynmultipush("Heal", 0)
+  if (var(VAR_STORY_PROGRESS) >= STORY_RETURNED_AFTER_GUARDIANS) {
+    dynmultipush("MOUNTAIN SUMMIT", 1)
+  }
+  if (var(VAR_STORY_PROGRESS) >= STORY_RETURNED_AFTER_WOOPER) {
+    dynmultipush("ROCKY PATH", 2)
+  }
+  dynmultipush("Close", 3)
+  dynmultistack(0, 0, FALSE, 4, FALSE, 0, NULL)
+  switch (var(VAR_RESULT)) {
+    case 0:
+      closemessage
+      call(Common_EventScript_OutOfCenterPartyHeal)
+      goto(TownOutskirts_EventScript_GuardMultiChoice_Heal)
+    case 1:
+      goto(TownOutskirts_EventScript_GuardMultiChoice_MountainSummit)
+    case 2:
+      goto(TownOutskirts_EventScript_GuardMultiChoice_RockyPath)
+    case 3:
+      goto(TownOutskirts_EventScript_GuardMultiChoice_Close)
+  }
+}
+
+script TownOutskirts_EventScript_GuardMultiChoice_Heal {
+  speakername("GUARD")
+  msgbox(format(
+    "Be careful out there kid."
+  ), MSGBOX_NPC)
+  applymovement(GUARD1, moves(face_down))
+  waitmovement(GUARD1)
+  releaseall
+}
+
+script TownOutskirts_EventScript_GuardMultiChoice_MountainSummit {
+  speakername("GUARD")
+  if (var(VAR_STORY_PROGRESS) < STORY_ENTERED_MOUNTAIN_SUMMIT) {
+    msgbox(format(
+      "Great! To the tallest peak!"
+    ), MSGBOX_NPC)
+    setvar(VAR_STORY_PROGRESS, STORY_ENTERED_MOUNTAIN_SUMMIT)
+  } else {
+    msgbox(format(
+      "Great! You can do this!"
+    ), MSGBOX_NPC)
+  }
+  setrespawn(HEAL_LOCATION_TOWN_OUTSKIRTS)
+  warp(MAP_MOUNTAIN_SUMMIT, 0)
+}
+
+script TownOutskirts_EventScript_GuardMultiChoice_RockyPath {
+  speakername("GUARD")
+  msgbox(format(
+    "Great! My friend will escort you."
+  ), MSGBOX_NPC)
+  if (var(VAR_STORY_PROGRESS) < STORY_ENTERED_ROCKY_PATH) {
+    setvar(VAR_STORY_PROGRESS, STORY_ENTERED_ROCKY_PATH)
+    setvar(VAR_WILD_SHADOW_CHANCE, 20)
+  }
+  setrespawn(HEAL_LOCATION_ROCKY_PATH1)
+  warp(MAP_ROCKY_PATH1, 0)
+}
+
+script TownOutskirts_EventScript_GuardMultiChoice_Close {
+  speakername("GUARD")
+  if (var(VAR_STORY_PROGRESS) >= STORY_RETURNED_AFTER_WOOPER) {
+    msgbox(format(
+      "Come back when you're ready."
+    ), MSGBOX_NPC)
+  } else {
+    msgbox(format(
+      "I'll be here if you need anything."
+    ), MSGBOX_NPC)
+  }
+  applymovement(GUARD1, moves(face_down))
+  waitmovement(GUARD1)
+  releaseall
 }

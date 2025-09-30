@@ -1,5 +1,8 @@
 mapscripts MountainPath1_MapScripts {
   MAP_SCRIPT_ON_LOAD {
     setescapewarp(MAP_TOWN_OUTSKIRTS, 14, 4)
+    if (var(VAR_STORY_PROGRESS) < STORY_ENTERED_MOUNTAIN_PATH) {
+      setvar(VAR_STORY_PROGRESS, STORY_ENTERED_MOUNTAIN_PATH)
+    }
   }
 }
