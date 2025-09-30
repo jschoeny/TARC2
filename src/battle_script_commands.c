@@ -4194,6 +4194,9 @@ static void Cmd_clearvolatile(void)
 #define ITEMFIND_TABLE_SIZE 6
 static void GetItemsToFind(u16 species)
 {
+    if (FlagGet(FLAG_NO_RUNNING_FROM_BATTLE))
+        return;
+
     if(!(gBattleTypeFlags &
          (BATTLE_TYPE_LINK
           | BATTLE_TYPE_RECORDED_LINK
