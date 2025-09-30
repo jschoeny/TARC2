@@ -1,6 +1,10 @@
 const GUARD = 1
 
-mapscripts RockyPath1_MapScripts {}
+mapscripts RockyPath1_MapScripts {
+  MAP_SCRIPT_ON_LOAD {
+    setescapewarp(MAP_ROCKY_PATH1, 25, 15)
+  }
+}
 
 script RockyPath1_EventScript_Guard {
   lockall

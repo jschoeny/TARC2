@@ -1,1 +1,6 @@
-mapscripts TownSquare_MapScripts {}
+mapscripts TownSquare_MapScripts {
+  MAP_SCRIPT_ON_LOAD {
+    setescapewarp(MAP_TOWN_OUTSKIRTS, 14, 7)
+  }
+}
+

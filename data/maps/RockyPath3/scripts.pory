@@ -1,5 +1,6 @@
 mapscripts RockyPath3_MapScripts {
   MAP_SCRIPT_ON_LOAD {
+    setescapewarp(MAP_ROCKY_PATH1, 25, 15)
     if (var(VAR_TEMP_1) == 0) {
       setflag(FLAG_TEMP_1) // Hide Shadow Vaporeon
       setvar(VAR_TEMP_1, 1)
