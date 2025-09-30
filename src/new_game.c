@@ -99,7 +99,7 @@ static void SetDefaultOptions(void)
 {
     gSaveBlock2Ptr->optionsTextSpeed = OPTIONS_TEXT_SPEED_FAST;
     gSaveBlock2Ptr->optionsWindowFrameType = 1;
-    gSaveBlock2Ptr->optionsSound = OPTIONS_SOUND_STEREO;
+    gSaveBlock2Ptr->optionsSound = OPTIONS_SOUND_MONO;
     gSaveBlock2Ptr->optionsBattleStyle = OPTIONS_BATTLE_STYLE_SHIFT;
     gSaveBlock2Ptr->optionsBattleSceneOff = FALSE;
     gSaveBlock2Ptr->regionMapZoom = FALSE;
@@ -217,7 +217,7 @@ void NewGameInitData(void)
     FlagClear(FLAG_FOLLOWERS_DISABLED);
     FlagClear(FLAG_HIDE_MAP_NAME_POPUP);
     AddBagItem(ITEM_ORAN_BERRY, 5);
-    AddBagItem(ITEM_LEPPA_BERRY, 10);
+    AddBagItem(ITEM_LEPPA_BERRY, 1);
     AddBagItem(ITEM_HEAL_POWDER, 3);
 #else
     ScriptGiveMon(SPECIES_GROWLITHE, 10, ITEM_NONE);

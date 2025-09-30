@@ -30,7 +30,7 @@ mapscripts ModernTime_Bedroom_MapScripts {
       setmonlevel(0, 30)
       setmonitem(0, ITEM_ORAN_BERRY)
       additem(ITEM_ORAN_BERRY, 5)
-      additem(ITEM_LEPPA_BERRY, 10)
+      additem(ITEM_LEPPA_BERRY, 1)
       additem(ITEM_HEAL_POWDER, 3)
       warpsilent(MAP_TOWN_SQUARE, 17, 14)
     }
