@@ -1707,45 +1707,45 @@ const u16 gItemIconPalette_MarangaBerry[] = INCBIN_U16("graphics/items/icon_pale
 
 // TMs/HMs
 
-const u32 gItemIcon_TM[] = INCBIN_U32("graphics/items/icons/tm.4bpp.smol");
+const u32 gItemIcon_TM[] = INCBIN_U32("graphics/items/icons/tm_scroll.4bpp.smol");
 
 const u32 gItemIcon_HM[] = INCBIN_U32("graphics/items/icons/hm.4bpp.smol");
 
-const u16 gItemIconPalette_NormalTMHM[] = INCBIN_U16("graphics/items/icon_palettes/normal_tm_hm.gbapal");
+const u16 gItemIconPalette_NormalTMHM[] = INCBIN_U16("graphics/items/icon_palettes/tm_scroll_normal.gbapal");
 
-const u16 gItemIconPalette_FireTMHM[] = INCBIN_U16("graphics/items/icon_palettes/fire_tm_hm.gbapal");
+const u16 gItemIconPalette_FireTMHM[] = INCBIN_U16("graphics/items/icon_palettes/tm_scroll_fire.gbapal");
 
-const u16 gItemIconPalette_WaterTMHM[] = INCBIN_U16("graphics/items/icon_palettes/water_tm_hm.gbapal");
+const u16 gItemIconPalette_WaterTMHM[] = INCBIN_U16("graphics/items/icon_palettes/tm_scroll_water.gbapal");
 
-const u16 gItemIconPalette_ElectricTMHM[] = INCBIN_U16("graphics/items/icon_palettes/electric_tm_hm.gbapal");
+const u16 gItemIconPalette_ElectricTMHM[] = INCBIN_U16("graphics/items/icon_palettes/tm_scroll_electric.gbapal");
 
-const u16 gItemIconPalette_GrassTMHM[] = INCBIN_U16("graphics/items/icon_palettes/grass_tm_hm.gbapal");
+const u16 gItemIconPalette_GrassTMHM[] = INCBIN_U16("graphics/items/icon_palettes/tm_scroll_grass.gbapal");
 
-const u16 gItemIconPalette_IceTMHM[] = INCBIN_U16("graphics/items/icon_palettes/ice_tm_hm.gbapal");
+const u16 gItemIconPalette_IceTMHM[] = INCBIN_U16("graphics/items/icon_palettes/tm_scroll_ice.gbapal");
 
-const u16 gItemIconPalette_FightingTMHM[] = INCBIN_U16("graphics/items/icon_palettes/fighting_tm_hm.gbapal");
+const u16 gItemIconPalette_FightingTMHM[] = INCBIN_U16("graphics/items/icon_palettes/tm_scroll_fighting.gbapal");
 
-const u16 gItemIconPalette_PoisonTMHM[] = INCBIN_U16("graphics/items/icon_palettes/poison_tm_hm.gbapal");
+const u16 gItemIconPalette_PoisonTMHM[] = INCBIN_U16("graphics/items/icon_palettes/tm_scroll_poison.gbapal");
 
-const u16 gItemIconPalette_GroundTMHM[] = INCBIN_U16("graphics/items/icon_palettes/ground_tm_hm.gbapal");
+const u16 gItemIconPalette_GroundTMHM[] = INCBIN_U16("graphics/items/icon_palettes/tm_scroll_ground.gbapal");
 
-const u16 gItemIconPalette_FlyingTMHM[] = INCBIN_U16("graphics/items/icon_palettes/flying_tm_hm.gbapal");
+const u16 gItemIconPalette_FlyingTMHM[] = INCBIN_U16("graphics/items/icon_palettes/tm_scroll_flying.gbapal");
 
-const u16 gItemIconPalette_PsychicTMHM[] = INCBIN_U16("graphics/items/icon_palettes/psychic_tm_hm.gbapal");
+const u16 gItemIconPalette_PsychicTMHM[] = INCBIN_U16("graphics/items/icon_palettes/tm_scroll_psychic.gbapal");
 
-const u16 gItemIconPalette_BugTMHM[] = INCBIN_U16("graphics/items/icon_palettes/bug_tm_hm.gbapal");
+const u16 gItemIconPalette_BugTMHM[] = INCBIN_U16("graphics/items/icon_palettes/tm_scroll_bug.gbapal");
 
-const u16 gItemIconPalette_RockTMHM[] = INCBIN_U16("graphics/items/icon_palettes/rock_tm_hm.gbapal");
+const u16 gItemIconPalette_RockTMHM[] = INCBIN_U16("graphics/items/icon_palettes/tm_scroll_rock.gbapal");
 
-const u16 gItemIconPalette_GhostTMHM[] = INCBIN_U16("graphics/items/icon_palettes/ghost_tm_hm.gbapal");
+const u16 gItemIconPalette_GhostTMHM[] = INCBIN_U16("graphics/items/icon_palettes/tm_scroll_ghost.gbapal");
 
-const u16 gItemIconPalette_DragonTMHM[] = INCBIN_U16("graphics/items/icon_palettes/dragon_tm_hm.gbapal");
+const u16 gItemIconPalette_DragonTMHM[] = INCBIN_U16("graphics/items/icon_palettes/tm_scroll_dragon.gbapal");
 
-const u16 gItemIconPalette_DarkTMHM[] = INCBIN_U16("graphics/items/icon_palettes/dark_tm_hm.gbapal");
+const u16 gItemIconPalette_DarkTMHM[] = INCBIN_U16("graphics/items/icon_palettes/tm_scroll_dark.gbapal");
 
-const u16 gItemIconPalette_SteelTMHM[] = INCBIN_U16("graphics/items/icon_palettes/steel_tm_hm.gbapal");
+const u16 gItemIconPalette_SteelTMHM[] = INCBIN_U16("graphics/items/icon_palettes/tm_scroll_steel.gbapal");
 
-const u16 gItemIconPalette_FairyTMHM[] = INCBIN_U16("graphics/items/icon_palettes/fairy_tm_hm.gbapal");
+const u16 gItemIconPalette_FairyTMHM[] = INCBIN_U16("graphics/items/icon_palettes/tm_scroll_fairy.gbapal");
 
 // Charms
 
