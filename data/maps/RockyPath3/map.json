@@ -90,8 +90,8 @@
       "x": 12,
       "y": 7,
       "elevation": 0,
-      "item": "ITEM_NONE",
-      "flag": "FLAG_TEMP_1"
+      "item": "ITEM_TM_WILD_CHARGE",
+      "flag": "FLAG_HIDDEN_ITEM_ROCKY_PATH_3_TM_WILD_CHARGE"
     },
     {
       "type": "sign",

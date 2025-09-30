@@ -26,43 +26,43 @@
   ],
   "object_events": [
     {
-      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_SPARKLE",
       "x": 28,
       "y": 6,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
-      "movement_range_x": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_DOWN",
+      "movement_range_x": 1,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
+      "trainer_sight_or_berry_tree_id": "ITEM_EXPERT_BELT",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_ITEM_ROCKY_PATH_2_EXPERT_BELT"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 29,
-      "y": 26,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_SPARKLE",
       "x": 37,
       "y": 8,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
-      "movement_range_x": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_DOWN",
+      "movement_range_x": 1,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
+      "trainer_sight_or_berry_tree_id": "ITEM_RAZOR_FANG",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_ITEM_ROCKY_PATH_2_RAZOR_FANG"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_SPARKLE",
+      "x": 29,
+      "y": 26,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_DOWN",
+      "movement_range_x": 1,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_RAZOR_CLAW",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_ITEM_ROCKY_PATH_2_RAZOR_CLAW"
     }
   ],
   "warp_events": [],
@@ -73,32 +73,32 @@
       "x": 22,
       "y": 26,
       "elevation": 0,
-      "item": "ITEM_NONE",
-      "flag": "FLAG_TEMP_1"
+      "item": "ITEM_TM_SWIFT",
+      "flag": "FLAG_HIDDEN_ITEM_ROCKY_PATH_2_TM_SWIFT"
     },
     {
       "type": "hidden_item",
       "x": 9,
       "y": 26,
       "elevation": 0,
-      "item": "ITEM_NONE",
-      "flag": "FLAG_TEMP_1"
+      "item": "ITEM_ENERGY_ROOT",
+      "flag": "FLAG_HIDDEN_ITEM_ROCKY_PATH_2_ENERGY_ROOT"
     },
     {
       "type": "hidden_item",
       "x": 17,
       "y": 17,
       "elevation": 0,
-      "item": "ITEM_NONE",
-      "flag": "FLAG_TEMP_1"
+      "item": "ITEM_STARDUST",
+      "flag": "FLAG_HIDDEN_ITEM_ROCKY_PATH_2_STARDUST"
     },
     {
       "type": "hidden_item",
       "x": 20,
       "y": 4,
       "elevation": 0,
-      "item": "ITEM_NONE",
-      "flag": "FLAG_TEMP_1"
+      "item": "ITEM_EVIOLITE",
+      "flag": "FLAG_HIDDEN_ITEM_ROCKY_PATH_2_EVIOLITE"
     }
   ]
 }

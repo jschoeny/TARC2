@@ -26,17 +26,30 @@
   ],
   "object_events": [
     {
-      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_SPARKLE",
       "x": 10,
-      "y": 6,
+      "y": 5,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
-      "movement_range_x": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_DOWN",
+      "movement_range_x": 1,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
+      "trainer_sight_or_berry_tree_id": "ITEM_EXP_CANDY_M",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_ITEM_MOUNTAIN_PATH_1_EXP_CANDY_M"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_SPARKLE",
+      "x": 7,
+      "y": 17,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_DOWN",
+      "movement_range_x": 1,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_ORAN_BERRY",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_ITEM_MOUNTAIN_PATH_1_ORAN_BERRY"
     }
   ],
   "warp_events": [],
@@ -47,8 +60,8 @@
       "x": 26,
       "y": 16,
       "elevation": 0,
-      "item": "ITEM_ORAN_BERRY",
-      "flag": "FLAG_TEMP_1"
+      "item": "ITEM_LEPPA_BERRY",
+      "flag": "FLAG_HIDDEN_ITEM_MOUNTAIN_PATH_1_LEPPA_BERRY"
     }
   ]
 }
