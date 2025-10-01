@@ -1185,3 +1185,5 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/RockyPath2/scripts.inc"
 
 	.include "data/maps/RockyPath3/scripts.inc"
+
+	.include "data/maps/MountainSummitBase/scripts.inc"

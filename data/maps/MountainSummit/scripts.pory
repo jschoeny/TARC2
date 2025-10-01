@@ -1,39 +1,22 @@
 mapscripts MountainSummit_MapScripts {
   MAP_SCRIPT_ON_LOAD {
-    if (var(VAR_TEMP_0) == 0) {
+    if (var(VAR_TEMP_1) == 0) {
       setflag(FLAG_TEMP_1) // Hide Shadow Ho-Oh
       setflag(FLAG_TEMP_2) // Hide Ho-Oh
       setflag(FLAG_TEMP_3) // Hide Blight
       setflag(FLAG_TEMP_4) // Hide Arcanine Statue
+      setvar(VAR_TEMP_1, 1)
     }
   }
 }
 
-script MountainSummit_Trigger_NoGoingBackNow_Left {
-  msgbox(format(
-    "There's no going back now."
-  ))
-  closemessage
-  applymovement(LOCALID_PLAYER, moves(walk_slow_up))
-  applymovement(OBJ_EVENT_ID_FOLLOWER, moves(walk_right, face_left))
-  waitmovement(LOCALID_PLAYER)
-  waitmovement(OBJ_EVENT_ID_FOLLOWER)
-  releaseall
-}
-
-script MountainSummit_Trigger_NoGoingBackNow_Right {
-  msgbox(format(
-    "There's no going back now."
-  ))
-  closemessage
-  applymovement(LOCALID_PLAYER, moves(walk_slow_up))
-  applymovement(OBJ_EVENT_ID_FOLLOWER, moves(walk_left, face_right))
-  waitmovement(LOCALID_PLAYER)
-  waitmovement(OBJ_EVENT_ID_FOLLOWER)
-  releaseall
+script MountainSummit_Trigger_NoBattleMusic {
+  setflag(FLAG_NO_BATTLE_MUSIC)
 }
 
 script MountainSummit_EventScript_Trigger {
+  setflag(FLAG_SAFE_FOLLOWER_MOVEMENT)
+  clearflag(FLAG_NO_BATTLE_MUSIC)
   special(SpawnCameraObject)
   applymovement(LOCALID_CAMERA, moves(walk_up*6))
   applymovement(LOCALID_PLAYER, moves(walk_slow_up*5))
@@ -86,6 +69,7 @@ script MountainSummit_EventScript_Trigger {
   waitmovement(LOCALID_SUMMIT_SHADOW_HO_OH)
 
   applymovement(LOCALID_SUMMIT_SHADOW_HO_OH, moves(jump_down))
+  setvar(VAR_0x8004, 0) // vertical pan
   setvar(VAR_0x8005, 2) // horizontal pan
   setvar(VAR_0x8006, 32) // num shakes
   setvar(VAR_0x8007, 2) // shake delay
@@ -143,8 +127,13 @@ script MountainSummit_EventScript_Trigger {
       delay_16*2,
     ))
     waitmovement(LOCALID_SUMMIT_BLIGHT)
+    applymovement(LOCALID_SUMMIT_HO_OH, moves(
+      delay_16,
+      slide_down,
+    ))
     applymovement(LOCALID_SUMMIT_BLIGHT, moves(
-      shake,
+      delay_16,
+      slide_down,
     ))
     applymovement(LOCALID_PLAYER, moves(
       lock_facing_direction,
@@ -159,6 +148,7 @@ script MountainSummit_EventScript_Trigger {
     waitmovement(LOCALID_PLAYER)
     waitmovement(OBJ_EVENT_ID_FOLLOWER)
     waitmovement(LOCALID_SUMMIT_BLIGHT)
+    waitmovement(LOCALID_SUMMIT_HO_OH)
     delay(120)
     special(SpawnCameraObject)
     applymovement(LOCALID_CAMERA, moves(walk_slow_up))

@@ -1,0 +1,189 @@
+{
+  "id": "MAP_MOUNTAIN_SUMMIT_BASE",
+  "name": "MountainSummitBase",
+  "layout": "LAYOUT_MOUNTAIN_SUMMIT_BASE",
+  "music": "MUS_PMDRED_MT_THUNDER",
+  "region_map_section": "MAPSEC_MT_CHIMNEY",
+  "requires_flash": false,
+  "weather": "WEATHER_RAIN_THUNDERSTORM",
+  "map_type": "MAP_TYPE_NONE",
+  "allow_cycling": false,
+  "allow_escaping": true,
+  "allow_running": false,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": [
+    {
+      "map": "MAP_MOUNTAIN_SUMMIT",
+      "offset": 4,
+      "direction": "up"
+    }
+  ],
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_SPARKLE",
+      "x": 38,
+      "y": 62,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_DOWN",
+      "movement_range_x": 1,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_EXP_CANDY_M",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_ITEM_SUMMIT_BASE_EXP_CANDY_M"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_SPARKLE",
+      "x": 9,
+      "y": 64,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_DOWN",
+      "movement_range_x": 1,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_ENERGY_ROOT",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_ITEM_SUMMIT_BASE_ENERGY_ROOT"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_SPARKLE",
+      "x": 12,
+      "y": 53,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_DOWN",
+      "movement_range_x": 1,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_LIFE_ORB",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_ITEM_SUMMIT_BASE_LIFE_ORB"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_SPARKLE",
+      "x": 14,
+      "y": 44,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_DOWN",
+      "movement_range_x": 1,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_HEAT_ROCK",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_ITEM_SUMMIT_BASE_HEAT_ROCK"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_SPARKLE",
+      "x": 25,
+      "y": 7,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_DOWN",
+      "movement_range_x": 1,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_ROCKY_HELMET",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_ITEM_SUMMIT_BASE_ROCKY_HELMET"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_GUARD",
+      "x": 37,
+      "y": 78,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "MountainSummitBase_EventScript_Guard",
+      "flag": "0"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 36,
+      "y": 77,
+      "elevation": 0,
+      "dest_map": "MAP_MOUNTAIN_SUMMIT_BASE",
+      "dest_warp_id": "0"
+    }
+  ],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 35,
+      "y": 78,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "MountainSummitBase_Trigger_Guard"
+    },
+    {
+      "type": "trigger",
+      "x": 36,
+      "y": 78,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "MountainSummitBase_Trigger_Guard"
+    }
+  ],
+  "bg_events": [
+    {
+      "type": "hidden_item",
+      "x": 9,
+      "y": 22,
+      "elevation": 0,
+      "item": "ITEM_ENERGY_ROOT",
+      "flag": "FLAG_HIDDEN_ITEM_SUMMIT_BASE_ENERGY_ROOT"
+    },
+    {
+      "type": "hidden_item",
+      "x": 25,
+      "y": 69,
+      "elevation": 0,
+      "item": "ITEM_X_ATTACK",
+      "flag": "FLAG_HIDDEN_ITEM_SUMMIT_BASE_X_ATTACK"
+    },
+    {
+      "type": "hidden_item",
+      "x": 21,
+      "y": 62,
+      "elevation": 0,
+      "item": "ITEM_X_DEFENSE",
+      "flag": "FLAG_HIDDEN_ITEM_SUMMIT_BASE_X_DEFENSE"
+    },
+    {
+      "type": "hidden_item",
+      "x": 30,
+      "y": 73,
+      "elevation": 0,
+      "item": "ITEM_SITRUS_BERRY",
+      "flag": "FLAG_HIDDEN_ITEM_SUMMIT_BASE_SITRUS_BERRY"
+    },
+    {
+      "type": "hidden_item",
+      "x": 38,
+      "y": 60,
+      "elevation": 0,
+      "item": "ITEM_X_ATTACK",
+      "flag": "FLAG_HIDDEN_ITEM_SUMMIT_BASE_X_ATTACK_2"
+    },
+    {
+      "type": "hidden_item",
+      "x": 36,
+      "y": 43,
+      "elevation": 0,
+      "item": "ITEM_X_DEFENSE",
+      "flag": "FLAG_HIDDEN_ITEM_SUMMIT_BASE_X_DEFENSE_2"
+    },
+    {
+      "type": "hidden_item",
+      "x": 23,
+      "y": 18,
+      "elevation": 0,
+      "item": "ITEM_ENERGY_ROOT",
+      "flag": "FLAG_HIDDEN_ITEM_SUMMIT_BASE_ENERGY_ROOT_2"
+    }
+  ]
+}

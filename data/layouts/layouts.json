@@ -4540,6 +4540,16 @@
       "secondary_tileset": "gTileset_OldenTimesMountain",
       "border_filepath": "data/layouts/RockyPath3/border.bin",
       "blockdata_filepath": "data/layouts/RockyPath3/map.bin"
+    },
+    {
+      "id": "LAYOUT_MOUNTAIN_SUMMIT_BASE",
+      "name": "MountainSummitBase_Layout",
+      "width": 46,
+      "height": 84,
+      "primary_tileset": "gTileset_OldenTimes",
+      "secondary_tileset": "gTileset_OldenTimesMountain",
+      "border_filepath": "data/layouts/MountainSummitBase/border.bin",
+      "blockdata_filepath": "data/layouts/MountainSummitBase/map.bin"
     }
   ]
 }

@@ -20,66 +20,99 @@ static const u16 sQuagsireShadowLearnset[] = {
 
 static const u16 sStarlyShadowLearnset[] = {
     MOVE_SHADOW_BLITZ,
+    MOVE_UNAVAILABLE,
 };
 
 static const u16 sStaraviaShadowLearnset[] = {
     MOVE_SHADOW_BLITZ,
+    MOVE_UNAVAILABLE,
 };
 
 static const u16 sMankeyShadowLearnset[] = {
     MOVE_SHADOW_BLITZ,
+    MOVE_UNAVAILABLE,
+};
+
+static const u16 sPrimeapeShadowLearnset[] = {
+    MOVE_SHADOW_BLITZ,
+    MOVE_UNAVAILABLE,
+};
+
+static const u16 sGeodudeShadowLearnset[] = {
+    MOVE_SHADOW_RUSH,
+    MOVE_UNAVAILABLE,
+};
+
+static const u16 sChanseyShadowLearnset[] = {
+    MOVE_SHADOW_MIST,
+    MOVE_UNAVAILABLE,
 };
 
 static const u16 sSkiploomShadowLearnset[] = {
     MOVE_SHADOW_WAVE,
+    MOVE_UNAVAILABLE,
 };
 
 static const u16 sLarvitarShadowLearnset[] = {
     MOVE_SHADOW_RUSH,
+    MOVE_UNAVAILABLE,
 };
 
 static const u16 sMurkrowShadowLearnset[] = {
     MOVE_SHADOW_WAVE,
+    MOVE_UNAVAILABLE,
 };
 
 static const u16 sHoothootShadowLearnset[] = {
     MOVE_SHADOW_WAVE,
+    MOVE_UNAVAILABLE,
 };
 
 static const u16 sParasectShadowLearnset[] = {
     MOVE_SHADOW_RUSH,
+    MOVE_UNAVAILABLE,
 };
 
 static const u16 sScytherShadowLearnset[] = {
     MOVE_SHADOW_RUSH,
+    MOVE_UNAVAILABLE,
 };
 
 static const u16 sAbsolShadowLearnset[] = {
     MOVE_SHADOW_RUSH,
+    MOVE_UNAVAILABLE,
 };
 
 static const u16 sSneaselHisuiShadowLearnset[] = {
     MOVE_SHADOW_RUSH,
+    MOVE_UNAVAILABLE,
 };
 
 static const u16 sDrifloonShadowLearnset[] = {
     MOVE_SHADOW_PANIC,
+    MOVE_UNAVAILABLE,
 };
 
 static const u16 sPawmoShadowLearnset[] = {
     MOVE_SHADOW_BREAK,
+    MOVE_UNAVAILABLE,
+};
+
+static const u16 sChimechoShadowLearnset[] = {
+    MOVE_SHADOW_PANIC,
+    MOVE_UNAVAILABLE,
 };
 
 static const u16 sFlareonShadowLearnset[] = {
     MOVE_SHADOW_FIRE,
-    MOVE_SHADOW_BREAK,
+    MOVE_SHADOW_RUSH,
     MOVE_SCARY_FACE,
     MOVE_BITE,
 };
 
 static const u16 sJolteonShadowLearnset[] = {
     MOVE_SHADOW_BOLT,
-    MOVE_SHADOW_BREAK,
+    MOVE_SHADOW_RUSH,
     MOVE_PIN_MISSILE,
     MOVE_AGILITY,
 };

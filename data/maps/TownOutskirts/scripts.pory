@@ -328,8 +328,9 @@ script TownOutskirts_EventScript_GuardMultiChoice_MountainSummit {
       "Great! You can do this!"
     ), MSGBOX_NPC)
   }
-  setrespawn(HEAL_LOCATION_TOWN_OUTSKIRTS)
-  warp(MAP_MOUNTAIN_SUMMIT, 0)
+  setrespawn(HEAL_LOCATION_MOUNTAIN_SUMMIT_BASE)
+  setflag(FLAG_NO_BATTLE_MUSIC)
+  warp(MAP_MOUNTAIN_SUMMIT_BASE, 0)
 }
 
 script TownOutskirts_EventScript_GuardMultiChoice_RockyPath {
@@ -339,7 +340,7 @@ script TownOutskirts_EventScript_GuardMultiChoice_RockyPath {
   ), MSGBOX_NPC)
   if (var(VAR_STORY_PROGRESS) < STORY_ENTERED_ROCKY_PATH) {
     setvar(VAR_STORY_PROGRESS, STORY_ENTERED_ROCKY_PATH)
-    setvar(VAR_WILD_SHADOW_CHANCE, 20)
+    setvar(VAR_WILD_SHADOW_CHANCE, 30)
   }
   setrespawn(HEAL_LOCATION_ROCKY_PATH1)
   warp(MAP_ROCKY_PATH1, 0)

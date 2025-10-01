@@ -198,6 +198,12 @@
       "map": "MAP_ROCKY_PATH1",
       "x": 25,
       "y": 15
+    },
+    {
+      "id": "HEAL_LOCATION_MOUNTAIN_SUMMIT_BASE",
+      "map": "MAP_MOUNTAIN_SUMMIT_BASE",
+      "x": 36,
+      "y": 77
     }
   ]
 }

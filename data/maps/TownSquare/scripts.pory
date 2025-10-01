@@ -4,3 +4,147 @@ mapscripts TownSquare_MapScripts {
   }
 }
 
+script TownSquare_Sign_TownNotice {
+  msgbox(format(
+    "TOWN SQUARE {RIGHT_ARROW}\N{LEFT_ARROW} TOWN OUTSKIRTS\p"
+    "- NOTICE -\NBeware of the recent spike in\Nrampaging magical creatures!"
+  ), MSGBOX_SIGN)
+  closemessage
+}
+
+script TownSquare_Sign_Well {
+  msgbox(format(
+    "You can still see the rice cake that\Nyou accidentally dropped."
+  ))
+  closemessage
+}
+
+script TownSquare_EventScript_LittleGirl {
+  if (var(VAR_STORY_PROGRESS) < STORY_INTRO_WOOPER_DEFEATED) {
+    msgbox(format(
+      "I'm being very brave from exactly this spot."
+    ), MSGBOX_NPC)
+  } else {
+    msgbox(format(
+      "I'm still being very brave from exactly this spot."
+    ), MSGBOX_NPC)
+  }
+}
+
+script TownSquare_EventScript_Man1 {
+  if (var(VAR_STORY_PROGRESS) < STORY_INTRO_WOOPER_DEFEATED) {
+    msgbox(format(
+      "Have you heard about the recent outbreak of rampaging magical creatures?\p"
+      "The town guards have been very helpful keeping them away.\p"
+      "But I'm not sure how long they can keep it up…"
+    ), MSGBOX_NPC)
+  } else {
+    msgbox(format(
+      "I heard that even more creatures are rampaging.\p"
+      "Pray the rainbow bird can save us…"
+    ), MSGBOX_NPC)
+  }
+}
+
+script TownSquare_EventScript_OldMan {
+  msgbox(format(
+    "I like to stare into this here pond and pretend that everything is okay."
+  ), MSGBOX_NPC)
+  applymovement(VAR_LAST_TALKED, moves(face_down))
+  waitmovement(VAR_LAST_TALKED)
+  delay(30)
+  msgbox(format(
+    "…\p"
+    "…sigh…\p"
+    "…"
+  ), MSGBOX_DEFAULT)
+  closemessage
+}
+
+script TownSquare_EventScript_OldWoman {
+  msgbox(format(
+    "Take salt for thresholds, sage for stoves, iron nail for luck.\p"
+    "Two braids in your hair so spirits\Ncan't count you.\p"
+    "Never step over a broom;\Nnever point at a rainbow.\p"
+    "If the frenzy takes a creature,\Ndo not shout.\p"
+    "Lay a path of grain.\NLet it choose peace.\p"
+    "And at dawn, thank Ho-Oh,\Nthree breaths, palms warm."
+  ), MSGBOX_NPC)
+}
+
+script TownSquare_EventScript_OldMan2 {
+  msgbox(format(
+    "That's my wife over there…\p"
+    "She's been a bit off ever since the magical creatures started rampaging.\p"
+    "I still love her, but…\p"
+    "We're all out of salt."
+  ), MSGBOX_NPC)
+}
+
+script TownSquare_EventScript_LittleBoy0 {
+  msgbox(format(
+    "Look at my rainbow bird doll! Mine has seven colors!\p"
+    "…Well, five.\p"
+    "The blue ran away and the green is hiding.\p"
+    "When I catch them, it'll be the bravest bird."
+  ), MSGBOX_NPC)
+}
+
+script TownSquare_EventScript_LittleBoy1 {
+  msgbox(format(
+    "If I hold a flower up high, maybe the rainbow bird will notice.\p"
+    "Do you think it likes yellow?"
+  ), MSGBOX_NPC)
+}
+
+script TownSquare_EventScript_TSSeller {
+  lock
+  if (var(VAR_STORY_PROGRESS) < STORY_INTRO_WOOPER_DEFEATED) {
+    msgbox(format(
+      "I found some interesting SCROLLS\Nin a faraway land.\p"
+      "I plan to sell them for\Na good price.\p"
+      "Come back later if you're interested."
+    ), MSGBOX_NPC)
+  } elif (var(VAR_TEMP_1) == 0) {
+    setvar(VAR_TEMP_1, 1)
+    msgbox(format(
+      "I found some interesting SCROLLS\Nin a faraway land.\p"
+      "I'm willing to sell them for\Na good price.\p"
+      "What would you like?"
+    ), MSGBOX_NPC)
+    if (var(VAR_STORY_PROGRESS) >= STORY_DEFEATED_GUARDIANS) {
+      pokemart(TSSeller_Items2)
+    } else {
+      pokemart(TSSeller_Items)
+    }
+    msgbox(format("Pleasure doing business with you."), MSGBOX_NPC)
+  } else {
+    msgbox(format(
+      "What would you like?"
+    ), MSGBOX_NPC)
+    if (var(VAR_STORY_PROGRESS) >= STORY_DEFEATED_GUARDIANS) {
+      pokemart(TSSeller_Items2)
+    } else {
+      pokemart(TSSeller_Items)
+    }
+    msgbox(format("Pleasure doing business with you."), MSGBOX_NPC)
+  }
+  release
+}
+
+mart TSSeller_Items {
+  ITEM_TM_SUNNY_DAY
+  ITEM_TM_PSYCHIC_FANGS
+  ITEM_TM_BREAKING_SWIPE
+  ITEM_TM_PLAY_ROUGH
+}
+
+mart TSSeller_Items2 {
+  ITEM_TM_SUNNY_DAY
+  ITEM_TM_FLAMETHROWER
+  ITEM_TM_PSYCHIC_FANGS
+  ITEM_TM_BREAKING_SWIPE
+  ITEM_TM_PLAY_ROUGH
+  ITEM_TM_TEMPER_FLARE
+  ITEM_TM_CLOSE_COMBAT
+}

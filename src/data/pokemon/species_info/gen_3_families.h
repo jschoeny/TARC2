@@ -10229,6 +10229,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .levelUpLearnset = sChimechoLevelUpLearnset,
         .teachableLearnset = sChimechoTeachableLearnset,
         .eggMoveLearnset = sChimechoEggMoveLearnset,
+        .shadowLearnset = sChimechoShadowLearnset,
     },
 #endif //P_FAMILY_CHIMECHO
 

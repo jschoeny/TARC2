@@ -217,7 +217,7 @@ void NewGameInitData(void)
     FlagClear(FLAG_FOLLOWERS_DISABLED);
     FlagClear(FLAG_HIDE_MAP_NAME_POPUP);
     AddBagItem(ITEM_ORAN_BERRY, 5);
-    AddBagItem(ITEM_LEPPA_BERRY, 1);
+    AddBagItem(ITEM_LEPPA_BERRY, 3);
     AddBagItem(ITEM_HEAL_POWDER, 3);
 #else
     ScriptGiveMon(SPECIES_GROWLITHE, 10, ITEM_NONE);

@@ -19,7 +19,9 @@ mapscripts ModernTime_Bedroom_MapScripts {
       speakername("GRANDMA")
       msgbox(format(
         "Ah yes.\p"
-        "Years later, the two became inseparable."
+        "Years later, the two became inseparable.\p"
+        "But trouble was brewing nearby.\N"
+        "Recent reports of rampaging POKéMON\Nhad the townspeople worried."
       ))
       closemessage
       setvar(VAR_STORY_PROGRESS, STORY_INTRO_TOWN_SQUARE)
@@ -30,7 +32,7 @@ mapscripts ModernTime_Bedroom_MapScripts {
       setmonlevel(0, 30)
       setmonitem(0, ITEM_ORAN_BERRY)
       additem(ITEM_ORAN_BERRY, 5)
-      additem(ITEM_LEPPA_BERRY, 1)
+      additem(ITEM_LEPPA_BERRY, 3)
       additem(ITEM_HEAL_POWDER, 3)
       warpsilent(MAP_TOWN_SQUARE, 17, 14)
     }
@@ -89,7 +91,7 @@ mapscripts ModernTime_Bedroom_MapScripts {
       waitmovement(LOCALID_GRAMMY)
       delay(30)
       speakername("GRANDMA")
-      msgbox("INSERT BOOK TITLE\pAre you ready?")
+      msgbox("LEGEND of the FIRE of the SKY\pAre you ready?")
       closemessage
       applymovement(LOCALID_CHILD, moves(
         face_down,

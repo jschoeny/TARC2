@@ -169,7 +169,7 @@ script RockyPath3_ShadowEonsCutscene {
   waitmoncry
 
   setflag(FLAG_NO_RUNNING_FROM_BATTLE)
-  setwildshadowbattle(SPECIES_JOLTEON, 30, ITEM_NONE, TRUE, SPECIES_FLAREON, 30, ITEM_NONE, TRUE)
+  setwildshadowbattle(SPECIES_JOLTEON, 31, ITEM_NONE, TRUE, SPECIES_FLAREON, 31, ITEM_NONE, TRUE)
   dowildbattle
 
   if (var(VAR_RESULT) == B_OUTCOME_WON) {
@@ -199,7 +199,7 @@ script RockyPath3_ShadowEonsCutscene {
     waitmoncry
 
     setflag(FLAG_NO_RUNNING_FROM_BATTLE)
-    setwildshadowbattle(SPECIES_VAPOREON, 35, ITEM_RAWST_BERRY, TRUE)
+    setwildshadowbattle(SPECIES_VAPOREON, 36, ITEM_RAWST_BERRY, TRUE)
     dowildbattle
     if (var(VAR_RESULT) == B_OUTCOME_WON) {
       fadescreenswapbuffers(FADE_TO_BLACK)
@@ -247,7 +247,7 @@ script RockyPath3_ShadowEonsCutscene {
       closemessage
 
       clearflag(FLAG_NO_RUNNING_FROM_BATTLE)
-      setvar(VAR_WILD_SHADOW_CHANCE, 40)
+      setvar(VAR_WILD_SHADOW_CHANCE, 60)
       setvar(VAR_STORY_PROGRESS, STORY_DEFEATED_GUARDIANS)
     }
   }

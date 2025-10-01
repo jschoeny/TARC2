@@ -1,0 +1,82 @@
+const GUARD = 6
+
+mapscripts MountainSummitBase_MapScripts {
+  MAP_SCRIPT_ON_LOAD {
+    setescapewarp(MAP_MOUNTAIN_SUMMIT_BASE, 38, 60)
+  }
+}
+
+script MountainSummitBase_EventScript_Guard {
+  lockall
+  faceplayer
+  speakername("GUARD")
+  msgbox(format(
+    "Are you holding up okay?"
+  ))
+  dynmultipush("Heal", 0)
+  dynmultipush("Return to Town", 1)
+  dynmultipush("Close", 2)
+  dynmultistack(0, 0, FALSE, 3, FALSE, 0, NULL)
+  switch (var(VAR_RESULT)) {
+    case 0:
+      closemessage
+      call(Common_EventScript_OutOfCenterPartyHeal)
+      msgbox(format(
+        "Be careful out there buddy."
+      ), MSGBOX_NPC)
+    case 1:
+      closemessage
+      setrespawn(HEAL_LOCATION_TOWN_OUTSKIRTS)
+      clearflag(FLAG_NO_BATTLE_MUSIC)
+      warp(MAP_TOWN_OUTSKIRTS, 14, 8)
+      end
+    case 2:
+    case MULTI_B_PRESSED:
+      msgbox(format(
+        "Come back anytime."
+      ), MSGBOX_NPC)
+  }
+  releaseall
+}
+
+script MountainSummitBase_Trigger_Guard {
+  lockall
+  applymovement(GUARD, moves(face_left))
+  applymovement(LOCALID_PLAYER, moves(face_right))
+  waitmovement(GUARD)
+  waitmovement(LOCALID_PLAYER)
+  speakername("GUARD")
+  msgbox(format(
+    "Are you holding up okay?"
+  ))
+  dynmultipush("Heal", 0)
+  dynmultipush("Return to Town", 1)
+  dynmultipush("Close", 2)
+  dynmultistack(0, 0, FALSE, 3, FALSE, 0, NULL)
+  switch (var(VAR_RESULT)) {
+    case 0:
+      closemessage
+      call(Common_EventScript_OutOfCenterPartyHeal)
+      msgbox(format(
+        "Be careful out there buddy."
+      ))
+      closemessage
+    case 1:
+      closemessage
+      setrespawn(HEAL_LOCATION_TOWN_OUTSKIRTS)
+      clearflag(FLAG_NO_BATTLE_MUSIC)
+      warp(MAP_TOWN_OUTSKIRTS, 14, 8)
+      end
+    case 2:
+    case MULTI_B_PRESSED:
+      msgbox(format(
+        "Come back anytime."
+      ))
+      closemessage
+  }
+  applymovement(LOCALID_PLAYER, moves(walk_up))
+  applymovement(OBJ_EVENT_ID_FOLLOWER, moves(walk_down, face_up))
+  waitmovement(LOCALID_PLAYER)
+  waitmovement(OBJ_EVENT_ID_FOLLOWER)
+  releaseall
+}

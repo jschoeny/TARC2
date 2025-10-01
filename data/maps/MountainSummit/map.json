@@ -12,7 +12,13 @@
   "allow_running": false,
   "show_map_name": true,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": null,
+  "connections": [
+    {
+      "map": "MAP_MOUNTAIN_SUMMIT_BASE",
+      "offset": -4,
+      "direction": "down"
+    }
+  ],
   "object_events": [
     {
       "local_id": "LOCALID_SUMMIT_SHADOW_HO_OH",
@@ -32,7 +38,7 @@
       "local_id": "LOCALID_SUMMIT_HO_OH",
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(HO_OH)",
       "x": 10,
-      "y": 5,
+      "y": 4,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_DOWN",
       "movement_range_x": 0,
@@ -46,7 +52,7 @@
       "local_id": "LOCALID_SUMMIT_BLIGHT",
       "graphics_id": "OBJ_EVENT_GFX_BLIGHT",
       "x": 10,
-      "y": 6,
+      "y": 5,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -93,20 +99,11 @@
     {
       "type": "trigger",
       "x": 9,
-      "y": 17,
+      "y": 15,
       "elevation": 0,
       "var": "VAR_TEMP_0",
       "var_value": "0",
-      "script": "MountainSummit_Trigger_NoGoingBackNow_Left"
-    },
-    {
-      "type": "trigger",
-      "x": 10,
-      "y": 17,
-      "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
-      "script": "MountainSummit_Trigger_NoGoingBackNow_Right"
+      "script": "MountainSummit_Trigger_NoBattleMusic"
     }
   ],
   "bg_events": [
@@ -115,8 +112,8 @@
       "x": 6,
       "y": 13,
       "elevation": 0,
-      "item": "ITEM_TM_OVERHEAT",
-      "flag": "FLAG_HIDDEN_ITEM_MOUNTAIN_SUMMIT_TM_OVERHEAT"
+      "item": "ITEM_ENERGY_ROOT",
+      "flag": "FLAG_HIDDEN_ITEM_MOUNTAIN_SUMMIT_ENERGY_ROOT"
     }
   ]
 }

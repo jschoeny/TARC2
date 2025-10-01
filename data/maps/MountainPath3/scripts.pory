@@ -63,6 +63,7 @@ script MountainPath3_WooperCutscene {
   waitmovement(LOCAL_ID_SHADOW_WOOPER)
 
   // Start earthquake effect (camera shake)
+  setvar(VAR_0x8004, 0)  // vertical pan
   setvar(VAR_0x8005, 2)  // horizontal pan
   setvar(VAR_0x8006, 32) // num shakes
   setvar(VAR_0x8007, 2)  // shake delay
@@ -88,6 +89,7 @@ script MountainPath3_WooperCutscene {
   waitmovement(LOCAL_ID_SHADOW_WOOPER)
 
   // Start earthquake effect (camera shake)
+  setvar(VAR_0x8004, 0)  // vertical pan
   setvar(VAR_0x8005, 2)  // horizontal pan
   setvar(VAR_0x8006, 32) // num shakes
   setvar(VAR_0x8007, 2)  // shake delay
@@ -126,7 +128,7 @@ script MountainPath3_WooperCutscene {
   delay(60)
 
   // Set up the 1v2 Shadow battle
-  setwildshadowbattle(SPECIES_WOOPER, 26, ITEM_NONE, TRUE, SPECIES_QUAGSIRE, 22, ITEM_NONE, TRUE)
+  setwildshadowbattle(SPECIES_WOOPER, 30, ITEM_NONE, TRUE, SPECIES_QUAGSIRE, 26, ITEM_NONE, TRUE)
   dowildbattle
 
   // After battle cleanup
@@ -144,11 +146,18 @@ script MountainPath3_WooperCutscene {
     delay(20)
     addobject(LOCALID_MOUNTAIN_PATH_3_PEARL)
     fadescreenswapbuffers(FADE_FROM_BLACK)
+    delay(20)
+    speakername("GRANDMA")
+    msgbox(format(
+      "RENJI and GROWLITHE knew they need to tell the GUARD what they just saw."
+    ))
+    closemessage
+    delay(60)
+    special(SpawnCameraObject)
+    applymovement(LOCALID_CAMERA, moves(walk_down*2))
+    waitmovement(LOCALID_CAMERA)
+    special(RemoveCameraObject)
   }
-  special(SpawnCameraObject)
-  applymovement(LOCALID_CAMERA, moves(walk_down*2))
-  waitmovement(LOCALID_CAMERA)
-  special(RemoveCameraObject)
   releaseall
   end
 }

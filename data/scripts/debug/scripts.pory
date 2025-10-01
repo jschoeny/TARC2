@@ -1,20 +1,99 @@
 script Debug_EventScript_Script_1 {
+  dynmultipush("CLEAR", 0)
+  dynmultipush("INTRO_FOREST", 1)
+  dynmultipush("INTRO_FIRE", 2)
+  dynmultipush("INTRO_HOUNDOUR_DEFEATED", 3)
+  dynmultipush("INTRO_TOWN_SQUARE", 4)
+  dynmultipush("INTRO_PASS_GUARD", 5)
+  dynmultipush("ENTERED_MOUNTAIN_PATH", 6)
+  dynmultipush("INTRO_WOOPER_DEFEATED", 7)
+  dynmultipush("RETURNED_AFTER_WOOPER", 8)
+  dynmultipush("ENTERED_ROCKY_PATH", 9)
+  dynmultipush("DEFEATED_GUARDIANS", 10)
+  dynmultipush("RETURNED_AFTER_GUARDIANS", 11)
+  dynmultipush("ENTERED_MOUNTAIN_SUMMIT", 12)
+  dynmultipush("CLOSE", 13)
+  dynmultistack(0, 0, FALSE, 6, FALSE, VAR_STORY_PROGRESS, NULL)
+  switch(var(VAR_RESULT)) {
+    case 0:
+      setvar(VAR_STORY_PROGRESS, STORY_INITIAL)
+    case 1:
+      setvar(VAR_STORY_PROGRESS, STORY_INTRO_FOREST)
+    case 2:
+      setvar(VAR_STORY_PROGRESS, STORY_INTRO_FIRE)
+    case 3:
+      setvar(VAR_STORY_PROGRESS, STORY_INTRO_HOUNDOUR_DEFEATED)
+    case 4:
+      setvar(VAR_STORY_PROGRESS, STORY_INTRO_TOWN_SQUARE)
+    case 5:
+      setvar(VAR_STORY_PROGRESS, STORY_INTRO_PASS_GUARD)
+    case 6:
+      setvar(VAR_STORY_PROGRESS, STORY_ENTERED_MOUNTAIN_PATH)
+    case 7:
+      setvar(VAR_STORY_PROGRESS, STORY_INTRO_WOOPER_DEFEATED)
+    case 8:
+      setvar(VAR_STORY_PROGRESS, STORY_RETURNED_AFTER_WOOPER)
+    case 9:
+      setvar(VAR_STORY_PROGRESS, STORY_ENTERED_ROCKY_PATH)
+    case 10:
+      setvar(VAR_STORY_PROGRESS, STORY_DEFEATED_GUARDIANS)
+    case 11:
+      setvar(VAR_STORY_PROGRESS, STORY_RETURNED_AFTER_GUARDIANS)
+    case 12:
+      setvar(VAR_STORY_PROGRESS, STORY_ENTERED_MOUNTAIN_SUMMIT)
+  }
   release
 }
 
 script Debug_EventScript_Script_2 {
+  setvar(VAR_STORY_PROGRESS, STORY_INTRO_WOOPER_DEFEATED)
   release
 }
 
 script Debug_EventScript_Script_3 {
+  messagecredits(format(
+    "STORY\NTeon{PAUSE 15}\p"
+    "MUSIC\NUniversal Voice Group{PAUSE 15}\p"
+    "GRAPHICS\NTeon{PAUSE 15}\p"
+    "SOUND EFFECTS\NUniversal Voice Group"
+    "TILESETS\NTeon{PAUSE 15}\p"
+    "TILESETS\NFairy Forest{PAUSE 15}\p"
+    "TILESETS\NGen 2 Kanto Assets{PAUSE 15}\p"
+    "TILESETS\NDojo Interior Seconary{PAUSE 15}\p"
+    "MUSIC\NPMD Red Rescue Team Music{PAUSE 15}\p"
+    "SOUND EFFECTS\NPMD Red Rescue Team Music{PAUSE 15}\p"
+    "MUSIC\NPMD Red Rescue Team Music{PAUSE 15}\p"
+    "SOUND EFFECTS\NPMD Red Rescue Team Music{PAUSE 15}"
+  ))
+  waitmessage
+  closemessage
   release
 }
 
 script Debug_EventScript_Script_4 {
+  fadeoutbgm(0)
+  playbgm(MUS_ROUTE101, FALSE)
   release
 }
 
 script Debug_EventScript_Script_5 {
+  getpartysize
+  if (var(VAR_RESULT) > 0) {
+    dynmultipush("SINGLE", 0)
+    dynmultipush("PARTY", 1)
+    dynmultipush("CLOSE", 2)
+    dynmultistack(0, 0, FALSE, 3, FALSE, 0, NULL)
+    switch(var(VAR_RESULT)) {
+      case 0:
+        msgbox("You selected a single Pokemon", MSGBOX_DEFAULT)
+      case 1:
+        msgbox("You selected a party of Pokemon", MSGBOX_DEFAULT)
+    }
+    releaseall
+  } else {
+    msgbox("No Pokemon in party", MSGBOX_DEFAULT)
+    release
+  }
   release
 }
 

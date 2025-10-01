@@ -11736,14 +11736,14 @@
                 "species": "SPECIES_DRIFLOON"
               },
               {
-                "min_level": 27,
-                "max_level": 30,
-                "species": "SPECIES_GRAVELER"
+                "min_level": 28,
+                "max_level": 31,
+                "species": "SPECIES_GEODUDE"
               },
               {
-                "min_level": 27,
-                "max_level": 30,
-                "species": "SPECIES_GRAVELER"
+                "min_level": 28,
+                "max_level": 31,
+                "species": "SPECIES_GEODUDE"
               },
               {
                 "min_level": 27,
@@ -11764,6 +11764,75 @@
                 "min_level": 27,
                 "max_level": 30,
                 "species": "SPECIES_SNEASEL_HISUI"
+              }
+            ]
+          }
+        },
+        {
+          "map": "MAP_MOUNTAIN_SUMMIT_BASE",
+          "base_label": "gMountainSummitBase",
+          "land_mons": {
+            "encounter_rate": 10,
+            "mons": [
+              {
+                "min_level": 28,
+                "max_level": 32,
+                "species": "SPECIES_STARAVIA"
+              },
+              {
+                "min_level": 30,
+                "max_level": 34,
+                "species": "SPECIES_SKIPLOOM"
+              },
+              {
+                "min_level": 30,
+                "max_level": 34,
+                "species": "SPECIES_MANKEY"
+              },
+              {
+                "min_level": 30,
+                "max_level": 34,
+                "species": "SPECIES_MANKEY"
+              },
+              {
+                "min_level": 30,
+                "max_level": 34,
+                "species": "SPECIES_MANKEY"
+              },
+              {
+                "min_level": 26,
+                "max_level": 30,
+                "species": "SPECIES_CHANSEY"
+              },
+              {
+                "min_level": 28,
+                "max_level": 32,
+                "species": "SPECIES_PRIMEAPE"
+              },
+              {
+                "min_level": 28,
+                "max_level": 32,
+                "species": "SPECIES_PRIMEAPE"
+              },
+              {
+                "min_level": 28,
+                "max_level": 32,
+                "species": "SPECIES_ABSOL"
+              },
+              {
+                "min_level": 28,
+                "max_level": 32,
+                "species": "SPECIES_CHIMECHO"
+              },
+              {
+                "min_level": 28,
+                "max_level": 32,
+                "species": "SPECIES_ABSOL"
+              },
+              {
+                "min_level": 28,
+                "max_level": 32,
+                "species": "SPECIES_CHIMECHO"
               }
             ]
           }
