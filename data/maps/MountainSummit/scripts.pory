@@ -5,6 +5,7 @@ mapscripts MountainSummit_MapScripts {
       setflag(FLAG_TEMP_2) // Hide Ho-Oh
       setflag(FLAG_TEMP_3) // Hide Blight
       setflag(FLAG_TEMP_4) // Hide Arcanine Statue
+      setrespawn(HEAL_LOCATION_MOUNTAIN_SUMMIT_BASE)
       setvar(VAR_TEMP_1, 1)
     }
   }
